@@ -130,7 +130,7 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
  * Enqueue scripts and styles.
  */
 function frenchpress_scripts() {
-	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri(), array(), filemtime( get_template_directory().'/style.css') );
 
 	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
@@ -171,3 +171,8 @@ require get_template_directory() . '/inc/jetpack.php';
  * Custom meta boxes.
  */
 require get_template_directory() . '/inc/metabox.php';
+
+/**
+ * Custom walker with no <li>.
+ */
+require get_template_directory() . '/inc/walker_no_list.php';

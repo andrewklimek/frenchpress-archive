@@ -11,7 +11,7 @@ main {
 	flex: 2 100%;
 }
 
-ul.nav-menu {
+nav#site-navigation {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;

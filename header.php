@@ -29,12 +29,13 @@
 				</a>
 				<?php endif; // End header image check. ?>
 				<div class="site-branding">
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php $title = apply_filters( 'frenchpress_filter_title', '<h1 class="site-title">'. get_bloginfo( "name" ) .'</h1>'); ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo $title; ?></a>
 					<p class="site-description"><?php bloginfo( 'description' ); ?></p>
 				</div><!-- .site-branding -->
 
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'frenchpress' ); ?></button>
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><!--<?php esc_html_e( 'Primary Menu', 'frenchpress' ); ?>//--></button>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'fallback_cb' => false, /*'items_wrap' => '%3$s', 'walker' => new walker_no_list */ ) ); ?>
 				</nav><!-- #site-navigation -->
 			</header><!-- #masthead -->

@@ -32,6 +32,8 @@ html {
 h1 {
 	font-size: 2.618rem;
 	font-weight: 400;
+	font-family: serif;
+	font-style:italic;
 }
 h2 {
 	font-size: 1.618rem;
@@ -85,6 +87,9 @@ p,ol,ul,h1,h2,h3,h4,h5,h6 {
 li ul,li ol {
 	margin: 0;
 }
+a {
+	text-decoration: none;
+}
 
 /*--------------------------------------------------------------
 ## Navigation
@@ -115,6 +120,17 @@ nav ul.menu {
 		position: fixed;
 		top: 6rem;
 		right: 1rem;
+		font-size: 4rem;
+		background: inherit;
+		border: none;
+		padding:0;
+		outline: none;
+	}
+	button.menu-toggle:before {
+		content: '≡';
+	}
+	nav.toggled button.menu-toggle:before {
+		content: '×';
 	}
 	nav ul.menu {
 		display: none;

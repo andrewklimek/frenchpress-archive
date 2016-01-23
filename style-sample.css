@@ -2,8 +2,8 @@
 Theme Name: FrenchPress
 Theme URI: http://underscores.me/
 Author: Andrew J Klimek
-Author URI: http://buzinky.com
-Description: Efficient & Flexible
+Author URI: http://andrewklimek.com
+Description: widgetized and simplified to the max
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -35,7 +35,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Clearings
 # Widgets
 # Content
-    ## Posts and pages
+	## Posts and pages
 	## Asides
 	## Comments
 # Infinite scroll
@@ -272,6 +272,7 @@ input,
 select,
 textarea {
 	color: #404040;
+	font-family: sans-serif;
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -356,7 +357,7 @@ html {
 }
 
 body {
-	background: #fffdf8; /* Fallback for when there is no custom background color defined. */
+	background: #fff; /* Fallback for when there is no custom background color defined. */
 }
 
 blockquote:before,
@@ -460,10 +461,24 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
 textarea {
 	color: #666;
 	border: 1px solid #ccc;
 	border-radius: 3px;
+}
+
+select {
+	border: 1px solid #ccc;
 }
 
 input[type="text"]:focus,
@@ -471,6 +486,16 @@ input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
 textarea:focus {
 	color: #111;
 }
@@ -479,7 +504,17 @@ input[type="text"],
 input[type="email"],
 input[type="url"],
 input[type="password"],
-input[type="search"] {
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"] {
 	padding: 3px;
 }
 
@@ -520,23 +555,23 @@ a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
- .main-navigation {
-/* 	clear: both; */
-/* 	display: block; */
-/* 	float: left; */
-/* 	width: 100%; */
+.main-navigation {
+	clear: both;
+	display: block;
+	float: left;
+	width: 100%;
 }
 
-nav ul {
-/* 	display: none; */
+.main-navigation ul {
+	display: none;
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
 }
 
 .main-navigation li {
-/* 	float: left; */
-/* 	position: relative; */
+	float: left;
+	position: relative;
 }
 
 .main-navigation a {
@@ -545,14 +580,12 @@ nav ul {
 }
 
 .main-navigation ul ul {
-/* 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); */
-/* 	float: left; */
-	display: none;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+	float: left;
 	position: absolute;
-	background-color: #fffdf8;
-/* 	top: 1.5em; */
-/* 	left: -999em; */
-/* 	z-index: 99999; */
+	top: 1.5em;
+	left: -999em;
+	z-index: 99999;
 }
 
 .main-navigation ul ul ul {
@@ -582,8 +615,7 @@ nav ul {
 
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
-/* 	left: auto; */
-display: block;
+	left: auto;
 }
 
 .main-navigation ul ul li:hover > ul,
@@ -593,11 +625,12 @@ display: block;
 
 .main-navigation .current_page_item > a,
 .main-navigation .current-menu-item > a,
-.main-navigation .current_page_ancestor > a {
+.main-navigation .current_page_ancestor > a,
+.main-navigation .current-menu-ancestor > a {
 }
 
 /* Small menu. */
-/* .menu-toggle,
+.menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
 }
@@ -632,7 +665,7 @@ display: block;
 	text-align: right;
 	width: 50%;
 }
- */
+
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -665,10 +698,15 @@ display: block;
 	z-index: 100000; /* Above WP toolbar. */
 }
 
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
-/* .alignleft {
+.alignleft {
 	display: inline;
 	float: left;
 	margin-right: 1.5em;
@@ -685,7 +723,7 @@ display: block;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-} */
+}
 
 /*--------------------------------------------------------------
 # Clearings
@@ -704,6 +742,7 @@ display: block;
 .site-footer:after {
 	content: "";
 	display: table;
+	table-layout: fixed;
 }
 
 .clear:after,
@@ -725,11 +764,6 @@ display: block;
 /* Make sure select elements fit in widgets. */
 .widget select {
 	max-width: 100%;
-}
-
-/* Search widget. */
-.widget_search .search-submit {
-	display: none;
 }
 
 /*--------------------------------------------------------------
@@ -829,15 +863,16 @@ object {
 
 .wp-caption img[class*="wp-image-"] {
 	display: block;
-	margin: 0 auto;
-}
-
-.wp-caption-text {
-	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .wp-caption .wp-caption-text {
 	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -888,81 +923,4 @@ object {
 
 .gallery-caption {
 	display: block;
-}
-
-/*--------------------------------------------------------------
-## Flex
---------------------------------------------------------------*/
-
-nav ul.menu {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-flow: row wrap;
-	    -ms-flex-flow: row wrap;
-	        flex-flow: row wrap;
-	-webkit-justify-content: space-around;
-	    -ms-flex-pack: distribute;
-	        justify-content: space-around;
-}
-
-div#content {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-flow: row wrap;
-	    -ms-flex-flow: row wrap;
-	        flex-flow: row wrap;
-}
-
-div#secondary,div#tertiary {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 100%;
-	    -ms-flex: 1 100%;
-	        flex: 1 100%;
-}
-
-main {
-	-webkit-box-flex: 2;
-	-webkit-flex: 2 100%;
-	    -ms-flex: 2 100%;
-	        flex: 2 100%;
-}
-
-@media (min-width:600px) {
-	div#secondary,div#tertiary {
-		-webkit-box-flex: 1;
-		-webkit-flex: 1 auto;
-		    -ms-flex: 1 auto;
-		        flex: 1 auto;
-	}
-}
-
-@media (min-width:800px) {
-	main {
-		-webkit-box-flex: 2;
-		-webkit-flex: 2 20%;
-		    -ms-flex: 2 20%;
-		        flex: 2 20%;
-		-webkit-box-ordinal-group: 3;
-		-webkit-order: 2;
-		    -ms-flex-order: 2;
-		        order: 2;
-	}
-
-	div#secondary {
-		-webkit-box-ordinal-group: 2;
-		-webkit-order: 1;
-		    -ms-flex-order: 1;
-		        order: 1;
-	}
-
-	div#tertiary {
-		-webkit-box-ordinal-group: 4;
-		-webkit-order: 3;
-		    -ms-flex-order: 3;
-		        order: 3;
-	}
 }

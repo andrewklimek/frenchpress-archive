@@ -1,6 +1,6 @@
 <?php
 /**
- * FrenchPress Theme Customizer
+ * FrenchPress Theme Customizer.
  *
  * @package FrenchPress
  */

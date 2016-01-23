@@ -1,6 +1,8 @@
 <?php
 /**
- * FrenchPress functions and definitions
+ * FrenchPress functions and definitions.
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package FrenchPress
  */
@@ -18,7 +20,7 @@ function frenchpress_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on FrenchPress, use a find and replace
-	 * to change 'frenchpress' to the name of your theme in all the template files
+	 * to change 'frenchpress' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'frenchpress', get_template_directory() . '/languages' );
 
@@ -36,13 +38,13 @@ function frenchpress_setup() {
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'frenchpress' ),
+		'primary' => esc_html__( 'Primary', 'frenchpress' ),
 	) );
 
 	/*
@@ -59,7 +61,7 @@ function frenchpress_setup() {
 
 	/*
 	 * Enable support for Post Formats.
-	 * See http://codex.wordpress.org/Post_Formats
+	 * See https://developer.wordpress.org/themes/functionality/post-formats/
 	 */
 	add_theme_support( 'post-formats', array(
 		'aside',
@@ -75,7 +77,7 @@ function frenchpress_setup() {
 		'default-image' => '',
 	) ) );
 }
-endif; // frenchpress_setup
+endif;
 add_action( 'after_setup_theme', 'frenchpress_setup' );
 
 /**
@@ -93,35 +95,17 @@ add_action( 'after_setup_theme', 'frenchpress_content_width', 0 );
 /**
  * Register widget area.
  *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function frenchpress_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Primary Widget Area', 'frenchpress' ),
+		'name'          => esc_html__( 'Sidebar', 'frenchpress' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Secondary Widget Area', 'frenchpress' ),
-		'id'            => 'sidebar-2',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Footer Widget Area', 'frenchpress' ),
-		'id'            => 'sidebar-3',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'frenchpress_widgets_init' );
@@ -130,6 +114,7 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
  * Enqueue scripts and styles.
  */
 function frenchpress_scripts() {
+	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri() ); // Use filemtime for dev to avoid cache
 	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri(), array(), filemtime( get_template_directory().'/style.css') );
 
 	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );

@@ -2,7 +2,9 @@
 /**
  * The template for displaying the footer.
  *
- * Contains the closing of the #content div and all content after
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package FrenchPress
  */
@@ -15,7 +17,7 @@
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'frenchpress' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'frenchpress' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'frenchpress' ), 'frenchpress', '<a href="http://buzinky.com" rel="designer">Andrew J Klimek</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'frenchpress' ), 'frenchpress', '<a href="http://andrewklimek.com" rel="designer">Andrew J Klimek</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

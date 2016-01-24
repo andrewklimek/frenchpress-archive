@@ -17,9 +17,9 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 ## Text
 --------------------------------------------------------------*/
 html {
-	background-color: papayawhip;
-	background-color: linen;
-	background-color: seashell;
+/*	background-color: papayawhip;*/
+/*	background-color: linen;*/
+/*	background-color: seashell;*/
 /*	background-color: floralwhite;*/
 /*	 background-color: ivory;*/
 	font-size: 100%;
@@ -55,18 +55,22 @@ h6 {
 	font-size: 1rem;
 	font-weight: 100;
 }
-body {
-	font-family: Helvetica,Arial,sans-serif;
+a {
+	text-decoration: none;/*bad practice of course*/
 }
 /*--------------------------------------------------------------
 # Box Model
 --------------------------------------------------------------*/
 /* *,*::after,*::before {box-sizing: border-box;}*/
-* {
+html {
 	box-sizing: border-box;
+}
+*,*:before,*:after {
+	box-sizing: inherit;
 	max-width: 100%;
 	margin: 0;
 }
+
 pre {
 	max-width: 100%;
 	overflow: auto;
@@ -79,16 +83,14 @@ img {
 	height: auto;
 }
 body {
-	padding: 1rem;
+	margin: 0;
 }
+
 p,ol,ul,h1,h2,h3,h4,h5,h6 {
 	margin: 0 0 1.618rem 0;
 }
 li ul,li ol {
 	margin: 0;
-}
-a {
-	text-decoration: none;
 }
 
 /*--------------------------------------------------------------
@@ -98,78 +100,80 @@ nav ul {
 	list-style-type: none;
 	padding: 0;
 }
+
 button.menu-toggle {
-	display: none;
+	display: inline;
+	z-index: 1000000;
+	position: fixed;
+	top: 6rem;
+	right: 1rem;
+	font-size: 4rem;
+	background: inherit;
+	border: none;
+	padding:0;
+	outline: none;
+}
+button.menu-toggle:before {
+	content: '≡';
+}
+nav.toggled button.menu-toggle:before {
+	content: '×';
 }
 nav ul.menu {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
+	display: none;
 }
-.main-navigation ul ul {
-	position: absolute;
-	left: -999em;
-	z-index: 99999;
-}
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-	left: auto;
-}
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-	left: 100%;
+nav.toggled ul.menu {
+	background-color: seashell; /*This shouldnt be hard-coded*/
+	overflow: auto;
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	left: 0;
 	width: 100%;
-}
-@media(max-width:799px){
-	button.menu-toggle {
-		display: inline;
-		z-index: 1000000;
-		position: fixed;
-		top: 6rem;
-		right: 1rem;
-		font-size: 4rem;
-		background: inherit;
-		border: none;
-		padding:0;
-		outline: none;
-	}
-	button.menu-toggle:before {
-		content: '≡';
-	}
-	nav.toggled button.menu-toggle:before {
-		content: '×';
-	}
-	nav ul.menu {
-		display: none;
-	}
-	nav.toggled ul.menu {
-		background-color: seashell; /*This shouldnt be hard-coded*/
-		overflow: auto;
-		position: fixed;
-		z-index: 999999;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-flow: column wrap;
-		align-items: center;
-		justify-content: center;
-	}
+	height: 100%;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
+@media(min-width:800px){
+	button.menu-toggle {
+		display: none;
+	}
+	nav ul.menu {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+	}
+	.main-navigation ul ul {
+		position: absolute;
+		left: -999em;
+		z-index: 99999;
+	}
+	.main-navigation ul li:hover > ul,
+	.main-navigation ul li.focus > ul {
+		left: auto;
+	}
+	.main-navigation ul ul li:hover > ul,
+	.main-navigation ul ul li.focus > ul {
+		left: 100%;
+		width: 100%;
+	}
+}
 
 /*--------------------------------------------------------------
 ## Page Layout
 --------------------------------------------------------------*/
-html,body{height: 100%;}/* This is only needed because iOS 7 can't manage vh units that should be in the next line */
+/*html,body{height: 100%;}*//* This is only needed because iOS 7 can't manage vh units that should be in the next line */
 #page {
-	height: 100%;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
 
-header,footer {
+#masthead,#colophon {
 	flex: none;
 }
 
@@ -184,8 +188,9 @@ header,footer {
 		flex-direction: row;
 	}
 
-	main {
+	#primary {
 		flex: 1;
+		overflow: auto;
 	}
 
 	#secondary, #tertiary {

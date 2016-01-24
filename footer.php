@@ -9,11 +9,30 @@
  * @package FrenchPress
  */
 
-?>
-
+	?>
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
+		<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
+			<div id="footer-1" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'footer-1' ); ?>
+			</div><!-- #footer-1 -->
+		<?php endif;
+		if ( is_active_sidebar( 'footer-2' ) ) : ?>
+			<div id="footer-2" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'footer-2' ); ?>
+			</div><!-- #footer-2 -->
+		<?php endif;
+		if ( is_active_sidebar( 'footer-3' ) ) : ?>
+			<div id="footer-3" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'footer-3' ); ?>
+			</div><!-- #footer-3 -->
+		<?php endif;
+		if ( is_active_sidebar( 'footer-4' ) ) : ?>
+			<div id="footer-4" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'footer-4' ); ?>
+			</div><!-- #footer-4 -->
+		<?php endif; ?>
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'frenchpress' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'frenchpress' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>

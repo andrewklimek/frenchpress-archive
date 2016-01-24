@@ -25,8 +25,10 @@ function frenchpress_custom_header_setup() {
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
+		'flex-width'            => true,
 		'height'                 => 250,
 		'flex-height'            => true,
+		'header-text'            => true,
 		'wp-head-callback'       => 'frenchpress_header_style',
 	) ) );
 }

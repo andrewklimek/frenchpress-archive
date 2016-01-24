@@ -9,7 +9,14 @@
 
 get_header(); ?>
 
-	<!-- <div id="primary" class="content-area"> -->
+	<div id="primary" class="content-area">
+		
+		<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
+			<div id="content-before" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'content-before' ); ?>
+			</div><!-- #content-before -->
+		<?php endif; ?>
+		
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -44,7 +51,14 @@ get_header(); ?>
 		endif; ?>
 
 		</main><!-- #main -->
-	<!-- </div> --><!-- #primary -->
+		
+		<?php if ( is_active_sidebar( 'content-after' ) ) : ?>
+			<div id="content-after" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'content-after' ); ?>
+			</div><!-- #content-after -->
+		<?php endif; ?>
+		
+	</div><!-- #primary -->
 
 <?php
 get_sidebar();

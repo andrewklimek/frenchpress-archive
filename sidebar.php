@@ -7,11 +7,13 @@
  * @package FrenchPress
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
-?>
-
-<aside id="secondary" class="widget-area" role="complementary">
+if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+<div id="secondary" class="widget-area" role="complementary">
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+</div><!-- #secondary -->
+<?php endif;
+if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
+<div id="tertiary" class="widget-area" role="complementary">
+	<?php dynamic_sidebar( 'sidebar-2' ); ?>
+</div><!-- #tertiary -->
+<?php endif;

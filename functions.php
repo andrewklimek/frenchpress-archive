@@ -206,6 +206,15 @@ function frenchpress_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Ending Credits', 'frenchpress' ),
+		'id'            => 'ending-credits',
+		'description'   => 'Full width, very bottom. Typcial place for copyright, theme info, etc.',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'frenchpress_widgets_init' );
 

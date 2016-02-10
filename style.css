@@ -27,7 +27,7 @@ html {
 	text-rendering: optimizeLegibility;
 	word-wrap: break-word;
 }
-@media(max-width:600px) {html {font-size: 85%;} }
+/*@media(max-width:600px) {html {font-size: 85%;} }*/
 /* @media(min-width:1200px) {html {font-size: 115%;} } */
 h1 {
 	font-size: 2.618rem;

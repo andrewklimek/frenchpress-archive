@@ -7,6 +7,8 @@
  * @package FrenchPress
  */
 
+if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error_log("***$l***\n".var_export($v,true));}}}
+
 if ( ! function_exists( 'frenchpress_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

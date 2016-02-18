@@ -11,7 +11,7 @@ function frenchpress_add_meta_box( $post_type ) {
 			'frenchpress_meta_box_callback',
 			null, 'advanced', 'default',
 			array('type' => $post_type)
-			);
+		);
 	}
 }
 add_action( 'add_meta_boxes', 'frenchpress_add_meta_box' );
@@ -31,13 +31,14 @@ function frenchpress_meta_box_callback( $post, $metabox ) {
 	 * from the database and use the value for the form.
 	 */
 	$value = get_post_meta( $post->ID, 'frenchpress_schema_article', true );
-	$type = $metabox['args']['type'];
-	$type_array = get_posts( array( 'numberposts' => 1, 'order' => 'DESC', 'post_type' => $type ) );
-	$type_default = get_post_meta( $type_array[0]->ID, 'frenchpress_schema_article', true );
-	if (empty($type_default)) { $type_default = 'BlogPosting'; }
-	
+	if ( ! $value) {
+		global $wpdb;
+		$type = $metabox['args']['type'];
+		$type_default = $wpdb->get_var( "SELECT meta_value FROM {$wpdb->prefix}posts JOIN {$wpdb->prefix}postmeta ON ID=post_id WHERE post_type='{$type}' AND meta_key='frenchpress_schema_article' ORDER BY ID DESC LIMIT 1" );
+		$value = $type_default ? $type_default : 'BlogPosting';
+	}
 	echo '<label for="frenchpress_new_field">Itemtype: </label>';
-	echo '<input type="text" id="frenchpress_new_field" name="frenchpress_new_field" value="' . esc_attr( $type_default ) . '" size="25" />';
+	echo '<input type="text" id="frenchpress_new_field" name="frenchpress_new_field" value="' . esc_attr( $value ) . '" size="25" />';
 }
 
 /**
@@ -82,7 +83,7 @@ function frenchpress_save_meta_box_data( $post_id ) {
 	}
 
 	/* OK, it's safe for us to save the data now. */
-	
+
 	// Make sure that it is set.
 	if ( ! isset( $_POST['frenchpress_new_field'] ) ) {
 		return;
@@ -125,7 +126,7 @@ function frenchpress_print_schema (){
 		"image" : "'. wp_get_attachment_url( get_post_thumbnail_id() ) .'"
 	}
 </script>';
-echo $schema;
+	echo $schema;
 }
 add_action('wp_print_footer_scripts', 'frenchpress_print_schema');
 /* }

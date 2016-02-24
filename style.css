@@ -17,9 +17,9 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 ## Text
 --------------------------------------------------------------*/
 html {
-/*	background-color: papayawhip;*/
-/*	background-color: linen;*/
-/*	background-color: seashell;*/
+	background-color: papayawhip;
+	background-color: linen;
+	background-color: seashell;
 /*	background-color: floralwhite;*/
 /*	 background-color: ivory;*/
 	font-size: 100%;
@@ -67,7 +67,7 @@ html {
 }
 *,*:before,*:after {
 	box-sizing: inherit;
-	max-width: 100%;
+/* 	max-width: 100%; */
 	margin: 0;
 }
 

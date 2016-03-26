@@ -357,6 +357,7 @@ nav.toggled ul.menu {
 		color: #000 !important;
 		background: none !important;
 		box-shadow: none !important;
+		text-shadow: none !important;
 	}
 	/*
 	article, #content {

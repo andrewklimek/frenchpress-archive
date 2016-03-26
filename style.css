@@ -165,7 +165,7 @@ nav.toggled ul.menu {
 	button.menu-toggle {
 		display: none;
 	}
-	.main-navigation > ul {
+	nav ul.menu {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -ms-flexbox;

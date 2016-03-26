@@ -63,7 +63,7 @@ a {
 html {
 	box-sizing: border-box;
 }
-*,*:before,*:after {
+*, *:before, *:after {
 	box-sizing: inherit;
 	margin: 0;
 }
@@ -85,8 +85,8 @@ body {
 	margin: 0;
 }
 
-p,ol,ul,h1,h2,h3,h4,h5,h6 {
-	margin: 0 0 1.618rem 0;
+p, ol, ul, h1, h2, h3, h4, h5, h6, table {
+	margin-bottom: 1.618rem;
 }
 li ul,li ol {
 	margin: 0;

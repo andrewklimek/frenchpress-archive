@@ -165,7 +165,7 @@ nav.toggled ul.menu {
 	button.menu-toggle {
 		display: none;
 	}
-	nav ul.menu {
+	.main-navigation > ul {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -ms-flexbox;
@@ -176,10 +176,12 @@ nav.toggled ul.menu {
 		-webkit-justify-content: space-around;
 		    -ms-flex-pack: distribute;
 		        justify-content: space-around;
+		line-height: 1.6; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
 	}
 	.main-navigation ul ul {
 		position: absolute;
 		visibility: hidden;
+		padding-bottom: 1rem; /*Possibly shouldn't be hard-coded*/
 	}
 	.main-navigation ul li:hover > ul,
 	.main-navigation ul li.focus > ul {

@@ -124,7 +124,7 @@ nav ul.menu {
 	display: none;
 }
 nav.toggled ul.menu {
-	background-color: seashell; /*This shouldnt be hard-coded*/
+	background-color: #fff; /*This shouldnt be hard-coded*/
 	overflow: auto;
 	position: fixed;
 	z-index: 999999;
@@ -132,10 +132,13 @@ nav.toggled ul.menu {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	display: -webkit-box;
 	display: flex;
 	flex-flow: column wrap;
-	align-items: center;
-	justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	        justify-content: center;
 	text-align: center;
 }
 
@@ -144,24 +147,44 @@ nav.toggled ul.menu {
 		display: none;
 	}
 	nav ul.menu {
+		display: -webkit-box;
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-around;
 	}
 	.main-navigation ul ul {
 		position: absolute;
-		left: -999em;
-		z-index: 99999;
+		visibility: hidden;
 	}
 	.main-navigation ul li:hover > ul,
 	.main-navigation ul li.focus > ul {
-		left: auto;
+		visibility: visible;
 	}
 	.main-navigation ul ul li:hover > ul,
 	.main-navigation ul ul li.focus > ul {
+		visibility: visible;
 		left: 100%;
 		width: 100%;
 	}
+/*	nav ul.menu {
+	    display: table;
+	}
+	nav ul.menu > li {
+	    display: table-cell;
+	    position: relative;
+	}
+	nav ul.menu li a {
+	    margin: 1em;
+	}
+	nav ul.menu ul {
+	    position: absolute;
+	    left: 0;
+	    visibility: hidden;
+	     width: 100%;
+	}
+	nav ul.menu li:hover > ul {
+	    visibility: visible;
+	}*/
 }
 
 /*--------------------------------------------------------------
@@ -170,36 +193,49 @@ nav.toggled ul.menu {
 /*html,body{height: 100%;}*//* This is only needed because iOS 7 can't manage vh units that should be in the next line */
 #page {
 	height: 100vh;
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
 }
 
 #masthead,#colophon {
-	flex: none;
+	-webkit-box-flex: 0;
+	        flex: none;
 }
 
 #content {
+	display: -webkit-box;
 	display: flex;
-	flex-direction: column;
-	flex: 1 0 auto;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	        flex-direction: column;
+	-webkit-box-flex: 1;
+	        flex: 1 0 auto;
 }
 
 @media(min-width:900px) {
 	#content {
-		flex-direction: row;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		        flex-direction: row;
 	}
 
 	#primary {
-		flex: 1;
+		-webkit-box-flex: 1;
+		        flex: 1;
 		overflow: auto;
 	}
 
 	#secondary, #tertiary {
-		flex: 0 0 16rem;
+		-webkit-box-flex: 0;
+		        flex: 0 0 16rem;
 	}
 
 	#secondary {
-		order: -1;
+		-webkit-box-ordinal-group: 0;
+		        order: -1;
 	}
 }
 /*--------------------------------------------------------------

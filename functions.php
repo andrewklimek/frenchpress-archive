@@ -225,7 +225,7 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
  */
 function frenchpress_scripts() {
 	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri() ); // Use filemtime for dev to avoid cache
-	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri(), array(), filemtime( get_template_directory().'/style.css') );
+	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css') );
 
 	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 

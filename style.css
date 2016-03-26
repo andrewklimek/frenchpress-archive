@@ -56,6 +56,8 @@ h6 {
 a {
 	text-decoration: none;/*bad practice of course*/
 }
+/* button links should be inline-block but that probably isn't my concern. */
+
 /*--------------------------------------------------------------
 # Box Model
 --------------------------------------------------------------*/

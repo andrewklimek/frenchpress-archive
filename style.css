@@ -96,6 +96,15 @@ li ul,li ol {
 td, th {
 	word-break: break-word;
 }
+
+/* This is to remove frustrating space below logo.  Might be a problem with header widgets too */
+.site-branding {
+    line-height: 0;
+}
+.site-title, .site-description {
+    line-height: 1.6;
+    margin-bottom: 0;
+}
 /*--------------------------------------------------------------
 ## Navigation
 --------------------------------------------------------------*/

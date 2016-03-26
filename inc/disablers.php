@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Disable auto <p> insertion, good idea?
+ */
+
+//remove_filter( 'the_content', 'wpautop' );
+//remove_filter( 'the_excerpt', 'wpautop' );
+
+/**
  * Disable capital P
  */
 

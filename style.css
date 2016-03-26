@@ -96,6 +96,9 @@ li ul,li ol {
 td, th {
 	word-break: break-word;
 }
+th:only-of-type {
+    text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
+}
 /* This is to remove frustrating space below logo.  Might be a problem with header widgets too */
 .site-branding {
 	line-height: 0;

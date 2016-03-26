@@ -347,7 +347,7 @@ nav.toggled ul.menu {
 }
 
 @media print {
-	.dont-print, header, nav, aside, footer, #header, #sidebar, #footer, #colophon {
+	.dont-print, header, nav, aside, footer, #header, #sidebar, #footer, #colophon, .edit-link {
 		display: none !important;
 	}
 	* {

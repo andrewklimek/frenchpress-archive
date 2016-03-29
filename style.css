@@ -299,9 +299,9 @@ nav.toggled ul.menu {
 	}
 	.autocol > * {
 		-webkit-box-flex: 1;
-		-webkit-flex: 1 1 1px;
-		-ms-flex: 1 1 1px;
-		flex: 1 1 1px;
+		-webkit-flex: 1;
+		    -ms-flex: 1;
+		        flex: 1;
 		margin: 1rem;
 	}
 	.col {

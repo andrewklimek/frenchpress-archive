@@ -302,7 +302,7 @@ nav.toggled ul.menu {
 		-webkit-flex: 1;
 		    -ms-flex: 1;
 		        flex: 1;
-		margin: 1rem;
+		padding: 1rem;
 	}
 	.col {
 		display: -webkit-box;

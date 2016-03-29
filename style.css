@@ -83,10 +83,6 @@ img, figure {
 	height: auto;
 }
 
-body {
-	margin: 0;
-}
-
 p, ol, ul, h1, h2, h3, h4, h5, h6, table {
 	margin-bottom: 1.618rem;
 }
@@ -224,6 +220,7 @@ nav.toggled ul.menu {
 --------------------------------------------------------------*/
 /*html,body{height: 100%;}*//* This is only needed because iOS 7 can't manage vh units that should be in the next line */
 #page {
+	margin: auto;
 	min-height: 100vh;
 	display: -webkit-box;
 	display: -webkit-flex;

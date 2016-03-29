@@ -219,8 +219,11 @@ nav.toggled ul.menu {
 ## Page Layout
 --------------------------------------------------------------*/
 /*html,body{height: 100%;}*//* This is only needed because iOS 7 can't manage vh units that should be in the next line */
+body, #page, #content, #primary, #main {
+	margin: 0 auto;/* This may be a mistake*/
+}
+
 #page {
-	margin: auto;
 	min-height: 100vh;
 	display: -webkit-box;
 	display: -webkit-flex;

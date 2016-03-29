@@ -282,13 +282,14 @@ body, #page, #content, #primary, #main {
 		-ms-flex: 0 0 16rem;
 		flex: 0 0 16rem;
 	}
-
+/* This probably belongs in the child theme, or do we rename to left and right?
 	#secondary {
 		-webkit-box-ordinal-group: 0;
 		-webkit-order: -1;
 		-ms-flex-order: -1;
 		order: -1;
 	}
+*/	
 
 	.autocol {
 		display: -webkit-box;

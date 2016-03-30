@@ -244,6 +244,12 @@ nav.toggled ul.menu {
 }
 
 #content {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 0 auto;
+	-ms-flex: 1 0 auto;
+	flex: 1 0 auto;
+}
+#content > div {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -253,20 +259,16 @@ nav.toggled ul.menu {
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 0 auto;
-	-ms-flex: 1 0 auto;
-	flex: 1 0 auto;
 }
-#content > div {
+#content > div > div {
 	padding-left: 2rem;
 	padding-right: 2rem;
 }
 
 @media(min-width:900px) {
-	#content {
-		margin-left: -2rem;
-		margin-right: -2rem;
+	#content > div {
+/*		margin-left: -2rem;
+		margin-right: -2rem;*/
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: row;

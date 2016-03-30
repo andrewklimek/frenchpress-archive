@@ -71,8 +71,8 @@ function frenchpress_entry_footer() {
 			esc_html__( 'Edit %s', 'frenchpress' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
-		'<span class="edit-link">',
-		'</span>'
+		'<div class="edit-link">',
+		'</div>'
 	);
 }
 endif;

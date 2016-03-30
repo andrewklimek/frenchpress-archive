@@ -270,9 +270,9 @@ require get_template_directory() . '/inc/disablers.php';
 /**
  * Custom meta boxes.
  */
-require get_template_directory() . '/inc/metabox.php';
+// require get_template_directory() . '/inc/metabox.php';
 
 /**
  * Custom walker with no <li>.
  */
-require get_template_directory() . '/inc/walker_no_list.php';
+// require get_template_directory() . '/inc/walker_no_list.php';

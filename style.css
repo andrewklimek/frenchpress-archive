@@ -92,6 +92,9 @@ li ul,li ol {
 td, th {
 	word-break: break-word;
 }
+/*--------------------------------------------------------------
+## Positioning Tweaks that might not belong in the parent theme
+--------------------------------------------------------------*/
 th:only-of-type {
     text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
 }
@@ -102,6 +105,12 @@ th:only-of-type {
 .site-title, .site-description {
 	line-height: 1.6;
 	margin-bottom: 0;
+}
+div.entry-content {
+    margin: 2rem 0;
+}
+footer.entry-footer span {
+    margin-right: 1rem;
 }
 p.comment-form-comment label {
     display: block;

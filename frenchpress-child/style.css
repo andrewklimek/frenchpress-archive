@@ -1,0 +1,78 @@
+/*
+Theme Name:Frenchpress Child Theme
+Theme URI:http://andrewklimek.com
+Description:a child theme of Frenchpress
+Author:Andrew J Klimek
+Author URI:http://andrewklimek.com
+Template:frenchpress
+Version:1.0.0
+License:GNU General Public License v2 or later
+License URI:http://www.gnu.org/licenses/gpl-2.0.html
+Tags:
+*/
+
+
+/*Main Layout*/
+.content-width {
+    max-width: 64rem;
+    margin: 0 auto;
+}
+
+/*Main Background Color*/
+html, main, .site-branding {
+	background-color: #fff;
+}
+/*Main Font Styles*/
+html {
+	color: #1c355c;
+	font-family: arial, sans-serif;
+	font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 100;
+	line-height: 1.3;
+}
+p, ol, ul, h1, h2, h3, h4, h5, h6, table {
+	margin-bottom: 0.66rem;
+}
+
+/*Buttons and Links*/
+a.button, input[type=submit], button {
+	background-color: #F19127;
+	color: #414753;
+	display: inline-block;
+	padding: 15px 20px;
+	margin: 5px;
+	border-radius: 50px;
+	min-width: 140px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+	border-width: 0;
+	font-family: inherit;
+	font-size: inherit;
+}
+a.button:hover, input[type=submit]:hover, button:hover{
+	color: #fff
+}
+
+
+/*POST NAV*/
+.nav-links {
+	height: 1rem;
+	font-size: 0.7rem;
+}
+.nav-previous {
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAANCAYAAACUwi84AAAAW0lEQVR42qWOQQqAMAwE9QPa+gGfrn4nBG19UHURSmS19eDCnGYCaXiq6kEE05t0IIADJItYGrEmA/A16a7roswjmcDIn+8UraC7B8OfqP+KtuxL0WL2Gc0i0p7r0+SupTpTJgAAAABJRU5ErkJggg==') no-repeat left center;
+	padding-left: 18px;
+	float: left;
+}
+.nav-next {
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAANCAYAAACUwi84AAAAPklEQVQY02NgAIIzZ84sAOILQCzAgA6gkv+hGFMRVPA/TkUgDm0VobtHAU3Bf+JMwOsGgg4kxvX4Q5JQXAAAdXPiRQAmj7UAAAAASUVORK5CYII=') no-repeat right center;
+	padding-right: 18px;
+	float: right;
+}

@@ -194,8 +194,9 @@ nav.toggled ul.menu {
 	}
 	.main-navigation ul ul {
 		position: absolute;
+		z-index: 9999;/* I've seen google graphs in front of dropdowns without this */
 		visibility: hidden;
-		padding-bottom: 1rem; /*Possibly shouldn't be hard-coded*/
+		padding-bottom: 1rem;/* Possibly shouldn't be hard-coded */
 	}
 	.main-navigation ul li:hover > ul,
 	.main-navigation ul li.focus > ul {

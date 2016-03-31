@@ -106,8 +106,8 @@ th:only-of-type {
 	line-height: 1.6;
 	margin-bottom: 0;
 }
-div.entry-content {
-    margin: 2rem 0;
+header.entry-header, div.entry-content {
+    margin-bottom: 2rem;
 }
 footer.entry-footer span {
     margin-right: 1rem;

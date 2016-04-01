@@ -75,7 +75,7 @@ function frenchpress_setup() {
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'frenchpress_custom_background_args', array(
-		'default-color' => '#FFF5EE',
+		'default-color' => '#FFFDF8',
 		'default-image' => '',
 	) ) );
 }

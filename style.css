@@ -133,7 +133,7 @@ nav ul {
 
 button.menu-toggle {
 	display: inline;
-	z-index: 1000000;
+	z-index: 9999;
 	position: fixed;
 	top: 6rem;
 	right: 1rem;
@@ -156,7 +156,7 @@ nav.toggled ul.menu {
 	background-color: #fff; /*This shouldnt be hard-coded*/
 	overflow: auto;
 	position: fixed;
-	z-index: 999999;
+	z-index: 9999;
 	top: 0;
 	left: 0;
 	width: 100%;

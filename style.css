@@ -75,11 +75,7 @@ html {
 }
 
 pre {
-	max-width: 100%;
 	overflow: auto;
-	padding: 1.618em;
-	word-wrap: normal;
-	border: 1px solid rgba(128, 128, 128, 0.5);
 }
 
 img, figure {
@@ -87,7 +83,7 @@ img, figure {
 	height: auto;
 }
 
-p, ol, ul, h1, h2, h3, h4, h5, h6, table {
+p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.618rem;
 }
 li ul,li ol {

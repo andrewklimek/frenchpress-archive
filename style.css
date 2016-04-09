@@ -142,6 +142,9 @@ nav.toggled path#menu-toggle-open {
 nav.toggled path#menu-toggle-close {
 	display: initial;
 }
+.main-navigation svg {
+	width: 24px;
+}
 nav ul.menu {
 	display: none;
 }

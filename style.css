@@ -131,16 +131,16 @@ span.menu-toggle {
 	display: inline-block;
 	z-index: 9999;
 	position: fixed;
-	top: 6rem;
 	right: 0;
-	font-size: 4rem;
-	line-height: .67;
+	top: 20%;
+	padding: 10px;
 }
-span.menu-toggle:before {
-	content: '≡';
+path#menu-toggle-close,
+nav.toggled path#menu-toggle-open {
+	display: none;
 }
-nav.toggled span.menu-toggle:before {
-	content: '×';
+nav.toggled path#menu-toggle-close {
+	display: initial;
 }
 nav ul.menu {
 	display: none;

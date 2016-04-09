@@ -78,10 +78,15 @@
 
 			<?php $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) );
 			if ( $menu ) : ?>
-				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<span class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php // esc_html_e( 'Primary Menu', 'frenchpress' ); ?></span>
-					<?php echo $menu; ?>
-				</nav><!-- #site-navigation -->
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<span class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<svg version="1.2" baseProfile="tiny"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px" height="24px" viewBox="-13 13 26 24" xml:space="preserve">
+					<path id="menu-toggle-open" d="M11,33h-22c-0.553,0-1,0.447-1,1s0.447,1,1,1h22c0.552,0,1-0.447,1-1S11.552,33,11,33z M11,24h-22c-0.553,0-1,0.448-1,1c0,0.553,0.447,1,1,1h22c0.552,0,1-0.447,1-1C12,24.448,11.552,24,11,24z M-11,17h22c0.552,0,1-0.447,1-1c0-0.552-0.448-1-1-1h-22c-0.553,0-1,0.448-1,1C-12,16.553-11.553,17-11,17z"/>
+					<path id="menu-toggle-close" d="M1.414,25l9.191-9.191c0.392-0.392,0.392-1.023,0-1.414c-0.394-0.392-1.022-0.392-1.414,0L0,23.586l-9.192-9.191c-0.391-0.392-1.024-0.392-1.414,0c-0.391,0.39-0.391,1.022,0,1.414L-1.414,25l-9.192,9.191c-0.391,0.392-0.391,1.021,0,1.414c0.391,0.392,1.023,0.392,1.414,0L0,26.414l9.191,9.191c0.392,0.392,1.021,0.392,1.414,0c0.392-0.394,0.392-1.022,0-1.414L1.414,25z"/>
+					</svg>
+				</span>
+				<?php echo $menu; ?>
+			</nav><!-- #site-navigation -->
 			<?php endif; // End Nav check ?>
 		</div><!-- .content-width -->
 	</header><!-- #masthead -->

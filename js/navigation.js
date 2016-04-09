@@ -12,7 +12,7 @@
 		return;
 	}
 
-	button = container.querySelector( '.menu-toggle' )[0];
+	button = container.querySelector( '.menu-toggle' );
 	if ( 'undefined' === typeof button ) {
 		return;
 	}

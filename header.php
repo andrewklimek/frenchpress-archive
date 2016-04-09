@@ -79,7 +79,7 @@
 			<?php $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) );
 			if ( $menu ) : ?>
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php // esc_html_e( 'Primary Menu', 'frenchpress' ); ?></button>
+					<span class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php // esc_html_e( 'Primary Menu', 'frenchpress' ); ?></span>
 					<?php echo $menu; ?>
 				</nav><!-- #site-navigation -->
 			<?php endif; // End Nav check ?>

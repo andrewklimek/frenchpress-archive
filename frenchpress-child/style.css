@@ -40,21 +40,21 @@ p, ol, ul, h1, h2, h3, h4, h5, h6, table {
 
 /*Buttons and Links*/
 a.button, input[type=submit], button {
-	background-color: #F19127;
-	color: #414753;
+	background-color: #FF6655;
 	display: inline-block;
 	padding: 15px 20px;
 	margin: 5px;
-	border-radius: 50px;
+	/*border-radius: 50px;*/
 	min-width: 140px;
 	text-align: center;
 	text-decoration: none;
-	text-transform: uppercase;
-	-webkit-transition: all 0.2s;
-	transition: all 0.2s;
-	border-width: 0;
+	/*text-transform: uppercase;*/
+	/*-webkit-transition: all 0.2s;*/
+	/*transition: all 0.2s;*/
+	border: none;
 	font-family: inherit;
 	font-size: inherit;
+	color: inherit;
 }
 a.button:hover, input[type=submit]:hover, button:hover{
 	color: #fff

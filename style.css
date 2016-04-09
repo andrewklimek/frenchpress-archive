@@ -127,22 +127,19 @@ nav ul {
 	padding: 0;
 }
 
-button.menu-toggle {
-	display: inline;
+span.menu-toggle {
+	display: inline-block;
 	z-index: 9999;
 	position: fixed;
 	top: 6rem;
-	right: 1rem;
+	right: 0;
 	font-size: 4rem;
-	background: inherit;
-	border: none;
-	padding:0;
-	outline: none;
+	line-height: .67;
 }
-button.menu-toggle:before {
+span.menu-toggle:before {
 	content: '≡';
 }
-nav.toggled button.menu-toggle:before {
+nav.toggled span.menu-toggle:before {
 	content: '×';
 }
 nav ul.menu {
@@ -176,7 +173,7 @@ nav.toggled ul.menu {
 }
 
 @media(min-width:800px){
-	button.menu-toggle {
+	span.menu-toggle {
 		display: none;
 	}
 	nav ul.menu {

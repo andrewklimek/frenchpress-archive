@@ -59,10 +59,6 @@ function frenchpress_entry_footer() {
 		comments_popup_link( esc_html__( 'Leave a comment', 'frenchpress' ), esc_html__( '1 Comment', 'frenchpress' ), esc_html__( '% Comments', 'frenchpress' ) );
 		/* translators: %s: post title */
 		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'frenchpress' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
-  		echo '</span>';
-  	}
-  
-
 		echo '</span>';
 	}
 

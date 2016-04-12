@@ -78,6 +78,7 @@ html {
 
 pre {
 	overflow: auto;
+	word-wrap: normal;/* Safari seems to give word-wrap: break-word preference over white-space: pre */
 	background-color: rgba(111,111,111,.11);/* maybe */
 }
 pre, code, kbd, samp, var {
@@ -87,7 +88,9 @@ img, figure {
 	max-width: 100%;
 	height: auto;
 }
-
+p {
+	white-space: pre-wrap;/* maybe regret this but I love double-spaced scentences. */
+}
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.618rem;
 }

@@ -76,8 +76,11 @@ html {
 
 pre {
 	overflow: auto;
+	background-color: rgba(111,111,111,.11);/* maybe */
 }
-
+pre, code, kbd, samp, var {
+	font-family: monospace;
+}
 img, figure {
 	max-width: 100%;
 	height: auto;
@@ -91,6 +94,19 @@ li ul,li ol {
 }
 td, th {
 	word-break: break-word;
+}
+blockquote {
+	padding: 0 1.618em;
+}
+abbr {
+    border-bottom: 1px dotted #777;
+    cursor: help;
+}
+dt {/* Not sure I should keep this, what about using dl for metadata? */
+	font-weight: bold;
+}
+dd {/* Not sure I should keep this, what about using dl for metadata? */
+	margin: 0 1.618rem 1.618rem;
 }
 /*--------------------------------------------------------------
 ## Positioning Tweaks that might not belong in the parent theme

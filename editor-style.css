@@ -1,0 +1,13 @@
+/*
+* Styles for the visual editor
+* See https://developer.wordpress.org/reference/functions/add_editor_style/
+*/
+
+body#tinymce { 
+	font-family: Constantia, Palatino, serif;
+	color: #111;
+	font: 13px/normal sans-serif;
+}
+body#tinymce a {
+	color: #ff6666;
+}

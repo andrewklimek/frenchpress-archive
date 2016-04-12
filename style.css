@@ -29,7 +29,9 @@ html {
 	font-size: 100%;
 	line-height: 1.618;
 	text-rendering: optimizeLegibility;
-	word-wrap: break-word;
+	overflow-wrap: break-word;
+	word-wrap: break-word; /* Old syntax */
+	max-width: 100%;/* Will we regret this? */
 }
 /*@media(max-width:600px) {html {font-size: 85%;} }*/
 /* @media(min-width:1200px) {html {font-size: 115%;} } */
@@ -76,8 +78,11 @@ html {
 
 pre {
 	overflow: auto;
+	background-color: rgba(111,111,111,.11);/* maybe */
 }
-
+pre, code, kbd, samp, var {
+	font-family: monospace;
+}
 img, figure {
 	max-width: 100%;
 	height: auto;
@@ -89,14 +94,28 @@ p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 li ul,li ol {
 	margin: 0;
 }
-td, th {
-	word-break: break-word;
+blockquote {
+	padding: 0 1.618em;
 }
+abbr {
+	border-bottom: 1px dotted #777;
+	cursor: help;
+}
+dt {/* Not sure I should keep this, what about using dl for metadata? */
+	font-weight: bold;
+}
+dd {/* Not sure I should keep this, what about using dl for metadata? */
+	margin: 0 1.618rem 1.618rem;
+}
+/* This one's good sometimes, but bad for skinny columns
+td, th {
+word-break: break-word;
+}*/
 /*--------------------------------------------------------------
 ## Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
 th:only-of-type {
-    text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
+	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
 }
 /* This is to remove frustrating space below logo.  Might be a problem with header widgets too */
 .site-branding {
@@ -107,16 +126,16 @@ th:only-of-type {
 	margin-bottom: 0;
 }
 header.entry-header, div.entry-content {
-    margin-bottom: 2rem;
+	margin-bottom: 2rem;
 }
 footer.entry-footer span {
-    margin-right: 1rem;
+	margin-right: 1rem;
 }
 p.comment-form-comment label {
-    display: block;
+	display: block;
 }
 textarea#comment {
-    width: 100%;
+	width: 100%;
 }
 
 /*--------------------------------------------------------------
@@ -274,8 +293,8 @@ nav.toggled ul.menu {
 	flex-direction: column;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	        align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
 #content > div > div {
 	max-width: 100%;
@@ -285,7 +304,7 @@ nav.toggled ul.menu {
 
 @media screen and (min-width: 50rem) {
 	#content > div {
-/*		margin-left: -2rem;
+		/*		margin-left: -2rem;
 		margin-right: -2rem;*/
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
@@ -294,11 +313,11 @@ nav.toggled ul.menu {
 		flex-direction: row;
 		-webkit-box-align: start;
 		-webkit-align-items: flex-start;
-		    -ms-flex-align: start;
-		        align-items: flex-start;
+		-ms-flex-align: start;
+		align-items: flex-start;
 		-webkit-justify-content: space-around;
-		    -ms-flex-pack: distribute;
-		        justify-content: space-around;
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
 	}
 
 	#primary {
@@ -315,14 +334,14 @@ nav.toggled ul.menu {
 		-ms-flex: 0 0 16rem;
 		flex: 0 0 16rem;
 	}
-/* This probably belongs in the child theme, or do we rename to left and right?
+	/* This probably belongs in the child theme, or do we rename to left and right?
 	#secondary {
-		-webkit-box-ordinal-group: 0;
-		-webkit-order: -1;
-		-ms-flex-order: -1;
-		order: -1;
+	-webkit-box-ordinal-group: 0;
+	-webkit-order: -1;
+	-ms-flex-order: -1;
+	order: -1;
 	}
-*/	
+	*/	
 
 	.autocol {
 		display: -webkit-box;
@@ -334,8 +353,8 @@ nav.toggled ul.menu {
 	.autocol > * {
 		-webkit-box-flex: 1;
 		-webkit-flex: 1;
-		    -ms-flex: 1;
-		        flex: 1;
+		-ms-flex: 1;
+		flex: 1;
 		padding: 1rem;
 	}
 	.col {
@@ -355,7 +374,7 @@ nav.toggled ul.menu {
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
 .screen-reader-text {
-	clip: rect(1px,1px,1px,1px);
+	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
 	height: 1px;
 	width: 1px;
@@ -365,7 +384,7 @@ nav.toggled ul.menu {
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
 	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0,0,0,0.6);
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	clip: auto !important;
 	color: #21759b;
 	display: block;
@@ -379,9 +398,75 @@ nav.toggled ul.menu {
 	text-decoration: none;
 	top: 5px;
 	width: auto;
-	z-index: 100000;
-	/* Above WP toolbar. */
+	z-index: 100000; /* Above WP toolbar. */
 }
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments - Required
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+## Captions - Required
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+## Misc Required
+--------------------------------------------------------------*/
+.sticky {
+	display: block;
+}
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Print
+--------------------------------------------------------------*/
 
 @media print {
 	.dont-print, header, nav, aside, footer, #header, #sidebar, #footer, #colophon, .edit-link {
@@ -401,3 +486,4 @@ nav.toggled ul.menu {
 	}
 	*/
 }
+

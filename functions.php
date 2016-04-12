@@ -78,6 +78,12 @@ function frenchpress_setup() {
 		'default-color' => 'FFFDF8',
 		'default-image' => '',
 	) ) );
+	
+	/*
+	 * Styles the visual editor
+	 * See https://developer.wordpress.org/reference/functions/add_editor_style/
+	 */
+	add_editor_style();
 }
 endif;
 add_action( 'after_setup_theme', 'frenchpress_setup' );

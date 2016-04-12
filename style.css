@@ -94,15 +94,16 @@ p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 li ul,li ol {
 	margin: 0;
 }
+/* This one's good sometimes, but bad for skinny columns
 td, th {
-	word-break: break-word;
-}
+word-break: break-word;
+}*/
 blockquote {
 	padding: 0 1.618em;
 }
 abbr {
-    border-bottom: 1px dotted #777;
-    cursor: help;
+	border-bottom: 1px dotted #777;
+	cursor: help;
 }
 dt {/* Not sure I should keep this, what about using dl for metadata? */
 	font-weight: bold;

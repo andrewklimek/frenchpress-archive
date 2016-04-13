@@ -33,6 +33,7 @@ html {
 	background-color: #fffdfa;
 	font-size: 100%;
 	line-height: 1.6rem;
+	line-height: 1.45rem;
 	text-rendering: optimizeLegibility;
 	overflow-wrap: break-word;
 	word-wrap: break-word; /* Old syntax */
@@ -41,23 +42,24 @@ html {
 /*@media(max-width:600px) {html {font-size: 85%;} }*/
 /* @media(min-width:1200px) {html {font-size: 115%;} } */
 h1 {
-	font-size: 4rem;
+	font-size: 3.2rem;
 	font-weight: 400;
-	line-height: 3.2rem;
+	line-height: 1.2;
 }
 h2 {
-	font-size: 2.8rem;
+	font-size: 2.4rem;
 	font-weight: 400;
-	line-height: 3.2rem;
+	line-height: 1.2;
 }
 h3 {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: 400;
-	line-height: 3.2rem;
+	line-height: 1.2;
 }
 h4 {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	font-weight: 400;
+	line-height: 1.2;
 }
 h5 {
 	font-size: 1rem;
@@ -72,11 +74,11 @@ a {
 }
 /* button links should be inline-block but that probably isn't my concern. */
 h1:not(:first-child), h2:not(:first-child), h3, h4 {
-	margin-top: 3.2rem;
+	margin-top: 2.9rem;
 }
 
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
-	margin-bottom: 1.6rem;
+	margin-bottom: 1.45rem;
 }
 
 
@@ -106,7 +108,7 @@ td, th {
 word-break: break-word;
 }*/
 blockquote {
-	padding: 0 1.6em;
+	padding: 0 1.45em;
 }
 abbr {
 	text-decoration: none;
@@ -117,7 +119,7 @@ dt {/* Not sure I should keep this, what about using dl for metadata? */
 	font-weight: bold;
 }
 dd {/* Not sure I should keep this, what about using dl for metadata? */
-	margin: 0 1.6rem 1.6rem;
+	margin: 0 1.45rem 1.45rem;
 }
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
@@ -130,7 +132,7 @@ th:only-of-type {
 	line-height: 0;
 }
 .site-title, .site-description {
-	line-height: 1.6;
+	line-height: 1.45;/* See if still needed when H!s are squared away */
 	margin-bottom: 0;
 }
 header.entry-header, div.entry-content {
@@ -336,7 +338,7 @@ nav.toggled ul.menu {
 		-webkit-justify-content: space-around;
 		-ms-flex-pack: distribute;
 		justify-content: space-around;
-		line-height: 1.6; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
+		line-height: 1.45; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
 	}
 	.main-navigation ul ul {
 		position: absolute;
@@ -387,7 +389,7 @@ nav.toggled ul.menu {
 	display: block;
 }
 .hentry {
-	margin-bottom: 3.2rem;
+	margin-bottom: 2.9rem;
 }
 .byline,
 .updated:not(.published) {
@@ -445,13 +447,13 @@ nav.toggled ul.menu {
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.5em;
+	margin-right: 1.45em;
 }
 
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.5em;
+	margin-left: 1.45em;
 }
 
 .aligncenter {
@@ -465,7 +467,7 @@ nav.toggled ul.menu {
 *  Captions - Required
 --------------------------------------------------------------*/
 .wp-caption {
-	margin-bottom: 1.5em;
+	margin-bottom: 1.45em;
 	max-width: 100%;
 }
 

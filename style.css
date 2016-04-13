@@ -100,7 +100,7 @@ img, figure {
 	max-width: 100%;
 	height: auto;
 }
-p {
+.entry-content p {
 	white-space: pre-wrap;/* maybe regret this but I love double-spaced scentences. */
 }
 /* This one's good sometimes, but bad for skinny columns
@@ -389,7 +389,7 @@ nav.toggled ul.menu {
 	padding-bottom: 1.5rem;
 /*	max-width: 32em;/* This would be cool */
 }
-header.entry-header, div.entry-content, footer.entry-footer {
+.entry-header, .entry-content, .entry-footer {
 	margin-bottom: 1.5rem;
 }
 .byline,

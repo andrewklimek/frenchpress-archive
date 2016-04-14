@@ -43,10 +43,6 @@ html {
 @media (max-width:600px) {html {font-size: 82%;} }
 @media (min-width:1200px) {html {font-size: 118%;} }
 
-/*h1:not(:first-child), h2:not(:first-child), h3, h4 {*/
-/*	margin-top: 3rem;*/
-/*	margin-bottom: 1.5rem;*/
-/*}*/
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.5rem;
 }
@@ -86,6 +82,11 @@ h6 {
 	font-size: 1rem;
 	font-weight: 100;
 }
+h1:not(:first-child), h2:not(:first-child), h3, h4 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
 a {
 	text-decoration: none;/*bad practice of course*/
 }

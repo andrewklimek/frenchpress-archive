@@ -32,34 +32,44 @@ html {
 	background-color: #fffdf8;
 	background-color: #fffdfa;
 	font-size: 100%;
-	line-height: 1.5rem;
+	line-height: 1.5;
 	text-rendering: optimizeLegibility;
 	overflow-wrap: break-word;
 	word-wrap: break-word; /* Old syntax */
 	max-width: 100%;/* Will we regret this? */
+	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
+	/*background-position-x: 0px;*/
 }
 @media (max-width:600px) {html {font-size: 82%;} }
 @media (min-width:1200px) {html {font-size: 118%;} }
 
 h1 {
-	font-size: 3.2rem;
+	font-size: 3.16rem;
 	font-weight: 400;
 	line-height: 1.2;
+	margin-top: 3rem;
+	margin-bottom: 1.5rem;
 }
 h2 {
-	font-size: 2.4rem;
+	font-size: 2.37rem;
 	font-weight: 400;
 	line-height: 1.2;
+	margin-top: 3rem;
+	margin-bottom: 1.5rem;
 }
 h3 {
-	font-size: 1.8rem;
+	font-size: 1.778rem;
 	font-weight: 400;
 	line-height: 1.2;
+	margin-top: 3rem;
+	margin-bottom: 1.5rem;
 }
 h4 {
-	font-size: 1.3rem;
+	font-size: 1.333rem;
 	font-weight: 400;
 	line-height: 1.2;
+	margin-top: 3rem;
+	margin-bottom: 1.5rem;
 }
 h5 {
 	font-size: 1rem;
@@ -72,10 +82,10 @@ h6 {
 a {
 	text-decoration: none;/*bad practice of course*/
 }
-h1:not(:first-child), h2:not(:first-child), h3, h4 {
-	margin-top: 3rem;
-	margin-bottom: 1.5rem;
-}
+/*h1:not(:first-child), h2:not(:first-child), h3, h4 {*/
+/*	margin-top: 3rem;*/
+/*	margin-bottom: 1.5rem;*/
+/*}*/
 
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.5rem;

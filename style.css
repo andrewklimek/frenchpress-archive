@@ -38,7 +38,7 @@ html {
 	word-wrap: break-word; /* Old syntax */
 	max-width: 100%;/* Will we regret this? */
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
-	/*background-position-x: 0px;*/
+	/*background-position-y: 0px;*/
 }
 @media (max-width:600px) {html {font-size: 82%;} }
 @media (min-width:1200px) {html {font-size: 118%;} }

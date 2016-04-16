@@ -49,7 +49,7 @@ p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.45rem;
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6 {
-	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
+/*	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;

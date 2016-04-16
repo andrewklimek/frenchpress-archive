@@ -42,11 +42,14 @@ html {
 /*body {
   background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);
 }*/
-@media (max-width:600px) {html {font-size: 82%;} }
-@media (min-width:1200px) {html {font-size: 118%;} }
+@media (max-width:600px) {html {font-size: 90%;} }
+@media (min-width:1200px) {html {font-size: 120%;} }
 
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.45rem;
+}
+p, ol, ul, h1, h2, h3, h4, h5, h6 {
+	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
@@ -389,7 +392,6 @@ nav.toggled ul.menu {
 }
 .hentry {
 	padding-bottom: 1.45rem;
-	max-width: 64ex;/* ex seems to be the most consisten between fonts */
 }
 .entry-header, .entry-content, .entry-footer {
 	margin-bottom: 1.45rem;

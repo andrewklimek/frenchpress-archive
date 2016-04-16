@@ -50,11 +50,6 @@ html {
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.45rem;
 }
-article *:not(img, div) {
-	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
-	margin-left: auto;
-	margin-right: auto;
-}
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 	line-height: 1.2;
@@ -86,7 +81,6 @@ h1:first-child, h2:first-child {
 	margin-top: 0;
 	padding-top: 0;
 }
-
 a {
 	text-decoration: none;/*bad practice of course*/
 }
@@ -389,6 +383,9 @@ nav.toggled ul.menu {
 }
 .hentry {
 	padding-bottom: 1.45rem;
+	width: 64ex;/* ex seems to be the most consisten between fonts, but not based on root */
+	margin-left: auto;
+	margin-right: auto;
 }
 .entry-header, .entry-content, .entry-footer {
 	margin-bottom: 1.45rem;

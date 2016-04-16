@@ -35,9 +35,11 @@ html {
 	text-rendering: optimizeLegibility;
 	overflow-wrap: break-word;
 	word-wrap: break-word; /* Old syntax */
-	max-width: 100%;/* Will we regret this? */
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
+}
+#page * {
+	max-width: 100%;/* Will we regret this? */
 }
 /*body {
   background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);
@@ -49,7 +51,7 @@ p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.45rem;
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6 {
-/*	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
+	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;

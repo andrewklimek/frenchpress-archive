@@ -50,7 +50,7 @@ html {
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.45rem;
 }
-p, ol, ul, h1, h2, h3, h4, h5, h6 {
+article p, article ol, article ul, article h1, article h2, article h3, article h4, article h5, article h6 {
 	width: 32rem;/* ex seems to be the most consisten between fonts, butnot based on root */
 }
 h1, h2, h3, h4, h5, h6 {
@@ -104,7 +104,7 @@ pre, code, kbd, samp, var {
 	font-family: monospace;
 }
 img, figure {
-	max-width: 100%;
+	/*max-width: 100%;*/
 	height: auto;
 }
 .entry-content p {
@@ -198,16 +198,9 @@ textarea#comment {
 	-ms-flex-align: center;
 	align-items: center;
 }
-#content > div > div {
-	max-width: 100%;
-	padding-left: 2rem;
-	padding-right: 2rem;
-}
 
 @media screen and (min-width: 50rem) {
 	#content > div {
-		/*		margin-left: -2rem;
-		margin-right: -2rem;*/
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: row;

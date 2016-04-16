@@ -40,6 +40,9 @@ html {
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
 }
+body {
+  background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);
+}
 @media (max-width:600px) {html {font-size: 82%;} }
 @media (min-width:1200px) {html {font-size: 118%;} }
 
@@ -47,32 +50,32 @@ p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.5rem;
 }
 h1 {
-	font-size: 3.16rem;
+	font-size: 3.3333rem;
 	font-weight: 400;
 	line-height: 1.2;
-	margin-top: 1.5em;
-	margin-bottom: 0.5em;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
 }
 h2 {
-	font-size: 2.37rem;
+	font-size: 2.5rem;
 	font-weight: 400;
 	line-height: 1.2;
-	margin-top: 1.5em;
-	margin-bottom: 0.5em;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
 }
 h3 {
-	font-size: 1.778rem;
+	font-size: 1.6667rem;
 	font-weight: 400;
 	line-height: 1.2;
-	margin-top: 1.5em;
-	margin-bottom: 0.5em;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
 }
 h4 {
-	font-size: 1.333rem;
+	font-size: 1.25rem;
 	font-weight: 400;
 	line-height: 1.2;
-	margin-top: 1.5em;
-	margin-bottom: 0.5em;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
 }
 h5 {
 	font-size: 1rem;

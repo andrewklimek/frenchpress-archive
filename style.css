@@ -45,6 +45,10 @@ html {
 @media (max-width:600px) {html {font-size: 82%;} }
 @media (min-width:1200px) {html {font-size: 118%;} }
 
+p {
+	max-width: 64ex;/* ex seems to be the most consisten between fonts */
+}
+
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
 	margin-bottom: 1.45rem;
 }
@@ -389,7 +393,7 @@ nav.toggled ul.menu {
 }
 .hentry {
 	padding-bottom: 1.45rem;
-/*	max-width: 32em;/* This would be cool */
+/*	max-width: 64ex;/* This might be cool */
 }
 .entry-header, .entry-content, .entry-footer {
 	margin-bottom: 1.45rem;

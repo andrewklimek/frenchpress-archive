@@ -34,7 +34,6 @@ html {
 	/*background-position-y: 0px;*/
 }
 #page *, #page *:before, #page *:after {
-	margin: 0;
 	max-width: inherit;
 	box-sizing: inherit;
 }

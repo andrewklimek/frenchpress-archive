@@ -18,10 +18,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 /*--------------------------------------------------------------
 # Main Sizing & Spacing
 --------------------------------------------------------------*/
-*, *:before, *:after {
-	box-sizing: inherit;
-	margin: 0;
-}
 html {
 	max-width: 100%
 	box-sizing: border-box;
@@ -39,7 +35,7 @@ html {
 }
 #page *, #page *:before, #page *:after {
 	margin: 0;
-	max-width: inherit
+	max-width: inherit;
 	box-sizing: inherit;
 }
 body {

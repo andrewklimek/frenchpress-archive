@@ -38,7 +38,7 @@ body {
 @media (min-width:1200px) {body {font-size: 120%;} }
 
 .site *, .site *:before, .site *:after {
-	max-width: inherit;/* applied to #page to not mess up wp admin bar */
+	max-width: 100%;/* applied to #page to not mess up wp admin bar */
 	box-sizing: inherit;
 }
 

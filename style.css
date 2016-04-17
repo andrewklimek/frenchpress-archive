@@ -33,8 +33,6 @@ html {
 	font-size: 100%;
 	line-height: 1.45;
 	text-rendering: optimizeLegibility;
-	overflow-wrap: break-word;
-	word-wrap: break-word; /* Old syntax */
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
 }
@@ -93,7 +91,6 @@ li ul,li ol {/* 2-nd level lists */
 }
 pre {
 	overflow: auto;
-	word-wrap: normal;/* Safari seems to give word-wrap: break-word preference over white-space: pre */
 	background-color: rgba(111,111,111,.11);/* maybe */
 }
 pre, code, kbd, samp, var {
@@ -402,7 +399,10 @@ nav.toggled ul.menu {
 .archive .format-aside .entry-title {
 	display: none;
 }
-
+.comment-content a {
+	overflow-wrap: break-word;
+	word-wrap: break-word; /* Old syntax */
+}
 /*--------------------------------------------------------------
 *  Accessibility
 --------------------------------------------------------------*/

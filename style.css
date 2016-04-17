@@ -18,7 +18,8 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 /*--------------------------------------------------------------
 # Main Sizing & Spacing
 --------------------------------------------------------------*/
-html {
+body {
+	margin: 0;
 	max-width: 100%
 	box-sizing: border-box;
 	background-color: linen;
@@ -33,13 +34,10 @@ html {
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
 }
-@media (max-width:600px) {html {font-size: 90%;} }
-@media (min-width:1200px) {html {font-size: 120%;} }
-body {
-	margin: 0;
-	/*background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);*/
-}
-#page *, #page *:before, #page *:after {
+@media (max-width:600px) {body {font-size: 90%;} }
+@media (min-width:1200px) {body {font-size: 120%;} }
+
+.site *, .site *:before, .site *:after {
 	max-width: inherit;/* applied to #page to not mess up wp admin bar */
 	box-sizing: inherit;
 }

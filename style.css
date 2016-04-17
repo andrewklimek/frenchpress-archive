@@ -40,6 +40,7 @@ body {
 .site *, .site *:before, .site *:after {
 	max-width: 100%;/* applied to #page to not mess up wp admin bar */
 	box-sizing: inherit;
+	margin: 0;/* probably no good.  need to 0 out figures if this is removed */
 }
 
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {

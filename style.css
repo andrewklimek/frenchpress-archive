@@ -23,6 +23,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	margin: 0;
 }
 html {
+	max-width: 100%
 	box-sizing: border-box;
 	background-color: linen;
 	background-color: seashell;
@@ -36,8 +37,10 @@ html {
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
 }
-#page * {
-	max-width: 100%;/* Will we regret this? */
+#page *, #page *:before, #page *:after {
+	margin: 0;
+	max-width: inherit
+	box-sizing: inherit;
 }
 body {
   /*background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);*/
@@ -45,7 +48,7 @@ body {
 @media (max-width:600px) {html {font-size: 90%;} }
 @media (min-width:1200px) {html {font-size: 120%;} }
 
-p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre {
+p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
 	margin-bottom: 1.45rem;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,6 +123,12 @@ dt {/* Not sure I should keep this, what about using dl for metadata? */
 }
 dd {/* Not sure I should keep this, what about using dl for metadata? */
 	margin: 0 1.45rem 1.45rem;
+}
+hr {
+    background-color: #777;
+    border: 0;
+    height: .05rem;
+    margin-bottom: 1.4rem;
 }
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme

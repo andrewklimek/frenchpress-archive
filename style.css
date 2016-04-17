@@ -33,15 +33,16 @@ html {
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
 }
-#page *, #page *:before, #page *:after {
-	max-width: inherit;
-	box-sizing: inherit;
-}
-body {
-  /*background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);*/
-}
 @media (max-width:600px) {html {font-size: 90%;} }
 @media (min-width:1200px) {html {font-size: 120%;} }
+body {
+	margin: 0;
+	/*background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);*/
+}
+#page *, #page *:before, #page *:after {
+	max-width: inherit;/* applied to #page to not mess up wp admin bar */
+	box-sizing: inherit;
+}
 
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
 	margin-bottom: 1.45rem;

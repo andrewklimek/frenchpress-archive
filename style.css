@@ -39,9 +39,9 @@ html {
 #page * {
 	max-width: 100%;/* Will we regret this? */
 }
-/*body {
-  background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);
-}*/
+body {
+  /*background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);*/
+}
 @media (max-width:600px) {html {font-size: 90%;} }
 @media (min-width:1200px) {html {font-size: 120%;} }
 
@@ -136,7 +136,7 @@ th:only-of-type {
 	margin-bottom: 0;
 }
 footer.entry-footer span {
-	margin-right: 1rem;
+	margin-right: 1.45rem;
 }
 p.comment-form-comment label {
 	display: block;
@@ -236,14 +236,14 @@ textarea#comment {
 		display: -webkit-flex;
 		display: -ms-flexbox;
 		display: flex;
-		margin: -1rem;
+		margin: -1.45rem;
 	}
 	.autocol > * {
 		-webkit-box-flex: 1;
 		-webkit-flex: 1;
 		-ms-flex: 1;
 		flex: 1;
-		padding: 1rem;
+		padding: 1.45rem;
 	}
 	.col {
 		display: -webkit-box;
@@ -264,7 +264,6 @@ nav ul {
 	list-style-type: none;
 	padding: 0;
 }
-
 span.menu-toggle {
 	display: inline-block;
 	z-index: 9999;
@@ -477,7 +476,7 @@ nav.toggled ul.menu {
 }
 
 .wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
+	margin: 0.725rem 0;
 }
 
 .wp-caption-text {

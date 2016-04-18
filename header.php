@@ -75,9 +75,22 @@
 					<?php dynamic_sidebar( 'header-3' ); ?>
 				</div><!-- #header-3 -->
 			<?php endif; ?>
-
-			<?php $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) );
-			if ( $menu ) : ?>
+			
+			<?php 
+			/**
+			* Filter 'pre_wp_nav_menu' can be used to conditionally hide menu.
+			*
+			* e.g. hide if not logged in:
+			* add_filter( 'pre_wp_nav_menu', function(){ if( !is_user_logged_in() ) return false; } );
+			*
+			* e.g. hide specific menu if not logged in:
+			* function hide_specific_menu_location_if_logged_out( $output, $args ){
+			* 	if ( !is_user_logged_in() && $args->theme_location === 'primary' )
+			* 	return false;
+			* }
+			* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
+			**/
+			if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) : ?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<span class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 					<svg viewBox="0 0 24 24">

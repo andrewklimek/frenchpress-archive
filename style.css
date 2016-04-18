@@ -263,6 +263,7 @@ textarea#comment {
 nav ul {
 	list-style-type: none;
 	padding: 0;
+	margin: 0;
 }
 span.menu-toggle {
 	display: inline-block;
@@ -379,7 +380,7 @@ nav.toggled ul.menu {
 }
 .hentry {
 	padding-bottom: 1.45rem;
-	width: 64ex;/* ex seems to be the most consisten between fonts, but not based on root */
+	/*width: 64ex;*/
 	margin-left: auto;
 	margin-right: auto;
 }

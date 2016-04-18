@@ -18,10 +18,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 /*--------------------------------------------------------------
 # Main Sizing & Spacing
 --------------------------------------------------------------*/
-body {
-	margin: 0;
-	max-width: 100%
-	box-sizing: border-box;
+html {
 	background-color: linen;
 	background-color: seashell;
 	background-color: floralwhite;
@@ -33,16 +30,17 @@ body {
 	text-rendering: optimizeLegibility;
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
+	box-sizing: border-box;
 }
-@media (max-width:600px) {body {font-size: 90%;} }
-@media (min-width:1200px) {body {font-size: 120%;} }
-
-.site *, .site *:before, .site *:after {
-	max-width: 100%;/* applied to #page to not mess up wp admin bar */
+@media (max-width:600px) { html { font-size: 90%; } }
+@media (min-width:1200px) { html { font-size: 120%; } }
+*, *:before, *:after {
 	box-sizing: inherit;
-	margin: 0;/* probably no good.  need to 0 out figures if this is removed */
+	margin: 0;
 }
-
+.site * {
+	max-width: 100%;/* quite possibly a bad idea. applied to #page to not mess up wp admin bar */
+}
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
 	margin-bottom: 1.45rem;
 }
@@ -98,9 +96,6 @@ img, figure {
 	/*max-width: 100%;*/
 	height: auto;
 }
-.entry-content p {
-	white-space: pre-wrap;/* maybe regret this but I love double-spaced scentences. */
-}
 /* This one's good sometimes, but bad for skinny columns
 td, th {
 word-break: break-word;
@@ -120,10 +115,10 @@ dd {/* Not sure I should keep this, what about using dl for metadata? */
 	margin: 0 1.45rem 1.45rem;
 }
 hr {
-    background-color: #777;
-    border: 0;
-    height: .05rem;
-    margin-bottom: 1.4rem;
+	background-color: #777;
+	border: 0;
+	height: .05rem;
+	margin-bottom: 1.4rem;
 }
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
@@ -470,7 +465,7 @@ nav.toggled ul.menu {
 --------------------------------------------------------------*/
 .wp-caption {
 	margin-bottom: 1.45em;
-	max-width: 100%;
+/*	max-width: 100%;*/
 }
 
 .wp-caption img[class*="wp-image-"] {
@@ -504,6 +499,9 @@ nav.toggled ul.menu {
 		background: none !important;
 		box-shadow: none !important;
 		text-shadow: none !important;
+	}
+	a[href]:after {
+		content: " (" attr(href) ") ";
 	}
 	/*
 	article, #content {

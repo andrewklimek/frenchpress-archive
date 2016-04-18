@@ -32,14 +32,14 @@ html {
 	/*background-position-y: 0px;*/
 	box-sizing: border-box;
 }
-@media (max-width:35rem) { html { font-size: 90%; } }
-@media (min-width:75rem) { html { font-size: 120%; } }
+@media (max-width:600px) { html { font-size: 90%; } }
+@media (min-width:1200px) { html { font-size: 120%; } }
 *, *:before, *:after {
 	box-sizing: inherit;
 	margin: 0;
 }
 .site * {
-	max-width: 100%;/* quite possibly a bad idea. applied to #page to not mess up wp admin bar */
+	max-width: 100%;/* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
 	margin-bottom: 1.45rem;

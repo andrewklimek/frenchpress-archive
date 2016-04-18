@@ -32,8 +32,8 @@ html {
 	/*background-position-y: 0px;*/
 	box-sizing: border-box;
 }
-@media (max-width:600px) { html { font-size: 90%; } }
-@media (min-width:1200px) { html { font-size: 120%; } }
+@media (max-width:35rem) { html { font-size: 90%; } }
+@media (min-width:75rem) { html { font-size: 120%; } }
 *, *:before, *:after {
 	box-sizing: inherit;
 	margin: 0;
@@ -43,12 +43,13 @@ html {
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
 	margin-bottom: 1.45rem;
+	margin-top: 1.45rem;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 	line-height: 1.2;
 	padding-top: 1.45rem;
-	margin-top: 1.45rem;
+/*	margin-top: 1.45rem;*/
 }
 h1 {
 	font-size: 3.157rem;
@@ -475,7 +476,7 @@ nav.toggled ul.menu {
 }
 
 .wp-caption .wp-caption-text {
-	margin: 0.725rem 0;
+	margin-top: 0.725rem;
 }
 
 .wp-caption-text {

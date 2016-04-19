@@ -148,9 +148,38 @@ textarea#comment {
 /*--------------------------------------------------------------
 *  Page Layout
 --------------------------------------------------------------*/
-/*html,body{height: 100%;}*//* This is only needed because iOS 7 can't manage vh units that should be in the next line */
 
 #page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+#masthead,#colophon {
+	flex: none;
+}
+
+#content {
+	flex: 1 0 auto;
+}
+#content > div {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+#primary {
+	flex: 100 1 auto;
+	width: 32em;
+}
+
+#secondary, #tertiary {
+	flex: 1 1 auto;
+	width: 16em;
+}
+
+/*#page {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -183,14 +212,14 @@ textarea#comment {
 
 	#secondary, #tertiary {
 		flex: 0 0 16rem;
-	}
+	}*/
 	/* This probably belongs in the child theme, or do we rename to left and right?
 	#secondary {
 	order: -1;
 	}
-	*/	
+	*/
 
-	.autocol {
+/*	.autocol {
 		display: flex;
 		margin: -1.45rem;
 	}
@@ -203,7 +232,7 @@ textarea#comment {
 		justify-content: space-between;
 	}
 }
-
+*/
 /*--------------------------------------------------------------
 *  Navigation
 --------------------------------------------------------------*/

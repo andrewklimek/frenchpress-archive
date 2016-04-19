@@ -167,8 +167,11 @@ textarea#comment {
 	flex-flow: row wrap;
 	align-items: flex-start;
 	justify-content: space-around;
+/*	margin: -1.45rem;*/
 }
-
+#content > div > div {
+	padding: 1.45rem;
+}
 #primary {
 	flex: 100 1 auto;
 	width: 32em;

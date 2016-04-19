@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 	line-height: 1.2;
 	padding-top: 1.45rem;
-/*	margin-top: 1.45rem;*/
+	/*	margin-top: 1.45rem;*/
 }
 h1 {
 	font-size: 3.157rem;
@@ -132,7 +132,7 @@ th:only-of-type {
 	line-height: 0;
 }
 .site-title, .site-description {
-	line-height: 1.45;/* See if still needed when H!s are squared away */
+	line-height: 1.45;/* See if still needed when H1s are squared away */
 	margin-bottom: 0;
 }
 footer.entry-footer span {
@@ -152,107 +152,54 @@ textarea#comment {
 
 #page {
 	min-height: 100vh;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
 	flex-direction: column;
 }
 
 #masthead,#colophon {
-	-webkit-box-flex: 0;
-	-webkit-flex: none;
-	-ms-flex: none;
 	flex: none;
 }
 
 #content {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 0 auto;
-	-ms-flex: 1 0 auto;
 	flex: 1 0 auto;
 }
 #content > div {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
 	flex-direction: column;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
 	align-items: center;
 }
 
 @media screen and (min-width: 50rem) {
 	#content > div {
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;
 		flex-direction: row;
-		-webkit-box-align: start;
-		-webkit-align-items: flex-start;
-		-ms-flex-align: start;
 		align-items: flex-start;
-		-webkit-justify-content: space-around;
-		-ms-flex-pack: distribute;
 		justify-content: space-around;
 	}
 
 	#primary {
-		-webkit-box-flex: 1;
-		-webkit-flex: 1;
-		-ms-flex: 1;
 		flex: 1;
 		overflow: auto;
 	}
 
 	#secondary, #tertiary {
-		-webkit-box-flex: 0;
-		-webkit-flex: 0 0 16rem;
-		-ms-flex: 0 0 16rem;
 		flex: 0 0 16rem;
 	}
 	/* This probably belongs in the child theme, or do we rename to left and right?
 	#secondary {
-	-webkit-box-ordinal-group: 0;
-	-webkit-order: -1;
-	-ms-flex-order: -1;
 	order: -1;
 	}
 	*/	
 
 	.autocol {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
 		display: flex;
 		margin: -1.45rem;
 	}
 	.autocol > * {
-		-webkit-box-flex: 1;
-		-webkit-flex: 1;
-		-ms-flex: 1;
 		flex: 1;
 		padding: 1.45rem;
 	}
 	.col {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
 		display: flex;
-		-webkit-box-pack: justify;
-		-webkit-justify-content: space-between;
-		-ms-flex-pack: justify;
 		justify-content: space-between;
 	}
 }
@@ -295,20 +242,9 @@ nav.toggled ul.menu {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-flex-flow: column wrap;
-	-ms-flex-flow: column wrap;
 	flex-flow: column wrap;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
 	align-items: center;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
 	justify-content: center;
 	text-align: center;
 }
@@ -318,15 +254,8 @@ nav.toggled ul.menu {
 		display: none;
 	}
 	nav ul.menu {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
 		display: flex;
-		-webkit-flex-flow: row wrap;
-		-ms-flex-flow: row wrap;
 		flex-flow: row wrap;
-		-webkit-justify-content: space-around;
-		-ms-flex-pack: distribute;
 		justify-content: space-around;
 		line-height: 1.45; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
 	}
@@ -467,7 +396,7 @@ nav.toggled ul.menu {
 --------------------------------------------------------------*/
 .wp-caption {
 	margin-bottom: 1.45em;
-/*	max-width: 100%;*/
+	/*	max-width: 100%;*/
 }
 
 .wp-caption img[class*="wp-image-"] {

@@ -124,7 +124,7 @@ hr {
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
-input:focus::-moz-placeholder, input:focus:-ms-input-placeholder, input:focus::-webkit-input-placeholder {
+input:focus::-webkit-input-placeholder {/* This would be cool if cross-browser */
     font-size: 40%;
     position: relative;
     bottom: -1.4em;

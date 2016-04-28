@@ -129,6 +129,15 @@ input:focus::-webkit-input-placeholder {/* This would be cool if cross-browser *
     position: relative;
     bottom: -1.4em;
 }
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+input:focus:-moz-placeholder{
+    color: transparent !important;
+}
 
 th:only-of-type {
 	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/

@@ -124,6 +124,12 @@ hr {
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
+input:focus::-moz-placeholder, input:focus:-ms-input-placeholder, input:focus::-webkit-input-placeholder {
+    font-size: 40%;
+    position: relative;
+    bottom: -1.4em;
+}
+
 th:only-of-type {
 	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
 }

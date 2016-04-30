@@ -232,11 +232,6 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Disable core BS
- */
-require get_template_directory() . '/inc/disablers.php';
-
-/**
  * Custom meta boxes.
  */
 // require get_template_directory() . '/inc/metabox.php';

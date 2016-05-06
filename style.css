@@ -74,7 +74,7 @@ h6 {
 	font-size: 1.333rem;
 	font-weight: 100;
 }
-h1:first-child, h2:first-child {
+h1:first-child, h2:first-child, h3:first-child, h4:first-child {
 	margin-top: 0;
 	padding-top: 0;
 }
@@ -199,6 +199,23 @@ textarea#comment {
 	width: 16em;
 }
 
+.autocol {
+	display: flex;
+	width: 100%;
+/*		margin: -1.45rem;*/
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.autocol > * {
+	flex: auto;
+	width: 50ex;
+	padding: 1.45rem;
+}
+.col {
+	display: flex;
+	justify-content: space-between;
+}
+
 /*#page {
 	min-height: 100vh;
 	display: flex;
@@ -237,26 +254,13 @@ textarea#comment {
 	#secondary {
 	order: -1;
 	}
-	*/
-
-/*	.autocol {
-		display: flex;
-		margin: -1.45rem;
-	}
-	.autocol > * {
-		flex: 1;
-		padding: 1.45rem;
-	}
-	.col {
-		display: flex;
-		justify-content: space-between;
-	}
 }
 */
+
 /*--------------------------------------------------------------
 *  Navigation
 --------------------------------------------------------------*/
-nav ul {
+nav ul, header ul.menu {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;

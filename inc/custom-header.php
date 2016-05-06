@@ -62,6 +62,7 @@ function frenchpress_header_style() {
 		.site-description {
 			position: absolute;
 			clip: rect(1px, 1px, 1px, 1px);
+			overflow: hidden;
 		}
 	<?php
 		// If the user has set a custom color for the text use that.

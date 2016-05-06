@@ -187,7 +187,7 @@ textarea#comment {
 /*	margin: -1.45rem;*/
 }
 #content > div > div {
-	padding: 1.45rem;
+/*	padding: 1.45rem;*/
 }
 #primary {
 	flex: 100 1 auto;
@@ -201,14 +201,14 @@ textarea#comment {
 
 .autocol {
 	display: flex;
-	width: 100%;
+/*	width: 100%;*/
 /*		margin: -1.45rem;*/
     flex-flow: row wrap;
     justify-content: space-around;
 }
 .autocol > * {
 	flex: auto;
-	width: 50ex;
+	width: 20em;
 	padding: 1.45rem;
 }
 .col {
@@ -266,6 +266,33 @@ nav ul, header ul.menu {
 	margin: 0;
 }
 span.menu-toggle {
+	display: none;
+}
+nav ul.menu {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	line-height: 1.45; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
+}
+.main-navigation ul ul {
+	position: absolute;
+	z-index: 99;/* I've seen google graphs in front of dropdowns without this */
+	visibility: hidden;
+	padding-bottom: 1rem;/* Possibly shouldn't be hard-coded */
+}
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+	visibility: visible;
+}
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
+	visibility: visible;
+	left: 100%;
+	width: 100%;
+}
+
+
+#site-navigation.mobile span.menu-toggle {
 	display: inline-block;
 	z-index: 9999;
 	position: fixed;
@@ -273,20 +300,20 @@ span.menu-toggle {
 	top: 20%;
 	padding: 10px;
 }
-path#menu-toggle-close,
-nav.toggled path#menu-toggle-open {
+#site-navigation.mobile ul.menu {
 	display: none;
 }
-nav.toggled path#menu-toggle-close {
+path#menu-toggle-close,
+#site-navigation.toggled path#menu-toggle-open {
+	display: none;
+}
+#site-navigation.toggled path#menu-toggle-close {
 	display: initial;
 }
-.main-navigation svg {
+#site-navigation svg {
 	width: 24px;
 }
-nav ul.menu {
-	display: none;
-}
-nav.toggled ul.menu {
+#site-navigation.toggled ul.menu {
 	background-color: #fff; /*This shouldnt be hard-coded*/
 	overflow: auto;
 	position: fixed;
@@ -302,32 +329,7 @@ nav.toggled ul.menu {
 	text-align: center;
 }
 
-@media(min-width:800px){
-	span.menu-toggle {
-		display: none;
-	}
-	nav ul.menu {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-around;
-		line-height: 1.45; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
-	}
-	.main-navigation ul ul {
-		position: absolute;
-		z-index: 99;/* I've seen google graphs in front of dropdowns without this */
-		visibility: hidden;
-		padding-bottom: 1rem;/* Possibly shouldn't be hard-coded */
-	}
-	.main-navigation ul li:hover > ul,
-	.main-navigation ul li.focus > ul {
-		visibility: visible;
-	}
-	.main-navigation ul ul li:hover > ul,
-	.main-navigation ul ul li.focus > ul {
-		visibility: visible;
-		left: 100%;
-		width: 100%;
-	}
+	
 	/*
 	nav ul.menu {
 	display: table;
@@ -349,7 +351,7 @@ nav.toggled ul.menu {
 	visibility: visible;
 	}
 	*/
-}
+
 
 /*--------------------------------------------------------------
 *  Content

@@ -11,6 +11,15 @@
 	if ( ! container ) {
 		return;
 	}
+	
+	function checkMobileMenu(){
+		container.className = container.className.replace(' mobile','');
+		if ( container.offsetWidth / container.offsetHeight < 10 ){
+			container.className += ' mobile';
+		}
+	}
+	checkMobileMenu();
+	window.addEventListener( 'resize', checkMobileMenu );
 
 	button = container.querySelector( '.menu-toggle' );
 	if ( 'undefined' === typeof button ) {

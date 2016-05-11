@@ -5,21 +5,31 @@
  * support for dropdown menus.
  */
 ( function() {
-	var container, button, menu, links, subMenus;
+	var container, button, menu, links, subMenus, height;
 
 	container = document.getElementById( 'site-navigation' );
 	if ( ! container ) {
 		return;
 	}
 	
+	
 	function checkMobileMenu(){
 		container.className = container.className.replace(' mobile','');
-		if ( container.offsetWidth / container.offsetHeight < 10 ){
-			container.className += ' mobile';
+		
+		if ( container.offsetWidth / container.offsetHeight < 2 ){
+			//appears too tall but lets test removing it
+			// container.style.display = 'none';
+			// refHeight = document.getElementById( 'site-header-main' ).offsetHeight;
+			// container.style.display = '';
+			//
+			// if ( document.getElementById( 'site-header-main' ).offsetHeight > refHeight ){
+				container.className += ' mobile';
+			// }
 		}
 	}
 	checkMobileMenu();
 	window.addEventListener( 'resize', checkMobileMenu );
+	// document.addEventListener( 'loaded', checkMobileMenu );
 
 	button = container.querySelector( '.menu-toggle' );
 	if ( 'undefined' === typeof button ) {
@@ -40,12 +50,12 @@
 	}
 
 	button.onclick = function() {
-		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
-			container.className = container.className.replace( ' toggled', '' );
+		if ( ~ document.body.className.indexOf( 'mobile-nav-open' ) ) {
+			document.body.className = document.body.className.replace( ' mobile-nav-open', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
 			menu.setAttribute( 'aria-expanded', 'false' );
 		} else {
-			container.className += ' toggled';
+			document.body.className += ' mobile-nav-open';
 			button.setAttribute( 'aria-expanded', 'true' );
 			menu.setAttribute( 'aria-expanded', 'true' );
 		}

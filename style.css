@@ -35,7 +35,7 @@ html {
 	box-sizing: border-box;
 }
 @media (max-width:600px) { html { font-size: 90%; } }
-@media (min-width:1200px) { html { font-size: 120%; } }
+@media (min-width:1500px) { html { font-size: 120%; } }
 *, *:before, *:after {
 	box-sizing: inherit;
 	margin: 0;
@@ -43,9 +43,13 @@ html {
 .site * {
 	max-width: 100%;/* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
-p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
+/*p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
 	margin-bottom: 1.45rem;
 	margin-top: 1.45rem;
+}*/
+/* Testing */
+p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
+	margin: 1.45rem;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
@@ -59,23 +63,25 @@ h1 {
 h2 {
 	font-size: 2.369rem;
 }
-h3 {
+h3, .widget h2 {
 	font-size: 1.778rem;
 }
-h4 {
+h4, .widget h3 {
+	font-size: 1.333rem;
+}
+h5, .widget h4 {
+	font-size: 1.333rem;
+	font-weight: bold;
+}
+h6, .widget h5 {
 	font-size: 1.333rem;
 	font-style: italic;
 }
-h5 {
-	font-size: 1.333rem;
-	font-weight: 700;
+h1:first-child, h2:first-child {
+/*	margin-top: 0; Not sure if we want this */
+	padding-top: 0;
 }
-h6 {
-	font-size: 1.333rem;
-	font-weight: 100;
-}
-h1:first-child, h2:first-child, h3:first-child, h4:first-child {
-	margin-top: 0;
+h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 	padding-top: 0;
 }
 a {
@@ -105,6 +111,9 @@ word-break: break-word;
 }*/
 blockquote {
 	padding: 0 1.45em;
+}
+blockquote footer, blockquote cite {
+	text-align: right;
 }
 abbr {
 	text-decoration: none;
@@ -161,7 +170,9 @@ p.comment-form-comment label {
 textarea#comment {
 	width: 100%;
 }
-
+.widget ul {
+	padding-left: 1.45rem;
+}
 /*--------------------------------------------------------------
 *  Page Layout
 --------------------------------------------------------------*/
@@ -170,6 +181,8 @@ textarea#comment {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+/* weird negatove margin trick */
+	overflow: hidden;
 }
 
 #masthead,#colophon {
@@ -178,15 +191,17 @@ textarea#comment {
 
 #content {
 	flex: 1 0 auto;
-}
-#content > div {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-start;
 	justify-content: space-around;
+	width: 100%;
+/* weird negatove margin trick*/
 /*	margin: -1.45rem;*/
+/*	max-width: none;*/
 }
-#content > div > div {
+#content > div {
+/* weird negatove margin trick */
 /*	padding: 1.45rem;*/
 }
 #primary {
@@ -304,16 +319,16 @@ nav ul.menu {
 	display: none;
 }
 path#menu-toggle-close,
-#site-navigation.toggled path#menu-toggle-open {
+body.mobile-nav-open #site-navigation path#menu-toggle-open {
 	display: none;
 }
-#site-navigation.toggled path#menu-toggle-close {
+body.mobile-nav-open #site-navigation path#menu-toggle-close {
 	display: initial;
 }
 #site-navigation svg {
 	width: 24px;
 }
-#site-navigation.toggled ul.menu {
+body.mobile-nav-open #site-navigation ul.menu {
 	background-color: #fff; /*This shouldnt be hard-coded*/
 	overflow: auto;
 	position: fixed;
@@ -327,6 +342,9 @@ path#menu-toggle-close,
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+}
+body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colophon {
+	display: none;
 }
 
 	

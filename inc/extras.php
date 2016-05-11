@@ -46,3 +46,18 @@ function wrap_archive_title_prefix( $title ){
 	return $title;
 }
 add_filter( 'get_the_archive_title', 'wrap_archive_title_prefix' );
+
+
+/**
+ * Add no-follow links to text widgets except on home page
+ * because avoiding site-wide links is supposed to be SEO best practice
+ */
+function frenchpress_nofollow_widgets($text) {
+	if ( ! is_home() ) {
+		$search = array( ' rel="nofollow"', " rel='nofollow'", ' rel=nofollow', 'a href' );
+		$replace = array( '', '', '', 'a rel="nofollow" href' );
+		$text = str_replace($search, $replace, $text);
+	}
+	return $text;
+}
+add_filter('widget_text', 'frenchpress_nofollow_widgets');

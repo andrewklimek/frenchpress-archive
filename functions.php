@@ -79,6 +79,13 @@ function frenchpress_setup() {
 		'default-image' => '',
 	) ) );
 	
+	// Custom Logo
+	add_theme_support( 'custom-logo', array(
+		'height'		=> 90,
+		'width'			=> 400,
+		'flex-width'	=> true,
+	) );
+	
 	/*
 	 * Styles the visual editor
 	 * See https://developer.wordpress.org/reference/functions/add_editor_style/

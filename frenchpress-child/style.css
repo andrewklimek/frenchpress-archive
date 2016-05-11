@@ -14,28 +14,19 @@ Tags:
 
 /*Main Layout*/
 .content-width {
-    max-width: 64rem;
-    margin: 0 auto;
+	max-width: 64rem;
+	margin: 0 auto;
 }
 
 /*Main Background Color*/
 html, main, .site-branding {
-	background-color: #fff;
+	/*	background-color: #fff;*/
 }
 /*Main Font Styles*/
 html {
-	color: #1c355c;
-	font-family: arial, sans-serif;
-	font-size: 18px;
-}
-h1, h2, h3, h4, h5, h6 {
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 100;
-	line-height: 1.3;
-}
-p, ol, ul, h1, h2, h3, h4, h5, h6, table {
-	margin-bottom: 0.66rem;
+	/*	color: #1c355c;*/
+	/*	font-family: arial, sans-serif;*/
+	/*	font-size: 18px;*/
 }
 
 /*Buttons and Links*/
@@ -57,7 +48,7 @@ a.button, input[type=submit], button {
 	color: inherit;
 }
 a.button:hover, input[type=submit]:hover, button:hover{
-	color: #fff
+	opacity: 0.8;
 }
 
 

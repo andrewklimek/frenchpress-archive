@@ -130,7 +130,10 @@ hr {
 	background-color: #777;
 	border: 0;
 	height: .05rem;
-	margin-bottom: 1.4rem;
+	margin: 1.4rem 1.45rem 1.45rem;
+}
+h1, h2, h3, h4, h5, h6, hr, .entry-footer {
+    clear: both;
 }
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme

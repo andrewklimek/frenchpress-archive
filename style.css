@@ -455,12 +455,14 @@ body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colopho
 	display: inline;
 	float: left;
 	margin-right: 1.45em;
+	margin-bottom: 1.45rem;/* should this be applied more generally to p > img or something? */
 }
 
 .alignright {
 	display: inline;
 	float: right;
 	margin-left: 1.45em;
+	margin-bottom: 1.45rem;
 }
 
 .aligncenter {

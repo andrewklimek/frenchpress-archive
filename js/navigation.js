@@ -14,17 +14,19 @@
 	
 	
 	function checkMobileMenu(){
+		if ( !~document.body.className.indexOf('mobile-nav-open') ){
 		container.className = container.className.replace(' mobile','');
 		
-		if ( container.offsetWidth / container.offsetHeight < 2 ){
-			//appears too tall but lets test removing it
-			// container.style.display = 'none';
-			// refHeight = document.getElementById( 'site-header-main' ).offsetHeight;
-			// container.style.display = '';
-			//
-			// if ( document.getElementById( 'site-header-main' ).offsetHeight > refHeight ){
-				container.className += ' mobile';
-			// }
+			if ( container.offsetWidth / container.offsetHeight < 2 ){
+				//appears too tall but lets test removing it
+				// container.style.display = 'none';
+				// refHeight = document.getElementById( 'site-header-main' ).offsetHeight;
+				// container.style.display = '';
+				//
+				// if ( document.getElementById( 'site-header-main' ).offsetHeight > refHeight ){
+					container.className += ' mobile';
+				// }
+			}
 		}
 	}
 	checkMobileMenu();

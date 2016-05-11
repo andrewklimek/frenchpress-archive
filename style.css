@@ -343,8 +343,11 @@ body.mobile-nav-open #site-navigation ul.menu {
 	justify-content: center;
 	text-align: center;
 }
+body.mobile-nav-open {
+	overflow: hidden;
+}
 body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colophon {
-	display: none;
+	opacity: 0;
 }
 
 	

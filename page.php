@@ -48,5 +48,7 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+if ( apply_filters( 'frenchpress_page_sidebar', true ) ) {
+	get_sidebar();
+}
 get_footer();

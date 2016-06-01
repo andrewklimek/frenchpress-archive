@@ -296,7 +296,7 @@ nav ul.menu {
 	position: absolute;
 	z-index: 99;/* I've seen google graphs in front of dropdowns without this */
 	visibility: hidden;
-	padding-bottom: 1rem;/* Possibly shouldn't be hard-coded */
+	/*padding-bottom: 1rem;*//* Possibly shouldn't be hard-coded*/
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
@@ -332,7 +332,7 @@ body.mobile-nav-open #site-navigation path#menu-toggle-close {
 	width: 24px;
 }
 body.mobile-nav-open #site-navigation ul.menu {
-	background-color: #fff; /*This shouldnt be hard-coded*/
+	/*background-color: #fff;*//*This shouldn't be hard-coded*/
 	overflow: auto;
 	position: fixed;
 	z-index: 9998;

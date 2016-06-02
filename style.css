@@ -135,7 +135,8 @@ hr {
 	height: .05rem;
 	margin: 1.4rem 0 1.45rem;
 }
-h1, h2, h3, h4, h5, h6, hr, .entry-footer {
+/*h1, h2, h3, h4, h5, h6,*/
+hr, .entry-footer {
     clear: both;
 }
 /*--------------------------------------------------------------

@@ -395,13 +395,16 @@ body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colopho
 	display: block;
 }
 .hentry {
-	padding-bottom: 1.45rem;
 	/*width: 64ex;*/
 	margin-left: auto;
 	margin-right: auto;
 }
+.hentry:not(:only-of-type) {
+	padding-bottom: 1.45rem;
+}
+
 .entry-header, .entry-content, .entry-footer {
-	margin-bottom: 1.45rem;
+	margin: 1.45rem 0;
 }
 .byline,
 .updated:not(.published) {

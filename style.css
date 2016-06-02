@@ -43,14 +43,17 @@ html {
 .site * {
 	max-width: 100%;/* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
-/*p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address {
+p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
 	margin-bottom: 1.45rem;
 	margin-top: 1.45rem;
-}*/
-/* Testing */
-p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
-	margin: 1.45rem;
 }
+.site > * > * {
+	padding: 1.45rem;
+}
+/* another idea for the above margin, padding. */
+/*p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
+	margin: 1.45rem;
+}*/
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 	line-height: 1.2;
@@ -130,7 +133,7 @@ hr {
 	background-color: #777;
 	border: 0;
 	height: .05rem;
-	margin: 1.4rem 1.45rem 1.45rem;
+	margin: 1.4rem 0 1.45rem;
 }
 h1, h2, h3, h4, h5, h6, hr, .entry-footer {
     clear: both;
@@ -220,8 +223,8 @@ textarea#comment {
 
 .autocol {
 	display: flex;
-/*	width: 100%;*/
-/*		margin: -1.45rem;*/
+	max-width: none;
+	margin: -1.45rem;
     flex-flow: row wrap;
     justify-content: space-around;
 }
@@ -280,9 +283,8 @@ textarea#comment {
 *  Navigation
 --------------------------------------------------------------*/
 a:not([href]) {
-    cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
+	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
 }
-
 nav ul, header ul.menu {
 	list-style-type: none;
 	padding: 0;
@@ -301,7 +303,7 @@ nav ul.menu {
 	position: absolute;
 	z-index: 99;/* I've seen google graphs in front of dropdowns without this */
 	visibility: hidden;
-	/*padding-bottom: 1rem;*//* Possibly shouldn't be hard-coded*/
+	/*padding-bottom: 1rem;*//* Possibly shouldn't be hard-coded */
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
@@ -337,7 +339,7 @@ body.mobile-nav-open #site-navigation path#menu-toggle-close {
 	width: 24px;
 }
 body.mobile-nav-open #site-navigation ul.menu {
-	/*background-color: #fff;*//*This shouldn't be hard-coded*/
+	/*background-color: #fff;*/ /*This shouldn't be hard-coded*/
 	overflow: auto;
 	position: fixed;
 	z-index: 9998;

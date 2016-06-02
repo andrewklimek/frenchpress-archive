@@ -355,7 +355,7 @@ body.mobile-nav-open {
 	overflow: hidden;
 }
 body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colophon {
-	opacity: 0;
+	visibility: hidden;
 }
 
 	

@@ -226,8 +226,9 @@ textarea#comment {
 	display: flex;
 	max-width: none;
 	margin: -1.45rem;
-    flex-flow: row wrap;
-    justify-content: space-around;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: flex-start;
 }
 .autocol > * {
 	flex: auto;

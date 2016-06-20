@@ -17,7 +17,7 @@
 		if ( !~document.body.className.indexOf('mobile-nav-open') ){
 		container.className = container.className.replace(' mobile','');
 		
-			if ( container.offsetWidth / container.offsetHeight < 2.25 ){
+			if ( container.offsetWidth / container.offsetHeight < 2.4 ){
 				//appears too tall but lets test removing it
 				// container.style.display = 'none';
 				// refHeight = document.getElementById( 'site-header-main' ).offsetHeight;
@@ -76,6 +76,7 @@
 	for ( i = 0, len = links.length; i < len; i++ ) {
 		links[i].addEventListener( 'focus', toggleFocus, true );
 		links[i].addEventListener( 'blur', toggleFocus, true );
+		links[i].addEventListener( 'click', toggleClick, true );
 	}
 
 	/**
@@ -97,6 +98,18 @@
 			}
 
 			self = self.parentElement;
+		}
+	}
+	
+
+	/**
+	 * Sets or removes .clicked class on an element.
+	 */
+	function toggleClick() {
+		if ( ~ this.parentElement.className.indexOf( 'clicked' ) ) {
+			this.parentElement.className = this.parentElement.className.replace( ' clicked', '' );
+		} else {
+			this.parentElement.className += ' clicked';
 		}
 	}
 } )();

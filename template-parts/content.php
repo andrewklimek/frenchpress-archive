@@ -28,7 +28,8 @@
 
 	<div class="entry-content">
 		<?php
-			if ( has_post_thumbnail() ) {
+
+			if ( apply_filters( 'frenchpress_featured_image', false ) && has_post_thumbnail() ) {
 				the_post_thumbnail();
 			}
 			the_content( sprintf(

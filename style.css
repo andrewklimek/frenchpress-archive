@@ -4,7 +4,7 @@ Theme URI: http://andrewklimek.com
 Author: Andrew J Klimek
 Author URI: http://andrewklimek.com
 Description: a super light theme for people who prefer writing basic html & css to control panels and builders
-Version: 0.2.0
+Version: 0.3.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
@@ -44,7 +44,7 @@ html {
 	max-width: 100%;/* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
-	margin-bottom: 1.50rem;
+/*	margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 	margin-top: 1.50rem;
 }
 .site > * > * {

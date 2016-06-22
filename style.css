@@ -44,7 +44,7 @@ html {
 	max-width: 100%;/* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
-/*	margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
+	/*	margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 	margin-top: 1.50rem;
 }
 .site > * > * {
@@ -63,23 +63,23 @@ h1, h2, h3, h4, h5, h6 {
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-decoration: none;
 }
-h1 {
+h1, .h1 {
 	font-size: 3.157rem;
 }
-h2 {
+h2, .h2 {
 	font-size: 2.369rem;
 }
-h3, .widget h2 {
+h3, .h3, .widget h2 {
 	font-size: 1.778rem;
 }
-h4, .widget h3 {
+h4, .h4, .widget h3 {
 	font-size: 1.333rem;
 }
-h5, .widget h4 {
+h5, .h5, .widget h4 {
 	font-size: 1.333rem;
 	font-weight: bold;
 }
-h6, .widget h5 {
+h6, .h6, .widget h5 {
 	font-size: 1.333rem;
 	font-style: italic;
 }
@@ -148,6 +148,7 @@ dd {/* Not sure I should keep this, what about using dl for metadata? */
 hr {
 	background: #777;
 	border: 0;
+	padding: 0;
 	height: 1px;
 	margin: 1.50rem auto;
 }
@@ -217,7 +218,7 @@ textarea#comment {
 
 #page {
 	min-height: 100vh;
-/*	height: 100%;*/
+	/*	height: 100%;*/
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -287,6 +288,12 @@ visibility: hidden;
 	width: 16em;
 }
 
+.center {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
 .autocol {
 	clear: both;
 	display: -webkit-box;
@@ -310,11 +317,11 @@ visibility: hidden;
 	-webkit-box-flex: 0;
 	-ms-flex-positive: 0;
 	flex-grow: 0;
-/*	width: initial;*/
+	/*	width: initial;*/
 	-ms-flex-item-align: start;
 	align-self: flex-start;
 	box-sizing: content-box;
-/*	text-align: center;*/
+	/*	text-align: center;*/
 }
 .autocol > p:empty {/* Stupid fix for wpautop */
 	display: none;
@@ -392,8 +399,9 @@ nav ul.menu {
 	display: flex;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
-	-ms-flex-pack: distribute;
-	justify-content: space-around;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 	line-height: 1.50; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
 }
 .main-navigation ul ul {

@@ -7,6 +7,14 @@
  * @package FrenchPress
  */
 
+
+function frenchpress_widget_nav_menu_args( $nav_menu_args ) {
+	// if ( $args['id'] === 'top' )
+	$nav_menu_args['container'] = 'nav';
+	return $nav_menu_args;
+}
+add_filter( 'widget_nav_menu_args', 'frenchpress_widget_nav_menu_args' );
+
 /**
  * Adds custom classes to the array of body classes.
  *

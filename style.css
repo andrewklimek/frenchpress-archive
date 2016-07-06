@@ -439,10 +439,14 @@ nav.mobile ul ul li.clicked > ul {
 #site-navigation.mobile span.menu-toggle {
 	display: inline-block;
 	z-index: 9999;
+	line-height: 0;
+	padding: 1.50rem;
+	width: 1.50rem;
+	height: 1.50rem;
+	box-sizing: content-box;
 	position: fixed;
 	right: 0;
 	top: 20%;
-	padding: 10px;
 }
 #site-navigation.mobile ul.menu {
 	display: none;
@@ -457,9 +461,9 @@ body.mobile-nav-open #site-navigation path#menu-toggle-open {
 body.mobile-nav-open #site-navigation path#menu-toggle-close {
 	display: initial;
 }
+body.mobile-nav-open .main-navigation ul { background: #fff; }/* avoid high priority of #site-navigation so child theme can specify like: #masthead, #masthead ul {background:coral;} */
 body.mobile-nav-open #site-navigation ul.menu,
 body.mobile-nav-open #site-navigation li.menu-item-has-children.clicked {
-	/*background-color: #fff;*/ /*This shouldn't be hard-coded*/
 	overflow: auto;
 	position: fixed;
 	z-index: 9998;

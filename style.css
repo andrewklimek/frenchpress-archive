@@ -29,10 +29,10 @@ html {
 	background-color: #fffdfa;
 	font-size: 100%;
 	line-height: 1.50;
-	text-rendering: optimizeLegibility;
+	text-rendering: geometricPrecision;
+	box-sizing: border-box;
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
-	box-sizing: border-box;
 }
 @media (max-width:600px) { html { font-size: 90%; } }
 @media (min-width:1500px) { html { font-size: 120%; } }
@@ -131,7 +131,7 @@ word-break: break-word;
 blockquote {
 	padding: 0 1.50em;
 }
-blockquote footer, blockquote cite {
+blockquote footer {
 	text-align: right;
 }
 abbr {
@@ -171,10 +171,16 @@ table {
 td, th {
 	padding: 0 1ex;/* maybe shouldn't hard-code that padding */
 }
+
+button, input, optgroup, select, textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+}
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
-input:focus::-webkit-input-placeholder {/* This would be cool if cross-browser */
+input:focus::-webkit-input-placeholder {/*This would be cool if cross-browser */
 	font-size: 40%;
 	position: relative;
 	bottom: -1.4em;
@@ -187,6 +193,9 @@ input:focus::-moz-placeholder {
 }
 input:focus:-moz-placeholder{
 	color: transparent !important;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: inherit;
 }
 
 th:only-of-type {
@@ -209,8 +218,8 @@ p.comment-form-comment label {
 textarea#comment {
 	width: 100%;
 }
-.widget ul {
-	padding-left: 1.50rem;
+.widget:not(.widget_nav_menu) ul {
+/*	padding-left: 1.50rem;*/
 }
 /*--------------------------------------------------------------
 *  Page Layout
@@ -300,7 +309,7 @@ visibility: hidden;
 	display: -ms-flexbox;
 	display: flex;
 	max-width: none;
-	margin: -1.50rem;
+	margin: 0 -1.50rem;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 	-ms-flex-pack: distribute;
@@ -317,7 +326,7 @@ visibility: hidden;
 	-webkit-box-flex: 0;
 	-ms-flex-positive: 0;
 	flex-grow: 0;
-	/*	width: initial;*/
+	width: initial;
 	-ms-flex-item-align: start;
 	align-self: flex-start;
 	box-sizing: content-box;
@@ -382,7 +391,7 @@ order: -1;
 nav a {
 	text-decoration: none;
 }
-a:not([href]) {
+li.menu-item-has-children a[href="#"] {
 	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
 }
 nav ul, header ul.menu {
@@ -404,22 +413,22 @@ nav ul.menu {
 	justify-content: center;
 	line-height: 1.50; /*Maybe should be here, helps preserve space if they adjust main line-height.*/
 }
-.main-navigation ul ul {
+nav ul ul {
 	position: absolute;
 	z-index: 99;/* I've seen google graphs in front of dropdowns without this */
 	/*	visibility: hidden;*/
 	display: none;
 	/*padding-bottom: 1rem;*//* Possibly shouldn't be hard-coded */
 }
-.main-navigation:not(.mobile) ul li:hover > ul,
-.main-navigation:not(.mobile) ul li.focus > ul,
-.main-navigation.mobile ul li.clicked > ul {
+nav:not(.mobile) ul li:hover > ul,
+nav:not(.mobile) ul li.focus > ul,
+nav.mobile ul li.clicked > ul {
 	/*	visibility: visible;*/
 	display: block;
 }
-.main-navigation:not(.mobile) ul ul li:hover > ul,
-.main-navigation:not(.mobile) ul ul li.focus > ul
-.main-navigation.mobile ul ul li.clicked > ul {
+nav:not(.mobile) ul ul li:hover > ul,
+nav:not(.mobile) ul ul li.focus > ul
+nav.mobile ul ul li.clicked > ul {
 	/*	visibility: visible;*/
 	display: block;
 	left: 100%;
@@ -447,10 +456,6 @@ body.mobile-nav-open #site-navigation path#menu-toggle-open {
 }
 body.mobile-nav-open #site-navigation path#menu-toggle-close {
 	display: initial;
-}
-#site-navigation svg {
-	width: 24px;
-	height: 24px;/* I think we need this for IE11 */
 }
 body.mobile-nav-open #site-navigation ul.menu,
 body.mobile-nav-open #site-navigation li.menu-item-has-children.clicked {
@@ -481,7 +486,10 @@ body.mobile-nav-open {
 body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colophon {
 	visibility: hidden;
 }
-
+/* Cheap way of fixing sub-menues on the end */
+li.menu-item-has-children:nth-last-child(-n+3) ul {
+/*	right: 1.50rem;*/
+}
 	
 /*
 nav ul.menu {
@@ -576,7 +584,8 @@ visibility: visible;
 }
 
 /* Do not show the outline on the skip link target. */
-#content[tabindex="-1"]:focus {
+#content[tabindex="-1"]:focus,
+#content [tabindex="-1"]:focus {
 	outline: 0;
 }
 

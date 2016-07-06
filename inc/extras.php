@@ -7,7 +7,9 @@
  * @package FrenchPress
  */
 
-
+/**
+ * Changes <div> to <nav> for menu widget
+ */
 function frenchpress_widget_nav_menu_args( $nav_menu_args ) {
 	// if ( $args['id'] === 'top' )
 	$nav_menu_args['container'] = 'nav';

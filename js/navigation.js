@@ -4,6 +4,10 @@
  * Handles toggling the navigation menu for small screens and enables tab
  * support for dropdown menus.
  */
+
+// an idea for fixing sub-menus on the far right.
+//if ( document.body.clientWidth - document.querySelector('#menu-item-142 ul').getBoundingClientRect().right <= 0 ) { document.querySelector('#menu-item-142 ul').style.right=0; }
+
 ( function() {
 	var container, button, menu, links, subMenus, height;
 

@@ -41,14 +41,14 @@ html {
 	margin: 0;
 }
 .site * {
-	max-width: 100%;/* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
+	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
 p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
 	/*	margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 	margin-top: 1.50rem;
 }
 .site > * > * {
-	padding: 1.50rem;
+	/*	padding: 1.50rem;*/
 }
 /* another idea for the above margin, padding. */
 /*p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
@@ -180,6 +180,18 @@ button, input, optgroup, select, textarea {
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
+nav ul li {
+	padding: 0.75rem;
+	position: relative;/* Allows better submenu absolut positioning like: nav ul ul {top: 100%;} li.menu-item-has-children:nth-last-child(-n+3) ul {right: 1.50rem;} */
+}
+nav ul ul {
+	top: 100%;
+	left: -100%;
+	right: -100%;
+	margin: auto;
+/*	max-width: none;*/
+	width: 16em;
+}
 input:focus::-webkit-input-placeholder {/*This would be cool if cross-browser */
 	font-size: 40%;
 	position: relative;
@@ -195,7 +207,7 @@ input:focus:-moz-placeholder{
 	color: transparent !important;
 }
 input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: inherit;
+	opacity: inherit;
 }
 
 th:only-of-type {
@@ -219,7 +231,7 @@ textarea#comment {
 	width: 100%;
 }
 .widget:not(.widget_nav_menu) ul {
-/*	padding-left: 1.50rem;*/
+	/*	padding-left: 1.50rem;*/
 }
 /*--------------------------------------------------------------
 *  Page Layout
@@ -308,7 +320,7 @@ visibility: hidden;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	max-width: none;
+/*	max-width: none;*/
 	margin: 0 -1.50rem;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
@@ -492,7 +504,8 @@ body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colopho
 }
 /* Cheap way of fixing sub-menues on the end */
 li.menu-item-has-children:nth-last-child(-n+3) ul {
-/*	right: 1.50rem;*/
+/*	right: -1.50rem;*/
+/*	left: initial;*/
 }
 	
 /*

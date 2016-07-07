@@ -71,5 +71,6 @@ function frenchpress_nofollow_widgets($text) {
 	return $text;
 }
 add_filter( 'widget_text', 'frenchpress_nofollow_widgets', 99 );
+
 // Enable the use of shortcodes in text widgets.
 add_filter( 'widget_text', 'do_shortcode' );

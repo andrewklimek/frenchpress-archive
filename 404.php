@@ -9,6 +9,8 @@
 
 get_header(); ?>
 
+<div id="content-tray" class="tray">
+
 	<div id="primary" class="content-area">
 		
 		<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
@@ -73,6 +75,8 @@ get_header(); ?>
 		<?php endif; ?>
 		
 	</div><!-- #primary -->
+
+</div><!-- #content-tray -->
 
 <?php
 get_footer();

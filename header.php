@@ -28,7 +28,7 @@
 		
 		<?php if ( is_active_sidebar( 'top' ) ) : ?>
 			<div id="top-widget" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'top' ); ?>
 				</div>
 			</div><!-- #top-widget -->
@@ -36,7 +36,7 @@
 	
 		if ( is_active_sidebar( 'header-1' ) ) : ?>
 			<div id="header-1" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'header-1' ); ?>
 				</div>
 			</div><!-- #header-1 -->
@@ -44,14 +44,14 @@
 	
 		if ( is_active_sidebar( 'header-2' ) ) : ?>
 			<div id="header-2" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'header-2' ); ?>
 				</div>
 			</div><!-- #header-2 -->
 		<?php else : ?>
 	
 	<div id="site-header-main">
-		<div class="wrapper">
+		<div class="tray">
 			<div class="site-branding">
 			<?php
 			
@@ -111,14 +111,14 @@
 				<?php echo $menu; ?>
 			</nav><!-- #site-navigation -->
 			<?php endif; // End Nav check ?>
-		</div><!-- .wrapper -->
+		</div><!-- .tray -->
 	</div><!-- .site-header-main -->
 	
 	<?php endif;//is_active_sidebar( 'header-2' )
 
 	if ( is_active_sidebar( 'header-3' ) ) : ?>
 		<div id="header-3" class="widget-area" role="complementary">
-			<div class="wrapper">
+			<div class="tray">
 				<?php dynamic_sidebar( 'header-3' ); ?>
 			</div>
 		</div><!-- #header-3 -->

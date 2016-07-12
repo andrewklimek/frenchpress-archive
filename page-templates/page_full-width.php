@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full-Width (no sidebars)
+ * Template Name: Full-Width
  *
  *
  * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/page-templates/
@@ -9,6 +9,8 @@
  */
 
 get_header(); ?>
+
+<div id="content-tray" class="tray_full-width">
 
 	<div id="primary" class="content-area">
 		
@@ -42,6 +44,8 @@ get_header(); ?>
 		<?php endif; ?>
 		
 	</div><!-- #primary -->
+	
+</div><!-- #content-tray -->
 
 <?php
 get_footer();

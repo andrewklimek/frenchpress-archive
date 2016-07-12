@@ -14,6 +14,8 @@
 
 get_header(); ?>
 
+<div id="content-tray" class="tray">
+
 	<div id="primary" class="content-area">
 	
 		<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
@@ -50,5 +52,9 @@ get_header(); ?>
 <?php
 if ( apply_filters( 'frenchpress_page_sidebar', true ) ) {
 	get_sidebar();
-}
+} ?>
+	
+</div><!-- #content-tray -->
+
+<?php
 get_footer();

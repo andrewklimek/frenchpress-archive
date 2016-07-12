@@ -16,38 +16,38 @@
 
 		<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
 			<div id="footer-1" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'footer-1' ); ?>
-				</div><!-- .wrapper -->
+				</div><!-- .tray -->
 			</div><!-- #footer-1 -->
 		<?php endif;
 		if ( is_active_sidebar( 'footer-2' ) ) : ?>
 			<div id="footer-2" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'footer-2' ); ?>
-				</div><!-- .wrapper -->
+				</div><!-- .tray -->
 			</div><!-- #footer-2 -->
 		<?php endif;
 		if ( is_active_sidebar( 'footer-3' ) ) : ?>
 			<div id="footer-3" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'footer-3' ); ?>
-				</div><!-- .wrapper -->
+				</div><!-- .tray -->
 			</div><!-- #footer-3 -->
 		<?php endif;
 		if ( is_active_sidebar( 'footer-4' ) ) : ?>
 			<div id="footer-4" class="widget-area" role="complementary">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'footer-4' ); ?>
-				</div><!-- .wrapper -->
+				</div><!-- .tray -->
 			</div><!-- #footer-4 -->
 		<?php endif; ?>
 		
 		<?php if ( is_active_sidebar( 'ending-credits' ) ) : ?>
 			<div id="ending-credits" class="site-info">
-				<div class="wrapper">
+				<div class="tray">
 					<?php dynamic_sidebar( 'ending-credits' ); ?>
-				</div><!-- .wrapper -->
+				</div><!-- .tray -->
 			</div><!-- #ending-credits -->
 		<?php endif; ?>
 	</footer><!-- #colophon -->

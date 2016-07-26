@@ -247,3 +247,9 @@ require get_template_directory() . '/inc/jetpack.php';
  * Custom walker with no <li>.
  */
 // require get_template_directory() . '/inc/walker_no_list.php';
+
+
+/**
+ * WooCommerce Support... would be nice to make this conditional
+ */
+require get_template_directory() . '/inc/woocommerce.php';

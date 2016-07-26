@@ -91,8 +91,11 @@ h1:first-child, h2:first-child {
 	padding-top: 0;
 }
 h3:first-child, h4:first-child, h5:first-child, h6:first-child {
-	margin-top: 0;/*Not sure if we want this*/
+	/*margin-top: 0;*//*Not sure if we want this*/
 	padding-top: 0;
+}
+.widgettitle {
+	margin-top: 0;/* until we decide on the above */
 }
 
 @media screen and (max-width: 600px) {
@@ -310,6 +313,7 @@ textarea#comment {
 .tray {
 	margin-left: auto;
 	margin-right: auto;
+	box-sizing: content-box;/* You'd normally give the ting a max-width and expect the content/text to be that wide. */
 }
 /* What is this for? it's on https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
 #content::after {
@@ -421,13 +425,9 @@ visibility: hidden;
 .autocol > p:empty {/* Stupid fix for wpautop */
 	display: none;
 }
-.col {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
+
+.round {
+	border-radius: 50%;
 }
 
 /*#page {

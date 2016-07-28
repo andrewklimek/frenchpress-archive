@@ -9,9 +9,8 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
 Text Domain: frenchpress
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-_s is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Frenchpress was built starting with the skeleton theme Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+(Though, for better or for worse, this stylesheet was written completely from scratch.)
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 */
 
@@ -30,14 +29,15 @@ html {
 	font-size: 100%;
 	line-height: 1.50;
 	text-rendering: geometricPrecision;
-	box-sizing: border-box;
 	/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAF0lEQVQIW2NkgALG4cEoLy//39nZyQgAHvQEGcWYIRgAAAAASUVORK5CYII=);*/
 	/*background-position-y: 0px;*/
 }
 @media (max-width:600px) { html { font-size: 90%; } }
 @media (min-width:1500px) { html { font-size: 120%; } }
+
+/* It is considered by some as best practice to use box-sizing: inherit; in the following block (*) and box-sizing: border-box; only in the html block. I don't buy this yet, because if I content-box the main article area for example so the width actually means the length of a line of text, then the child elements get messed up, like a button where the width should include the padding.  in fact I may want content-box most places (pictures for example) and put box sizing only on buttons?  I guess box sizing has the most advantage for % based layouts where you need to add up to 100%, but this theme is different. */
 *, *:before, *:after {
-	box-sizing: inherit;
+	box-sizing: border-box;
 	margin: 0;
 }
 .site * {
@@ -331,6 +331,7 @@ visibility: hidden;
 	-webkit-box-flex: 100;
 	-ms-flex: 100 1 auto;
 	flex: 100 1 auto;
+	width: 30rem;
 	max-width: 100%;/* not 100% sure why we need this */
 }
 

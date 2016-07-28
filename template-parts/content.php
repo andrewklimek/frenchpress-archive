@@ -29,7 +29,7 @@
 	<div class="entry-content">
 		<?php
 
-			if ( apply_filters( 'frenchpress_featured_image', false ) && has_post_thumbnail() ) {
+			if ( has_post_thumbnail() && ( ! is_single() || apply_filters( 'frenchpress_featured_image', false ) ) ) {
 				the_post_thumbnail();
 			}
 			the_content( sprintf(

@@ -49,7 +49,9 @@
 					<?php dynamic_sidebar( 'ending-credits' ); ?>
 				</div><!-- .tray -->
 			</div><!-- #ending-credits -->
-		<?php endif; ?>
+		<?php endif;
+		do_action('frenchpress_very_bottom');
+		 ?>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

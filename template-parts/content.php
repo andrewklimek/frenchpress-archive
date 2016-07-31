@@ -12,12 +12,14 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
+			if ( has_post_thumbnail() && ( ! is_single() || apply_filters( 'frenchpress_featured_image', false ) ) ) {
+				the_post_thumbnail();
+			}
 			if ( is_single() ) {
 				the_title( '<h1 class="entry-title">', '</h1>' );
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
-
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php frenchpress_posted_on(); ?>
@@ -28,10 +30,6 @@
 
 	<div class="entry-content">
 		<?php
-
-			if ( has_post_thumbnail() && ( ! is_single() || apply_filters( 'frenchpress_featured_image', false ) ) ) {
-				the_post_thumbnail();
-			}
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'frenchpress' ), array( 'span' => array( 'class' => array() ) ) ),

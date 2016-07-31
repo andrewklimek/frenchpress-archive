@@ -43,9 +43,10 @@ html {
 .site * {
 	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
-p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
+p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote, blockquote footer, figure {
 	/*margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 	margin-top: 1.50rem;
+	margin: 1.50rem 1.50rem 0;/* testing this again, helps alleviate box-sizing switching and autocol padding dilemmas */
 }
 p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child {
 	margin-bottom: 1.50rem;
@@ -53,10 +54,6 @@ p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child {
 .site > * > * {
 	/*	padding: 1.50rem;*/
 }
-/* another idea for the above margin, padding. */
-/*p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote footer {
-margin: 1.50rem;
-}*/
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 	line-height: 1.2;
@@ -131,7 +128,8 @@ embed, iframe, object {
 	max-width: 100%;
 }
 figcaption {
-	font-size: 0.667em;
+/*	font-size: 0.667em;*//* seems old school */
+	margin: 1.50rem 0;
 }
 /* This one's good sometimes, but bad for skinny columns
 td, th {
@@ -412,7 +410,7 @@ visibility: hidden;
 }
 
 .autocol:not(.nopad):not(.fullwidth).negpad { margin: 0 -1.50rem; }
-.autocol:not(.nopad) > * { padding: 1.50rem; }
+.autocol:not(.nopad) > * { /*padding: 1.50rem;*/ }
 #page .nopad { padding: 0; }
 #page .pad { padding: 1.50rem; }
 

@@ -105,8 +105,11 @@ h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 /*--------------------------------------------------------------
 *  Element Normalisation
 --------------------------------------------------------------*/
-li ul,li ol {/* 2-nd level lists */
+li > ul, li > ol {
 	margin: 0;
+}
+ul, ol {
+	padding-left: 1.50rem;
 }
 pre {
 	max-width: 100%;

@@ -54,7 +54,14 @@
 		<div class="tray">
 			<div class="site-branding">
 			<?php
-			
+			/**
+			* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block
+			* e.g.:
+			*	add_filter( 'frenchpress_site_branding', function( $skip_the_rest ) {
+			*		print "<a href=". esc_url( home_url( '/' ) ) ." rel='home'>" . file_get_contents( __DIR__ .'/logo.svg' ) . "</a>";
+			*		return true;// skips the rest of the site branging section
+			*	} );
+			*/
 			$skip_the_rest = apply_filters( 'frenchpress_site_branding', false );
 			
 			if ( ! $skip_the_rest ) :

@@ -43,7 +43,7 @@ html {
 .site * {
 	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
-p, ol, ul, h1, h2, h3, h4, h5, h6, table, pre, address, form, blockquote, blockquote footer, figure {
+p, h1, h2, h3, h4, h5, h6, ol, ul, dl, table, pre, address, form, blockquote, blockquote footer, figure {
 	/*margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 	margin-top: 1.50rem;
 	margin: 1.50rem 1.50rem 0;/* testing this again, helps alleviate box-sizing switching and autocol padding dilemmas */
@@ -156,7 +156,10 @@ dt {/* Not sure I should keep this, what about using dl for metadata? */
 	font-weight: bold;
 }
 dd {/* Not sure I should keep this, what about using dl for metadata? */
-	margin: 0 1.50rem 1.50rem;
+	padding: 0 0 1.50rem 1.50rem;
+}
+dl p, dl p:last-child {/* and if I do keep it, I need to remove margins from stuff hopefully only p */
+	margin: 1.50rem 0 0;
 }
 hr {
 	background: #777;
@@ -351,6 +354,7 @@ visibility: hidden;
 *  Magic Layout Classes
 --------------------------------------------------------------*/
 .center {
+	min-height: 100%;/* maybe? */
 	display: flex;
 /*	flex-wrap: wrap;*/
 	flex-direction: column;
@@ -405,6 +409,10 @@ visibility: hidden;
 .autocol.center {
 	justify-content: center;
 }
+.autocol.nowrap {
+	flex-wrap: nowrap;
+}
+
 .autocol:not(.nogrow) > :not(.nogrow):not(.img):not(img):not(figure) {
 	-webkit-box-flex: 100;
 	-ms-flex: 100 100 auto;
@@ -426,6 +434,9 @@ visibility: hidden;
 	align-self: flex-start;
 	box-sizing: content-box;
 	/*	text-align: center;*/
+}
+.autocol.center > * {/* to fic the above image rules in centered.. lame i think */
+	align-self: center;
 }
 .autocol > p:empty {/* Stupid fix for wpautop */
 	display: none;
@@ -735,6 +746,31 @@ visibility: visible;
 .gallery-caption {
 	display: block;
 }
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 1.50rem;
+	padding: 0.75rem;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+	margin: 0%;
+	padding: 0.75rem;
+}
+.gallery-columns-2 .gallery-item{max-width:50%;}
+.gallery-columns-3 .gallery-item{max-width:33.33%;}
+.gallery-columns-4 .gallery-item{max-width:25%;}
+.gallery-columns-5 .gallery-item{max-width:20%;}
+.gallery-columns-6 .gallery-item{max-width:16.66%;}
+.gallery-columns-7 .gallery-item{max-width:14.28%;}
+.gallery-columns-8 .gallery-item{max-width:12.5%;}
+.gallery-columns-9 .gallery-item{max-width:11.11%;}
 
 /*--------------------------------------------------------------
 *  Print

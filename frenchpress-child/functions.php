@@ -9,8 +9,8 @@
 
 // Add Theme Stylesheets
 add_action( 'wp_enqueue_scripts', function() {
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array(), filemtime( get_template_directory() . '/style.css' ) );
-	// wp_enqueue_style( 'child-style', get_stylesheet_uri(), array( 'parent-style' ), filemtime( get_stylesheet_directory() . '/style.css'), 'screen and (max-width: 900px)' );
+	$suffix = SCRIPT_DEBUG ? "" : ".min";// get minified parent stylesheet unless debug_script is on.
+	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style'.$suffix.'.css', array(), filemtime( get_template_directory() . '/style'.$suffix.'.css' ) );
 });
 
 // Don't display title on pages

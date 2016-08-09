@@ -43,10 +43,11 @@ html {
 .site * {
 	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
-p, h1, h2, h3, h4, h5, h6, ol, ul, dl, table, pre, address, form, blockquote, blockquote footer, figure {
-	/*margin-bottom: 1.50rem;*//* may not want this so you can set top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
-	margin-top: 1.50rem;
-	margin: 1.50rem 1.50rem 0;/* testing this again, helps alleviate box-sizing switching and autocol padding dilemmas */
+h1, h2, h3, h4, h5, h6 {
+	margin: 1.50rem 1.50rem 0;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
+}
+p, ol, ul, dl, table, pre, address, form, blockquote, blockquote footer, figure {
+	margin: 1.50rem;/* testing this again, helps alleviate box-sizing switching and autocol padding dilemmas */
 }
 p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child {
 	margin-bottom: 1.50rem;
@@ -144,9 +145,6 @@ blockquote {
 blockquote, q {
 	quotes: "\201C""\201D""\2018""\2019";
 }
-blockquote footer {
-	text-align: right;
-}
 abbr {
 	text-decoration: none;
 	border-bottom: 1px dotted #777;
@@ -213,6 +211,12 @@ fieldset {
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
+blockquote footer cite {
+	display: block;
+}
+blockquote footer {
+	text-align: right;
+}
 nav ul li {
 	padding: 0.75rem;
 	position: relative;/* Allows better submenu absolut positioning like: nav ul ul {top: 100%;} li.menu-item-has-children:nth-last-child(-n+3) ul {right: 1.50rem;} */
@@ -374,7 +378,7 @@ visibility: hidden;
 .center.bottom {
 	justify-content: flex-end;
 }
-[class|="card"]  {
+[class^="card"]  {
 /*	align-self: stretch;*/
 	flex: 1 1 auto;
 	display: flex;
@@ -409,6 +413,9 @@ visibility: hidden;
 .autocol.center {
 	justify-content: center;
 }
+.autocol.center.bottom {
+	align-items: flex-end;
+}
 .autocol.nowrap {
 	flex-wrap: nowrap;
 }
@@ -430,13 +437,12 @@ visibility: hidden;
 	-ms-flex-positive: 0;
 	flex-grow: 0;
 	width: initial;
-	-ms-flex-item-align: start;
-	align-self: flex-start;
 	box-sizing: content-box;
 	/*	text-align: center;*/
 }
-.autocol.center > * {/* to fic the above image rules in centered.. lame i think */
-	align-self: center;
+.autocol:not(.center) > img, .autocol:not(.center) > figure, .autocol:not(.center) > .img {
+	-ms-flex-item-align: start;
+	align-self: flex-start;
 }
 .autocol > p:empty {/* Stupid fix for wpautop */
 	display: none;

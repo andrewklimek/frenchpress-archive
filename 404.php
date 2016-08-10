@@ -23,46 +23,45 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'frenchpress' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'frenchpress' ); ?></p>
+					<p><?php esc_html_e( 'Unfortunately, you clicked a broken link.', 'frenchpress' ); ?></p>
 
 					<?php
-						get_search_form();
+					
+					$request = $GLOBALS['wp_query']->query;
+					// $request = explode( '/', parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
+					$search = preg_replace('/\W+/', '+', urldecode( array_pop( $request ) ) );
+					
+						$query = new WP_Query( array( 's' => $search, 'posts_per_page' => 10, 'nopaging' => true ) );
 
-						the_widget( 'WP_Widget_Recent_Posts' );
+						if ( $query->have_posts() ) : ?>
 
-						// Only show the widget if site has multiple categories.
-						if ( frenchpress_categorized_blog() ) :
+							<h3><?php esc_html_e( 'Perhaps you were looking for one of these:', 'frenchpress' ); ?></h3>
+
+							<?php
+							/* Start the Loop */
+							while ( $query->have_posts() ) : $query->the_post();
+
+								get_template_part( 'template-parts/content', 'search' );
+
+							endwhile;
+
+							// the_posts_navigation();
+
+						// else :
+
+						wp_reset_postdata();
+						
+						endif; ?>
+						
+						<h3><?php esc_html_e( 'Feel free to search for what you&rsquo;re looking for.', 'frenchpress' ); ?></h3>
+						
+						<?php get_search_form();
+						
 					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'frenchpress' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-						endif;
-
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'frenchpress' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 

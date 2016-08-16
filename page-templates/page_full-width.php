@@ -45,7 +45,5 @@ get_header(); ?>
 		
 	</div><!-- #primary -->
 	
-</div><!-- #content-tray -->
-
 <?php
 get_footer();

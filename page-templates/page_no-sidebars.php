@@ -44,8 +44,6 @@ get_header(); ?>
 		<?php endif; ?>
 		
 	</div><!-- #primary -->
-	
-</div><!-- #content-tray -->
 
 <?php
 get_footer();

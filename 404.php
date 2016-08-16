@@ -33,7 +33,7 @@ get_header(); ?>
 					
 					$request = $GLOBALS['wp_query']->query;
 					// $request = explode( '/', parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
-					$search = preg_replace('/\W+/', '+', urldecode( array_pop( $request ) ) );
+					$search = preg_replace('/\W+/', '+', urldecode( end( $request ) ) );
 					
 						$query = new WP_Query( array( 's' => $search, 'posts_per_page' => 10, 'nopaging' => true ) );
 
@@ -74,8 +74,6 @@ get_header(); ?>
 		<?php endif; ?>
 		
 	</div><!-- #primary -->
-
-</div><!-- #content-tray -->
 
 <?php
 get_footer();

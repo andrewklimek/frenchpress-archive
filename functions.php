@@ -253,6 +253,8 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 /**
- * WooCommerce Support... would be nice to make this conditional
+ * WooCommerce Support
  */
-require get_template_directory() . '/inc/woocommerce.php';
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}

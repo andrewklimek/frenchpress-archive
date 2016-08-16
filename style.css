@@ -227,7 +227,7 @@ nav ul ul {
 	top: 100%;
 	left: -100%;
 	right: -100%;
-	margin: auto;
+	margin: 0  auto;
 /*	max-width: none;*/
 	width: 16em;
 }
@@ -548,7 +548,7 @@ nav.mobile ul ul li.clicked > ul {
 
 #site-navigation.mobile span.menu-toggle {
 	display: inline-block;
-	z-index: 9999;
+	z-index: 999;
 	line-height: 0;
 	padding: 1.50rem;
 	width: 1.50rem;
@@ -560,6 +560,11 @@ nav.mobile ul ul li.clicked > ul {
 }
 #site-navigation.mobile ul.menu {
 	display: none;
+}
+@media (max-width: 800px) {
+	#site-navigation:not(.desktop) ul.menu {
+		display: none;
+	}
 }
 #site-navigation.mobile ul ul {
 	position: static;
@@ -576,7 +581,7 @@ body.mobile-nav-open #site-navigation ul.menu,
 body.mobile-nav-open #site-navigation li.menu-item-has-children.clicked {
 	overflow: auto;
 	position: fixed;
-	z-index: 9998;
+	z-index: 998;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -601,7 +606,7 @@ body.mobile-nav-open > #page > #content, body.mobile-nav-open > #page > #colopho
 	visibility: hidden;
 }
 /* Cheap way of fixing sub-menues on the end */
-li.menu-item-has-children:nth-last-child(-n+3) ul {
+li:nth-last-child(-n+3) ul {
 /*	right: -1.50rem;*/
 /*	left: initial;*/
 }

@@ -19,7 +19,12 @@
 	
 	function checkMobileMenu(){
 		if ( !~document.body.className.indexOf('mobile-nav-open') ){
-		container.className = container.className.replace(' mobile','');
+			
+			
+			container.className = container.className.replace(' mobile','');
+			if ( !~container.className.indexOf('desktop') ){
+				container.className += ' desktop';
+			}
 		
 			if ( container.offsetWidth / container.offsetHeight < 2.4 ){
 				//appears too tall but lets test removing it
@@ -28,14 +33,16 @@
 				// container.style.display = '';
 				//
 				// if ( document.getElementById( 'site-header-main' ).offsetHeight > refHeight ){
-					container.className += ' mobile';
+				container.className = container.className.replace(' desktop',' mobile');
+	
+				// container.className += ' mobile';
 				// }
 			}
 		}
 	}
 	checkMobileMenu();
 	window.addEventListener( 'resize', checkMobileMenu );
-	// document.addEventListener( 'loaded', checkMobileMenu );
+	// window.addEventListener( 'loaded', checkMobileMenu );
 
 	button = container.querySelector( '.menu-toggle' );
 	if ( 'undefined' === typeof button ) {

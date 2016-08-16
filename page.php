@@ -52,9 +52,6 @@ get_header(); ?>
 <?php
 if ( apply_filters( 'frenchpress_page_sidebar', true ) ) {
 	get_sidebar();
-} ?>
-	
-</div><!-- #content-tray -->
+}
 
-<?php
 get_footer();

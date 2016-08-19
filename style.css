@@ -37,7 +37,7 @@ html {
 @media (max-width:600px) { html { font-size: 90%; } }
 @media (min-width:1500px) { html { font-size: 120%; } }
 
-/* It is considered by some as best practice to use box-sizing: inherit; in the following block (*) and box-sizing: border-box; only in the html block. I don't buy this yet, because if I content-box the main article area for example so the width actually means the length of a line of text, then the child elements get messed up, like a button where the width should include the padding.  in fact I may want content-box most places (pictures for example) and put box sizing only on buttons?  I guess box sizing has the most advantage for % based layouts where you need to add up to 100%, but this theme is different. */
+/* It is considered by some as best practice to use box-sizing: inherit; in the following block (*) and box-sizing: border-box; only in the html block. I don't buy this yet, because if I content-box the main article area for example so the width actually means the length of a line of text, then the child elements get messed up, like a button where the width should include the padding.  in fact I may want content-box most places (pictures for example) and put box sizing only on buttons?  I guess box sizing has the most advantage for % based layouts where you need to add up to 100% */
 *, *:before, *:after {
 	box-sizing: border-box;
 	margin: 0;
@@ -108,6 +108,9 @@ h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 /*--------------------------------------------------------------
 *  Element Normalisation
 --------------------------------------------------------------*/
+main {
+	display: block;/* IE and such */
+}
 li > ul, li > ol {
 	margin: 0;
 }
@@ -122,7 +125,7 @@ pre {
 pre, code, kbd, samp, var {
 	font-family: monospace;
 }
-img, figure, svg {
+img, figure {
 	max-width: 100%;
 	height: auto;
 	/*box-sizing: content-box;*//* is this smart? prob not seems to break when img has padding on sides */
@@ -293,6 +296,7 @@ textarea#comment {
 /* hack because 100vh definitely doesn't work in IE11 */
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	html, body, #page { height: 100%; }
+	* { -ms-flex: 0 1 auto; }/* flex default is wrong in IE10 */
 }
 
 #masthead, #colophon {
@@ -359,34 +363,70 @@ visibility: hidden;
 /*--------------------------------------------------------------
 *  Magic Layout Classes
 --------------------------------------------------------------*/
+.center, .autocol, [class^="card"],
+.center > *, .autocol > *, [class^="card"] > * {
+	max-width: 100%;/* IE bug */
+}
 .center {
 	min-height: 100%;/* maybe? */
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 /*	flex-wrap: wrap;*/
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-ms-flex-line-pack: center;
+	    align-content: center;
 }
 .center.left, .card.left {
-	align-items: flex-start;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	            -ms-grid-row-align: flex-start;
+	        align-items: flex-start;
 }
 .center.right, .card.right {
-	align-items: flex-end;
+	-webkit-box-align: end;
+	    -ms-flex-align: end;
+	            -ms-grid-row-align: flex-end;
+	        align-items: flex-end;
 }
 .center.top {
-	justify-content: flex-start;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
 }
 .center.bottom {
-	justify-content: flex-end;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
 }
 [class^="card"]  {
+	max-width: 100%;/* IE bug */
 /*	align-self: stretch;*/
-	flex: 1 1 auto;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 1 auto;
+	        flex: 1 1 auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 }
 .card-centered > :nth-last-child(2) {
     margin: auto;
@@ -401,6 +441,7 @@ visibility: hidden;
 .card-centered > :nth-last-child(3) {
     margin-bottom: 0;
 }
+@media (min-width:500px){
 .autocol {
 	clear: both;
 	display: -webkit-box;
@@ -413,13 +454,19 @@ visibility: hidden;
 	justify-content: space-around;
 }
 .autocol.center {
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 }
 .autocol.center.bottom {
-	align-items: flex-end;
+	-webkit-box-align: end;
+	    -ms-flex-align: end;
+	            -ms-grid-row-align: flex-end;
+	        align-items: flex-end;
 }
 .autocol.nowrap {
-	flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
 }
 
 .autocol:not(.nogrow) > :not(.nogrow):not(.img):not(img):not(figure) {
@@ -449,10 +496,12 @@ visibility: hidden;
 .autocol > p:empty {/* Stupid fix for wpautop */
 	display: none;
 }
-
+}
 .round {
 	border-radius: 50%;
 }
+
+
 
 /*#page {
 min-height: 100vh;

@@ -20,18 +20,18 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
+<body <?php body_class('mobile'); ?>>
+<div id="site" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+	<header id="header" class="site-header">
 		
 		<?php if ( is_active_sidebar( 'top' ) ) : ?>
 			<div id="top-widget" class="widget-area" role="complementary">
 				<div class="tray">
 					<?php dynamic_sidebar( 'top' ); ?>
 				</div>
-			</div><!-- #top-widget -->
+			</div>
 		<?php endif;
 	
 		if ( is_active_sidebar( 'header-1' ) ) : ?>
@@ -39,7 +39,7 @@
 				<div class="tray">
 					<?php dynamic_sidebar( 'header-1' ); ?>
 				</div>
-			</div><!-- #header-1 -->
+			</div>
 		<?php endif;
 	
 		if ( is_active_sidebar( 'header-2' ) ) : ?>
@@ -47,7 +47,7 @@
 				<div class="tray">
 					<?php dynamic_sidebar( 'header-2' ); ?>
 				</div>
-			</div><!-- #header-2 -->
+			</div>
 		<?php else : ?>
 	
 	<div id="site-header-main">
@@ -108,19 +108,18 @@
 			* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
 			**/
 			if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) : ?>
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<span class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<svg width="24" height="24" viewBox="0 0 24 24">
+			<nav id="site-navigation" class="main-navigation">
+				<span class="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						<path id="menu-toggle-close" d="M13.4 12l9.3-9.3c0.4-0.4 0.4-1 0-1.4 -0.4-0.4-1-0.4-1.4 0L12 10.6 2.7 1.3c-0.4-0.4-1-0.4-1.4 0 -0.4 0.4-0.4 1 0 1.4L10.6 12l-9.3 9.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0L12 13.4l9.3 9.3c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4L13.4 12z"/>
 						<path id="menu-toggle-open"  d="M23 20H1c-0.6 0-1 0.4-1 1s0.4 1 1 1h22c0.6 0 1-0.4 1-1S23.6 20 23 20zM23 11H1c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1h22c0.6 0 1-0.4 1-1C24 11.4 23.6 11 23 11zM1 4h22c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1H1C0.4 2 0 2.4 0 3 0 3.6 0.4 4 1 4z"/>
 					</svg>
 				</span>
 				<?php echo $menu; ?>
-			</nav><!-- #site-navigation -->
+			</nav>
 			<?php endif; // End Nav check ?>
 		</div><!-- .tray -->
 	</div><!-- .site-header-main -->
-	
 	<?php endif;//is_active_sidebar( 'header-2' )
 
 	if ( is_active_sidebar( 'header-3' ) ) : ?>
@@ -128,9 +127,8 @@
 			<div class="tray">
 				<?php dynamic_sidebar( 'header-3' ); ?>
 			</div>
-		</div><!-- #header-3 -->
+		</div>
 	<?php endif; ?>
-		
-	</header><!-- #masthead -->
-
+	</header>
 	<div id="content" class="site-content">
+		<div id='content-tray' class='<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? 'tray--full-width' : 'tray'; ?>'>

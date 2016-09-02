@@ -7,73 +7,70 @@
  * @package FrenchPress
  */
 
-get_header(); ?>
+get_header();
+?>
+<div id="primary" class="content-area">
+	
+	<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
+		<div id="content-before" class="widget-area" role="complementary">
+			<?php dynamic_sidebar( 'content-before' ); ?>
+		</div>
+	<?php endif; ?>
+	
+	<main id="main" class="site-main">
 
-<div id="content-tray" class="tray">
+		<section class="error-404 not-found">
+			<header class="page-header">
+				<h1 class="page-title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
+			</header>
 
-	<div id="primary" class="content-area">
-		
-		<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
-			<div id="content-before" class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'content-before' ); ?>
-			</div><!-- #content-before -->
-		<?php endif; ?>
-		
-		<main id="main" class="site-main" role="main">
+			<div class="page-content">
+				<p><?php esc_html_e( 'Unfortunately, you clicked a broken link.', 'frenchpress' ); ?></p>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
-				</header><!-- .page-header -->
+				<?php
+				
+				$request = $GLOBALS['wp_query']->query;
+				// $request = explode( '/', parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
+				$search = preg_replace('/\W+/', '+', urldecode( end( $request ) ) );
+				
+					$query = new WP_Query( array( 's' => $search, 'posts_per_page' => 10, 'nopaging' => true ) );
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'Unfortunately, you clicked a broken link.', 'frenchpress' ); ?></p>
+					if ( $query->have_posts() ) : ?>
 
-					<?php
+						<h3><?php esc_html_e( 'Perhaps you were looking for one of these:', 'frenchpress' ); ?></h3>
+
+						<?php
+						/* Start the Loop */
+						while ( $query->have_posts() ) : $query->the_post();
+
+							get_template_part( 'template-parts/content', 'search' );
+
+						endwhile;
+
+						// the_posts_navigation();
+
+					// else :
+
+					wp_reset_postdata();
 					
-					$request = $GLOBALS['wp_query']->query;
-					// $request = explode( '/', parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
-					$search = preg_replace('/\W+/', '+', urldecode( end( $request ) ) );
+					endif; ?>
 					
-						$query = new WP_Query( array( 's' => $search, 'posts_per_page' => 10, 'nopaging' => true ) );
+					<h3><?php esc_html_e( 'Feel free to search for what you&rsquo;re looking for.', 'frenchpress' ); ?></h3>
+					
+					<?php get_search_form();
+					
+				?>
+			</div><!-- .page-content -->
+		</section>
 
-						if ( $query->have_posts() ) : ?>
-
-							<h3><?php esc_html_e( 'Perhaps you were looking for one of these:', 'frenchpress' ); ?></h3>
-
-							<?php
-							/* Start the Loop */
-							while ( $query->have_posts() ) : $query->the_post();
-
-								get_template_part( 'template-parts/content', 'search' );
-
-							endwhile;
-
-							// the_posts_navigation();
-
-						// else :
-
-						wp_reset_postdata();
-						
-						endif; ?>
-						
-						<h3><?php esc_html_e( 'Feel free to search for what you&rsquo;re looking for.', 'frenchpress' ); ?></h3>
-						
-						<?php get_search_form();
-						
-					?>
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-		
-		<?php if ( is_active_sidebar( 'content-after' ) ) : ?>
-			<div id="content-after" class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'content-after' ); ?>
-			</div><!-- #content-after -->
-		<?php endif; ?>
-		
-	</div><!-- #primary -->
-
+	</main>
+	
+	<?php if ( is_active_sidebar( 'content-after' ) ) : ?>
+		<div id="content-after" class="widget-area" role="complementary">
+			<?php dynamic_sidebar( 'content-after' ); ?>
+		</div>
+	<?php endif; ?>
+	
+</div><!-- #primary -->
 <?php
 get_footer();

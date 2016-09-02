@@ -9,6 +9,7 @@
 
 if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error_log("***$l***\n".var_export($v,true));}}}
 
+
 if ( ! function_exists( 'frenchpress_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -204,9 +205,10 @@ function frenchpress_scripts() {
 	$suffix = SCRIPT_DEBUG ? "" : ".min";
 	
 	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri() ); // Use filemtime for dev to avoid cache
-	wp_enqueue_style( 'frenchpress-style', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), filemtime( get_stylesheet_directory().'/style'.$suffix.'.css' ) );
+	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), filemtime( get_stylesheet_directory().'/style'.$suffix.'.css' ) );
+	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
 
-	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160729', true );
+	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160831', true );
 
 	wp_enqueue_script( 'frenchpress-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix'.$suffix.'.js', array(), '160729', true );
 
@@ -215,6 +217,27 @@ function frenchpress_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'frenchpress_scripts' );
+
+add_action( 'frenchpress_body_after_begin', 'frenchpress_mobile_test', 0 );
+function frenchpress_mobile_test() {
+	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
+	print "
+	<script>
+	function checkForDesktop(){
+		if ( window.innerWidth > {$breakpoint} ) {
+			if ( ~document.body.className.indexOf('mobile') ) {
+				document.body.className = document.body.className.replace(' mobile',' desktop');
+			}
+		} else if ( ~document.body.className.indexOf('desktop') ) {
+			document.body.className = document.body.className.replace(' desktop',' mobile');
+		}
+	}
+	checkForDesktop();
+	window.addEventListener( 'resize', checkForDesktop );
+	</script>
+	";
+}
+
 
 /**
  * Implement the Custom Header feature.

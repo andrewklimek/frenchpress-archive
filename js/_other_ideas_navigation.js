@@ -15,6 +15,50 @@
 	if ( ! container ) {
 		return;
 	}
+	
+	
+	function checkMobileMenu(){
+		if ( !~document.body.className.indexOf('mobile-nav-open') ){
+			container.className = container.className.replace(' mobile','');
+			if ( !~container.className.indexOf('desktop') ){
+				container.className += ' desktop';
+			}
+			if ( container.offsetWidth / container.offsetHeight < 2.4 ){
+				//appears too tall but lets test removing it
+				// container.style.display = 'none';
+				// refHeight = document.getElementById( 'site-header-main' ).offsetHeight;
+				// container.style.display = '';
+				// if ( document.getElementById( 'site-header-main' ).offsetHeight > refHeight ){
+				container.className = container.className.replace(' desktop',' mobile');
+				// container.className += ' mobile';
+				// }
+			}
+		}
+	}
+	// checkMobileMenu();
+	// window.addEventListener( 'resize', checkMobileMenu );
+	// window.addEventListener( 'loaded', checkMobileMenu );
+
+	function checkForDesktop(){
+		if ( window.innerWidth > breakpoint ) {
+			if ( ~document.body.className.indexOf('mobile') ) {
+				document.body.className = document.body.className.replace(' mobile',' desktop');
+			}
+		} else if ( ~document.body.className.indexOf('desktop') ) {
+			document.body.className = document.body.className.replace(' desktop',' mobile');
+		}
+	}
+	// document.body.className += ' mobile';// added to header.php
+
+	var breakpoint = ( typeof(BREAKPOINTS) !== "undefined" ) ? BREAKPOINTS.main : 860;
+	// Set custom breakpoint in functions.php:
+	// add_action( 'wp_enqueue_scripts', function() {
+	// wp_localize_script( 'frenchpress-navigation', 'BREAKPOINTS', array( 'main' => 800 ) );
+	// }, 11 );// 11 if used in a child theme so it's called after the parent theme enqueues this JS file
+	checkForDesktop();
+	window.addEventListener( 'resize', checkForDesktop );
+
+
 
 	button = container.querySelector( '.menu-toggle' );
 	if ( 'undefined' === typeof button ) {

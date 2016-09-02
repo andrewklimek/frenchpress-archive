@@ -7,11 +7,20 @@
  * @package FrenchPress
  */
 
-if ( ! function_exists( 'frenchpress_posted_on' ) ) :
+if ( ! function_exists( 'frenchpress_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function frenchpress_posted_on() {
+function frenchpress_entry_meta() {
+	
+	// Check for a custom meta and exit if one is found.
+	// This is useful for setting a custom meta format only on specific page types.
+	// eg, to customize meta for archives only, the first line in the filter could be "if ( !is_archive() ) return $skip_the_rest;"
+	if ( apply_filters( 'frenchpress_entry_meta_header', false ) ) {
+		continue;
+	}
+	// default:
+	
 	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 
 	$time_string = sprintf( $time_string,
@@ -19,7 +28,7 @@ function frenchpress_posted_on() {
 		esc_html( get_the_date() )
 	);
 
-	$posted_on = sprintf(
+	$entry_meta = sprintf(
 		esc_html_x( 'Posted on %s', 'post date', 'frenchpress' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
@@ -29,8 +38,7 @@ function frenchpress_posted_on() {
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
+	echo "<p class='entry-meta-header'><span class='posted-on'>{$entry_meta}</span><span class='byline'> {$byline}</span></p>"; // WPCS: XSS OK.
 }
 endif;
 
@@ -39,6 +47,7 @@ if ( ! function_exists( 'frenchpress_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function frenchpress_entry_footer() {
+	print "<p class='entry-meta-footer'>";
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
@@ -70,6 +79,7 @@ function frenchpress_entry_footer() {
 		'<span class="edit-link">',
 		'</span>'
 	);
+	print "</p>";
 }
 endif;
 

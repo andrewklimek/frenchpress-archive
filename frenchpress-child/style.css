@@ -1,9 +1,9 @@
 /*
-Theme Name:Frenchpress Child Theme
+Theme Name: ALOER Frenchpress Child Theme
 Theme URI:http://andrewklimek.com
-Description:a child theme of Frenchpress
+Description:a child theme of Frenchpress, for aloer.fr
 Author:Andrew J Klimek
-Author URI:http://andrewklimek.com
+Author URI:http://readycat.net
 Template:frenchpress
 Version:1.0.0
 License:GNU General Public License v2 or later
@@ -12,58 +12,169 @@ Tags:
 */
 
 
-/*Main Layout*/
-.content-width {
-	max-width: 64rem;
-	margin: 0 auto;
-}
 
 /*Main Background Color*/
-html, main, .site-branding {
-	/*	background-color: #fff;*/
-}
-/*Main Font Styles*/
 html {
-	/*	color: #1c355c;*/
-	/*	font-family: arial, sans-serif;*/
-	/*	font-size: 18px;*/
+	background-color: #fff;
+}
+a {
+	text-decoration: none;
+	color: #E21C21;
+}
+p > a {
+	text-decoration: underline;
 }
 
-/*Buttons and Links*/
-a.button, input[type=submit], button {
-	background-color: #FF6655;
+
+/*Main Font Styles*/
+html {
+	font-family: raleway, arial, sans-serif;
+}
+/*b, strong {
+font-weight: 500;
+}*/
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+h1 {
+	font-size: 1.9rem;
+	line-height: 0.9;
+}
+@media (min-width:600px) {
+	h1 {
+		font-size: 4.375rem;
+	}
+}
+h2 {
+	font-size: 1.375rem;
+	color: #E21C21;
+}
+h3, .widget h2 {
+/*	font-size: 1.4rem;*/
+	/*	font-weight: 700;*/
+}
+h1 + h3 {
+	padding-top: 0;
+	margin-top: 0;
+}
+h4, .widget h3 {
+	font-size: 1.267rem;
+}
+h5, .widget h4 {
+	font-size: 1.267rem;
+}
+h6, .widget h5 {
+	font-size: 1.1333rem;
+}
+
+
+
+.hero {
+	font-size: 1.4rem;
+	font-weight: 300;
+	color: #00739e;
+}
+
+.tray {
+	max-width: 960px;
+}
+
+/*header*/
+#header {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+	border-bottom: 5px solid #666;
+}
+#content {
+    margin-top: 146px;/* Lucky Number */
+}
+/*header: logo - menu - new method with tables cause of IE*/
+#site-header-main > .tray {
+	display: table;
+}
+.site-branding {
+	padding: 1rem;
+	display: table-cell;
+	vertical-align: middle;
+}
+.main-navigation {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/**
+* Navigation
+**/
+
+#primary-menu {
+    min-height: 102px;/* until we switch back to flex */
+}
+body.home #site-navigation svg {
+	fill: #E21C21;
+}
+.main-navigation.desktop .sub-menu {
+	background: #E21C21;
+}
+.main-navigation.desktop .sub-menu a {
+	color: #fff;
+}
+.main-navigation.desktop a {
+	text-transform: uppercase;
+/*	padding: 1.50rem;*/
+	/*	color: #37233B;*/
+	-webkit-transition: color 0.4s ease 0s;
+	transition: color 0.4s ease 0s;
+	font-weight: 700;
+}
+.main-navigation ul ul li a {
+/*	text-transform: none;*/
+}
+.main-navigation:not(.mobile) li:hover > a,
+.main-navigation:not(.mobile) li.focus > a {
+	color: #000;
+}
+.main-navigation:not(.mobile) .current-menu-parent > a,
+.main-navigation .current-menu-item > a {
+	color: #000;
+}
+
+
+
+/* BUTTON */
+a.button, button, input[type=submit] {
+	background-color: #e3e3e3;
 	display: inline-block;
-	padding: 15px 20px;
-	margin: 5px;
-	/*border-radius: 50px;*/
-	min-width: 140px;
+	padding: .75rem 1.5rem;
+	margin: 0 1.50rem 0 0;
+	min-width: 10rem;
 	text-align: center;
 	text-decoration: none;
-	/*text-transform: uppercase;*/
-	/*-webkit-transition: all 0.2s;*/
-	/*transition: all 0.2s;*/
+	text-transform: uppercase;
+	-webkit-transition: all .2s;
+	transition: all .2s;
 	border: none;
 	font-family: inherit;
 	font-size: inherit;
-	color: inherit;
+	color: inherit
 }
-a.button:hover, input[type=submit]:hover, button:hover{
-	opacity: 0.8;
+a.button:hover, button:hover, input[type=submit]:hover {
+	background: #47a7c4;
+	color: #fff
 }
-
 
 /*POST NAV*/
-.nav-links {
-	height: 1rem;
-	font-size: 0.7rem;
-}
 .nav-previous {
-	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAANCAYAAACUwi84AAAAW0lEQVR42qWOQQqAMAwE9QPa+gGfrn4nBG19UHURSmS19eDCnGYCaXiq6kEE05t0IIADJItYGrEmA/A16a7roswjmcDIn+8UraC7B8OfqP+KtuxL0WL2Gc0i0p7r0+SupTpTJgAAAABJRU5ErkJggg==') no-repeat left center;
-	padding-left: 18px;
+	background: url("data:image/svg+xml,%3Csvg fill='%23ccc' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 13L8 8l5-5L10.5.5 3 8l7.5 7.5'/%3E%3C/svg%3E") no-repeat left 60%;
+	padding-left: 21px;
 	float: left;
+	margin: 1.50rem;
 }
 .nav-next {
-	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAANCAYAAACUwi84AAAAPklEQVQY02NgAIIzZ84sAOILQCzAgA6gkv+hGFMRVPA/TkUgDm0VobtHAU3Bf+JMwOsGgg4kxvX4Q5JQXAAAdXPiRQAmj7UAAAAASUVORK5CYII=') no-repeat right center;
-	padding-right: 18px;
+	background: url("data:image/svg+xml,%3Csvg fill='%23ccc' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3l5 5-5 5 2.5 2.5L13 8 5.5.5'/%3E%3C/svg%3E") no-repeat right 60%;
+	padding-right: 21px;
 	float: right;
+	margin: 1.50rem;
 }

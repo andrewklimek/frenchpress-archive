@@ -20,14 +20,15 @@
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php frenchpress_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
-	</header><!-- .entry-header -->
-
+		if ( 'post' === get_post_type() )
+			frenchpress_entry_meta();
+		?>
+	</header>
+	<?php if ( is_archive() && apply_filters( 'frenchpress_archive_excerpts', true ) ) : // Only display Excerpts for Archive ?>
+	<div class="entry-summary">
+		<?php the_excerpt(); ?>
+	</div>
+	<?php else : ?>
 	<div class="entry-content">
 		<?php
 			the_content( sprintf(
@@ -41,9 +42,9 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
-
+	</div>
+	<?php endif; ?>
 	<footer class="entry-footer">
 		<?php frenchpress_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+	</footer>
+</article>

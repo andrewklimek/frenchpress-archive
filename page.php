@@ -12,46 +12,42 @@
  * @package FrenchPress
  */
 
-get_header(); ?>
+// hook for default page layout until I make an option page. Use 'sidebars, 'full-width', or 'no-sidebars'
+$layout = apply_filters( 'frenchpress_page_layout', 'sidebars' );
 
-<div id="content-tray" class="tray">
+get_header();
+?>
+<div id="primary" class="content-area">
+	<?php
+	if ( is_active_sidebar( 'content-before' ) ) : ?>
+		<div id="content-before" class="widget-area" role="complementary">
+			<?php dynamic_sidebar( 'content-before' ); ?>
+		</div>
+	<?php endif;
+	?>
+	<main id="main" class="site-main<?php if ( $layout === 'full-width' ) echo ' main-full-width' ?>">
+		<?php
+		while ( have_posts() ) : the_post();
 
-	<div id="primary" class="content-area">
-	
-		<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
-			<div id="content-before" class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'content-before' ); ?>
-			</div><!-- #content-before -->
-		<?php endif; ?>
-	
-		<main id="main" class="site-main" role="main">
+			get_template_part( 'template-parts/content', 'page' );
 
-			<?php
-			while ( have_posts() ) : the_post();
-
-				get_template_part( 'template-parts/content', 'page' );
-
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
-	
-		<?php if ( is_active_sidebar( 'content-after' ) ) : ?>
-			<div id="content-after" class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'content-after' ); ?>
-			</div><!-- #content-after -->
-		<?php endif; ?>
-	
-	</div><!-- #primary -->
-
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+		endwhile; // End of the loop.
+		?>
+	</main>
+	<?php
+if ( is_active_sidebar( 'content-after' ) ) : ?>
+	<div id="content-after" class="widget-area" role="complementary">
+		<?php dynamic_sidebar( 'content-after' ); ?>
+	</div>
+	<?php
+endif; ?>
+</div>
 <?php
-if ( apply_filters( 'frenchpress_page_sidebar', true ) ) {
+if ( $layout === 'sidebars' ) {
 	get_sidebar();
 }
-
 get_footer();

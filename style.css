@@ -24,7 +24,8 @@ html {
 	background-color: #fffdfa;
 	font-size: 100%;
 	line-height: 1.50;
-/*	text-rendering: geometricPrecision;*/
+	word-wrap: break-word;
+	/*	text-rendering: geometricPrecision;*/
 }
 @media (max-width:600px) { html { font-size: 90%; } }
 @media (min-width:1500px) { html { font-size: 120%; } }
@@ -72,17 +73,17 @@ h1, .h1 {
 h2, .h2 {
 	font-size: 2.369rem;
 }
-h3, .h3, .widget h2 {
+h3, .h3 {
 	font-size: 1.778rem;
 }
-h4, .h4, .widget h3 {
+h4, .h4 {
 	font-size: 1.333rem;
 }
-h5, .h5, .widget h4 {
+h5, .h5 {
 	font-size: 1.333rem;
 	font-weight: bold;
 }
-h6, .h6, .widget h5 {
+h6, .h6 {
 	font-size: 1.333rem;
 	font-style: italic;
 }
@@ -132,13 +133,13 @@ img, figure {
 	/*box-sizing: content-box;*//* is this smart? prob not seems to break when img has padding on sides */
 }
 img:only-child {/* removes line-height from div wrappers */
-/*    display: block;*/
+	/*    display: block;*/
 }
 embed, iframe, object {
 	max-width: 100%;
 }
 figcaption {
-/*	font-size: 0.667em;*//* seems old school */
+	/*	font-size: 0.667em;*//* seems old school */
 	margin: 1.50rem 0;
 }
 /* This one's good sometimes, but bad for skinny columns
@@ -209,12 +210,12 @@ textarea {
 	display: block;
 }
 form input[type=submit] {/* still needed ? */
-/*	margin: 0;*/
+	/*	margin: 0;*/
 }
 fieldset {/* use * selector? */
-/*	margin: 0;*/
-/*	padding: 0;*/
-/*	border: 0;*/
+	/*	margin: 0;*/
+	/*	padding: 0;*/
+	/*	border: 0;*/
 }
 
 
@@ -232,8 +233,8 @@ fieldset {/* use * selector? */
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
 }
 
 /* hack because 100vh definitely doesn't work in IE11 */
@@ -245,15 +246,15 @@ fieldset {/* use * selector? */
 #header, #footer {
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 0 auto;
-	    -ms-flex: 0 0 auto;
-	        flex: 0 0 auto;/* none */
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;/* none */
 }
 
 #content {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 0 auto;
-	    -ms-flex: 1 0 auto;
-	        flex: 1 0 auto;
+	-ms-flex: 1 0 auto;
+	flex: 1 0 auto;
 	/* width: 100%;*/
 }
 #content-tray {
@@ -262,15 +263,15 @@ fieldset {/* use * selector? */
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-flow: row wrap;
-	    -ms-flex-flow: row wrap;
-	        flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
-	    -ms-flex-align: start;
-	        align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
 	-webkit-justify-content: space-around;
-	    -ms-flex-pack: distribute;
-	        justify-content: space-around;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
 }
 .tray {
 	width: 100%;
@@ -281,8 +282,8 @@ fieldset {/* use * selector? */
 #primary {
 	-webkit-box-flex: 100;
 	-webkit-flex: 100 1 auto;
-	    -ms-flex: 100 1 auto;
-	        flex: 100 1 auto;
+	-ms-flex: 100 1 auto;
+	flex: 100 1 auto;
 	width: 30rem;
 	max-width: 100%;/* not 100% sure why we need this */
 }
@@ -290,8 +291,8 @@ fieldset {/* use * selector? */
 #secondary, #tertiary {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
-	    -ms-flex: 1 1 auto;
-	        flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
 	width: 16em;
 }
 
@@ -324,7 +325,7 @@ body.desktop .main-navigation ul ul {
 	left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
 	right: -16em;
 	margin: 0  auto;
-/*	max-width: none;*/
+	/*	max-width: none;*/
 	width: 16em;
 }
 nav a {
@@ -335,15 +336,34 @@ nav a[href="#"], nav a:not([href]) {
 }
 
 /* Main Nav */
+
+#obfuscator {
+	position: fixed;
+	background-color: transparent;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 4;
+	visibility: hidden;
+	-webkit-transition: background-color .2s ease;
+	transition: background-color .2s ease;
+}
+#obfuscator.active {
+	background-color: rgba(0,0,0,.4);
+	visibility: visible;
+}
+
 body.mobile .main-navigation {
 	z-index: 999;
-	height: calc(100% + 60px);
+/*	height: calc(100% + 60px);*/
+	height: 100%;
 	position: fixed;
 	top: 0;
 	right: 0;
-	width: 320px;
-	margin: 0 -320px 0 0;
-	padding: 0.75em 0.75em 60px;
+	width: 306px;
+	margin: 0 -306px 0 0;
+	padding: 0.75em;
 	-webkit-transition: -webkit-transform 0.4s ease-in-out;
 	transition: -webkit-transform 0.4s ease-in-out;
 	transition: transform 0.4s ease-in-out;
@@ -351,12 +371,14 @@ body.mobile .main-navigation {
 	display: block;
 	background: #fff;
 	text-align: left;
+	-webkit-overflow-scrolling: touch;
+	will-change: transform;
 }
 body.mobile-nav-open .main-navigation {
 	max-width: 90%;
-	-webkit-transform: translateX(-320px);
-	    -ms-transform: translateX(-320px);
-	        transform: translateX(-320px);
+	-webkit-transform: translateX(-306px);
+	    -ms-transform: translateX(-306px);
+	        transform: translateX(-306px);
 	box-shadow: 0 0 16px rgba(0,0,0,0.1);
 	overflow: auto;
 }
@@ -367,14 +389,14 @@ body.mobile-nav-open .main-navigation {
 
 @media (min-width:600px){
 	body.desktop nav.main-navigation ul.menu {
-	display: table;
-	text-align: center;
+		display: table;
+		text-align: center;
 	}
 	body.desktop nav.main-navigation ul.menu > li {
-	display: table-cell;
-	position: relative;
-	vertical-align: middle;
-	padding: 0.75rem;
+		display: table-cell;
+		position: relative;
+		vertical-align: middle;
+		padding: 0.75rem;
 	}
 	span.menu-toggle {
 		display: none;
@@ -414,7 +436,7 @@ body.mobile span.menu-toggle {
 	position: absolute;
 	right: 101%;
 	top: 4rem;
-/*    background: #fff;*/
+	/*    background: #fff;*/
 }
 body.mobile-nav-open.mobile span.menu-toggle {
 	right: 0.75rem;
@@ -454,8 +476,8 @@ body.mobile-nav-open path#menu-toggle-close {
 .flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
-	    -ms-flex: 1 1 0%;
-	        flex: 1 1 0%;/* aka 1 but IE10 is wrong */
+	-ms-flex: 1 1 0%;
+	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 	display: block;/* inline items don't work in IE10?? */
 }
 .flex {
@@ -464,116 +486,116 @@ body.mobile-nav-open path#menu-toggle-close {
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .flex--column {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
 }
 .flex--nowrap {
 	-webkit-flex-wrap: nowrap;
-	    -ms-flex-wrap: nowrap;
-	        flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
 }
 .flex--top {
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
-	    -ms-flex-align: start;
-	            -ms-grid-row-align: flex-start;
-	        align-items: flex-start;
+	-ms-flex-align: start;
+	-ms-grid-row-align: flex-start;
+	align-items: flex-start;
 }
 .flex--middle {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	            -ms-grid-row-align: center;
-	        align-items: center;
+	-ms-flex-align: center;
+	-ms-grid-row-align: center;
+	align-items: center;
 }
 .flex--bottom {
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
-	    -ms-flex-align: end;
-	            -ms-grid-row-align: flex-end;
-	        align-items: flex-end;
+	-ms-flex-align: end;
+	-ms-grid-row-align: flex-end;
+	align-items: flex-end;
 }
 .flex--center {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
 .flex--space-between {
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
 }
 .flex--space-around {
 	-webkit-justify-content: space-around;
-	    -ms-flex-pack: distribute;
-	        justify-content: space-around;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
 }
 .flex-item--top {
 	-webkit-align-self: flex-start;
-	    -ms-flex-item-align: start;
-	        align-self: flex-start;
+	-ms-flex-item-align: start;
+	align-self: flex-start;
 }
 .flex-item--bottom {
 	-webkit-align-self: flex-end;
-	    -ms-flex-item-align: end;
-	        align-self: flex-end;
+	-ms-flex-item-align: end;
+	align-self: flex-end;
 }
 .flex-item--middle {
 	-webkit-align-self: center;
-	    -ms-flex-item-align: center;
-	        align-self: center;
+	-ms-flex-item-align: center;
+	align-self: center;
 }
 .flex-item--none,
 .flex--none > .flex-item {
 	-webkit-box-flex: 0;
 	-webkit-flex: none;
-	    -ms-flex: none;
-	        flex: none;/* 0 0 auto */
+	-ms-flex: none;
+	flex: none;/* 0 0 auto */
 }
 .flex-item--auto,
 .flex--auto > .flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
-	    -ms-flex: 1 1 auto;
-	        flex: 1 1 auto;/* aka auto, but IE10 is wrong */
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 }
 .flex-item--initial,
 .flex--initial > .flex-item {
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 1 auto;
-	    -ms-flex: 0 1 auto;
-	        flex: 0 1 auto;/* aka initial, but IE10 is wrong */
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;/* aka initial, but IE10 is wrong */
 }
 .flex-item--no-shrink,
 .flex--no-shrink > .flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 0 auto;
-	    -ms-flex: 1 0 auto;
-	        flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
+	-ms-flex: 1 0 auto;
+	flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
 }
 .flex-item--magic,
 .flex--magic > .flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
-	    -ms-flex: 1 1 auto;
-	        flex: 1 1 auto;/* aka auto, but IE10 is wrong */
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 	width: 18em;
 }
 .flex-item--even,
 .flex--even > .flex-item {/* this is also the default */
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
-	    -ms-flex: 1 1 0%;
-	        flex: 1 1 0%;/* aka 1 but IE10 is wrong */
+	-ms-flex: 1 1 0%;
+	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 }
 /* growth ratios */
 .flex-item--1.flex-item{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}
@@ -621,34 +643,34 @@ body.mobile-nav-open path#menu-toggle-close {
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	        align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
 .aligner-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
-	    -ms-flex: 1 1 0%;
-	        flex: 1 1 0%;
+	-ms-flex: 1 1 0%;
+	flex: 1 1 0%;
 }
 .aligner-item--top {
 	-webkit-align-self: flex-start;
-	    -ms-flex-item-align: start;
-	        align-self: flex-start;
+	-ms-flex-item-align: start;
+	align-self: flex-start;
 }
 .aligner-item--bottom {
 	-webkit-align-self: flex-end;
-	    -ms-flex-item-align: end;
-	        align-self: flex-end;
+	-ms-flex-item-align: end;
+	align-self: flex-end;
 }
 .aligner-item--fixed {
 	-webkit-box-flex: 0;
 	-webkit-flex: none;
-	    -ms-flex: none;
-	        flex: none;
+	-ms-flex: none;
+	flex: none;
 	max-width: 50%;
 }
 
@@ -681,11 +703,11 @@ body.mobile-nav-open path#menu-toggle-close {
 	padding-bottom: 1.50rem;
 }
 article:not(:only-of-type) {/* in place of .hentry above. use tag instead of class to override easier */
-/*	padding-bottom: 1.50rem;*/
+	/*	padding-bottom: 1.50rem;*/
 }
 
 .entry-header, .entry-content, .entry-footer {
-/*	margin-bottom: 1.50rem;*/
+	/*	margin-bottom: 1.50rem;*/
 }
 .byline,
 .updated:not(.published) {
@@ -700,10 +722,10 @@ article:not(:only-of-type) {/* in place of .hentry above. use tag instead of cla
 	display: none;
 }
 /*.comment-content a,*/
-a {
-	word-wrap: break-word; /* Old syntax */
+/*a {
+	word-wrap: break-word;
 	overflow-wrap: break-word;
-}
+}*/
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
@@ -731,7 +753,7 @@ blockquote footer {
 	color: transparent;
 }
 :focus:-moz-placeholder {/* FF <= 18 (jan 2013) probably breaks the flex layout anyhow */
-/*	color: transparent !important;*/
+	/*	color: transparent !important;*/
 }
 
 th:only-of-type {
@@ -857,19 +879,19 @@ textarea#comment {
 	vertical-align: top;
 	width: 100%;
 }
-.gallery-columns-2 .gallery-item, .gallery-item{max-width: 50%;}
+.gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
 @media (min-width:600px){
-.gallery-columns-3 .gallery-item{max-width: 33.333%;}
-.gallery-columns-4 .gallery-item, .gallery-item{max-width: 25%;}
+	.gallery-columns-3 .gallery-item{width: 33.333%;}
+	.gallery-columns-4 .gallery-item, .gallery-item{width: 25%;}
 }
 @media (min-width:900px){
-.gallery-columns-5 .gallery-item{max-width: 20%;}
-.gallery-columns-6 .gallery-item, .gallery-item{max-width: 16.667%;}
+	.gallery-columns-5 .gallery-item{width: 20%;}
+	.gallery-columns-6 .gallery-item, .gallery-item{width: 16.667%;}
 }
 @media (min-width:1200px){
-.gallery-columns-7 .gallery-item{max-width: 14.286%;}
-.gallery-columns-8 .gallery-item{max-width: 12.5%;}
-.gallery-columns-9 .gallery-item{max-width: 11.111%;}
+	.gallery-columns-7 .gallery-item{width: 14.286%;}
+	.gallery-columns-8 .gallery-item{width: 12.5%;}
+	.gallery-columns-9 .gallery-item{width: 11.111%;}
 }
 /*--------------------------------------------------------------
 *  Print

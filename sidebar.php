@@ -8,12 +8,12 @@
  */
 
 if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-<div id="secondary" class="widget-area" role="complementary">
+<aside id="secondary" class="widget-area">
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</div>
+</aside>
 <?php endif;
 if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
-<div id="tertiary" class="widget-area" role="complementary">
+<aside id="tertiary" class="widget-area">
 	<?php dynamic_sidebar( 'sidebar-2' ); ?>
-</div>
+</aside>
 <?php endif;

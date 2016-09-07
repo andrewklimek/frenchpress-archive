@@ -16,40 +16,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
-<?php wp_head(); ?>
+<?php
+wp_head();
+?>
 </head>
-
 <body <?php body_class('mobile'); ?>>
 <div id="site" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
-
 	<header id="header" class="site-header">
-		
-		<?php if ( is_active_sidebar( 'top' ) ) : ?>
+		<?php
+		if ( is_active_sidebar( 'top' ) ) : ?>
 			<div id="top-widget" class="widget-area" role="complementary">
 				<div class="tray">
 					<?php dynamic_sidebar( 'top' ); ?>
 				</div>
 			</div>
-		<?php endif;
-	
+		<?php
+		endif;
 		if ( is_active_sidebar( 'header-1' ) ) : ?>
 			<div id="header-1" class="widget-area" role="complementary">
 				<div class="tray">
 					<?php dynamic_sidebar( 'header-1' ); ?>
 				</div>
 			</div>
-		<?php endif;
-	
+		<?php
+		endif;
 		if ( is_active_sidebar( 'header-2' ) ) : ?>
 			<div id="header-2" class="widget-area" role="complementary">
 				<div class="tray">
 					<?php dynamic_sidebar( 'header-2' ); ?>
 				</div>
 			</div>
-		<?php else : ?>
-	
+		<?php
+		else : ?>
 	<div id="site-header-main">
 		<div class="tray">
 			<div class="site-branding">
@@ -73,27 +72,23 @@
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 						<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
 					</a>
-					<?php else:
-		
-					if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 					<?php
-					endif;
-
+				endif;
+				if ( is_front_page() || is_home() ) : ?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<?php else : ?>
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<?php
+				endif;
 					$description = get_bloginfo( 'description', 'display' );
 					if ( $description || is_customize_preview() ) : ?>
 						<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 					<?php
-					endif;
-	
-				endif; // End header image check.
-			endif; // $skip_the_rest ?>
-		
-			</div><!-- .site-branding -->
-		
-			<?php 
+					endif;// End header image check.
+			endif; // $skip_the_rest
+			?>
+			</div>
+			<?php
 			/**
 			* Filter 'pre_wp_nav_menu' can be used to conditionally hide menu.
 			*
@@ -117,10 +112,12 @@
 				</span>
 				<?php echo $menu; ?>
 			</nav>
+			<div id='obfuscator'></div>
 			<?php endif; // End Nav check ?>
 		</div><!-- .tray -->
 	</div><!-- .site-header-main -->
-	<?php endif;//is_active_sidebar( 'header-2' )
+	<?php
+	endif;//is_active_sidebar( 'header-2' )
 
 	if ( is_active_sidebar( 'header-3' ) ) : ?>
 		<div id="header-3" class="widget-area" role="complementary">
@@ -128,7 +125,8 @@
 				<?php dynamic_sidebar( 'header-3' ); ?>
 			</div>
 		</div>
-	<?php endif; ?>
+	<?php
+	endif; ?>
 	</header>
 	<div id="content" class="site-content">
-		<div id='content-tray' class='<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? 'tray--full-width' : 'tray'; ?>'>
+		<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?>">

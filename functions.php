@@ -118,81 +118,107 @@ function frenchpress_widgets_init() {
 		'name'          => esc_html__( 'Sidebar 1', 'frenchpress' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar 2', 'frenchpress' ),
 		'id'            => 'sidebar-2',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Top', 'frenchpress' ),
 		'id'            => 'top',
 		'description'   => 'Best for secondary menus/nav bars',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header 1', 'frenchpress' ),
 		'id'            => 'header-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header 2', 'frenchpress' ),
 		'id'            => 'header-2',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header 3', 'frenchpress' ),
 		'id'            => 'header-3',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Before Content', 'frenchpress' ),
 		'id'            => 'content-before',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'After Content', 'frenchpress' ),
 		'id'            => 'content-after',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 1', 'frenchpress' ),
 		'id'            => 'footer-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 2', 'frenchpress' ),
 		'id'            => 'footer-2',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 3', 'frenchpress' ),
 		'id'            => 'footer-3',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 4', 'frenchpress' ),
 		'id'            => 'footer-4',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Ending Credits', 'frenchpress' ),
 		'id'            => 'ending-credits',
 		'description'   => 'Full width, very bottom. Typcial place for copyright, theme info, etc.',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
 	) );
 }
 add_action( 'widgets_init', 'frenchpress_widgets_init' );
@@ -200,15 +226,19 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+// add_action('wp_head', 'frenchpress_critical_css', 1 );
+function frenchpress_critical_css() {
+	print "<style>". file_get_contents( get_template_directory().'/mobile.min.css' ) ."</style>";
+}
 function frenchpress_scripts() {
 	
 	$suffix = SCRIPT_DEBUG ? "" : ".min";
 	
 	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri() ); // Use filemtime for dev to avoid cache
 	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), filemtime( get_stylesheet_directory().'/style'.$suffix.'.css' ) );
-	wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
+	wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
 
-	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160831', true );
+	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160905-4', true );
 
 	wp_enqueue_script( 'frenchpress-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix'.$suffix.'.js', array(), '160729', true );
 

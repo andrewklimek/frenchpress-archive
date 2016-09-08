@@ -17,7 +17,7 @@ function frenchpress_entry_meta() {
 	// This is useful for setting a custom meta format only on specific page types.
 	// eg, to customize meta for archives only, the first line in the filter could be "if ( !is_archive() ) return $skip_the_rest;"
 	if ( apply_filters( 'frenchpress_entry_meta_header', false ) ) {
-		continue;
+		return;
 	}
 	// default:
 	

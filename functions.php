@@ -164,22 +164,6 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Before Content', 'frenchpress' ),
-		'id'            => 'content-before',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
-		'before_title'  => '<h3 class="widgettitle">',
-		'after_title'   => "</h3>\n",
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'After Content', 'frenchpress' ),
-		'id'            => 'content-after',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
-		'before_title'  => '<h3 class="widgettitle">',
-		'after_title'   => "</h3>\n",
-	) );
-	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 1', 'frenchpress' ),
 		'id'            => 'footer-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',

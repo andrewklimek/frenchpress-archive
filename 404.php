@@ -9,24 +9,13 @@
 
 get_header();
 ?>
-<div id="primary" class="content-area">
-	
-	<?php if ( is_active_sidebar( 'content-before' ) ) : ?>
-		<div id="content-before" class="widget-area" role="complementary">
-			<?php dynamic_sidebar( 'content-before' ); ?>
-		</div>
-	<?php endif; ?>
-	
-	<main id="main" class="site-main">
-
-		<section class="error-404 not-found">
+<main id="primary" class="site-main">
+		<article class="error-404 not-found">
 			<header class="page-header">
 				<h1 class="page-title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
 			</header>
-
 			<div class="page-content">
 				<p><?php esc_html_e( 'Unfortunately, you clicked a broken link.', 'frenchpress' ); ?></p>
-
 				<?php
 				
 				$request = $GLOBALS['wp_query']->query;
@@ -55,22 +44,12 @@ get_header();
 					
 					endif; ?>
 					
-					<h3><?php esc_html_e( 'Feel free to search for what you&rsquo;re looking for.', 'frenchpress' ); ?></h3>
-					
-					<?php get_search_form();
-					
+					<h3><?php esc_html_e( 'Feel free to search for what you’re looking for.', 'frenchpress' ); ?></h3>
+					<?php
+					get_search_form();
 				?>
-			</div><!-- .page-content -->
-		</section>
-
+			</div>
+		</article>
 	</main>
-	
-	<?php if ( is_active_sidebar( 'content-after' ) ) : ?>
-		<div id="content-after" class="widget-area" role="complementary">
-			<?php dynamic_sidebar( 'content-after' ); ?>
-		</div>
-	<?php endif; ?>
-	
-</div><!-- #primary -->
 <?php
 get_footer();

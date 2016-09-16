@@ -224,7 +224,7 @@ function frenchpress_scripts() {
 	
 	wp_enqueue_style( 'print',  get_template_directory_uri().'/print.css', array(), null, 'print' );
 
-	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160905-4', true );
+	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160915-2', true );
 
 	wp_enqueue_script( 'frenchpress-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix'.$suffix.'.js', array(), '160729', true );
 
@@ -241,12 +241,16 @@ function frenchpress_mobile_test() {
 	<script>
 	function checkForDesktop(){
 		if ( window.innerWidth > {$breakpoint} ) {
-			if ( ~document.body.className.indexOf('mobile') ) {
-				document.body.className = document.body.className.replace(' mobile',' desktop');
+			if ( document.body.classList.contains('mobile') ) {
+				document.body.classList.remove('mobile');
+				document.body.classList.remove('mobile-nav-open');
+				obfuscator.classList.remove('active');
+				document.body.classList.add('desktop');
 			}
-		} else if ( ~document.body.className.indexOf('desktop') ) {
-			document.body.className = document.body.className.replace(' desktop',' mobile');
-		}
+		} else if ( document.body.classList.contains('desktop') ) {
+				document.body.classList.remove('desktop');
+				document.body.classList.add('mobile');
+			}
 	}
 	checkForDesktop();
 	window.addEventListener( 'resize', checkForDesktop );

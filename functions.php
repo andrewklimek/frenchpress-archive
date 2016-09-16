@@ -244,7 +244,6 @@ function frenchpress_mobile_test() {
 			if ( document.body.classList.contains('mobile') ) {
 				document.body.classList.remove('mobile');
 				document.body.classList.remove('mobile-nav-open');
-				obfuscator.classList.remove('active');
 				document.body.classList.add('desktop');
 			}
 		} else if ( document.body.classList.contains('desktop') ) {

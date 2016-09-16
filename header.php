@@ -21,6 +21,7 @@ wp_head();
 ?>
 </head>
 <body <?php body_class('mobile'); ?>>
+<?php do_action( 'frenchpress_body_after_begin' ); ?>
 <div id="site" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 	<header id="header" class="site-header">

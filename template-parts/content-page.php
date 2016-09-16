@@ -6,17 +6,17 @@
  *
  * @package FrenchPress
  */
-
 ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	
-	<?php if ( !is_front_page() && apply_filters( 'frenchpress_page_titles', true ) ) : ?>
+	<?php
+	if ( !is_front_page() && apply_filters( 'frenchpress_page_titles', true ) ) :
+	?>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-	<?php endif; ?>
-
+	</header>
+	<?php
+	endif;
+	?>
 	<div class="entry-content">
 		<?php
 			the_content();
@@ -26,6 +26,5 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
-
-</article><!-- #post-## -->
+	</div>
+</article>

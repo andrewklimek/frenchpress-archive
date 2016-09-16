@@ -36,21 +36,18 @@ html {
 	margin: 0;
 	padding: 0;/* what really has padding? We already override lists later */
 	border: 0;
+	text-decoration: none;
+	color: inherit;
 }
 .site * {
 	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
 }
 /* hopefully this is the answer for side padding. might want a better way of removing padding from fullwidth */
-main:not(.main-full-width), aside {
+main:not(.main-full-width), .widget {
 	padding: 0 1.50rem;
 }
 main.main-full-width .tray {
 	padding: 1.50rem;/* maybe add padding to top and bottom of full width page sections? */
-}
-
-p, h1, h2, h3, h4, h5, h6 {/* Just make sure text is never touching screen edge. maybe pointles. requires margin auto */
-	max-width: 97.5vw;/* Safari 6 & 7 don't support vw in calc()... will it fall back to this? */
-	max-width: calc(100vw - 3rem);
 }
 p, ol, ul, dl, table, pre, address, form, blockquote, blockquote footer, figure {
 	margin: 1.50rem 0;
@@ -63,9 +60,6 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.2;
 	padding-top: 1.50rem;
 	margin: 1.50rem 0 0;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
-}
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-	text-decoration: none;
 }
 h1, .h1 {
 	font-size: 3.157rem;
@@ -110,6 +104,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 /*--------------------------------------------------------------
 *  Element Normalisation
 --------------------------------------------------------------*/
+
 main {
 	display: block;/* IE and such */
 }
@@ -155,10 +150,9 @@ blockquote, q {
 address {
 	font-style: normal;
 }
-abbr {
-	text-decoration: none;
+abbr[title], dfn[title] {
 	border-bottom: 1px dotted #777;
-	cursor: help;
+	cursor:help;
 }
 dt {/* Not sure I should keep this, what about using dl for metadata? */
 	font-weight: bold;
@@ -203,7 +197,8 @@ button, input, optgroup, select, textarea, keygen {
 }
 input, textarea {
 	border: 1px solid #ccc;
-	padding: 0.75rem;
+	padding: 0 .5ex;
+	margin: 0 1ex;
 }
 textarea {
 	width: 100%;
@@ -217,8 +212,17 @@ fieldset {/* use * selector? */
 	/*	padding: 0;*/
 	/*	border: 0;*/
 }
-
-
+ins {
+	border-bottom: 1px dotted #0c0;
+}
+del {
+	text-decoration: line-through;
+	opacity: .8;
+}
+mark {
+	background-color: #ff9;
+	color: #000;
+}
 /*--------------------------------------------------------------
 *  Page Layout
 --------------------------------------------------------------*/
@@ -265,10 +269,6 @@ fieldset {/* use * selector? */
 	-webkit-flex-flow: row wrap;
 	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
-	-webkit-box-align: start;
-	-webkit-align-items: flex-start;
-	-ms-flex-align: start;
-	align-items: flex-start;
 	-webkit-justify-content: space-around;
 	-ms-flex-pack: distribute;
 	justify-content: space-around;
@@ -327,9 +327,6 @@ body.desktop .main-navigation ul ul {
 	margin: 0  auto;
 	/*	max-width: none;*/
 	width: 16em;
-}
-nav a {
-	text-decoration: none;
 }
 nav a[href="#"], nav a:not([href]) {
 	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
@@ -806,7 +803,6 @@ textarea#comment {
 	left: 5px;
 	line-height: normal;
 	padding: 15px 23px 14px;
-	text-decoration: none;
 	top: 5px;
 	width: auto;
 	z-index: 100000; /* Above WP toolbar. */
@@ -892,28 +888,4 @@ textarea#comment {
 	.gallery-columns-7 .gallery-item{width: 14.286%;}
 	.gallery-columns-8 .gallery-item{width: 12.5%;}
 	.gallery-columns-9 .gallery-item{width: 11.111%;}
-}
-/*--------------------------------------------------------------
-*  Print
---------------------------------------------------------------*/
-
-@media print {
-	.dont-print, #header, #footer, .widget-area, .edit-link, #wpadminbar {
-		display: none !important;
-	}
-	#content, #content-tray, #primary, #main {
-		margin: 0 !important;
-		padding: 0 !important;
-		width: 100% !important;
-		max-width: 100% !important;
-	}
-	* {
-		color: #000 !important;
-		background: none !important;
-		box-shadow: none !important;
-		text-shadow: none !important;
-	}
-	a[href]:after {
-		content: " (" attr(href) ") ";
-	}
 }

@@ -25,19 +25,27 @@ html {
 	font-size: 100%;
 	line-height: 1.50;
 	word-wrap: break-word;
+	-ms-text-size-adjust: 100%; /* Prevent font size adjustments after orientation changes in IE and iOS. From sanitize.css haven't tested */
+	-webkit-text-size-adjust: 100%;
 	/*	text-rendering: geometricPrecision;*/
 }
 @media (max-width:600px) { html { font-size: 90%; } }
 @media (min-width:1500px) { html { font-size: 120%; } }
 
 /* It is considered by some as best practice to use box-sizing: inherit; in the following block (*) and box-sizing: border-box; only in the html block. I don't buy this yet, because if I content-box the main article area for example so the width actually means the length of a line of text, then the child elements get messed up, like a button where the width should include the padding.  in fact I may want content-box most places (pictures for example) and put box sizing only on buttons?  I guess box sizing has the most advantage for % based layouts where you need to add up to 100% */
-*, *:before, *:after {
+*,
+::before,
+::after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;/* what really has padding? We already override lists later */
 	border: 0;
+	background-repeat: no-repeat;
+}
+a {
 	text-decoration: none;
 	color: inherit;
+	background: none;/* Remove gray background on active links in IE10 */
 }
 .site * {
 	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
@@ -105,9 +113,17 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 *  Element Normalisation
 --------------------------------------------------------------*/
 
-main {
-	display: block;/* IE and such */
+details, /* FF, IE, Edge */
+summary, /* FF, IE, Edge */
+main { /* IE 10 */
+	display: block;
 }
+template, /* IE10 - Edge12 */
+[hidden] { /* IE10 */
+	display: none;
+}
+
+
 li > ul, li > ol {
 	margin: 0;
 }
@@ -197,12 +213,14 @@ button, input, optgroup, select, textarea, keygen {
 }
 input, textarea {
 	border: 1px solid #ccc;
+	border-radius: 0;
 	padding: 0 .5ex;
 	margin: 0 1ex;
 }
 textarea {
 	width: 100%;
 	display: block;
+	overflow: auto;/* Remove scrollbar in IE */
 }
 form input[type=submit] {/* still needed ? */
 	/*	margin: 0;*/
@@ -222,6 +240,10 @@ del {
 mark {
 	background-color: #ff9;
 	color: #000;
+}
+svg {
+	fill: currentColor;
+	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 }
 /*--------------------------------------------------------------
 *  Page Layout
@@ -726,22 +748,35 @@ article:not(:only-of-type) {/* in place of .hentry above. use tag instead of cla
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ *
+ * 1. Prevent this from destroyign native `audio` and `video`
+ *    controls in Android 4.
+ */
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+}
 blockquote footer cite {
 	display: block;
 }
 blockquote footer {
 	text-align: right;
 }
-:focus::-webkit-input-placeholder {/*This would be cool if cross-browser */
-	font-size: 40%;
-	position: relative;
-	bottom: -1.4em;
+::-moz-placeholder {
+	color: inherit;
+	opacity: .5;
+}
+::-webkit-input-placeholder {
+	color: inherit;
+	opacity: .5;
 }
 :focus::-webkit-input-placeholder {
 	color: transparent;
-}
-::-moz-placeholder {
-	opacity: inherit;
 }
 :focus::-moz-placeholder {
 	color: transparent;

@@ -408,13 +408,17 @@ body.mobile-nav-open .main-navigation {
 
 @media (min-width:600px){
 	body.desktop nav.main-navigation ul.menu {
-		display: table;
-		text-align: center;
+		display: flex;
+		flex-flow: row wrap;
+/*		justify-content: space-around;*/
+		justify-content: flex-end;
+/*		display: table;*/
+/*		text-align: center;*/
 	}
 	body.desktop nav.main-navigation ul.menu > li {
-		display: table-cell;
+/*		display: table-cell;*/
 		position: relative;
-		vertical-align: middle;
+/*		vertical-align: middle;*/
 		padding: 0.75rem;
 	}
 	span.menu-toggle {
@@ -445,6 +449,9 @@ body.mobile-nav-open .main-navigation {
 	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
 }
 body.mobile span.menu-toggle {
+	top: 1rem;
+	right: 103%;
+	position: absolute;
 	display: inline-block;
 	z-index: 999;
 	line-height: 0;
@@ -452,9 +459,6 @@ body.mobile span.menu-toggle {
 	width: 1.50rem;
 	height: 1.50rem;
 	box-sizing: content-box;
-	position: absolute;
-	right: 101%;
-	top: 4rem;
 	/*    background: #fff;*/
 }
 body.mobile-nav-open.mobile span.menu-toggle {
@@ -492,6 +496,8 @@ body.mobile-nav-open path#menu-toggle-close {
 }
 
 /* FLEX GRID IMPLEMENTATION */
+/* Default flex item comes first so that flex-items can also be flex containers and the display:block will be overruled */
+/* flex-basis of 0% is actually a good idea bacause IE fails to auto size nested flex containers */
 .flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;

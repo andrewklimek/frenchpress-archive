@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.login * {
+    margin: 0;
+    padding: 0;
+}
+#login {
+    width: 320px;
+    padding: 8% 0 0;
+    margin: auto;
+    box-sizing: border-box;
+}
+.login form .forgetmenot {
+    float: left;
+}
+.login .button-primary {
+    float: right;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px 2px;
+    display: inline-block;
+}
+.login form {
+    margin-top: 20px;
+    margin-left: 0;
+    padding: 24px 0;
+    background-color: initial;
+}
+.login form .input, .login input[type=text] {
+    font-size: 24px;
+    width: 100%;
+    padding: 3px;
+    margin: 2px 6px 16px 0;
+    box-sizing: border-box;
+}
+.login #backtoblog, .login #nav {
+    padding: 16px 0;
+}

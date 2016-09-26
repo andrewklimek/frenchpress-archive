@@ -10,7 +10,7 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main main-full-width">
+<main id="primary" class="site-main main-full-width flex-item flex-item--99">
 	<?php
 	while ( have_posts() ) : the_post();
 

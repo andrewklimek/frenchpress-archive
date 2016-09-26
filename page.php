@@ -17,7 +17,7 @@ $layout = apply_filters( 'frenchpress_page_layout', 'no-sidebars' );
 
 get_header();
 ?>
-<main id="primary" class="site-main<?php if ( $layout === 'full-width' ) echo ' main-full-width' ?>">
+<main id="primary" class="site-main flex-item flex-item--99<?php if ( $layout === 'full-width' ) echo ' main-full-width' ?>">
 	<?php
 	while ( have_posts() ) : the_post();
 

@@ -22,9 +22,9 @@ wp_head();
 </head>
 <body <?php body_class('mobile'); ?>>
 <?php do_action( 'frenchpress_body_after_begin' ); ?>
-<div id="site" class="site">
+<div id="site" class="site flex flex--column flex--none">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
-	<header id="header" class="site-header">
+	<header id="header" class="site-header flex-item">
 		<?php
 		if ( is_active_sidebar( 'top' ) ) : ?>
 			<div id="top-widget" class="widget-area" role="complementary">
@@ -129,5 +129,5 @@ wp_head();
 	<?php
 	endif; ?>
 	</header>
-	<div id="content" class="site-content">
-		<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?>">
+	<div id="content" class="site-content flex-item flex-item--no-shrink">
+		<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?> flex flex--space-around">

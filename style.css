@@ -9,11 +9,6 @@ License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
 Text Domain: frenchpress
-
-Frenchpress was built starting with the skeleton theme Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
-(Though, for better or for worse, this stylesheet was written completely from scratch.)
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
 */
 
 
@@ -46,6 +41,7 @@ a {
 	text-decoration: none;
 	color: inherit;
 	background: none;/* Remove gray background on active links in IE10 */
+	/*-webkit-tap-highlight-color: transparent;*//* background color on active links in mobile browsers */
 }
 .site * {
 	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
@@ -101,16 +97,9 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 	margin-top: 0;/* until we decide on the above */
 }
 
-@media screen and (max-width: 600px) {
-	#site .breakout {
-		margin: 0 -1.50rem;
-		max-width: 115%;/* in case no calc support */
-		max-width: calc( 100% + 1.50rem + 1.50rem );
-	}
-}
 
 /*--------------------------------------------------------------
-*  Element Normalisation
+*  Normalisation
 --------------------------------------------------------------*/
 
 details, /* FF, IE, Edge */
@@ -133,7 +122,6 @@ ul, ol {
 pre {
 	max-width: 100%;
 	overflow: auto;
-	background-color: rgba(111,111,111,.11);/* maybe */
 }
 pre, code, kbd, samp, var {
 	font-family: monospace;
@@ -169,6 +157,7 @@ address {
 abbr[title], dfn[title] {
 	border-bottom: 1px dotted #777;
 	cursor:help;
+	text-decoration: none;/* FF applies proprietary text-decoration-style */
 }
 dt {/* Not sure I should keep this, what about using dl for metadata? */
 	font-weight: bold;
@@ -245,6 +234,38 @@ svg {
 	fill: currentColor;
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 }
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ *
+ * 1. Prevent this from destroyign native `audio` and `video`
+ *    controls in Android 4.
+ */
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+}
+::-moz-placeholder {
+	color: inherit;
+	opacity: .5;
+}
+::-webkit-input-placeholder {
+	color: inherit;
+	opacity: .5;
+}
+:focus::-webkit-input-placeholder {
+	color: transparent;
+}
+:focus::-moz-placeholder {
+	color: transparent;
+}
+:focus:-ms-input-placeholder {
+	color: transparent;
+}
+:focus:-moz-placeholder {/* FF <= 18 (jan 2013) probably breaks the flex layout anyhow */
+	/*	color: transparent !important;*/
+}
 /*--------------------------------------------------------------
 *  Page Layout
 --------------------------------------------------------------*/
@@ -252,49 +273,13 @@ svg {
 #site {
 	min-height: 100vh;
 	/*	height: 100%;*/
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
 }
-
 /* hack because 100vh definitely doesn't work in IE11 */
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	html, body, #site { height: 100%; }
 	* { /*-ms-flex: 0 1 auto;*/ }/* flex default is wrong in IE10 */
 }
 
-#header, #footer {
-	-webkit-box-flex: 0;
-	-webkit-flex: 0 0 auto;
-	-ms-flex: 0 0 auto;
-	flex: 0 0 auto;/* none */
-}
-
-#content {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 0 auto;
-	-ms-flex: 1 0 auto;
-	flex: 1 0 auto;
-	/* width: 100%;*/
-}
-#content-tray {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-flow: row wrap;
-	-ms-flex-flow: row wrap;
-	flex-flow: row wrap;
-	-webkit-justify-content: space-around;
-	-ms-flex-pack: distribute;
-	justify-content: space-around;
-}
 .tray {
 	width: 100%;
 	margin-left: auto;
@@ -302,20 +287,8 @@ svg {
 	/*box-sizing: content-box;*//* You'd normally give the thing a max-width and expect the content/text to be that wide. */
 }
 #primary {
-	-webkit-box-flex: 100;
-	-webkit-flex: 100 1 auto;
-	-ms-flex: 100 1 auto;
-	flex: 100 1 auto;
 	width: 30rem;
-	max-width: 100%;/* not 100% sure why we need this */
-}
-
-#secondary, #tertiary {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 1 auto;
-	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
-	width: 16em;
+	max-width: 100%;/* not 100% sure why we need this, but we do */
 }
 
 /*--------------------------------------------------------------
@@ -337,21 +310,6 @@ nav li {/* li.menu-item */
 }
 nav li li {
 	padding-bottom: 0;
-}
-/* undo the above for desktop dropdowns */
-body.desktop .main-navigation li li:last-child {
-	padding-bottom: .75rem;
-}
-body.desktop .main-navigation ul ul {
-	top: 100%;
-	left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
-	right: -16em;
-	margin: 0  auto;
-	/*	max-width: none;*/
-	width: 16em;
-}
-nav a[href="#"], nav a:not([href]) {
-	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
 }
 
 /* Main Nav */
@@ -404,47 +362,8 @@ body.mobile-nav-open .main-navigation {
 .main-navigation li {
 	display: block;
 }
+/* moved desktop nav to seperate file */
 
-
-@media (min-width:600px){
-	body.desktop nav.main-navigation ul.menu {
-		display: flex;
-		flex-flow: row wrap;
-/*		justify-content: space-around;*/
-		justify-content: flex-end;
-/*		display: table;*/
-/*		text-align: center;*/
-	}
-	body.desktop nav.main-navigation ul.menu > li {
-/*		display: table-cell;*/
-		position: relative;
-/*		vertical-align: middle;*/
-		padding: 0.75rem;
-	}
-	span.menu-toggle {
-		display: none;
-	}
-	body.desktop nav.main-navigation ul ul {
-		position: absolute;
-		z-index: 99;/* need anymore cause of parent z-index? */
-		display: none;
-	}
-	body.desktop nav.main-navigation ul li:hover > ul,
-	body.desktop nav.main-navigation ul li.focus > ul {
-		display: block;
-	}
-	body.desktop nav.main-navigation ul ul li:hover > ul,
-	body.desktop nav.main-navigation ul ul li.focus > ul {
-		display: block;
-		left: 100%;
-		width: 100%;
-	}
-	/* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
-	nav.main-navigation ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
-		right: -1.50rem;
-		left: initial;
-	}
-}
 .site-header {
 	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
 }
@@ -520,6 +439,9 @@ body.mobile-nav-open path#menu-toggle-close {
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
+}
+.flex--column > .flex-item {
+	width: 100%;/* long words (links) were not breaking in safari */
 }
 .flex--nowrap {
 	-webkit-flex-wrap: nowrap;
@@ -634,6 +556,7 @@ body.mobile-nav-open path#menu-toggle-close {
 .flex-item--9.flex-item{-webkit-box-flex:9;-webkit-flex-grow:9;-ms-flex-positive:9;flex-grow:9;}
 .flex-item--10.flex-item{-webkit-box-flex:10;-webkit-flex-grow:10;-ms-flex-positive:10;flex-grow:10;}
 .flex-item--11.flex-item{-webkit-box-flex:11;-webkit-flex-grow:11;-ms-flex-positive:11;flex-grow:11;}
+.flex-item--99.flex-item{-webkit-box-flex:99;-webkit-flex-grow:99;-ms-flex-positive:99;flex-grow:99;}
 /* percentage based */
 .flex-item--x1, .flex--x1 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 100%;-ms-flex:0 0 100%;flex:0 0 100%;}
 .flex-item--x2, .flex--x2 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 50%;-ms-flex:0 0 50%;flex:0 0 50%;}
@@ -699,11 +622,11 @@ body.mobile-nav-open path#menu-toggle-close {
 	max-width: 50%;
 }
 
-/* need to find a way to handle padding that isn't on mobile */
-@media (min-width:500px) {
-	#content-tray.tray article .tray {
-		padding-left: 1.50rem;
-		padding-right: 1.50rem;
+@media screen and (max-width: 600px) {
+	#site .breakout {
+		margin: 0 -1.50rem;
+		max-width: 115%;/* in case no calc support */
+		max-width: calc( 100% + 1.50rem + 1.50rem );
 	}
 }
 
@@ -755,45 +678,12 @@ article:not(:only-of-type) {/* in place of .hentry above. use tag instead of cla
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
 
-/**
- * Correct the inability to style clickable types in iOS and Safari.
- *
- * 1. Prevent this from destroyign native `audio` and `video`
- *    controls in Android 4.
- */
-button,
-html [type="button"], /* 1 */
-[type="reset"],
-[type="submit"] {
-	-webkit-appearance: button;
-}
 blockquote footer cite {
 	display: block;
 }
 blockquote footer {
 	text-align: right;
 }
-::-moz-placeholder {
-	color: inherit;
-	opacity: .5;
-}
-::-webkit-input-placeholder {
-	color: inherit;
-	opacity: .5;
-}
-:focus::-webkit-input-placeholder {
-	color: transparent;
-}
-:focus::-moz-placeholder {
-	color: transparent;
-}
-:focus:-ms-input-placeholder {
-	color: transparent;
-}
-:focus:-moz-placeholder {/* FF <= 18 (jan 2013) probably breaks the flex layout anyhow */
-	/*	color: transparent !important;*/
-}
-
 th:only-of-type {
 	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
 }
@@ -802,8 +692,7 @@ th:only-of-type {
 	line-height: 0;
 }
 .site-title, .site-description {
-	line-height: 1.50;/* See if still needed when H1s are squared away */
-	margin-bottom: 0;
+	line-height: 1;/* See if still needed when H1s are squared away */
 }
 footer.entry-footer span {
 	margin-right: 1.50rem;
@@ -823,7 +712,6 @@ textarea#comment {
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
 .screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
 	height: 1px;
 	width: 1px;
@@ -831,28 +719,15 @@ textarea#comment {
 }
 
 .screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
-	color: #21759b;
+	background-color: #fff;
+	color: #000;
 	display: block;
-	font-size: 14px;
-	font-size: 0.875rem;
-	font-weight: bold;
+	padding: 1em;
 	height: auto;
-	left: 5px;
-	line-height: normal;
-	padding: 15px 23px 14px;
-	top: 5px;
 	width: auto;
+	left: 5px;
+	top: 5px;
 	z-index: 100000; /* Above WP toolbar. */
-}
-
-/* Do not show the outline on the skip link target. */
-#content[tabindex="-1"]:focus,
-#content [tabindex="-1"]:focus {
-	outline: 0;
 }
 
 /*--------------------------------------------------------------
@@ -910,7 +785,7 @@ textarea#comment {
 }
 .gallery-item {
 	margin: 0;
-	line-height: 0;/* avoice space between images when no captions */
+	line-height: 0;/* avoid space between images when no captions */
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;

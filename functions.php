@@ -236,6 +236,13 @@ function frenchpress_scripts() {
 add_action( 'wp_enqueue_scripts', 'frenchpress_scripts' );
 
 
+add_filter( 'frenchpress_full_width', function( $is_fullwidth ) {
+   if ( is_page_template( 'page-templates/page_full-width.php' ) ) {
+		$is_fullwidth = true;
+   }
+	return $is_fullwidth;
+}, 9 );
+
 
 add_action( 'login_enqueue_scripts', function() {
    // wp_dequeue_style( 'buttons' );

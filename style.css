@@ -204,7 +204,6 @@ input, textarea {
 	border: 1px solid #ccc;
 	border-radius: 0;
 	padding: 0 .5ex;
-	margin: 0 1ex;
 }
 textarea {
 	width: 100%;
@@ -501,44 +500,44 @@ body.mobile-nav-open path#menu-toggle-close {
 	-ms-flex-item-align: center;
 	align-self: center;
 }
-.flex-item--none,
-.flex--none > .flex-item {
+.flex--none > .flex-item,
+.flex > .flex-item--none.flex-item {
 	-webkit-box-flex: 0;
 	-webkit-flex: none;
 	-ms-flex: none;
 	flex: none;/* 0 0 auto */
 }
-.flex-item--auto,
-.flex--auto > .flex-item {
+.flex--auto > .flex-item,
+.flex > .flex-item--auto.flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 }
-.flex-item--initial,
-.flex--initial > .flex-item {
+.flex--initial > .flex-item,
+.flex > .flex-item--initial.flex-item {
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 1 auto;
 	-ms-flex: 0 1 auto;
 	flex: 0 1 auto;/* aka initial, but IE10 is wrong */
 }
-.flex-item--no-shrink,
-.flex--no-shrink > .flex-item {
+.flex--no-shrink > .flex-item,
+.flex > .flex-item--no-shrink.flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 0 auto;
 	-ms-flex: 1 0 auto;
 	flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
 }
-.flex-item--magic,
-.flex--magic > .flex-item {
+.flex--magic > .flex-item,
+.flex > .flex-item--magic.flex-item {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 	width: 18em;
 }
-.flex-item--even,
-.flex--even > .flex-item {/* this is also the default */
+.flex--even > .flex-item,
+.flex > .flex-item--even.flex-item {/* this is also the default */
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
 	-ms-flex: 1 1 0%;

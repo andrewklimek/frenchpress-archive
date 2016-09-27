@@ -11,7 +11,7 @@
 ( function() {
 	var container, button, menu, links, subMenus, height, obfuscator;
 
-	container = document.getElementById( 'site-navigation' );
+	container = document.getElementById( 'main-nav' );
 	if ( ! container ) {
 		return;
 	}

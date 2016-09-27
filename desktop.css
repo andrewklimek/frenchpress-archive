@@ -7,10 +7,10 @@
 /*--------------------------------------------------------------
 *  Navigation
 --------------------------------------------------------------*/
-body.desktop .main-navigation li li:last-child {
+body.desktop .main-nav li li:last-child {
 	padding-bottom: .75rem;/* undo padding-bottom: 0 for desktop dropdowns */
 }
-body.desktop .main-navigation ul ul {
+body.desktop .main-nav ul ul {
 	top: 100%;
 	left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
 	right: -16em;
@@ -22,25 +22,7 @@ nav a[href="#"], nav a:not([href]) {
 	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
 }
 
-body.desktop nav.main-navigation ul.menu {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-flow: row wrap;
-	    -ms-flex-flow: row wrap;
-	        flex-flow: row wrap;
-	-webkit-justify-content: space-around;
-	    -ms-flex-pack: distribute;
-	        justify-content: space-around;
-	-webkit-box-pack: end;
-	-webkit-justify-content: flex-end;
-	    -ms-flex-pack: end;
-	        justify-content: flex-end;
-/*	display: table;*/
-/*	text-align: center;*/
-}
-body.desktop nav.main-navigation ul.menu > li {
+body.desktop nav.main-nav ul.menu > li {
 /*	display: table-cell;*/
 /*	vertical-align: middle;*/
 	position: relative;
@@ -49,23 +31,23 @@ body.desktop nav.main-navigation ul.menu > li {
 span.menu-toggle {
 	display: none;
 }
-body.desktop nav.main-navigation ul ul {
+body.desktop nav.main-nav ul ul {
 	position: absolute;
 	z-index: 99;/* need anymore cause of parent z-index? */
 	display: none;
 }
-body.desktop nav.main-navigation ul li:hover > ul,
-body.desktop nav.main-navigation ul li.focus > ul {
+body.desktop nav.main-nav ul li:hover > ul,
+body.desktop nav.main-nav ul li.focus > ul {
 	display: block;
 }
-body.desktop nav.main-navigation ul ul li:hover > ul,
-body.desktop nav.main-navigation ul ul li.focus > ul {
+body.desktop nav.main-nav ul ul li:hover > ul,
+body.desktop nav.main-nav ul ul li.focus > ul {
 	display: block;
 	left: 100%;
 	width: 100%;
 }
 /* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
-nav.main-navigation ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
+nav.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
 	right: -1.50rem;
 	left: initial;
 }

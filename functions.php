@@ -284,6 +284,10 @@ function frenchpress_mobile_test() {
 	";
 }
 
+/**
+ * [frenchpress] builder-style shortcode
+ */
+require get_template_directory() . '/inc/shortcodes.php';
 
 /**
  * Implement the Custom Header feature.

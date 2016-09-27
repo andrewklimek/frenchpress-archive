@@ -375,6 +375,11 @@ body.mobile-nav-open path#menu-toggle-close {
 	display: initial;
 }
 
+.menu-toggle > svg {
+	cursor: pointer;
+	-moz-user-select: none;/* FF seems to be the only one that selects this as text on mobile */
+}
+
 /* Allow drawer menu to scroll, but not on bigger screens cause fixed headers shift when you hide desktop scrollbars */
 @media (max-height:770px) {
 	body.mobile-nav-open {
@@ -564,14 +569,14 @@ hr.spacer {
 /* FLEX GRID IMPLEMENTATION */
 /* Default flex item comes first so that flex-items can also be flex containers and the display:block will be overruled */
 /* flex-basis of 0% is actually a good idea bacause IE fails to auto size nested flex containers */
-.flex-item {
+.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
 	-ms-flex: 1 1 0%;
 	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 	display: block;/* inline items don't work in IE10?? */
 }
-.flex {
+.fff {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -580,150 +585,150 @@ hr.spacer {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 }
-.flex--column {
+.fff-column {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
 }
-.flex--column > .flex-item {
+.fff-column > .fffi {
 	width: 100%;/* long words (links) were not breaking in safari */
 }
-.flex--nowrap {
+.fff-nowrap {
 	-webkit-flex-wrap: nowrap;
 	-ms-flex-wrap: nowrap;
 	flex-wrap: nowrap;
 }
-.flex--top {
+.fff-top {
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
 	-ms-flex-align: start;
 	-ms-grid-row-align: flex-start;
 	align-items: flex-start;
 }
-.flex--middle {
+.fff-middle {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	-ms-grid-row-align: center;
 	align-items: center;
 }
-.flex--bottom {
+.fff-bottom {
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
 	-ms-flex-align: end;
 	-ms-grid-row-align: flex-end;
 	align-items: flex-end;
 }
-.flex--center {
+.fff-center {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	-ms-flex-pack: center;
 	justify-content: center;
 }
-.flex--space-between {
+.fff-spacebetween {
 	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
+	-webkit-justify-content: spacebetween;
 	-ms-flex-pack: justify;
-	justify-content: space-between;
+	justify-content: spacebetween;
 }
-.flex--space-around {
-	-webkit-justify-content: space-around;
+.fff-spacearound {
+	-webkit-justify-content: spacearound;
 	-ms-flex-pack: distribute;
-	justify-content: space-around;
+	justify-content: spacearound;
 }
-.flex--right {
+.fff-right {
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
 }
-.flex--left {
+.fff-left {
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	-ms-flex-pack: start;
 	justify-content: flex-start;
 }
-.flex-item--top {
+.fffi-top {
 	-webkit-align-self: flex-start;
 	-ms-flex-item-align: start;
 	align-self: flex-start;
 }
-.flex-item--bottom {
+.fffi-bottom {
 	-webkit-align-self: flex-end;
 	-ms-flex-item-align: end;
 	align-self: flex-end;
 }
-.flex-item--middle {
+.fffi-middle {
 	-webkit-align-self: center;
 	-ms-flex-item-align: center;
 	align-self: center;
 }
-.flex--none > .flex-item,
-.flex > .flex-item--none.flex-item {
+.fff-none > .fffi,
+.fff > .fffi-none.fffi {
 	-webkit-box-flex: 0;
 	-webkit-flex: none;
 	-ms-flex: none;
 	flex: none;/* 0 0 auto */
 }
-.flex--auto > .flex-item,
-.flex > .flex-item--auto.flex-item {
+.fff-auto > .fffi,
+.fff > .fffi-auto.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 }
-.flex--initial > .flex-item,
-.flex > .flex-item--initial.flex-item {
+.fff-initial > .fffi,
+.fff > .fffi-initial.fffi {
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 1 auto;
 	-ms-flex: 0 1 auto;
 	flex: 0 1 auto;/* aka initial, but IE10 is wrong */
 }
-.flex--no-shrink > .flex-item,
-.flex > .flex-item--no-shrink.flex-item {
+.fff-noshrink > .fffi,
+.fff > .fffi-noshrink.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 0 auto;
 	-ms-flex: 1 0 auto;
 	flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
 }
-.flex--magic > .flex-item,
-.flex > .flex-item--magic.flex-item {
+.fff-magic > .fffi,
+.fff > .fffi-magic.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 	width: 18em;
 }
-.flex--even > .flex-item,
-.flex > .flex-item--even.flex-item {/* this is also the default */
+.fff-even > .fffi,
+.fff > .fffi-even.fffi {/* this is also the default */
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
 	-ms-flex: 1 1 0%;
 	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 }
 /* growth ratios */
-.flex-item--1.flex-item{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}
-.flex-item--2.flex-item{-webkit-box-flex:2;-webkit-flex-grow:2;-ms-flex-positive:2;flex-grow:2;}
-.flex-item--3.flex-item{-webkit-box-flex:3;-webkit-flex-grow:3;-ms-flex-positive:3;flex-grow:3;}
-.flex-item--4.flex-item{-webkit-box-flex:4;-webkit-flex-grow:4;-ms-flex-positive:4;flex-grow:4;}
-.flex-item--5.flex-item{-webkit-box-flex:5;-webkit-flex-grow:5;-ms-flex-positive:5;flex-grow:5;}
-.flex-item--6.flex-item{-webkit-box-flex:6;-webkit-flex-grow:6;-ms-flex-positive:6;flex-grow:6;}
-.flex-item--7.flex-item{-webkit-box-flex:7;-webkit-flex-grow:7;-ms-flex-positive:7;flex-grow:7;}
-.flex-item--8.flex-item{-webkit-box-flex:8;-webkit-flex-grow:8;-ms-flex-positive:8;flex-grow:8;}
-.flex-item--9.flex-item{-webkit-box-flex:9;-webkit-flex-grow:9;-ms-flex-positive:9;flex-grow:9;}
-.flex-item--10.flex-item{-webkit-box-flex:10;-webkit-flex-grow:10;-ms-flex-positive:10;flex-grow:10;}
-.flex-item--11.flex-item{-webkit-box-flex:11;-webkit-flex-grow:11;-ms-flex-positive:11;flex-grow:11;}
-.flex-item--99.flex-item{-webkit-box-flex:99;-webkit-flex-grow:99;-ms-flex-positive:99;flex-grow:99;}
+.fffi-1.fffi{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}
+.fffi-2.fffi{-webkit-box-flex:2;-webkit-flex-grow:2;-ms-flex-positive:2;flex-grow:2;}
+.fffi-3.fffi{-webkit-box-flex:3;-webkit-flex-grow:3;-ms-flex-positive:3;flex-grow:3;}
+.fffi-4.fffi{-webkit-box-flex:4;-webkit-flex-grow:4;-ms-flex-positive:4;flex-grow:4;}
+.fffi-5.fffi{-webkit-box-flex:5;-webkit-flex-grow:5;-ms-flex-positive:5;flex-grow:5;}
+.fffi-6.fffi{-webkit-box-flex:6;-webkit-flex-grow:6;-ms-flex-positive:6;flex-grow:6;}
+.fffi-7.fffi{-webkit-box-flex:7;-webkit-flex-grow:7;-ms-flex-positive:7;flex-grow:7;}
+.fffi-8.fffi{-webkit-box-flex:8;-webkit-flex-grow:8;-ms-flex-positive:8;flex-grow:8;}
+.fffi-9.fffi{-webkit-box-flex:9;-webkit-flex-grow:9;-ms-flex-positive:9;flex-grow:9;}
+.fffi-10.fffi{-webkit-box-flex:10;-webkit-flex-grow:10;-ms-flex-positive:10;flex-grow:10;}
+.fffi-11.fffi{-webkit-box-flex:11;-webkit-flex-grow:11;-ms-flex-positive:11;flex-grow:11;}
+.fffi-99.fffi{-webkit-box-flex:99;-webkit-flex-grow:99;-ms-flex-positive:99;flex-grow:99;}
 /* percentage based */
-.flex-item--x1, .flex--x1 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 100%;-ms-flex:0 0 100%;flex:0 0 100%;}
-.flex-item--x2, .flex--x2 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 50%;-ms-flex:0 0 50%;flex:0 0 50%;}
-.flex-item--x3, .flex--x3 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 33.333%;-ms-flex:0 0 33.333%;flex:0 0 33.333%;}
-.flex-item--x4, .flex--x4 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 25%;-ms-flex:0 0 25%;flex:0 0 25%;}
+.fffi-x1, .fff-x1 > .fffi{-webkit-box-flex:0;-webkit-flex:0 0 100%;-ms-flex:0 0 100%;flex:0 0 100%;}
+.fffi-x2, .fff-x2 > .fffi{-webkit-box-flex:0;-webkit-flex:0 0 50%;-ms-flex:0 0 50%;flex:0 0 50%;}
+.fffi-x3, .fff-x3 > .fffi{-webkit-box-flex:0;-webkit-flex:0 0 33.333%;-ms-flex:0 0 33.333%;flex:0 0 33.333%;}
+.fffi-x4, .fff-x4 > .fffi{-webkit-box-flex:0;-webkit-flex:0 0 25%;-ms-flex:0 0 25%;flex:0 0 25%;}
 
 
-.flex--pad > .flex-item,
+.fff-pad > .fffi,
 .pad {
 	padding: 1.50rem;
 }

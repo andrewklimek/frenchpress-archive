@@ -281,13 +281,13 @@ figcaption {
 	text-align: left;
 }
 
-.flex--nowrap {
+.fff-nowrap {
 	display: flex;
 }
-.flex--middle {
+.fff-middle {
 	align-items: center;
 }
-.flex--bottom {
+.fff-bottom {
 	align-items: flex-end;
 }
 

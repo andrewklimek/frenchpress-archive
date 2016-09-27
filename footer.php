@@ -11,7 +11,7 @@
 ?>
 	</div><!-- #content-tray -->
 </div><!-- #content -->
-<footer id="footer" class="site-footer flex-item">
+<footer id="footer" class="site-footer fff-item">
 <?php
 	if ( is_active_sidebar( 'footer-1' ) ) : ?>
 		<div id="footer-1" class="widget-area" role="complementary">

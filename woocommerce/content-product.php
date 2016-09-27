@@ -17,7 +17,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<article <?php post_class('flex-item'); ?>>
+<article <?php post_class('fff-item'); ?>>
 	<?php
 	/**
 	 * woocommerce_before_shop_loop_item hook.

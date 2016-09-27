@@ -20,10 +20,10 @@
 wp_head();
 ?>
 </head>
-<body <?php body_class('flex flex--column flex--none mobile'); ?>>
+<body <?php body_class('fff fff-column fff-none mobile'); ?>>
 <?php do_action( 'frenchpress_body_after_begin' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
-<header id="header" class="site-header flex-item">
+<header id="header" class="site-header fff-item">
 	<?php
 	if ( is_active_sidebar( 'top' ) ) : ?>
 		<div id="top-widget" class="widget-area" role="complementary">
@@ -102,7 +102,7 @@ wp_head();
 		* }
 		* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
 		**/
-		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'flex flex--right', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) : ?>
+		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'fff fff-right', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) : ?>
 		<nav id="main-nav" class="main-nav">
 			<span class="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -128,5 +128,5 @@ if ( is_active_sidebar( 'header-3' ) ) : ?>
 <?php
 endif; ?>
 </header>
-<div id="content" class="site-content flex-item flex-item--no-shrink">
-	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?> flex flex--space-around">
+<div id="content" class="site-content fff-item fffi-noshrink">
+	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?> fff fff-spacearound">

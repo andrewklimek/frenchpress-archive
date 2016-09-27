@@ -40,7 +40,7 @@ function frenchpress_sidebar_widgets() {
 
 // content wrappers
 function woocommerce_output_content_wrapper() {
-	print '<main id="primary" class="site-main flex-item flex-item--99">';
+	print '<main id="primary" class="site-main fff-item fffi-99">';
 }
 function woocommerce_output_content_wrapper_end() {
 	print '</main>';

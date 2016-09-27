@@ -10,7 +10,7 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main flex-item flex-item--99">
+<main id="primary" class="site-main fff-item fffi-99">
 	<?php
 	while ( have_posts() ) : the_post();
 

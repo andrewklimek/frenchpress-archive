@@ -6,4 +6,4 @@
  * @version     2.0.0
  */
 ?>
-<section class="products flex flex--magic">
+<section class="products fff fff-magic">

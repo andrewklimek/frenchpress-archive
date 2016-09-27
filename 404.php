@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main flex-item flex-item--99">
+<main id="primary" class="site-main fff-item fffi-99">
 		<article class="error-404 not-found">
 			<header class="page-header">
 				<h1 class="page-title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>

@@ -13,27 +13,15 @@ Text Domain: frenchpress
 
 
 /*--------------------------------------------------------------
-# Main Sizing & Spacing
+*  Normalisation
 --------------------------------------------------------------*/
-html {
-	background-color: #fffdfa;
-	font-size: 100%;
-	line-height: 1.50;
-	word-wrap: break-word;
-	-ms-text-size-adjust: 100%; /* Prevent font size adjustments after orientation changes in IE and iOS. From sanitize.css haven't tested */
-	-webkit-text-size-adjust: 100%;
-	/*	text-rendering: geometricPrecision;*/
-}
-@media (max-width:600px) { html { font-size: 90%; } }
-@media (min-width:1500px) { html { font-size: 120%; } }
 
-/* It is considered by some as best practice to use box-sizing: inherit; in the following block (*) and box-sizing: border-box; only in the html block. I don't buy this yet, because if I content-box the main article area for example so the width actually means the length of a line of text, then the child elements get messed up, like a button where the width should include the padding.  in fact I may want content-box most places (pictures for example) and put box sizing only on buttons?  I guess box sizing has the most advantage for % based layouts where you need to add up to 100% */
 *,
 ::before,
 ::after {
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0;/* what really has padding? We already override lists later */
+	padding: 0;
 	border: 0;
 	background-repeat: no-repeat;
 }
@@ -43,65 +31,6 @@ a {
 	background: none;/* Remove gray background on active links in IE10 */
 	/*-webkit-tap-highlight-color: transparent;*//* background color on active links in mobile browsers */
 }
-.site * {
-	/*max-width: 100%;*//* quite possibly a bad idea. applied to .site to not mess up wp admin bar, but any rules to change max-width now need at least a class selector to override this. */
-}
-/* hopefully this is the answer for side padding. might want a better way of removing padding from fullwidth */
-main:not(.main-full-width), .widget {
-	padding: 0 1.50rem;
-}
-main.main-full-width .tray {
-	padding: 1.50rem;/* maybe add padding to top and bottom of full width page sections? */
-}
-p, ol, ul, dl, table, pre, address, form, blockquote, blockquote footer, figure {
-	margin: 1.50rem 0;
-}
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
-	margin-bottom: 1.50rem;
-}
-h1, h2, h3, h4, h5, h6 {
-	font-weight: inherit;
-	line-height: 1.2;
-	padding-top: 1.50rem;
-	margin: 1.50rem 0 0;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
-}
-h1, .h1 {
-	font-size: 3.157rem;
-}
-h2, .h2 {
-	font-size: 2.369rem;
-}
-h3, .h3 {
-	font-size: 1.778rem;
-}
-h4, .h4 {
-	font-size: 1.333rem;
-}
-h5, .h5 {
-	font-size: 1.333rem;
-	font-weight: bold;
-}
-h6, .h6 {
-	font-size: 1.333rem;
-	font-style: italic;
-}
-h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
-	/*margin-top: 0;*//* better to keep padding so sections won't collapse? */
-	padding-top: 0;
-}
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
-	margin-bottom: 1.50rem;
-}
-
-.widgettitle {
-	margin-top: 0;/* until we decide on the above */
-}
-
-
-/*--------------------------------------------------------------
-*  Normalisation
---------------------------------------------------------------*/
-
 details, /* FF, IE, Edge */
 summary, /* FF, IE, Edge */
 main { /* IE 10 */
@@ -110,14 +39,6 @@ main { /* IE 10 */
 template, /* IE10 - Edge12 */
 [hidden] { /* IE10 */
 	display: none;
-}
-
-
-li > ul, li > ol {
-	margin: 0;
-}
-ul, ol {
-	padding-left: 1.50rem;
 }
 pre {
 	max-width: 100%;
@@ -137,17 +58,6 @@ img:only-child {/* removes line-height from div wrappers */
 embed, iframe, object {
 	max-width: 100%;
 }
-figcaption {
-	/*	font-size: 0.667em;*//* seems old school */
-	margin: 1.50rem 0;
-}
-/* This one's good sometimes, but bad for skinny columns
-td, th {
-word-break: break-word;
-}*/
-blockquote {
-	padding: 0 1.50em;
-}
 blockquote, q {
 	quotes: "\201C""\201D""\2018""\2019";
 }
@@ -159,46 +69,17 @@ abbr[title], dfn[title] {
 	cursor:help;
 	text-decoration: none;/* FF applies proprietary text-decoration-style */
 }
-dt {/* Not sure I should keep this, what about using dl for metadata? */
-	font-weight: bold;
-}
-dd {/* Not sure I should keep this, what about using dl for metadata? */
-	padding: 0 0 1.50rem 1.50rem;
-}
-dl p, dl p:last-child {/* and if I do keep it, I need to remove margins from stuff hopefully only p */
-	margin: 1.50rem 0 0;
-}
-hr {
-	background: #777;
-	border: 0;
-	padding: 0;
-	height: 1px;
-	margin: 1.50rem auto;
-}
-hr.double {/* this is the only place the base spacing size is manually doubled */
-	margin-top: 3rem;
-	margin-bottom: 3rem;
-}
-hr.spacer {
-	background: none;
-}
-/*h1, h2, h3, h4, h5, h6,*/
-hr, .entry-footer {
-	clear: both;
-}
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 td, th {
 	padding: 0 1ex;/* maybe shouldn't hard-code that padding */
 }
-
 button, input, optgroup, select, textarea, keygen {
 	color: inherit;
 	font: inherit;
-	margin: 0;
+/*	margin: 0;*/
 }
 input, textarea {/* might need to specify which input types get border */
 	border: 1px solid #ccc;
@@ -210,19 +91,11 @@ input[type="file"] {
 /*    background: none;*/
     padding: 0;
     border: 0;
- }
+}
 textarea {
 	width: 100%;
 	display: block;
 	overflow: auto;/* Remove scrollbar in IE */
-}
-form input[type=submit] {/* still needed ? */
-	/*	margin: 0;*/
-}
-fieldset {/* use * selector? */
-	/*	margin: 0;*/
-	/*	padding: 0;*/
-	/*	border: 0;*/
 }
 ins {
 	border-bottom: 1px dotted #0c0;
@@ -271,6 +144,109 @@ html [type="button"], /* 1 */
 :focus:-moz-placeholder {/* FF <= 18 (jan 2013) probably breaks the flex layout anyhow */
 	/*	color: transparent !important;*/
 }
+
+/*--------------------------------------------------------------
+# Main Sizing & Spacing
+--------------------------------------------------------------*/
+html {
+	background-color: #fffdfa;
+	font-size: 100%;
+	line-height: 1.50;
+	word-wrap: break-word;
+	-ms-text-size-adjust: 100%; /* Prevent font size adjustments after orientation changes in IE and iOS. From sanitize.css haven't tested */
+	-webkit-text-size-adjust: 100%;
+	/*	text-rendering: geometricPrecision;*/
+}
+@media (max-width:600px) { html { font-size: 90%; } }
+@media (min-width:1500px) { html { font-size: 120%; } }
+
+/* hopefully this is the answer for side padding. might want a better way of removing padding from fullwidth */
+main:not(.main-full-width),
+.widget {
+	padding: 0 1.50rem;
+}
+main.main-full-width .tray {
+	padding: 1.50rem;/* maybe add padding to top and bottom of full width page sections? */
+}
+p,
+ol,
+ul,
+dl,
+dt,
+table,
+pre,
+address,
+form,
+blockquote,
+blockquote footer,
+figure,
+figcaption,
+iframe {
+	margin: 1.50rem 0;
+}
+blockquote {
+	padding: 0 1.50em;
+}
+li > ul, li > ol {
+	margin: 0;
+}
+ul, ol, dd {
+	padding-left: 1.50rem;
+}
+dt {
+	font-weight: bolder;
+	margin-bottom: 0;
+}
+hr {
+	background: #777;
+	height: 1px;
+	margin: 1.50rem auto;
+}
+hr, .entry-footer {
+/*	clear: both;*/
+}
+
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+	margin-bottom: 1.50rem;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: inherit;
+	line-height: 1.2;
+	padding-top: 1.50rem;
+	margin: 1.50rem 0 0;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
+}
+h1, .h1 {
+	font-size: 3.157rem;
+}
+h2, .h2 {
+	font-size: 2.369rem;
+}
+h3, .h3 {
+	font-size: 1.778rem;
+}
+h4, .h4 {
+	font-size: 1.333rem;
+}
+h5, .h5 {
+	font-size: 1.333rem;
+	font-weight: bold;
+}
+h6, .h6 {
+	font-size: 1.333rem;
+	font-style: italic;
+}
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+	/*margin-top: 0;*//* better to keep padding so sections won't collapse? */
+	padding-top: 0;
+}
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+	margin-bottom: 1.50rem;
+}
+
+.widgettitle {
+	margin-top: 0;/* until we decide on the above */
+}
+
 /*--------------------------------------------------------------
 *  Page Layout
 --------------------------------------------------------------*/
@@ -284,7 +260,6 @@ body {
 	html, body { height: 100%; }
 	* { /*-ms-flex: 0 1 auto;*/ }/* flex default is wrong in IE10 */
 }
-
 .tray {
 	width: 100%;
 	margin-left: auto;
@@ -367,7 +342,8 @@ body.mobile-nav-open .main-navigation {
 .main-navigation li {
 	display: block;
 }
-/* moved desktop nav to seperate file */
+
+/* moved desktop nav to desktop.css */
 
 .site-header {
 	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
@@ -406,9 +382,174 @@ body.mobile-nav-open path#menu-toggle-close {
 }
 
 
+
 /*--------------------------------------------------------------
-*  Magic Layout Classes
+*  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
+
+blockquote footer cite {
+	display: block;
+}
+blockquote footer {
+	text-align: right;
+}
+th:only-of-type {
+	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
+}
+/* This is to remove frustrating space below logo.  Might be a problem with header widgets too */
+.site-branding {
+	line-height: 0;
+}
+.site-title, .site-description {
+	line-height: 1;/* See if still needed when H1s are squared away */
+}
+footer.entry-footer span {
+	margin-right: 1.50rem;
+}
+p.comment-form-comment label {
+	display: block;
+}
+textarea#comment {
+	width: 100%;
+}
+.widget:not(.widget_nav_menu) ul {
+	/*	padding-left: 1.50rem;*/
+}
+
+/*--------------------------------------------------------------
+*  Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #fff;
+	color: #000;
+	display: block;
+	padding: 1em;
+	height: auto;
+	width: auto;
+	left: 5px;
+	top: 5px;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+/*--------------------------------------------------------------
+*  WordPress Specific stuff — Some of this required
+--------------------------------------------------------------*/
+.sticky {/* Required */
+	display: block;
+}
+.bypostauthor {/* Required */
+	display: block;
+}
+.hentry {
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 1.50rem;
+}
+.entry-header, .entry-content, .entry-footer {
+	/*	margin-bottom: 1.50rem;*/
+}
+.byline,
+.updated:not(.published) {
+	display: none;
+}
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+.blog .format-aside .entry-title,
+.archive .format-aside .entry-title {
+	display: none;
+}
+/*.comment-content a,*/
+/*a {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}*/
+
+/*--------------------------------------------------------------
+*  WordPress Specific stuff: Alignments - Required
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.50em;
+	margin-bottom: 1.50rem;/* should this be applied more generally to p > img or something? */
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.50em;
+	margin-bottom: 1.50rem;
+}
+.alignleft + .alignright {
+	margin-left: 0;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 1.50rem auto;
+}
+
+/*--------------------------------------------------------------
+*  WordPress Specific stuff: Captions - Required
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.50em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.725rem 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## WordPress Specific stuff: Galleries
+--------------------------------------------------------------*/
+.gallery-caption {
+	display: block;
+	line-height: 1.5;/* set to zero on parent to avoid spaces when no captions */
+}
+.gallery-item {
+	margin: 0;
+	line-height: 0;/* avoid space between images when no captions */
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+.gallery-columns-1 .gallery-item {width: 100%;}
+.gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
+/* other sizes are in desktop.css */
+
+/*--------------------------------------------------------------
+*  CSS Framework-type stuff. 
+*  Avoids massive child theme stylesheets, esp given the flexbox prefixes
+--------------------------------------------------------------*/
+hr.double {/* this is the only place the base spacing size is manually doubled */
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+hr.spacer {
+	background: none;
+}
+
 .text-center {
 	text-align: center;
 }
@@ -568,6 +709,7 @@ body.mobile-nav-open path#menu-toggle-close {
 .flex-item--x3, .flex--x3 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 33.333%;-ms-flex:0 0 33.333%;flex:0 0 33.333%;}
 .flex-item--x4, .flex--x4 > .flex-item{-webkit-box-flex:0;-webkit-flex:0 0 25%;-ms-flex:0 0 25%;flex:0 0 25%;}
 
+
 .flex--pad > .flex-item,
 .pad {
 	padding: 1.50rem;
@@ -637,176 +779,4 @@ body.mobile-nav-open path#menu-toggle-close {
 
 .round {
 	border-radius: 50%;
-}
-
-
-/*--------------------------------------------------------------
-*  Content
---------------------------------------------------------------*/
-.sticky {/* Required */
-	display: block;
-}
-.bypostauthor {/* Required */
-	display: block;
-}
-.hentry {
-	/*width: 64ex;*/
-	margin-left: auto;
-	margin-right: auto;
-	padding-bottom: 1.50rem;
-}
-article:not(:only-of-type) {/* in place of .hentry above. use tag instead of class to override easier */
-	/*	padding-bottom: 1.50rem;*/
-}
-
-.entry-header, .entry-content, .entry-footer {
-	/*	margin-bottom: 1.50rem;*/
-}
-.byline,
-.updated:not(.published) {
-	display: none;
-}
-.single .byline,
-.group-blog .byline {
-	display: inline;
-}
-.blog .format-aside .entry-title,
-.archive .format-aside .entry-title {
-	display: none;
-}
-/*.comment-content a,*/
-/*a {
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-}*/
-/*--------------------------------------------------------------
-*  Positioning Tweaks that might not belong in the parent theme
---------------------------------------------------------------*/
-
-blockquote footer cite {
-	display: block;
-}
-blockquote footer {
-	text-align: right;
-}
-th:only-of-type {
-	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
-}
-/* This is to remove frustrating space below logo.  Might be a problem with header widgets too */
-.site-branding {
-	line-height: 0;
-}
-.site-title, .site-description {
-	line-height: 1;/* See if still needed when H1s are squared away */
-}
-footer.entry-footer span {
-	margin-right: 1.50rem;
-}
-p.comment-form-comment label {
-	display: block;
-}
-textarea#comment {
-	width: 100%;
-}
-.widget:not(.widget_nav_menu) ul {
-	/*	padding-left: 1.50rem;*/
-}
-
-/*--------------------------------------------------------------
-*  Accessibility
---------------------------------------------------------------*/
-/* Text meant only for screen readers. */
-.screen-reader-text {
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-}
-
-.screen-reader-text:focus {
-	background-color: #fff;
-	color: #000;
-	display: block;
-	padding: 1em;
-	height: auto;
-	width: auto;
-	left: 5px;
-	top: 5px;
-	z-index: 100000; /* Above WP toolbar. */
-}
-
-/*--------------------------------------------------------------
-*  Alignments - Required
---------------------------------------------------------------*/
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.50em;
-	margin-bottom: 1.50rem;/* should this be applied more generally to p > img or something? */
-}
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.50em;
-	margin-bottom: 1.50rem;
-}
-.alignleft + .alignright {
-	margin-left: 0;
-}
-.aligncenter {
-	clear: both;
-	display: block;
-	margin: 1.50rem auto;
-}
-
-/*--------------------------------------------------------------
-*  Captions - Required
---------------------------------------------------------------*/
-.wp-caption {
-	margin-bottom: 1.50em;
-	max-width: 100%;
-}
-
-.wp-caption img[class*="wp-image-"] {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.wp-caption .wp-caption-text {
-	margin: 0.725rem 0;
-}
-
-.wp-caption-text {
-	text-align: center;
-}
-
-/*--------------------------------------------------------------
-## Galleries
---------------------------------------------------------------*/
-.gallery-caption {
-	display: block;
-	line-height: 1.5;/* set to zero on parent to avoid spaces when no captions */
-}
-.gallery-item {
-	margin: 0;
-	line-height: 0;/* avoid space between images when no captions */
-	display: inline-block;
-	text-align: center;
-	vertical-align: top;
-	width: 100%;
-}
-.gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
-@media (min-width:600px){
-	.gallery-columns-3 .gallery-item{width: 33.333%;}
-	.gallery-columns-4 .gallery-item, .gallery-item{width: 25%;}
-}
-@media (min-width:900px){
-	.gallery-columns-5 .gallery-item{width: 20%;}
-	.gallery-columns-6 .gallery-item, .gallery-item{width: 16.667%;}
-}
-@media (min-width:1200px){
-	.gallery-columns-7 .gallery-item{width: 14.286%;}
-	.gallery-columns-8 .gallery-item{width: 12.5%;}
-	.gallery-columns-9 .gallery-item{width: 11.111%;}
 }

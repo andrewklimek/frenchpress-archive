@@ -207,13 +207,16 @@ function frenchpress_widgets_init() {
 }
 add_action( 'widgets_init', 'frenchpress_widgets_init' );
 
+
 /**
  * Enqueue scripts and styles.
  */
-// add_action('wp_head', 'frenchpress_critical_css', 1 );
+
 function frenchpress_critical_css() {
 	print "<style>". file_get_contents( get_template_directory().'/mobile.min.css' ) ."</style>";
 }
+// add_action('wp_head', 'frenchpress_critical_css', 1 );
+
 function frenchpress_scripts() {
 	
 	$suffix = SCRIPT_DEBUG ? "" : ".min";

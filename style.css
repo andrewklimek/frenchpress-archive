@@ -179,7 +179,7 @@ hr.double {/* this is the only place the base spacing size is manually doubled *
 	margin-top: 3rem;
 	margin-bottom: 3rem;
 }
-#site hr.spacer {
+hr.spacer {
 	background: none;
 }
 /*h1, h2, h3, h4, h5, h6,*/
@@ -200,11 +200,17 @@ button, input, optgroup, select, textarea, keygen {
 	font: inherit;
 	margin: 0;
 }
-input, textarea {
+input, textarea {/* might need to specify which input types get border */
 	border: 1px solid #ccc;
 	border-radius: 0;
 	padding: 0 .5ex;
 }
+input[type="image"],
+input[type="file"] {
+/*    background: none;*/
+    padding: 0;
+    border: 0;
+ }
 textarea {
 	width: 100%;
 	display: block;
@@ -269,13 +275,13 @@ html [type="button"], /* 1 */
 *  Page Layout
 --------------------------------------------------------------*/
 
-#site {
+body {
 	min-height: 100vh;
 	/*	height: 100%;*/
 }
 /* hack because 100vh definitely doesn't work in IE11 */
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	html, body, #site { height: 100%; }
+	html, body { height: 100%; }
 	* { /*-ms-flex: 0 1 auto;*/ }/* flex default is wrong in IE10 */
 }
 
@@ -622,7 +628,7 @@ body.mobile-nav-open path#menu-toggle-close {
 }
 
 @media screen and (max-width: 600px) {
-	#site .breakout {
+	.breakout {
 		margin: 0 -1.50rem;
 		max-width: 115%;/* in case no calc support */
 		max-width: calc( 100% + 1.50rem + 1.50rem );

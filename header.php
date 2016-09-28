@@ -50,8 +50,8 @@ wp_head();
 	<?php
 	else : ?>
 <div id="site-header-main">
-	<div class="tray fff fff-middle fff-auto">
-		<div class="site-branding fffi">
+	<div class="tray fff fff-middle fff-nowrap">
+		<div class="site-branding fffi fffi-none">
 		<?php
 		/**
 		* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block

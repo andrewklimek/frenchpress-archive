@@ -4,7 +4,7 @@ Plugin URI:  https://github.com/andrewklimek/frenchpress/
 Description: a super light theme for people who prefer writing basic html & css to control panels and builders
 Author:      Andrew J Klimek
 Author URI:  https://readycat.net
-Version:     0.3.1
+Version:     0.4.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
@@ -270,7 +270,7 @@ body {
 }
 #primary {
 	width: 30rem;
-	max-width: 100%;/* not 100% sure why we need this, but we do */
+	max-width: 100%;/* still needed? */
 }
 
 /*--------------------------------------------------------------
@@ -581,6 +581,7 @@ hr.spacer {
 	-ms-flex: 1 1 0%;
 	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 	display: block;/* inline items don't work in IE10?? */
+	max-width: 100%;/* had issues with #content and main... is it universal? */
 }
 .fff {
 	display: -webkit-box;
@@ -599,8 +600,9 @@ hr.spacer {
 	flex-direction: column;
 }
 .fff-column > .fffi {
-	width: 100%;/* long words (links) were not breaking in safari */
+	max-width: 100%;/* main wasn't shrinking in safari */
 }
+.fff-column,/* if I remove this, have to add nowrap to body */
 .fff-nowrap {
 	-webkit-flex-wrap: nowrap;
 	-ms-flex-wrap: nowrap;
@@ -643,16 +645,16 @@ hr.spacer {
 	justify-content: flex-end;
 }
 .fff-spacebetween {
-	-webkit-box-pack: spacebetween;
-	-webkit-justify-content: spacebetween;
-	-ms-flex-pack: spacebetween;
-	justify-content: spacebetween;
+	-webkit-box-pack: space-between;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: space-between;
+	justify-content: space-between;
 }
 .fff-spacearound {
-	-webkit-box-pack: spacearound;
-	-webkit-justify-content: spacearound;
-	-ms-flex-pack: spacearound;
-	justify-content: spacearound;
+	-webkit-box-pack: space-around;
+	-webkit-justify-content: space-around;
+	-ms-flex-pack: space-around;
+	justify-content: space-around;
 }
 .fffi-top {
 	-webkit-align-self: flex-start;

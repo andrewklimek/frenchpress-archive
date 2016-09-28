@@ -14,11 +14,19 @@ if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error
  */
 function frenchpress_scripts() {
 	
-	$suffix = SCRIPT_DEBUG ? "" : ".min";
-	
-	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_uri() ); // Use filemtime for dev to avoid cache
-	// wp_enqueue_style( 'frenchpress-style', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), filemtime( get_stylesheet_directory().'/style'.$suffix.'.css' ) );
-	wp_enqueue_style( 'theme', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
+	if ( SCRIPT_DEBUG ) {
+		
+		$suffix = "";
+		
+		wp_enqueue_style( 'theme', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
+		
+	} else {
+		
+		$suffix = ".min";
+		
+		wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), null );
+		
+	}
 	
 	wp_enqueue_style( 'print',  get_template_directory_uri().'/print.css', array(), null, 'print' );
 

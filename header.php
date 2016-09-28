@@ -50,8 +50,8 @@ wp_head();
 	<?php
 	else : ?>
 <div id="site-header-main">
-	<div class="tray">
-		<div class="site-branding">
+	<div class="tray fff fff-middle fff-auto">
+		<div class="site-branding fffi">
 		<?php
 		/**
 		* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block
@@ -74,8 +74,10 @@ wp_head();
 				</a>
 				<?php
 			endif;
-			if ( is_front_page() || is_home() ) : ?>
+			if ( is_front_page() ) : ?>
 				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+			<?php elseif ( is_home() ) : ?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php else : ?>
 				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 			<?php
@@ -104,7 +106,7 @@ wp_head();
 		**/
 		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'fff fff-right fff-middle', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) :
 		?>
-		<nav id="main-nav" class="main-nav">
+		<nav id="main-nav" class="main-nav fffi">
 			<span class="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 					<path id="menu-toggle-close" d="M13.4 12l9.3-9.3c0.4-0.4 0.4-1 0-1.4 -0.4-0.4-1-0.4-1.4 0L12 10.6 2.7 1.3c-0.4-0.4-1-0.4-1.4 0 -0.4 0.4-0.4 1 0 1.4L10.6 12l-9.3 9.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0L12 13.4l9.3 9.3c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4L13.4 12z"/>

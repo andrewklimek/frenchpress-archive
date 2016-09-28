@@ -170,6 +170,12 @@ main:not(.main-full-width),
 main.main-full-width .tray {
 	padding: 1.5rem;/* maybe add padding to top and bottom of full width page sections? */
 }
+/* need to find a way to handle padding that should appear on mobile */
+#content-tray.tray article .tray {
+	padding-left: 1.50rem;
+	padding-right: 1.50rem;
+}
+
 p,
 ol,
 ul,
@@ -393,7 +399,45 @@ body.mobile-nav-open path#menu-toggle-close {
 	}
 }
 
-
+@media (min-width:600px){
+	body.desktop .main-nav li li:last-child {
+		padding-bottom: .75rem;/* undo padding-bottom: 0 for desktop dropdowns */
+	}
+	body.desktop .main-nav ul ul {
+		top: 100%;
+		left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
+		right: -16em;
+		margin: 0  auto;
+		width: 16em;
+	}
+	body.desktop nav.main-nav ul.menu > li {
+		position: relative;
+		padding: 0.75rem;
+	}
+	span.menu-toggle {
+		display: none;
+	}
+	body.desktop nav.main-nav ul ul {
+		position: absolute;
+		z-index: 99;/* need anymore cause of parent z-index? */
+		display: none;
+	}
+	body.desktop nav.main-nav ul li:hover > ul,
+	body.desktop nav.main-nav ul li.focus > ul {
+		display: block;
+	}
+	body.desktop nav.main-nav ul ul li:hover > ul,
+	body.desktop nav.main-nav ul ul li.focus > ul {
+		display: block;
+		left: 100%;
+		width: 100%;
+	}
+	/* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
+	nav.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
+		right: -1.50rem;
+		left: initial;
+	}
+}
 
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
@@ -548,8 +592,20 @@ overflow-wrap: break-word;
 }
 .gallery-columns-1 .gallery-item {width: 100%;}
 .gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
-/* other sizes are in desktop.css */
 
+@media (min-width:600px){
+	.gallery-columns-3 .gallery-item{width: 33.333%;}
+	.gallery-columns-4 .gallery-item, .gallery-item{width: 25%;}
+}
+@media (min-width:900px){
+	.gallery-columns-5 .gallery-item{width: 20%;}
+	.gallery-columns-6 .gallery-item, .gallery-item{width: 16.667%;}
+}
+@media (min-width:1200px){
+	.gallery-columns-7 .gallery-item{width: 14.286%;}
+	.gallery-columns-8 .gallery-item{width: 12.5%;}
+	.gallery-columns-9 .gallery-item{width: 11.111%;}
+}
 /*--------------------------------------------------------------
 *  CSS Framework-type stuff. 
 *  Avoids massive child theme stylesheets, esp given the flexbox prefixes
@@ -573,13 +629,8 @@ hr.spacer {
 }
 
 /* FLEX GRID IMPLEMENTATION */
-/* Default flex item comes first so that flex-items can also be flex containers and the display:block will be overruled */
-/* flex-basis of 0% is actually a good idea bacause IE fails to auto size nested flex containers */
+/* display: block on flex item comes first so that flex-items can also be flex containers and the display:block will be overruled */
 .fffi {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 1 0%;
-	-ms-flex: 1 1 0%;
-	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 	display: block;/* inline items don't work in IE10?? */
 	max-width: 100%;/* had issues with #content and main... is it universal? */
 }
@@ -672,6 +723,14 @@ hr.spacer {
 	-ms-flex-item-align: end;
 	align-self: flex-end;
 }
+.fffi,/* flex-basis 0% is a good default b/c IE fails to auto size nested flex containers */
+.fff-even > .fffi,
+.fff > .fffi-even.fffi {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 0%;
+	-ms-flex: 1 1 0%;
+	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
+}
 .fff-none > .fffi,
 .fff > .fffi-none.fffi {
 	-webkit-box-flex: 0;
@@ -708,14 +767,12 @@ hr.spacer {
 	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 	width: 18em;
 }
-.fff-even > .fffi,
-.fff > .fffi-even.fffi {/* this is also the default */
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 1 0%;
-	-ms-flex: 1 1 0%;
-	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
+.fff-magic > .fffi:empty,
+.fff > .fffi-magic.fffi:empty {
+	display: none;/* eg missing pictues on archive page */
 }
 /* growth ratios */
+.fffi-0.fffi{-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;}
 .fffi-1.fffi{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}
 .fffi-2.fffi{-webkit-box-flex:2;-webkit-flex-grow:2;-ms-flex-positive:2;flex-grow:2;}
 .fffi-3.fffi{-webkit-box-flex:3;-webkit-flex-grow:3;-ms-flex-positive:3;flex-grow:3;}

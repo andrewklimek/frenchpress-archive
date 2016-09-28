@@ -18,10 +18,6 @@ body.desktop .main-nav ul ul {
 	/*	max-width: none;*/
 	width: 16em;
 }
-nav a[href="#"], nav a:not([href]) {
-	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
-}
-
 body.desktop nav.main-nav ul.menu > li {
 /*	display: table-cell;*/
 /*	vertical-align: middle;*/

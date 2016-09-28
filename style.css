@@ -79,18 +79,22 @@ td, th {
 button, input, optgroup, select, textarea, keygen {
 	color: inherit;
 	font: inherit;
-/*	margin: 0;*/
+	/*	margin: 0;*/
 }
 input, textarea {/* might need to specify which input types get border */
 	border: 1px solid #ccc;
 	border-radius: 0;
-	padding: 0 .5ex;
+	padding: .5ex;
 }
 input[type="image"],
 input[type="file"] {
-/*    background: none;*/
-    padding: 0;
-    border: 0;
+	/*    background: none;*/
+	padding: 0;
+	border: 0;
+}
+[type="search"] {
+	-webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */
+	/*outline-offset: -2px;*//* Correct the outline style in Safari */
 }
 textarea {
 	width: 100%;
@@ -113,11 +117,9 @@ svg {
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 }
 /**
- * Correct the inability to style clickable types in iOS and Safari.
- *
- * 1. Prevent this from destroyign native `audio` and `video`
- *    controls in Android 4.
- */
+* Correct the inability to style clickable types in iOS and Safari.
+* 1. Prevents this from destroying native `audio` and `video` controls in Android 4.
+*/
 button,
 html [type="button"], /* 1 */
 [type="reset"],
@@ -203,7 +205,7 @@ hr {
 	margin: 1.5rem auto;
 }
 hr, .entry-footer {
-/*	clear: both;*/
+	/*	clear: both;*/
 }
 
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
@@ -291,6 +293,10 @@ nav li {/* li.menu-item */
 nav li li {
 	padding-bottom: 0;
 }
+nav a[href="#"], nav a:not([href]) {
+	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
+	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
+}
 
 /* Main Nav */
 
@@ -313,7 +319,7 @@ body.mobile-nav-open #obfuscator.active {
 
 body.mobile .main-nav {
 	z-index: 999;
-/*	height: calc(100% + 60px);*/
+	/*	height: calc(100% + 60px);*/
 	height: 100%;
 	position: fixed;
 	top: 0;
@@ -334,8 +340,8 @@ body.mobile .main-nav {
 body.mobile-nav-open .main-nav {
 	max-width: 90%;
 	-webkit-transform: translateX(-306px);
-	    -ms-transform: translateX(-306px);
-	        transform: translateX(-306px);
+	-ms-transform: translateX(-306px);
+	transform: translateX(-306px);
 	box-shadow: 0 0 16px rgba(0,0,0,0.1);
 	overflow: auto;
 }
@@ -476,8 +482,8 @@ textarea#comment {
 }
 /*.comment-content a,*/
 /*a {
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+word-wrap: break-word;
+overflow-wrap: break-word;
 }*/
 
 /*--------------------------------------------------------------
@@ -572,8 +578,8 @@ hr.spacer {
 .fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
-	    -ms-flex: 1 1 0%;
-	        flex: 1 1 0%;/* aka 1 but IE10 is wrong */
+	-ms-flex: 1 1 0%;
+	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 	display: block;/* inline items don't work in IE10?? */
 }
 .fff {
@@ -582,130 +588,130 @@ hr.spacer {
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .fff-column {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
 }
 .fff-column > .fffi {
 	width: 100%;/* long words (links) were not breaking in safari */
 }
 .fff-nowrap {
 	-webkit-flex-wrap: nowrap;
-	    -ms-flex-wrap: nowrap;
-	        flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
 }
 .fff-top {
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
-	    -ms-flex-align: start;
-	        align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
 }
 .fff-middle {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	        align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
 .fff-bottom {
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
-	    -ms-flex-align: end;
-	        align-items: flex-end;
+	-ms-flex-align: end;
+	align-items: flex-end;
 }
 .fff-left {
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
-	    -ms-flex-pack: start;
-	        justify-content: flex-start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
 }
 .fff-center {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
 .fff-right {
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
-	    -ms-flex-pack: end;
-	        justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
 }
 .fff-spacebetween {
 	-webkit-box-pack: spacebetween;
 	-webkit-justify-content: spacebetween;
-	    -ms-flex-pack: spacebetween;
-	        justify-content: spacebetween;
+	-ms-flex-pack: spacebetween;
+	justify-content: spacebetween;
 }
 .fff-spacearound {
 	-webkit-box-pack: spacearound;
 	-webkit-justify-content: spacearound;
-	    -ms-flex-pack: spacearound;
-	        justify-content: spacearound;
+	-ms-flex-pack: spacearound;
+	justify-content: spacearound;
 }
 .fffi-top {
 	-webkit-align-self: flex-start;
-	    -ms-flex-item-align: start;
-	        align-self: flex-start;
+	-ms-flex-item-align: start;
+	align-self: flex-start;
 }
 .fffi-middle {
 	-webkit-align-self: center;
-	    -ms-flex-item-align: center;
-	            -ms-grid-row-align: center;
-	        align-self: center;
+	-ms-flex-item-align: center;
+	-ms-grid-row-align: center;
+	align-self: center;
 }
 .fffi-bottom {
 	-webkit-align-self: flex-end;
-	    -ms-flex-item-align: end;
-	        align-self: flex-end;
+	-ms-flex-item-align: end;
+	align-self: flex-end;
 }
 .fff-none > .fffi,
 .fff > .fffi-none.fffi {
 	-webkit-box-flex: 0;
 	-webkit-flex: none;
-	    -ms-flex: none;
-	        flex: none;/* 0 0 auto */
+	-ms-flex: none;
+	flex: none;/* 0 0 auto */
 }
 .fff-auto > .fffi,
 .fff > .fffi-auto.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
-	    -ms-flex: 1 1 auto;
-	        flex: 1 1 auto;/* aka auto, but IE10 is wrong */
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 }
 .fff-initial > .fffi,
 .fff > .fffi-initial.fffi {
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 1 auto;
-	    -ms-flex: 0 1 auto;
-	        flex: 0 1 auto;/* aka initial, but IE10 is wrong */
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;/* aka initial, but IE10 is wrong */
 }
 .fff-noshrink > .fffi,
 .fff > .fffi-noshrink.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 0 auto;
-	    -ms-flex: 1 0 auto;
-	        flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
+	-ms-flex: 1 0 auto;
+	flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
 }
 .fff-magic > .fffi,
 .fff > .fffi-magic.fffi {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 auto;
-	    -ms-flex: 1 1 auto;
-	        flex: 1 1 auto;/* aka auto, but IE10 is wrong */
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 	width: 18em;
 }
 .fff-even > .fffi,
 .fff > .fffi-even.fffi {/* this is also the default */
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 0%;
-	    -ms-flex: 1 1 0%;
-	        flex: 1 1 0%;/* aka 1 but IE10 is wrong */
+	-ms-flex: 1 1 0%;
+	flex: 1 1 0%;/* aka 1 but IE10 is wrong */
 }
 /* growth ratios */
 .fffi-1.fffi{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}

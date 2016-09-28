@@ -102,7 +102,8 @@ wp_head();
 		* }
 		* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
 		**/
-		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'fff fff-right', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) : ?>
+		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'fff fff-right fff-middle', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) :
+		?>
 		<nav id="main-nav" class="main-nav">
 			<span class="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -129,4 +130,4 @@ if ( is_active_sidebar( 'header-3' ) ) : ?>
 endif; ?>
 </header>
 <div id="content" class="site-content fffi fffi-noshrink">
-	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?> fff fff-spacearound">
+	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?> fff fff-spacearound fff-magic">

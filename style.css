@@ -727,10 +727,10 @@ hr.spacer {
 .fffi-11.fffi{-webkit-box-flex:11;-webkit-flex-grow:11;-ms-flex-positive:11;flex-grow:11;}
 .fffi-99.fffi{-webkit-box-flex:99;-webkit-flex-grow:99;-ms-flex-positive:99;flex-grow:99;}
 /* percentage based */
-.fffi-x1, .fff-x1 > .fffi{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;}
-.fffi-x2, .fff-x2 > .fffi{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;}
-.fffi-x3, .fff-x3 > .fffi{-webkit-flex-basis:33.333%;-ms-flex-preferred-size:33.333%;flex-basis:33.333%;}
-.fffi-x4, .fff-x4 > .fffi{-webkit-flex-basis:25%;-ms-flex-preferred-size:25%;flex-basis:25%;}
+.fffi-x1.fffi, .fff-x1 > .fffi{-webkit-flex-basis:100%;-ms-flex-preferred-size:100%;flex-basis:100%;}
+.fffi-x2.fffi, .fff-x2 > .fffi{-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;}
+.fffi-x3.fffi, .fff-x3 > .fffi{-webkit-flex-basis:33.333%;-ms-flex-preferred-size:33.333%;flex-basis:33.333%;}
+.fffi-x4.fffi, .fff-x4 > .fffi{-webkit-flex-basis:25%;-ms-flex-preferred-size:25%;flex-basis:25%;}
 
 .fff-pad {
 	margin: -1.5rem;

@@ -139,7 +139,9 @@ function frenchpress_setup() {
 		'gallery',
 		'caption',
 	) );
-
+	/* Also HTML5 related, remove role=navigation from nav elements */
+	add_filter( 'navigation_markup_template', function($template){ return str_replace( ' role="navigation"', '', $template ); });
+	
 	/*
 	 * Enable support for Post Formats.
 	 * See https://developer.wordpress.org/themes/functionality/post-formats/

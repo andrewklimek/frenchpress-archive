@@ -1,41 +1,54 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-.login * {
-    margin: 0;
-    padding: 0;
+body {
+	margin: 0;
+	padding: 0;
 }
 #login {
-    width: 320px;
-    padding: 8% 0 0;
-    margin: auto;
-    box-sizing: border-box;
+	background: #fff;
+	margin: 8% auto 0;
+	padding: 20px;
+	width: 400px;
+	max-width: 100%;
+	box-sizing: border-box;
 }
-.login form .forgetmenot {
-    float: left;
+#login p {
+	margin: 20px 0 0;
+	font-size: 14px;
 }
-.login .button-primary {
-    float: right;
-    height: 30px;
-    line-height: 28px;
-    padding: 0 12px 2px;
-    display: inline-block;
+#login h1 {
+	text-align: center;
+	margin: 20px;
+	font-size: 40px;
 }
-.login form {
-    margin-top: 20px;
-    margin-left: 0;
-    padding: 24px 0;
-    background-color: initial;
+#login h1 a {
+	text-decoration: none;
+	pointer-events: none;
+	cursor: default;
 }
-.login form .input, .login input[type=text] {
-    font-size: 24px;
-    width: 100%;
-    padding: 3px;
-    margin: 2px 6px 16px 0;
-    box-sizing: border-box;
+#login form {
+	overflow: hidden;
 }
-.login #backtoblog, .login #nav {
-    padding: 16px 0;
+#login .input {
+	font-size: 24px;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #444;
+	text-align: center;
+	padding: 1em 0 0;
+	box-sizing: border-box;
+}
+#login .forgetmenot {
+	float: left;
+	font-size: 12px;
+}
+#login .submit {
+	float: right;
+}
+#login .button-primary {
+	line-height: 28px;
+	padding: 0 8px;
+	display: inline-block;
+	margin: 0;
+	font-size: 12px;
+	width: initial;
+	min-width: 0;
 }

@@ -104,7 +104,7 @@ wp_head();
 		* }
 		* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
 		**/
-		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'fff fff-right fff-middle', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) :
+		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'menu fff fff-right fff-middle', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) :
 		?>
 		<nav id="main-nav" class="main-nav fffi">
 			<span class="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false">

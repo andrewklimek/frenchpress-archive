@@ -141,6 +141,15 @@ function frenchpress_setup() {
 	) );
 	/* Also HTML5 related, remove role=navigation from nav elements */
 	add_filter( 'navigation_markup_template', function($template){ return str_replace( ' role="navigation"', '', $template ); });
+	// remove excess markup from comment form
+	add_filter( 'comment_form_fields', function($fields){ 
+		foreach ( $fields as $key => $field ) {
+			$fields[$key] = str_replace( array( 'aria-required="true" required="required"', "aria-required='true' required='required' /" ), 'required', $field );
+		}
+		return $fields;
+	});
+	
+	
 	
 	/*
 	 * Enable support for Post Formats.

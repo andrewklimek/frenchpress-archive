@@ -139,17 +139,6 @@ function frenchpress_setup() {
 		'gallery',
 		'caption',
 	) );
-	/* Also HTML5 related, remove role=navigation from nav elements */
-	add_filter( 'navigation_markup_template', function($template){ return str_replace( ' role="navigation"', '', $template ); });
-	// remove excess markup from comment form
-	add_filter( 'comment_form_fields', function($fields){ 
-		foreach ( $fields as $key => $field ) {
-			$fields[$key] = str_replace( array( 'aria-required="true" required="required"', "aria-required='true' required='required' /" ), 'required', $field );
-		}
-		return $fields;
-	});
-	
-	
 	
 	/*
 	 * Enable support for Post Formats.
@@ -301,6 +290,11 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
  * [frenchpress] builder-style shortcode
  */
 require get_template_directory() . '/inc/shortcodes.php';
+
+/**
+ * Remove core markup that HTML5 does not need - probably only use if caching pages
+ */
+require get_template_directory() . '/inc/html5.php';
 
 /**
  * Implement the Custom Header feature.

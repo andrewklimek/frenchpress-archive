@@ -50,7 +50,7 @@ wp_head();
 	<?php
 	else : ?>
 <div id="site-header-main">
-	<div class="tray fff fff-middle fff-nowrap">
+	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-nowrap" ); ?>">
 		<div class="site-branding fffi fffi-none">
 		<?php
 		/**
@@ -131,5 +131,5 @@ if ( is_active_sidebar( 'header-3' ) ) : ?>
 <?php
 endif; ?>
 </header>
-<div id="content" class="site-content fffi fffi-noshrink">
-	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width" : "tray"; ?> fff fff-spacearound fff-magic">
+<div id="content" class="<?php echo apply_filters( 'frenchpress_class_content', "site-content fffi fffi-noshrink" ); ?>">
+	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width " : "tray "; echo apply_filters( 'frenchpress_class_content_tray', "fff fff-spacearound fff-magic" ); ?>">

@@ -57,9 +57,9 @@ add_action( 'login_enqueue_scripts', function() {
 	// wp_dequeue_style( 'dashicons' );
 	wp_dequeue_style( 'login' );
 	
-	// if ( function_exists( 'frenchpress_child_enqueue_scripts' ) ) {
-	// 	frenchpress_child_enqueue_scripts();
-	// }
+	if ( function_exists( 'frenchpress_child_enqueue_scripts' ) ) {
+		frenchpress_child_enqueue_scripts();
+	}
 	wp_enqueue_style( 'theme', get_stylesheet_uri(), array(), null );
 	wp_enqueue_style( 'frenchpress-login', get_template_directory_uri() . '/login.css', array(), null );
 } );

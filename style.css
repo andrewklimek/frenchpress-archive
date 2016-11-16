@@ -507,7 +507,6 @@ textarea#comment {
 .hentry {
 	margin-left: auto;
 	margin-right: auto;
-	padding-bottom: 1.5rem;
 }
 .entry-header, .entry-content, .entry-footer {
 	/*	margin-bottom: 1.5rem;*/
@@ -593,15 +592,15 @@ overflow-wrap: break-word;
 .gallery-columns-1 .gallery-item {width: 100%;}
 .gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
 
-@media (min-width:600px){
+@media (min-width:800px){
 	.gallery-columns-3 .gallery-item{width: 33.333%;}
 	.gallery-columns-4 .gallery-item, .gallery-item{width: 25%;}
 }
-@media (min-width:900px){
+@media (min-width:1200px){
 	.gallery-columns-5 .gallery-item{width: 20%;}
 	.gallery-columns-6 .gallery-item, .gallery-item{width: 16.667%;}
 }
-@media (min-width:1200px){
+@media (min-width:1600px){
 	.gallery-columns-7 .gallery-item{width: 14.286%;}
 	.gallery-columns-8 .gallery-item{width: 12.5%;}
 	.gallery-columns-9 .gallery-item{width: 11.111%;}
@@ -767,10 +766,11 @@ hr.spacer {
 	flex: 1 1 auto;/* aka auto, but IE10 is wrong */
 	width: 18em;
 }
-.fff-magic > .fffi:empty,
+/* eg missing pictues on archive page */
+/*.fff-magic > .fffi:empty,
 .fff > .fffi-magic.fffi:empty {
-	display: none;/* eg missing pictues on archive page */
-}
+	display: none;
+}*/
 /* growth ratios */
 .fffi-0.fffi{-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;}
 .fffi-1.fffi{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}

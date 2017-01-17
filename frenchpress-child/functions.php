@@ -10,8 +10,9 @@
 // Add Theme Stylesheets
 add_action( 'wp_enqueue_scripts', 'frenchpress_child_enqueue_scripts' );
 function frenchpress_child_enqueue_scripts() {
-	$suffix = SCRIPT_DEBUG ? "" : ".min";// get minified parent stylesheet unless debug_script is on.
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style'.$suffix.'.css', array(), filemtime( get_template_directory() . '/style'.$suffix.'.css' ) );
+	// $suffix = SCRIPT_DEBUG ? "" : ".min";// get minified parent stylesheet unless debug_script is on.
+	$suffix = "";
+	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style'.$suffix.'.css', array(), filemtime( get_template_directory() . '/style'.$suffix.'.css' ) .'-P' );
 	wp_enqueue_style( 'fonts', get_stylesheet_directory_uri() . '/fonts.css', array(), null );
 }
 
@@ -37,12 +38,12 @@ add_filter( 'frenchpress_sidebar', 'frenchpress_sidebar' );
 
 // add_filter( 'user_can_richedit' , '__return_false' );// disable visual editor
 
-// Hide various things that don't have options yet
+// Show/Hide various things that don't have options yet
 add_filter( 'frenchpress_page_titles', '__return_false' );// Don't display title on pages
-// add_filter( 'frenchpress_page_layout', function(){ return 'no-sidebars'; } );// default to no sidebars on pages
-
+// hook for default page layout until I make an option page. Use 'sidebars, 'full-width', or 'no-sidebars' (the default)
+// add_filter( 'frenchpress_page_layout', function(){ return 'full-width'; } );
+add_filter( 'frenchpress_full_width' , '__return_true' );// full width layout
 add_filter( 'frenchpress_featured_image' , '__return_true' );// show featured images on single posts
-
 // add_filter( 'frenchpress_archive_excerpts', false );// show full post in archives
 
 // No Meta

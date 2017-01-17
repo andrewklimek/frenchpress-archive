@@ -68,6 +68,7 @@ add_action( 'login_enqueue_scripts', function() {
 
 function frenchpress_mobile_test() {
 	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
+	if ( ! $breakpoint ) return;
 	print "
 	<script>
 	function checkForDesktop(){

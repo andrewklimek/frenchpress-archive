@@ -295,6 +295,11 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
 require get_template_directory() . '/inc/shortcodes.php';
 
 /**
+ * Remove core bull
+ */
+require get_template_directory() . '/inc/disembellish.php';
+
+/**
  * Remove core markup that HTML5 does not need - probably only use if caching pages
  */
 require get_template_directory() . '/inc/html5.php';

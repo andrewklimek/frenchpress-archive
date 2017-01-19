@@ -16,7 +16,7 @@
 		return;
 	}
 
-	button = container.querySelector( '.menu-toggle' );
+	button = document.getElementById( 'menu-toggle' );
 	if ( 'undefined' === typeof button ) {
 		return;
 	}

@@ -14,19 +14,19 @@ if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error
  */
 function frenchpress_scripts() {
 	
-	if ( SCRIPT_DEBUG ) {
+	// if ( SCRIPT_DEBUG ) {
 		
 		$suffix = "";
 		
 		wp_enqueue_style( 'theme', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
 		
-	} else {
-		
-		$suffix = ".min";
-		
-		wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), null );
-		
-	}
+	// } else {
+	//
+	// 	$suffix = ".min";
+	//
+	// 	wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), null );
+	//
+	// }
 	
 	wp_enqueue_style( 'print',  get_template_directory_uri().'/print.css', array(), null, 'print' );
 
@@ -293,6 +293,11 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
  * [frenchpress] builder-style shortcode
  */
 require get_template_directory() . '/inc/shortcodes.php';
+
+/**
+ * Remove core bull
+ */
+require get_template_directory() . '/inc/disembellish.php';
 
 /**
  * Remove core markup that HTML5 does not need - probably only use if caching pages

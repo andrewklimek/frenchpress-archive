@@ -18,7 +18,7 @@ function frenchpress_child_enqueue_scripts() {
 	// wp_register_script( 'psb-smooth-scroll', get_template_directory_uri() . '/js/smooth-scroll.js', array( 'jquery' ), null, true );
 }
 
-add_filter( 'frenchpress_menu_breakpoint', function(){ return 0; } );// mobile nav breakpoint in pixels, 0 to disable
+// add_filter( 'frenchpress_menu_breakpoint', function(){ return 0; } );// mobile nav breakpoint in pixels, 0 to disable
 
 add_action( 'wp_head', 'frenchpress_browser_color' );
 function frenchpress_browser_color() {

@@ -373,7 +373,7 @@ body.mobile #menu-toggle {
    white-space: nowrap;
 	height: 1.5rem;
 	box-sizing: content-box;
-	/*    background: #fff;*/
+	background: inherit;
 	font-size: inherit;
 	font-weight: inherit;
 }

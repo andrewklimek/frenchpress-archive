@@ -297,7 +297,9 @@ require get_template_directory() . '/inc/shortcodes.php';
 /**
  * Remove core bull
  */
-require get_template_directory() . '/inc/disembellish.php';
+if ( ! function_exists( 'remove_type_from_archive_title' ) ) {
+	require get_template_directory() . '/inc/disembellish.php';
+}
 
 /**
  * Remove core markup that HTML5 does not need - probably only use if caching pages

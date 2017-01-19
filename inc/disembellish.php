@@ -98,4 +98,4 @@ function remove_type_from_archive_title( $title ){
 	}
 	return $title;
 }
-// add_filter( 'get_the_archive_title', 'remove_type_from_archive_title' );
+// add_filter( 'remove_type_from_archive_title', 'remove_type_in_archive_title' );

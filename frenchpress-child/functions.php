@@ -44,6 +44,7 @@ add_filter( 'frenchpress_sidebar', 'frenchpress_sidebar' );
 add_filter( 'frenchpress_page_titles', '__return_false' );// Don't display title on pages
 // hook for default page layout until I make an option page. Use 'sidebars, 'full-width', or 'no-sidebars' (the default)
 // add_filter( 'frenchpress_page_layout', function(){ return 'full-width'; } );
+// add_filter( 'frenchpress_post_layout', function(){ return 'full-width'; } );
 
 
 // function frenchpress_full_width( $show_sidebar ) {

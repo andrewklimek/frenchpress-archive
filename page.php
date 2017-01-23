@@ -12,8 +12,9 @@
  * @package FrenchPress
  */
 
+$layout = apply_filters( 'frenchpress_full_width', false ) ? "full-width" : "no-sidebars";// defaults
 // hook for default page layout until I make an option page. Use 'sidebars, 'full-width', or 'no-sidebars'
-$layout = apply_filters( 'frenchpress_page_layout', 'no-sidebars' );
+$layout = apply_filters( 'frenchpress_page_layout', $layout );
 
 get_header();
 ?>

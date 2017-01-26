@@ -30,7 +30,7 @@ function frenchpress_scripts() {
 	
 	wp_enqueue_style( 'print',  get_template_directory_uri().'/print.css', array(), null, 'print' );
 
-	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '160915-2', true );
+	wp_enqueue_script( 'frenchpress-navigation', get_template_directory_uri().'/js/navigation'.$suffix.'.js', array(), '170118', true );
 
 	wp_enqueue_script( 'frenchpress-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix'.$suffix.'.js', array(), '160729', true );
 
@@ -302,11 +302,6 @@ if ( ! function_exists( 'remove_type_from_archive_title' ) ) {
 }
 
 /**
- * Remove core markup that HTML5 does not need - probably only use if caching pages
- */
-require get_template_directory() . '/inc/html5.php';
-
-/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -317,7 +312,7 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Custom functions that act independently of the theme templates.
+ * HTML% Cleanup and various other goodies
  */
 require get_template_directory() . '/inc/extras.php';
 
@@ -329,7 +324,9 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-require get_template_directory() . '/inc/jetpack.php';
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
+}
 
 /**
  * Custom meta boxes.

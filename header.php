@@ -74,17 +74,19 @@ wp_head();
 				</a>
 				<?php
 			endif;
-			if ( is_front_page() ) : ?>
-				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-			<?php elseif ( is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			
+			// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
+			$hide = display_header_text() ? '' : ' screen-reader-text';
+			
+			if ( is_front_page() || is_home() ) : ?>
+				<h1 class="site-title<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php else : ?>
-				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				<p class="site-title<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php
 			endif;
 				$description = get_bloginfo( 'description', 'display' );
 				if ( $description || is_customize_preview() ) : ?>
-					<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+					<p class="site-description<?php echo $hide; ?>"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 				<?php
 				endif;// End header image check.
 		endif; // $skip_the_rest

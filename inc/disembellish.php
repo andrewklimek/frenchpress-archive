@@ -88,14 +88,4 @@ register_deactivation_hook( __FILE__, function(){ update_option( 'use_smilies', 
 //remove_filter( 'the_excerpt', 'wpautop' );
 
 
-/**
- * Remove "Category:" or "Author:" or ETC from archive page titles
- */
-function remove_type_from_archive_title( $title ){
-	$pos = strpos( $title, ': ' );
-	if ( $pos ) {
-		$title = substr( $title, 2 + $pos );
-	}
-	return $title;
-}
-// add_filter( 'remove_type_from_archive_title', 'remove_type_in_archive_title' );
+

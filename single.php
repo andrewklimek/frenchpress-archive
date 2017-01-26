@@ -7,9 +7,13 @@
  * @package FrenchPress
  */
 
+$layout = apply_filters( 'frenchpress_full_width', false ) ? "full-width" : "sidebars";// defaults
+// hook for default page layout until I make an option page. Use 'sidebars, 'full-width', or 'no-sidebars'
+$layout = apply_filters( 'frenchpress_post_layout', $layout );
+
 get_header();
 ?>
-<main id="primary" class="site-main fffi fffi-99">
+<main id="primary" class="site-main fffi fffi-99<?php if ( $layout === 'full-width' ) echo ' main-full-width' ?>">
 <?php
 while ( have_posts() ) : the_post();
 

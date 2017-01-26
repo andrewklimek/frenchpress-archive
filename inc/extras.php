@@ -7,15 +7,34 @@
  * @package FrenchPress
  */
 
+
 /**
- * Changes <div> to <nav> for menu widget
+ * Various tweaks to add HTML5 semantics or remove markup that HTML5 does not need and would throw warnings in validators
+ *
+ * Probably a waste of PHP processing if pages aren't cached
  */
+// Remove resource types
+add_filter( 'style_loader_tag', function( $tag ) { return str_replace( array( " type='text/css' media='all' /", "type='text/css' "), "", $tag ); } );
+add_filter( 'script_loader_tag', function( $tag ) { return str_replace( "type='text/javascript' ", "", $tag ); } );
+
+// remove role=navigation from nav elements and add tray class which is just for this theme.
+add_filter( 'navigation_markup_template', function($template){ return str_replace( 'class="navigation %1$s" role="navigation"', 'class="navigation %1$s tray"', $template ); });
+
+// remove excess markup from comment form
+add_filter( 'comment_form_fields', function($fields){ 
+	foreach ( $fields as $key => $field ) {
+		$fields[$key] = str_replace( array( 'aria-required="true" required="required"', "aria-required='true' required='required' /" ), 'required', $field );
+	}
+	return $fields;
+});
+// Changes <div> to <nav> for menu widget
 function frenchpress_widget_nav_menu_args( $nav_menu_args ) {
 	// if ( $args['id'] === 'top' )
 	$nav_menu_args['container'] = 'nav';
 	return $nav_menu_args;
 }
 add_filter( 'widget_nav_menu_args', 'frenchpress_widget_nav_menu_args' );
+
 
 /**
  * Adds custom classes to the array of body classes.

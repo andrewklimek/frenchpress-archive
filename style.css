@@ -361,7 +361,7 @@ body.mobile #primary-menu,
 .site-header {
 	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
 }
-body.mobile #menu-toggle {
+#menu-toggle {
 	top: 1rem;
 	right: 103%;
 	position: absolute;
@@ -373,14 +373,13 @@ body.mobile #menu-toggle {
    white-space: nowrap;
 	height: 1.5rem;
 	box-sizing: content-box;
-	/*    background: #fff;*/
-	font-size: inherit;
-	font-weight: inherit;
+   outline: none;
+	color: inherit;
+	background: none;
+	font: inherit;
 }
-@media (max-width:600px) {
-	#menu-toggle:focus {
-	    outline: none;
-	}
+body.mobile #menu-toggle {
+	display: inline-block;
 }
 body.mobile-nav-open.mobile #menu-toggle {
 	right: 0.75rem;
@@ -487,7 +486,9 @@ textarea#comment {
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
 .screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 	height: 1px;
 	width: 1px;
 	overflow: hidden;

@@ -515,24 +515,22 @@ textarea#comment {
 .bypostauthor {/* Required */
 	display: block;
 }
-.hentry {
-	margin-left: auto;
-	margin-right: auto;
-}
-.entry-header, .entry-content, .entry-footer {
-	/*	margin-bottom: 1.5rem;*/
+.hentry {/* Better not to style hAtom classes, do we need this? on what type of articles? */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
 }
 .byline,
 .updated:not(.published) {
 	display: none;
 }
+/* This byline stuff might be unnecessarily clever */
 .single .byline,
 .group-blog .byline {
-	display: inline;
+/* 	display: inline; */
 }
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
-	display: none;
+/* 	display: none; */
 }
 /*.comment-content a,*/
 /*a {

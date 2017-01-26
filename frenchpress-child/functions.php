@@ -174,7 +174,6 @@ function quickcat($atts){
 			}
 		?>
 	</div>
-</a>
 </article>
 			<?php
 		}

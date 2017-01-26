@@ -105,7 +105,7 @@ function quickcat($atts){
 			$query->the_post();
 			// get_template_part( 'template-parts/content', get_post_format() );
 			?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('quickcat fff'); ?>>
+<article <?php post_class('quickcat fff'); ?>>
 	<div class="entry-header quickcat fffi fffi-initial">
 		<a href="<?php echo esc_url( get_permalink() ) ?>" rel="bookmark">
 			<?php

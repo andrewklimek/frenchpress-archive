@@ -214,9 +214,6 @@ hr, .entry-footer {
 	/*	clear: both;*/
 }
 
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
-	margin-bottom: 1.5rem;
-}
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
 	line-height: 1.2;

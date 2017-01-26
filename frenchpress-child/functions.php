@@ -106,7 +106,7 @@ function quickcat($atts){
 			// get_template_part( 'template-parts/content', get_post_format() );
 			?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('quickcat fff'); ?>>
-	<header class="entry-header quickcat fffi fffi-initial">
+	<div class="entry-header quickcat fffi fffi-initial">
 		<a href="<?php echo esc_url( get_permalink() ) ?>" rel="bookmark">
 			<?php
 			if ( ! $atts['thumb_before'] ) {
@@ -117,7 +117,7 @@ function quickcat($atts){
 			}
 			?>
 		</a>
-	</header>
+	</div>
 	<div class="entry-content quickcat fffi fffi-magic">
 		<?php
 			if ( $atts['body'] || $atts['thumb_before'] ) {

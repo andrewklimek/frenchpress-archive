@@ -83,9 +83,13 @@ add_filter( 'get_the_archive_title', 'wrap_archive_title_prefix' );
  */
 function frenchpress_nofollow_widgets($text) {
 	if ( ! is_front_page() ) {
-		$search = array( ' rel="nofollow"', " rel='nofollow'", ' rel=nofollow', 'a href' );
-		$replace = array( '', '', '', 'a rel="nofollow" href' );
-		$text = str_replace($search, $replace, $text);
+		
+		if ( false !== stripos( $text, ' rel=' ) ) {
+			$text = preg_replace( '/ rel=["\']\w+?["\']/', '', $text );
+		}
+		// $search = array( ' rel="nofollow"', " rel='nofollow'", ' rel=nofollow', 'a href' );
+		// $replace = array( '', '', '', 'a rel="nofollow" href' );
+		$text = str_replace( 'a href', 'a rel="nofollow" href', $text);
 	}
 	return $text;
 }

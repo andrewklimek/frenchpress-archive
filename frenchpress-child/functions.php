@@ -212,12 +212,13 @@ function frenchpress_masonry( $a, $content = '' ) {
 			percentPosition: true,
 			// gutter: 10
 		});
+		grid.style.opacity = 1;
 	});
 	";
 	wp_enqueue_script( 'masonry' );
 	wp_add_inline_script( 'masonry', $snippet );
 	
-	$out = "<div id='frenchmason-{$id}' class='frenchmason'>". do_shortcode($content) ."</div>";
+	$out = "<div id='frenchmason-{$id}' class='frenchmason' style='opacity:0;transition:opacity .2s;'>". do_shortcode($content) ."</div>";
 	
 	return $out;
 }

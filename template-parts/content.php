@@ -13,7 +13,7 @@
 			if ( has_post_thumbnail() && ( ! is_single() || apply_filters( 'frenchpress_featured_image', false ) ) ) {
 				the_post_thumbnail();
 			}
-			if ( is_single() ) {
+			if ( is_singular() ) {
 				the_title( '<h1 class="entry-title">', '</h1>' );
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );

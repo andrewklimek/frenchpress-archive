@@ -7,6 +7,8 @@
  * @package FrenchPress
  */
 
+// Enable the use of shortcodes in text widgets.
+add_filter( 'widget_text', 'do_shortcode' );
 
 /**
  * Various tweaks to add HTML5 semantics or remove markup that HTML5 does not need and would throw warnings in validators
@@ -57,6 +59,16 @@ function frenchpress_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'frenchpress_body_classes' );
 
+/**
+ * Add a pingback url auto-discovery header for singularly identifiable articles.
+ */
+function _s_pingback_header() {
+	if ( is_singular() && pings_open() ) {
+		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
+	}
+}
+add_action( 'wp_head', '_s_pingback_header' );
+
 
 /**
  * Wrap the archive type in archive titles with a span so they can be hidden or styled
@@ -94,6 +106,3 @@ function frenchpress_nofollow_widgets($text) {
 	return $text;
 }
 add_filter( 'widget_text', 'frenchpress_nofollow_widgets', 99 );
-
-// Enable the use of shortcodes in text widgets.
-add_filter( 'widget_text', 'do_shortcode' );

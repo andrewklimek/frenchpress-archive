@@ -1,8 +1,8 @@
 <?php
 /**
- * Jetpack Compatibility File.
+ * Jetpack Compatibility File
  *
- * @link https://jetpack.me/
+ * @link https://jetpack.com/
  *
  * @package FrenchPress
  */
@@ -10,15 +10,16 @@
 /**
  * Jetpack setup function.
  *
- * See: https://jetpack.me/support/infinite-scroll/
- * See: https://jetpack.me/support/responsive-videos/
+ * See: https://jetpack.com/support/infinite-scroll/
+ * See: https://jetpack.com/support/responsive-videos/
  */
 function frenchpress_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
-		'container' => 'main',
+		'container' => 'primary',
 		'render'    => 'frenchpress_infinite_scroll_render',
-		'footer'    => 'page',
+		'footer'    => 'content',
+		'wrapper'	=> false
 	) );
 
 	// Add theme support for Responsive Videos.

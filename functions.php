@@ -148,11 +148,15 @@ function frenchpress_setup() {
 	 * See https://developer.wordpress.org/themes/functionality/post-formats/
 	 */
 	add_theme_support( 'post-formats', array(
+		'chat',
 		'aside',
+		'gallery',
 		'image',
 		'video',
+		'audio',
 		'quote',
 		'link',
+		'status'
 	) );
 
 	// Set up the WordPress core custom background feature.

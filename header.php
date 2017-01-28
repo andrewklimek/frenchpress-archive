@@ -15,7 +15,6 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 wp_head();
 ?>
@@ -81,7 +80,7 @@ wp_head();
 			if ( is_front_page() || is_home() ) : ?>
 				<h1 class="site-title<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php else : ?>
-				<span class="site-title<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
+				<span class="site-title h2<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
 			<?php
 			endif;
 				$description = get_bloginfo( 'description', 'display' );

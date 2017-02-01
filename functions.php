@@ -333,11 +333,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
- * Custom meta boxes.
- */
-// require get_template_directory() . '/inc/metabox.php';
-
-/**
  * Custom walker with no <li>.
  */
 // require get_template_directory() . '/inc/walker_no_list.php';

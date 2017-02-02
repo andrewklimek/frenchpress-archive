@@ -23,6 +23,7 @@ wp_head();
 <?php do_action( 'frenchpress_body_after_begin' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 <header id="header" class="site-header fffi">
+	<?php do_action( 'frenchpress_header_after_begin' ); ?>
 	<?php
 	if ( is_active_sidebar( 'top' ) ) : ?>
 		<div id="top-widget" class="widget-area" role="complementary">
@@ -131,7 +132,11 @@ if ( is_active_sidebar( 'header-3' ) ) : ?>
 		</div>
 	</div>
 <?php
-endif; ?>
+endif;
+
+do_action( 'frenchpress_header_before_end' );
+
+?>
 </header>
 <div id="content" class="<?php echo apply_filters( 'frenchpress_class_content', "site-content fffi fffi-noshrink" ); ?>">
 	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width " : "tray "; echo apply_filters( 'frenchpress_class_content_tray', "fff fff-spacearound fff-magic" ); ?>">

@@ -52,3 +52,17 @@ body {
 	width: initial;
 	min-width: 0;
 }
+/* password gen */
+#pass1-text,.pw-weak,.show-password #pass1 {
+    display: none
+}
+#pass-strength-result {
+    text-align: center;
+    box-sizing: border-box;
+}
+.indicator-hint {
+    padding-top: 8px
+}
+.show-password #pass1-text {
+    display: inline-block
+}

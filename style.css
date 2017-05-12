@@ -221,24 +221,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 1.5rem 0 0;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 }
 h1, .h1 {
-	font-size: 3.157rem;
+	font-size: 2.5rem;
 }
 h2, .h2 {
-	font-size: 2.369rem;
-}
-h3, .h3 {
-	font-size: 1.778rem;
-}
-h4, .h4 {
-	font-size: 1.333rem;
-}
-h5, .h5 {
-	font-size: 1.333rem;
-	font-weight: bold;
-}
-h6, .h6 {
-	font-size: 1.333rem;
-	font-style: italic;
+	font-size: 1.5rem;
 }
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 	margin-top: 0;/* better to keep padding so sections won't collapse? */

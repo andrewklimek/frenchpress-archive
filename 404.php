@@ -18,11 +18,19 @@ get_header();
 				<p><?php
 					
 					if ( isset( $_SERVER['HTTP_REFERER'] ) ) {// They followed a link, so email the webmaster about the bad link
+						
+						if ( 'GET' === $_SERVER['REQUEST_METHOD'] ) {// don't need to hear about spam POSTs
 
-						$message = "A user tried to go to {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']} and received a 404 (page not found) error.  ";
-						$message .= "They apparently clicked a link on {$_SERVER['HTTP_REFERER']}, so try fixing that.";
-						wp_mail( get_option('admin_email'), "There’s a bad link to your site: {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", $message );
-						if ( WP_DEBUG_LOG ) error_log( $message );// why not add to error log also
+							$message = "A user tried to go to {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']} and received a 404 (page not found) error.  ";
+							$message .= "They apparently clicked a link on {$_SERVER['HTTP_REFERER']}, so try fixing that.";
+							wp_mail( get_option('admin_email'), "There’s a bad link to your site: {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", $message );
+							if ( WP_DEBUG_LOG ) error_log( $message );// why not add to error log also
+						
+							if ( ! $_SERVER['REQUEST_URI'] || $_SERVER['REQUEST_URI'] === '/' ) {
+								poo($_SERVER, "FISHY");
+								poo($_REQUEST);
+							}
+						}
 
 						esc_html_e( 'Unfortunately, you clicked a broken link.  The webmaster has been notified.  Please try searching below.', 'frenchpress' );
 
@@ -30,12 +38,15 @@ get_header();
 						
 						echo esc_html( "“{$_SERVER['REQUEST_URI']}”" );
 						esc_html_e( ' does not exist on this site. Please double-check the spelling or search below.', 'frenchpress' );
+						
+						if ( 'GET' === $_SERVER['REQUEST_METHOD'] ) {
 
-						// Probably don't want a notification about these unless you're worried about old bookmarks
-						// $message = "A user tried to go to {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']} and received a 404 (page not found) error.  ";
-						// $message .= "They did not come from anywhere, so perhaps its an old bookmark?";
-						// wp_mail( get_option('admin_email'), "A user tried to access {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", $message );
-						// if ( WP_DEBUG_LOG ) error_log( $message );// why not add to error log also
+							// Probably don't want a notification about these unless you're worried about old bookmarks
+							$message = "A user tried to go to {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']} and received a 404 (page not found) error.  ";
+							$message .= "They did not come from anywhere, so perhaps its an old bookmark?";
+							// wp_mail( get_option('admin_email'), "A user tried to access {$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", $message );
+							if ( WP_DEBUG_LOG ) error_log( $message );// why not add to error log also
+						}
 
 					}
 					

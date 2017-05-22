@@ -62,12 +62,12 @@ add_filter( 'body_class', 'frenchpress_body_classes' );
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
-function _s_pingback_header() {
+function frenchpress_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-add_action( 'wp_head', '_s_pingback_header' );
+add_action( 'wp_head', 'frenchpress_pingback_header' );
 
 
 /**
@@ -86,7 +86,7 @@ function wrap_archive_title_prefix( $title ){
 	}
 	return $title;
 }
-add_filter( 'get_the_archive_title', 'wrap_archive_title_prefix' );
+// add_filter( 'get_the_archive_title', 'wrap_archive_title_prefix' );
 
 
 /**

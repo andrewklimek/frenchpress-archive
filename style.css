@@ -509,7 +509,7 @@ textarea#comment {
 /* This byline stuff might be unnecessarily clever */
 .single .byline,
 .group-blog .byline {
-/* 	display: inline; */
+ 	display: inline;
 }
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

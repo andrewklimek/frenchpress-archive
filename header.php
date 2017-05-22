@@ -109,7 +109,7 @@ wp_head();
 		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'menu fff fff-right fff-middle', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) :
 		?>
 		<nav id="main-nav" class="main-nav fffi">
-			<span id="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+			<span id="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false">
 				<svg id="menu-toggle-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 					<path id="menu-toggle-close" d="M13.4 12l9.3-9.3c0.4-0.4 0.4-1 0-1.4 -0.4-0.4-1-0.4-1.4 0L12 10.6 2.7 1.3c-0.4-0.4-1-0.4-1.4 0 -0.4 0.4-0.4 1 0 1.4L10.6 12l-9.3 9.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0L12 13.4l9.3 9.3c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4L13.4 12z"/>
 					<path id="menu-toggle-open"  d="M23 20H1c-0.6 0-1 0.4-1 1s0.4 1 1 1h22c0.6 0 1-0.4 1-1S23.6 20 23 20zM23 11H1c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1h22c0.6 0 1-0.4 1-1C24 11.4 23.6 11 23 11zM1 4h22c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1H1C0.4 2 0 2.4 0 3 0 3.6 0.4 4 1 4z"/>

@@ -498,9 +498,8 @@ textarea#comment {
 .bypostauthor {/* Required */
 	display: block;
 }
-.hentry {/* Better not to style hAtom classes, do we need this? on what type of articles? */
-/* 	margin-left: auto; */
-/* 	margin-right: auto; */
+article {
+    margin-bottom: 3rem;
 }
 .byline,
 .updated:not(.published) {
@@ -509,7 +508,7 @@ textarea#comment {
 /* This byline stuff might be unnecessarily clever */
 .single .byline,
 .group-blog .byline {
-/* 	display: inline; */
+ 	display: inline;
 }
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

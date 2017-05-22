@@ -16,7 +16,7 @@
 do_action('frenchpress_footer_top');
 
 if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
-	<div class="tray fff fff-magic">
+	<div class="footer-tray fff fff-magic">
 	<?php
 	if ( is_active_sidebar( 'footer-1' ) ) : ?>
 		<div id="footer-1" class="widget-area fffi" role="complementary">			
@@ -48,7 +48,7 @@ if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_ac
 endif;
 if ( is_active_sidebar( 'ending-credits' ) ) : ?>
 	<div id="ending-credits" class="site-info">
-		<div class="tray">
+		<div class="credits-tray">
 			<?php dynamic_sidebar( 'ending-credits' ); ?>
 		</div>
 	</div>

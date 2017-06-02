@@ -17,25 +17,25 @@ if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error
  */
 function frenchpress_scripts() {
 	
-	// if ( SCRIPT_DEBUG ) {
-		
+	if ( SCRIPT_DEBUG ) {
+
 		$suffix = "";
-		
-		wp_enqueue_style( 'theme', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory().'/style.css' ) );
-		
-	// } else {
-	//
-	// 	$suffix = ".min";
-	//
-	// 	wp_enqueue_style( 'theme', get_stylesheet_directory_uri().'/style'.$suffix.'.css', array(), null );
-	//
-	// }
+
+		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATE_DIR . '/style.css' ) );
+
+	} else {
+
+		$suffix = ".min";
+
+		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U . '/style' . $suffix . '.css', null, null );
+
+	}
 	
-	wp_enqueue_style( 'print',  TEMPLATE_DIR_U.'/print.css', array(), null, 'print' );
+	// wp_enqueue_style( 'frenchpress-print',  TEMPLATE_DIR_U.'/print.css', array(), null, 'print' );// put back in style.css for now
 
-	wp_enqueue_script( 'frenchpress-navigation', TEMPLATE_DIR_U.'/js/navigation'.$suffix.'.js', array(), null, true );
+	wp_enqueue_script( 'frenchpress-nav', TEMPLATE_DIR_U.'/js/navigation'.$suffix.'.js', array(), null, true );
 
-	wp_enqueue_script( 'frenchpress-skip-link-focus-fix', TEMPLATE_DIR_U . '/js/skip-link-focus-fix'.$suffix.'.js', array(), null, true );
+	// wp_enqueue_script( 'frenchpress-skip-link-focus-fix', TEMPLATE_DIR_U . '/js/skip-link-focus-fix'.$suffix.'.js', array(), null, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

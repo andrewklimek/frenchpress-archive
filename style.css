@@ -81,9 +81,9 @@ button, input, optgroup, select, textarea, keygen {
 	font: inherit;
 	/*	margin: 0;*/
 }
-input, textarea {/* might need to specify which input types get border */
-	border: 1px solid #ccc;
-	border-radius: 0;
+input, textarea {
+	/*border: 1px solid #ccc;*//* need to specify which input types get border */
+/*	border-radius: 0;*//*are they ever rounded by default?*/
 	padding: .5ex;
 }
 input[type="image"],
@@ -853,4 +853,12 @@ hr.spacer {
 
 .round {
 	border-radius: 50%;
+}
+
+/* PRINT */
+@media print{
+#footer,#header,#respond,#wpadminbar,.dont-print,.edit-link,.widget-area,video[loop]{display:none!important}
+#content,#content-tray,#main,#primary{margin:0!important;padding:0!important;width:100%!important;max-width:100%!important}
+*{color:#000!important;background:none!important;box-shadow:none!important;text-shadow:none!important}
+a[href]:after{content:" (" attr(href) ") "}
 }

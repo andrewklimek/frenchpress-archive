@@ -187,8 +187,7 @@ form,
 blockquote,
 blockquote footer,
 figure,
-figcaption,
-iframe {
+figcaption {
 	margin: 1.5rem 0;
 }
 blockquote {

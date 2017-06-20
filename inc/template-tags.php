@@ -21,24 +21,21 @@ function frenchpress_entry_meta() {
 	}
 	// default:
 	
-	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+	$time = '<time class="entry-date published" datetime="'. esc_attr(get_the_date('c')) .'">'. esc_html(get_the_date()) .'</time>';
 
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() )
-	);
+    if ( apply_filters( 'frenchpress_entry_meta_link_time', false ) ) {
+        $time = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time . '</a>';
+    }
+	$time = sprintf( esc_html_x( 'Posted on %s', 'post date', 'frenchpress' ), $time );
 
-	$entry_meta = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'frenchpress' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+    $byline = esc_html( get_the_author() );
+    
+    if ( apply_filters( 'frenchpress_entry_meta_link_author', false ) ) {
+        $byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $byline . '</a>';
+    }
+	$byline = sprintf( esc_html_x( 'by %s', 'post author', 'frenchpress' ), "<span class='author vcard'>{$byline}</span>" );
 
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'frenchpress' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo "<p class='entry-meta-header'><span class='posted-on'>{$entry_meta}</span><span class='byline'> {$byline}</span></p>"; // WPCS: XSS OK.
+	echo "<p class='entry-meta-header'><span class='posted-on'>{$time}</span><span class='byline'> {$byline}</span></p>"; // WPCS: XSS OK.
 }
 endif;
 

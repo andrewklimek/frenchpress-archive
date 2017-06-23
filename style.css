@@ -26,10 +26,14 @@ Text Domain: frenchpress
 	background-repeat: no-repeat;
 }
 a {
-	text-decoration: none;
 	color: inherit;
 	background: none;/* Remove gray background on active links in IE10 */
+	-webkit-text-decoration-skip: ink;
+	text-decoration-skip: ink;
 	/*-webkit-tap-highlight-color: transparent;*//* background color on active links in mobile browsers */
+}
+h1 a, h2 a, #header a {
+    text-decoration: none;
 }
 details, /* FF, IE, Edge */
 summary, /* FF, IE, Edge */
@@ -86,16 +90,16 @@ input, textarea {
 /*	border-radius: 0;*//*are they ever rounded by default?*/
 	padding: .5ex;
 }
-input[type="image"],
-input[type="file"] {
+/*input[type="image"],*/
+/*input[type="file"] {*/
 	/*    background: none;*/
-	padding: 0;
-	border: 0;
-}
-[type="search"] {
-	-webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */
+/*	padding: 0;*/
+/*	border: 0;*/
+/*}*/
+/*[type="search"] {/*
+	/*-webkit-appearance: textfield;*/ /* Correct the odd appearance in Chrome and Safari */
 	/*outline-offset: -2px;*//* Correct the outline style in Safari */
-}
+/*}*/
 textarea {
 	width: 100%;
 	display: block;
@@ -121,10 +125,13 @@ svg {
 * 1. Prevents this from destroying native `audio` and `video` controls in Android 4.
 */
 button,
-html [type="button"], /* 1 */
-[type="reset"],
-[type="submit"] {
+html input[type="button"], /* 1 */
+input[type="reset"],
+button[type="reset"],
+input[type="submit"],
+button[type="submit"] {
 	-webkit-appearance: button;
+	cursor: pointer;
 }
 ::-moz-placeholder {
 	color: inherit;
@@ -143,9 +150,9 @@ html [type="button"], /* 1 */
 :focus:-ms-input-placeholder {
 	color: transparent;
 }
-:focus:-moz-placeholder {/* FF <= 18 (jan 2013) probably breaks the flex layout anyhow */
+/*:focus:-moz-placeholder {*//* FF <= 18 (jan 2013) probably breaks the flex layout anyhow */
 	/*	color: transparent !important;*/
-}
+/*}*/
 
 /*--------------------------------------------------------------
 # Main Sizing & Spacing
@@ -214,27 +221,46 @@ hr, .entry-footer {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: inherit;
-	line-height: 1.2;
 	padding-top: 1.5rem;
-	margin: 1.5rem 0 0;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
+	/*margin: 1.5rem 0 0;*//* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 }
+
 h1, .h1 {
-	font-size: 2.5rem;
+	font-size: 2.369rem;
+	line-height: 1.211;
 }
 h2, .h2 {
-	font-size: 1.5rem;
+	font-size: 1.777rem;
+	line-height: 1.281;
 }
-h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
-	margin-top: 0;/* better to keep padding so sections won't collapse? */
+h3, .h3 {
+	font-size: 1.333rem;
+	line-height: 1.375;
+}
+@media (max-width:600px) {
+    h1, .h1 {
+    	font-size: 1.728rem;
+    	line-height: 1.289;
+    }
+    h2, .h2 {
+    	font-size: 1.44rem;
+    	line-height: 1.347;
+    }
+    h3, .h3 {
+    	font-size: 1.2rem;
+    	line-height: 1.417;
+    }
+}
+/*h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+	margin-top: 0;/* better to keep padding so sections won't collapse?
 	padding-top: 0;
 }
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
 	margin-bottom: 1.5rem;
-}
-
-.widgettitle {
-	margin-top: 0;/* until we decide on the above */
-}
+}*/
+/*.widgettitle {
+	margin-top: 0;/* until we decide on the above
+}*/
 
 /*--------------------------------------------------------------
 *  Page Layout
@@ -243,6 +269,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 body {
 	min-height: 100vh;
 	/*	height: 100%;*/
+	overflow-x: hidden;
 }
 /* hack because 100vh definitely doesn't work in IE11 */
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -305,7 +332,7 @@ body.mobile-nav-open #obfuscator.active {
 }
 
 body.mobile .main-nav {
-	z-index: 999;
+	z-index: 998;
 	/*	height: calc(100% + 60px);*/
 	height: 100%;
 	position: fixed;
@@ -343,9 +370,9 @@ body.mobile #primary-menu,
 	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
 }
 #menu-toggle {
-	top: 1rem;
-	right: 103%;
-	position: absolute;
+	/*top: 1rem;*/
+	/*right: 103%;*/
+	/*position: absolute;*/
 	display: inline-block;
 	z-index: 999;
 	line-height: 0;
@@ -367,12 +394,12 @@ body.mobile-nav-open.mobile #menu-toggle {
 	top: 0.75rem;
 	position: fixed;
 }
-path#menu-toggle-close,
-body.mobile-nav-open path#menu-toggle-open,
+#menu-toggle-close,
+body.mobile-nav-open #menu-toggle-open,
 #menu-toggle-label {
 	display: none;
 }
-body.mobile-nav-open path#menu-toggle-close {
+body.mobile-nav-open #menu-toggle-close {
 	display: initial;
 }
 
@@ -400,30 +427,30 @@ body.mobile-nav-open path#menu-toggle-close {
 		margin: 0  auto;
 		width: 16em;
 	}
-	body.desktop nav.main-nav ul.menu > li {
+	body.desktop .main-nav ul.menu > li {
 		position: relative;
 		padding: 0.75rem;
 	}
 	#menu-toggle {
 		display: none;
 	}
-	body.desktop nav.main-nav ul ul {
+	body.desktop .main-nav ul ul {
 		position: absolute;
 		z-index: 99;/* need anymore cause of parent z-index? */
 		display: none;
 	}
-	body.desktop nav.main-nav ul li:hover > ul,
-	body.desktop nav.main-nav ul li.focus > ul {
+	body.desktop .main-nav ul li:hover > ul,
+	body.desktop .main-nav ul li.focus > ul {
 		display: block;
 	}
-	body.desktop nav.main-nav ul ul li:hover > ul,
-	body.desktop nav.main-nav ul ul li.focus > ul {
+	body.desktop .main-nav ul ul li:hover > ul,
+	body.desktop .main-nav ul ul li.focus > ul {
 		display: block;
 		left: 100%;
 		width: 100%;
 	}
 	/* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
-	nav.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
+	.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
 		right: -1.50rem;
 		left: initial;
 	}
@@ -448,14 +475,15 @@ th:only-of-type {
 }
 .site-title, .site-description {
 	line-height: 1;/* See if still needed when H1s are squared away */
+	    padding: 0;
 }
-footer.entry-footer span {
+.entry-footer span {
 	margin-right: 1.5rem;
 }
-p.comment-form-comment label {
+.comment-form-comment label {
 	display: block;
 }
-textarea#comment {
+#comment {
 	width: 100%;
 }
 .widget:not(.widget_nav_menu) ul {

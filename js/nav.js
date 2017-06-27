@@ -47,12 +47,12 @@
 	subMenus = menu.getElementsByTagName( 'ul' );
 
 	// Set menu items with submenus to aria-haspopup="true".
-	for ( var i = 0, len = subMenus.length; i < len; i++ ) {
+	for ( var i = 0; i < subMenus.length; ++i ) {
 		subMenus[i].parentNode.setAttribute( 'aria-haspopup', 'true' );
 	}
 
 	// Each time a menu link is focused or blurred, toggle focus.
-	for ( i = 0, len = links.length; i < len; i++ ) {
+	for ( var i = 0; i < links.length; ++i ) {
 		links[i].addEventListener( 'focus', toggleFocus, true );
 		links[i].addEventListener( 'blur', toggleFocus, true );
 		// links[i].addEventListener( 'click', toggleClick, true );
@@ -68,7 +68,7 @@
 		while ( ! self.classList.contains( 'nav-menu' ) ) {
 
 			// On li elements toggle the class .focus.
-			if ( 'li' === self.tagName.toLowerCase() ) {
+			if ( 'LI' == self.tagName ) {
 				self.classList.toggle( 'focus' );
 			}
 			self = self.parentElement;
@@ -109,12 +109,13 @@ function mnscrl(position, speed) {
 	var scrollY = window.scrollY || document.documentElement.scrollTop,// documentElement.scrollTop is for IE
 	speed = speed || 1500,// 1500 pps default
 	currentTime = 0,
+	p,
 	time = Math.max(.1, Math.min(Math.abs(scrollY - position) / speed, .8));// min time .1, max time .8 seconds
 
 	function frame() {
 		currentTime += 1 / 60;		
 
-		var p = currentTime / time;
+		p = currentTime / time;
 		
 		if (p < 1) {
 			window.requestAnimationFrame(frame);// || window.setTimeout(frame, 100/6);// if you need IE9

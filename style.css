@@ -346,10 +346,10 @@ body.mobile .main-nav {
 	width: 306px;
 	margin: 0 -306px 0 0;
 	padding: 0.75em;
-	-webkit-transition: -webkit-transform 0.4s ease-in-out;
-	transition: -webkit-transform 0.4s ease-in-out;
-	transition: transform 0.4s ease-in-out;
-	transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+	-webkit-transition: -webkit-transform 0.4s ease-out;
+	transition: -webkit-transform 0.4s ease-out;
+	transition: transform 0.4s ease-out;
+	transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
 	display: block;
 	background: #fff;
 	text-align: left;

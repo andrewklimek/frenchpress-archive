@@ -33,7 +33,7 @@ function frenchpress_scripts() {
 	
 	// wp_enqueue_style( 'frenchpress-print',  TEMPLATE_DIR_U.'/print.css', array(), null, 'print' );// put back in style.css for now
 
-	wp_enqueue_script( 'frenchpress-nav', TEMPLATE_DIR_U.'/js/navigation'.$suffix.'.js', array(), null, true );
+	wp_enqueue_script( 'frenchpress-nav', TEMPLATE_DIR_U.'/js/nav.min.js', array(), null, true );
 
 	// wp_enqueue_script( 'frenchpress-skip-link-focus-fix', TEMPLATE_DIR_U . '/js/skip-link-focus-fix'.$suffix.'.js', array(), null, true );
 

@@ -312,7 +312,7 @@ nav li {/* li.menu-item */
 nav li li {
 	padding-bottom: 0;
 }
-nav a[href="#"], nav a:not([href]) {
+a:not([href]) {
 	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
 }
@@ -375,8 +375,8 @@ body.mobile #primary-menu,
 	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
 }
 #menu-toggle {
-	/*top: 1rem;*/
-	/*right: 103%;*/
+	top: 0;
+	right: 0;
 	/*position: absolute;*/
 	display: inline-block;
 	z-index: 999;
@@ -395,8 +395,6 @@ body.mobile #menu-toggle {
 	display: inline-block;
 }
 body.mobile-nav-open.mobile #menu-toggle {
-	right: 0.75rem;
-	top: 0.75rem;
 	position: fixed;
 }
 #menu-toggle-close,

@@ -106,7 +106,18 @@ wp_head();
 		* }
 		* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
 		**/
-		if ( false !== ( $menu = wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'menu fff fff-right fff-middle', 'menu_id' => 'primary-menu', 'fallback_cb' => false, 'echo' => false ) ) ) ) :
+		$menu_args = array( 
+		    'theme_location'    => 'primary',
+		    'container'         => 'nav',
+		    'container_id'      => 'main-nav',
+		    'container_class'   => 'main-nav fffi',
+		    'menu_id'           => 'primary-menu',
+		    'menu_class'        => 'menu fff fff-right fff-middle',
+		    'fallback_cb'       => false,
+		    'echo'              => false
+		);
+		
+		if ( false !== ( $menu = wp_nav_menu( $menu_args ) ) ) :
 		?>
 		<span id="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
 			<svg id="menu-toggle-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -115,9 +126,7 @@ wp_head();
 			</svg>
 			<span id="menu-toggle-label">Menu</span>
 		</span>
-		<nav id="main-nav" class="main-nav fffi">
-			<?php echo $menu; ?>
-		</nav>
+		<?php echo $menu; ?>
 		<div id='obfuscator'></div>
 		<?php endif; // End Nav check ?>
 	</div><!-- .tray -->

@@ -31,7 +31,6 @@
 			menu.setAttribute( 'aria-expanded', 'true' );
 			document.addEventListener('keyup', drawerEscKey );
 		}
-		obfuscator.classList.toggle('active');
 	}
 	
 	button.onclick = toggleMenu;

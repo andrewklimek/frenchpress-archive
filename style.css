@@ -331,7 +331,7 @@ a:not([href]) {
 	-webkit-transition: background-color .2s ease;
 	transition: background-color .2s ease;
 }
-body.mobile-nav-open #obfuscator.active {
+body.mobile-nav-open #obfuscator {
 	background-color: rgba(0,0,0,.4);
 	visibility: visible;
 }

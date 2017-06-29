@@ -50,7 +50,7 @@ wp_head();
 	<?php
 	else : ?>
 <div id="site-header-main">
-	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-none" ); ?>">
+	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-auto" ); ?>">
 		<div class="site-branding fffi">
 		<?php
 		/**
@@ -130,10 +130,12 @@ wp_head();
 		    <?php echo $menu; ?>
 		</nav>
 		<div id='obfuscator'></div>
-		<?php endif; // End Nav check ?>
-	</div><!-- .tray -->
-</div><!-- .site-header-main -->
-<?php
+		<?php
+		endif;// End Nav check
+		
+	echo '</div>';//.tray
+echo '</div>';//.site-header-main
+
 endif;//is_active_sidebar( 'header-2' )
 
 if ( is_active_sidebar( 'header-3' ) ) : ?>

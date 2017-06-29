@@ -3,7 +3,7 @@ Theme Name:  FrenchPress
 Plugin URI:  https://github.com/andrewklimek/frenchpress/
 Description: a super light theme for people who prefer writing basic html & css to control panels and builders
 Author:      Andrew J Klimek
-Author URI:  https://readycat.net
+Author URI:  https://andrewklimek.com
 Version:     0.4.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,7 +23,6 @@ Text Domain: frenchpress
 	margin: 0;
 	padding: 0;
 	border: 0;
-	background-repeat: no-repeat;
 }
 a {
 	color: inherit;
@@ -72,7 +71,7 @@ address {
 	font-style: normal;
 }
 abbr[title], dfn[title] {
-	border-bottom: 1px dotted #777;
+	border-bottom: 1px dotted currentColor;
 	cursor:help;
 	text-decoration: none;/* FF applies proprietary text-decoration-style */
 }
@@ -216,7 +215,7 @@ dt {
 	margin-bottom: 0;
 }
 hr {
-	background: #777;
+	background: currentColor;
 	height: 1px;
 	margin: 1.5rem auto;
 }

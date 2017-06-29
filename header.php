@@ -50,7 +50,7 @@ wp_head();
 	<?php
 	else : ?>
 <div id="site-header-main">
-	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-auto" ); ?>">
+	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-initial" ); ?>">
 		<div class="site-branding fffi">
 		<?php
 		/**

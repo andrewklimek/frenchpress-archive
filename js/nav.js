@@ -16,14 +16,11 @@
 
 	if ( ! ( menu && button && obfuscator ) ) return;
 
-	menu.setAttribute( 'aria-expanded', 'false' );
-	menu.classList.add( 'nav-menu' );
-	
 	function toggleMenu() {
 		if ( document.body.classList.contains( 'mobile-nav-open' ) ) {
 			document.body.classList.remove( 'mobile-nav-open' );
-			button.setAttribute( 'aria-expanded', 'false' );
-			menu.setAttribute( 'aria-expanded', 'false' );
+			button.removeAttribute( 'aria-expanded' );
+			menu.removeAttribute( 'aria-expanded' );
 			document.removeEventListener('keyup', drawerEscKey );
 		} else {
 			document.body.classList.add( 'mobile-nav-open' );

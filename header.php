@@ -108,9 +108,9 @@ wp_head();
 		**/
 		$menu_args = array( 
 		    'theme_location'    => 'primary',
-		    'container'         => 'nav',
-		    'container_id'      => 'main-nav',
-		    'container_class'   => 'main-nav fffi',
+		    'container'         => false,
+		  //  'container_id'      => 'main-nav',
+		  //  'container_class'   => 'main-nav fffi',
 		    'menu_id'           => 'primary-menu',
 		    'menu_class'        => 'menu fff fff-right fff-middle',
 		    'fallback_cb'       => false,
@@ -126,7 +126,9 @@ wp_head();
 			</svg>
 			<span id="menu-toggle-label">Menu</span>
 		</span>
-		<?php echo $menu; ?>
+		<nav class="main-nav fffi">
+		    <?php echo $menu; ?>
+		</nav>
 		<div id='obfuscator'></div>
 		<?php endif; // End Nav check ?>
 	</div><!-- .tray -->

@@ -53,7 +53,7 @@ pre {
 pre, code, kbd, samp, var {
 	font-family: monospace;
 }
-img, figure {
+img, figure, svg {
 	max-width: 100%;
 	height: auto;
 	/*box-sizing: content-box;*//* is this smart? prob not seems to break when img has padding on sides */

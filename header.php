@@ -112,7 +112,7 @@ wp_head();
 		  //  'container_id'      => 'main-nav',
 		  //  'container_class'   => 'main-nav fffi',
 		    'menu_id'           => 'primary-menu',
-		    'menu_class'        => 'menu fff fff-right fff-middle',
+		    'menu_class'        => apply_filters( 'frenchpress_class_menu_primary', 'menu fff fff-right fff-middle' ),
 		    'fallback_cb'       => false,
 		    'echo'              => false
 		);

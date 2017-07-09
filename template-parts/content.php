@@ -8,19 +8,35 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-			if ( has_post_thumbnail() && ( ! is_single() || apply_filters( 'frenchpress_featured_image', false ) ) ) {
+	<?php
+		
+		if ( is_singular() ) {
+			
+			echo '<header class="page-header">';
+			
+			// Filter for displaying featured image. 2nd arg is bool for "is_singular"
+			if ( has_post_thumbnail() && apply_filters( 'frenchpress_featured_image', false, true ) ) {
 				// echo '<figure class="featured-image">' . get_the_post_thumbnail() . '</figure>';
 				the_post_thumbnail();
 			}
-			if ( is_singular() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			
+			the_title( '<h1 class="entry-title">', '</h1>' );
+			
+		} else {
+			
+			echo '<header class="entry-header">';
+			
+			// Filter for displaying featured image. 2nd arg is bool for "is_singular"
+			if ( has_post_thumbnail() && apply_filters( 'frenchpress_featured_image', true, false ) ) {
+				// echo '<figure class="featured-image">' . get_the_post_thumbnail() . '</figure>';
+				the_post_thumbnail();
 			}
-			frenchpress_entry_meta();
-		?>
+			
+			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			
+		}
+		frenchpress_entry_meta();
+	?>
 	</header>
 	<?php if ( is_archive() && apply_filters( 'frenchpress_archive_excerpts', true ) ) : // Only display Excerpts for Archive ?>
 	<div class="entry-summary">

@@ -95,7 +95,7 @@ function frenchpress_mobile_test() {
 	</script>
 	";
 }
-add_action( 'frenchpress_body_after_begin', 'frenchpress_mobile_test', 0 );
+add_action( 'frenchpress_body_top', 'frenchpress_mobile_test', 0 );
 
 
 if ( ! function_exists( 'frenchpress_setup' ) ) :

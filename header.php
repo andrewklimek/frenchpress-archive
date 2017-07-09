@@ -20,10 +20,10 @@ wp_head();
 ?>
 </head>
 <body <?php body_class('fff fff-column fff-none mobile'); ?>>
-<?php do_action( 'frenchpress_body_after_begin' ); ?>
+<?php do_action( 'frenchpress_body_top' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 <header id="header" class="site-header fffi">
-	<?php do_action( 'frenchpress_header_after_begin' ); ?>
+	<?php do_action( 'frenchpress_header_top' ); ?>
 	<?php
 	if ( is_active_sidebar( 'top' ) ) : ?>
 		<div id="top-widget" class="widget-area" role="complementary">
@@ -147,7 +147,7 @@ if ( is_active_sidebar( 'header-3' ) ) : ?>
 <?php
 endif;
 
-do_action( 'frenchpress_header_before_end' );
+do_action( 'frenchpress_header_bottom' );
 
 ?>
 </header>

@@ -11,6 +11,7 @@
 	<header class="entry-header">
 		<?php
 			if ( has_post_thumbnail() && ( ! is_single() || apply_filters( 'frenchpress_featured_image', false ) ) ) {
+				// echo '<figure class="featured-image">' . get_the_post_thumbnail() . '</figure>';
 				the_post_thumbnail();
 			}
 			if ( is_singular() ) {
@@ -18,7 +19,7 @@
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
-		if ( 'post' === get_post_type() ) frenchpress_entry_meta();
+			frenchpress_entry_meta();
 		?>
 	</header>
 	<?php if ( is_archive() && apply_filters( 'frenchpress_archive_excerpts', true ) ) : // Only display Excerpts for Archive ?>

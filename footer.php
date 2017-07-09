@@ -54,7 +54,7 @@ if ( is_active_sidebar( 'ending-credits' ) ) : ?>
 	</div>
 <?php
 endif;
-do_action('frenchpress_very_bottom');
+do_action('frenchpress_footer_bottom');
 ?>
 </footer>
 <div id="wp_footer">

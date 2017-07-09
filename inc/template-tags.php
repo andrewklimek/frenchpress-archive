@@ -13,8 +13,8 @@ if ( ! function_exists( 'frenchpress_entry_meta' ) ) :
  */
 function frenchpress_entry_meta() {
 	
-	// Check for a custom meta and exit if one is found.
-	// This is useful for setting a custom meta format only on specific page types.
+	// Disable or do a custom meta
+	// eg, to only show meta on 'posts' (not cutom post types): function( $skip ){ return 'post' === get_post_type() ? $skip : true; }
 	// eg, to customize meta for archives only, the first line in the filter could be "if ( !is_archive() ) return $skip_the_rest;"
 	if ( apply_filters( 'frenchpress_entry_meta_header', false ) ) {
 		return;

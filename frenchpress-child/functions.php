@@ -111,7 +111,7 @@ function quickcat($atts){
 		<a href="<?php echo esc_url( get_permalink() ) ?>" rel="bookmark">
 			<?php
 			if ( ! $atts['thumb_before'] ) {
-				the_title( '<'. $atts['header'] .' class="entry-title quickcat">', '</'. $atts['header'] .'>' );
+				the_title( '<'. $atts['header'] .' class="title quickcat">', '</'. $atts['header'] .'>' );
 			}
 			if ( $atts['thumb'] && has_post_thumbnail() ) {
 				the_post_thumbnail( 'thumbnail' );
@@ -126,7 +126,7 @@ function quickcat($atts){
 				print "<div class='quickcat-body'>";
 				
 				if ( $atts['thumb_before'] ) {
-					the_title( '<'. $atts['header'] .' class="entry-title quickcat"><a href="' . get_permalink() .'" rel="bookmark">', '</a></'. $atts['header'] .'>' );
+					the_title( '<'. $atts['header'] .' class="title quickcat"><a href="' . get_permalink() .'" rel="bookmark">', '</a></'. $atts['header'] .'>' );
 				}
 			
 				// meta

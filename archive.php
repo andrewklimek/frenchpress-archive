@@ -17,7 +17,7 @@ if ( have_posts() ) :
 		<?php
 		$skip_the_rest = apply_filters( 'frenchpress_archive_header', false );
 		if ( ! $skip_the_rest ) :
-			the_archive_title( '<h1 class="page-title">', '</h1>' );
+			the_archive_title( '<h1 class="title">', '</h1>' );
 			the_archive_description( '<div class="taxonomy-description">', '</div>' );
 		endif;
 		?>

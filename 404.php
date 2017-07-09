@@ -12,7 +12,7 @@ get_header();
 <main id="primary" class="site-main fffi fffi-99">
 		<article class="error-404 not-found">
 			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
+				<h1 class="title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
 			</header>
 			<div class="page-content">
 				<p><?php

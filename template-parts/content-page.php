@@ -12,7 +12,7 @@
 	if ( !is_front_page() && apply_filters( 'frenchpress_page_titles', true ) ) :
 	?>
 	<header class="page-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="title">', '</h1>' ); ?>
 	</header>
 	<?php
 	endif;

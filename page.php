@@ -29,9 +29,11 @@ get_header();
 			comments_template();
 		endif;
 	endwhile; // End of the loop.
-	?>
-</main>
-<?php
+
+do_action('frenchpress_main_bottom');
+
+echo '</main>';
+	
 if ( $layout === 'sidebars' ) {
 	get_sidebar();
 }

@@ -43,8 +43,10 @@ else :
 	get_template_part( 'template-parts/content', 'none' );
 
 endif;
-?>
-</main>
-<?php
+
+do_action('frenchpress_main_bottom');
+
+echo '</main>';
+
 get_sidebar();
 get_footer();

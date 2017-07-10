@@ -59,6 +59,10 @@ get_header();
 				?>
 			</div>
 		</article>
-	</main>
 <?php
+
+do_action('frenchpress_main_bottom');
+
+echo '</main>';
+
 get_footer();

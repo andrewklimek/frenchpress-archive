@@ -22,8 +22,10 @@ get_header();
 		endif;
 
 	endwhile; // End of the loop.
-	?>
-</main>
-<?php
+
+do_action('frenchpress_main_bottom');
+
+echo '</main>';
+
 get_sidebar();
 get_footer();

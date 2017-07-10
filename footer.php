@@ -8,11 +8,19 @@
  *
  * @package FrenchPress
  */
-?>
-	</div><!-- #content-tray -->
-</div><!-- #content -->
-<footer id="footer" class="site-footer fffi">
-<?php
+
+do_action('frenchpress_content_tray_bottom');
+	
+echo '</div>';// #content-tray
+
+do_action('frenchpress_content_bottom');
+
+echo '</div>';// #content
+
+do_action('frenchpress_footer_before');
+
+echo '<footer id="footer" class="site-footer fffi">';
+
 do_action('frenchpress_footer_top');
 
 if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>

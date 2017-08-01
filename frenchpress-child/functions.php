@@ -72,7 +72,6 @@ add_filter( 'frenchpress_page_titles', '__return_false' );// Don't display title
 /**
 * Shortcode for category listing, used for timeline
 */
-add_shortcode( 'quickcat', 'quickcat');
 function quickcat($atts){
 	$atts = shortcode_atts( array(
 		'cat' => '',
@@ -88,7 +87,6 @@ function quickcat($atts){
 		'more_class' => '',
 		'header' => 'h2',
 		'date' => 0,
-		'posted_on' => 'Posted on',
 		'byline' => 0
 	), $atts, 'quickcat' );
 	$query = new WP_Query( array( 
@@ -101,7 +99,7 @@ function quickcat($atts){
 	ob_start();
 	// The Loop
 	if ( $query->have_posts() ) {
-		echo '<div class="quickcat">';
+		echo '<div class="quickcat-container">';
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			// get_template_part( 'template-parts/content', get_post_format() );
@@ -135,6 +133,7 @@ function quickcat($atts){
 					$meta_date = $byline = '';
 					
 					if ( $atts['date'] ) {
+					    
 						$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 						$time_string = sprintf( $time_string,
 							esc_attr( get_the_date( 'c' ) ),
@@ -142,8 +141,8 @@ function quickcat($atts){
 						);
 						$meta_date = sprintf(
 							esc_html_x( '%s %s', 'post date', 'frenchpress' ),
-							$atts['posted_on'],
-							'<span class="posted-on"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>'
+							'1' === $atts['date'] ? '' : $atts['date'],
+							'<span class="posted-on">' . $time_string . '</span>'
 						);
 					}
 				
@@ -184,10 +183,12 @@ function quickcat($atts){
 	wp_reset_postdata();
 	return ob_get_clean();
 }
+add_shortcode( 'quickcat', 'quickcat');
+
+
 /**
 * Masonry Shortcode
 */
-add_shortcode('frenchmason', 'frenchpress_masonry' );
 function frenchpress_masonry( $a, $content = '' ) {
 	
 	if ( ! $content ) return "no content in [frenchmason] shortcode";
@@ -213,7 +214,7 @@ function frenchpress_masonry( $a, $content = '' ) {
 			percentPosition: true,
 			// gutter: 10
 		});
-		grid.style.opacity = 1;
+		document.getElementById('frenchmason-{$id}').style.opacity = 1;
 	});
 	";
 	wp_enqueue_script( 'masonry' );
@@ -223,3 +224,4 @@ function frenchpress_masonry( $a, $content = '' ) {
 	
 	return $out;
 }
+add_shortcode('frenchmason', 'frenchpress_masonry' );

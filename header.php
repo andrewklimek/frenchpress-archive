@@ -19,7 +19,7 @@
 wp_head();
 ?>
 </head>
-<body <?php body_class( "fff fff-column fff-none desktop" ); ?>>
+<body <?php body_class( "fff fff-column fff-none dnav" ); ?>>
 <?php do_action( 'frenchpress_body_top' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 <header id="header" class="site-header fffi">

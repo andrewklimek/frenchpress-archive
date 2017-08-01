@@ -80,14 +80,14 @@ function frenchpress_mobile_test() {
 	<script>
 	function checkForDesktop(){
 		if ( window.innerWidth > {$breakpoint} ) {
-			if ( document.body.classList.contains('mobile') ) {
-				document.body.classList.remove('mobile');
-				document.body.classList.remove('mobile-nav-open');
-				document.body.classList.add('desktop');
+			if ( document.body.classList.contains('mnav') ) {
+				document.body.classList.remove('mnav');
+				document.body.classList.remove('mnav-open');
+				document.body.classList.add('dnav');
 			}
-		} else if ( document.body.classList.contains('desktop') ) {
-				document.body.classList.remove('desktop');
-				document.body.classList.add('mobile');
+		} else if ( document.body.classList.contains('dnav') ) {
+				document.body.classList.remove('dnav');
+				document.body.classList.add('mnav');
 			}
 	}
 	checkForDesktop();

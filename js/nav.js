@@ -17,13 +17,13 @@
 	if ( ! ( menu && button && obfuscator ) ) return;
 
 	function toggleMenu() {
-		if ( document.body.classList.contains( 'mobile-nav-open' ) ) {
-			document.body.classList.remove( 'mobile-nav-open' );
+		if ( document.body.classList.contains( 'mnav-open' ) ) {
+			document.body.classList.remove( 'mnav-open' );
 			button.removeAttribute( 'aria-expanded' );
 			menu.removeAttribute( 'aria-expanded' );
 			document.removeEventListener('keyup', drawerEscKey );
 		} else {
-			document.body.classList.add( 'mobile-nav-open' );
+			document.body.classList.add( 'mnav-open' );
 			button.setAttribute( 'aria-expanded', 'true' );
 			menu.setAttribute( 'aria-expanded', 'true' );
 			document.addEventListener('keyup', drawerEscKey );

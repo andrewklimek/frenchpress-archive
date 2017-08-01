@@ -26,7 +26,7 @@ function frenchpress_entry_meta() {
     if ( apply_filters( 'frenchpress_entry_meta_link_time', false ) ) {
         $time = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time . '</a>';
     }
-	$time = sprintf( esc_html_x( 'Posted on %s', 'post date', 'frenchpress' ), $time );
+	$time = sprintf( esc_html_x( apply_filters( 'frenchpress_posted_on', 'Posted on' ) . ' %s', 'post date', 'frenchpress' ), $time );
 
     $byline = esc_html( get_the_author() );
     

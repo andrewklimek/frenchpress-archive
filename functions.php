@@ -95,8 +95,9 @@ function frenchpress_mobile_test() {
 	</script>
 	";
 }
+// if ( ! apply_filters( 'frenchpress_disable_mobile', false ) ) {
 add_action( 'frenchpress_body_top', 'frenchpress_mobile_test', 0 );
-
+// }
 
 if ( ! function_exists( 'frenchpress_setup' ) ) :
 /**

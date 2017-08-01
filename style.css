@@ -429,45 +429,46 @@ body.mobile-nav-open #menu-toggle-close {
 	}
 }
 
-@media (min-width:600px){
-	body.desktop .main-nav li li:last-child {
-		padding-bottom: .75rem;/* undo padding-bottom: 0 for desktop dropdowns */
-	}
-	body.desktop .main-nav ul ul {
-		top: 100%;
-		left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
-		right: -16em;
-		margin: 0  auto;
-		width: 16em;
-	}
-	body.desktop .main-nav ul.menu > li {
-		position: relative;
-		padding: 0.75rem;
-	}
-	#menu-toggle {
-		display: none;
-	}
-	body.desktop .main-nav ul ul {
-		position: absolute;
-		z-index: 99;/* need anymore cause of parent z-index? */
-		display: none;
-	}
-	body.desktop .main-nav ul li:hover > ul,
-	body.desktop .main-nav ul li.focus > ul {
-		display: block;
-	}
-	body.desktop .main-nav ul ul li:hover > ul,
-	body.desktop .main-nav ul ul li.focus > ul {
-		display: block;
-		left: 100%;
-		width: 100%;
-	}
-	/* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
-	.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {
-		right: -1.50rem;
-		left: initial;
-	}
+body.desktop .main-nav li li:last-child {
+	padding-bottom: .75rem;/* undo padding-bottom: 0 for desktop dropdowns */
 }
+body.desktop .main-nav ul ul {
+	top: 100%;
+	left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
+	right: -16em;
+	margin: 0  auto;
+	width: 16em;
+}
+body.desktop .main-nav ul.menu > li {
+	position: relative;
+	padding: 0.75rem;
+}
+body.desktop #menu-toggle {
+	display: none;
+}
+body.desktop .main-nav ul ul {
+	position: absolute;
+	z-index: 99;/* need anymore cause of parent z-index? */
+	display: none;
+}
+body.desktop .main-nav ul li:hover > ul,
+body.desktop .main-nav ul li.focus > ul {
+	display: block;
+}
+body.desktop .main-nav ul ul li:hover > ul,
+body.desktop .main-nav ul ul li.focus > ul {
+	display: block;
+	left: 100%;
+	width: 100%;
+}
+
+/* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
+/*@media (min-width:600px){*/
+/*	.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {*/
+/*		right: -1.50rem;*/
+/*		left: initial;*/
+/*	}*/
+/*}*/
 
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme

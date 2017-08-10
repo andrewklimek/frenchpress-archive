@@ -808,9 +808,11 @@ hr.spacer {
 .fffi-x4.fffi, .fff-x4 > .fffi{-webkit-flex-basis:25%;-ms-flex-preferred-size:25%;flex-basis:25%;}
 
 .fff-pad {
-	margin: -1.5rem;
+	margin: 0 -.75rem;
 }
-.fff-pad > .fffi,
+.fff-pad > .fffi {
+	padding: .75rem;
+}
 .pad {
 	padding: 1.5rem;
 }

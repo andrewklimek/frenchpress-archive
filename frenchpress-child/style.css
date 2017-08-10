@@ -101,3 +101,22 @@ html {
 :focus {
 	/*    outline: #cea73e solid 1px;*/
 }
+
+/*POST NAV*/
+.nav-previous {
+	background: url("data:image/svg+xml,%3Csvg fill='currentColor' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 13L8 8l5-5L10.5.5 3 8l7.5 7.5'/%3E%3C/svg%3E") no-repeat left 60%;
+	padding-left: 21px;
+	float: left;
+	margin: 1.20rem;
+}
+.nav-next {
+	background: url("data:image/svg+xml,%3Csvg fill='currentColor' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 3l5 5-5 5 2.5 2.5L13 8 5.5.5'/%3E%3C/svg%3E") no-repeat right 60%;
+	padding-right: 21px;
+	float: right;
+	margin: 1.20rem;
+}
+.post-navigation::after {
+	content: '';
+	display: table;
+	clear: both;
+}

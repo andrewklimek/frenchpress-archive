@@ -241,29 +241,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, .h1 {
-	font-size: 2.369rem;
-	line-height: 1.211;
+	font-size: 2.8rem;
+	line-height: 1.18;
 }
 h2, .h2 {
-	font-size: 1.777rem;
-	line-height: 1.281;
+	font-size: 2rem;
+	line-height: 1.25;
 }
 h3, .h3 {
-	font-size: 1.333rem;
-	line-height: 1.375;
+	font-size: 1.4rem;
+	line-height: 1.36;
 }
 @media (max-width:600px) {
     h1, .h1 {
-    	font-size: 1.728rem;
-    	line-height: 1.289;
+    	font-size: 1.73rem;
+    	line-height: 1.29;
     }
     h2, .h2 {
     	font-size: 1.44rem;
-    	line-height: 1.347;
+    	line-height: 1.35;
     }
     h3, .h3 {
     	font-size: 1.2rem;
-    	line-height: 1.417;
+    	line-height: 1.42;
     }
 }
 /*h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {

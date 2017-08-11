@@ -30,7 +30,7 @@ function frenchpress_entry_meta() {
 
     $byline = esc_html( get_the_author() );
     
-    if ( apply_filters( 'frenchpress_entry_meta_link_author', false ) ) {
+    if ( apply_filters( 'frenchpress_entry_meta_link_author', is_multi_author() ) ) {
         $byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $byline . '</a>';
     }
 	$byline = sprintf( esc_html_x( 'by %s', 'post author', 'frenchpress' ), "<span class='author vcard'>{$byline}</span>" );

@@ -210,16 +210,16 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar 1', 'frenchpress' ),
 		'id'            => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => "</section>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar 2', 'frenchpress' ),
 		'id'            => 'sidebar-2',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => "</section>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );

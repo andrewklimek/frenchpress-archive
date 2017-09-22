@@ -34,7 +34,8 @@ a {
 h1 a,
 h2 a,
 #header a,
-nav a {
+nav a,
+aside a {
     text-decoration: none;
 }
 details, /* IE, Edge */
@@ -308,7 +309,8 @@ body {
 nav {
 	text-align: center;
 }
-nav ul {/* ul.menu*/
+nav ul,
+aside ul {/* ul.menu*/
 	list-style: none;
 	padding: 0;
 	margin: 0;

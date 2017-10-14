@@ -174,11 +174,7 @@ function frenchpress_setup() {
 	) ) );
 	
 	// Custom Logo
-	add_theme_support( 'custom-logo', array(
-		'height'		=> 90,
-		'width'			=> 400,
-		'flex-width'	=> true,
-	) );
+	add_theme_support( 'custom-logo', array( 'flex-width'	=> true ) );
 	
 	/*
 	 * Styles the visual editor

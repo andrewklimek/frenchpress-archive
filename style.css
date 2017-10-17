@@ -338,7 +338,7 @@ a:not([href]) {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 4;
+	z-index: 999999;
 	visibility: hidden;
 	-webkit-transition: background-color .2s ease;
 	transition: background-color .2s ease;
@@ -349,7 +349,7 @@ body.mnav-open #obfuscator {
 }
 
 body.mnav .main-nav {
-	z-index: 998;
+	z-index: 999999;
 	/*	height: calc(100% + 60px);*/
 	height: 100%;
 	position: fixed;
@@ -381,15 +381,15 @@ body.mnav #primary-menu,
 	display: block;
 }
 
-.site-header {
-	z-index: 99998;/* so nav drawer can be above stuff. its in a new display context or whatever*/
+.site-header {/* so nav drawer can be above stuff. its in a new display context or whatever*/
+	/*z-index: 999999;*/
 }
 #menu-toggle {
 	top: 0;
 	right: 0;
 	/*position: absolute;*/
 	display: inline-block;
-	z-index: 999;
+	z-index: 999999;
 	padding: 0.75rem;
 	cursor: pointer;
 }

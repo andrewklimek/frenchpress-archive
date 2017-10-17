@@ -72,11 +72,11 @@ function frenchpress_add_button_to_main_menu( $nav_menu, $args ) {
 	 ***/
     
     return '
+        <div id="obfuscator"></div>
+        ' . $nav_menu . '
         <span id="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
             <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
 			<span id="menu-toggle-label">Menu</span>
 		</span>
-		' . $nav_menu . '
-		<div id="obfuscator"></div>
 		';
 }

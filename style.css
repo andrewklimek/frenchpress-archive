@@ -390,16 +390,8 @@ body.mnav #primary-menu,
 	/*position: absolute;*/
 	display: inline-block;
 	z-index: 999;
-	line-height: 0;
 	padding: 0.75rem;
-/*	width: 1.5rem;*/
-   white-space: nowrap;
-	height: 1.5rem;
-	box-sizing: content-box;
-   outline: none;
-	color: inherit;
-	background: none;
-	font: inherit;
+	cursor: pointer;
 }
 body.mnav #menu-toggle {
 /*	display: inline-block;*/
@@ -407,19 +399,26 @@ body.mnav #menu-toggle {
 body.mnav-open #menu-toggle {
 	position: fixed;
 }
-#menu-toggle-close,
-body.mnav-open #menu-toggle-open,
+.menu-tog {
+    background: currentColor;
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 4px;
+}
+body.mnav-open .menu-tog:nth-of-type(1) {
+    transform: rotate(45deg);
+    margin: 0;
+}
+body.mnav-open .menu-tog:nth-of-type(2) {
+    display: none;
+}
+body.mnav-open .menu-tog:nth-of-type(3) {
+    transform: rotate(-45deg);
+    margin: -2px 0 0;
+}
 #menu-toggle-label {
 	display: none;
-}
-body.mnav-open #menu-toggle-close {
-	display: initial;
-}
-
-#menu-toggle-svg {
-/*	display: inline;*/
-	cursor: pointer;
-	-moz-user-select: none;/* FF seems to be the only one that selects this as text on mobile */
 }
 
 /* Allow drawer menu to scroll, but not on bigger screens cause fixed headers shift when you hide desktop scrollbars */

@@ -431,7 +431,7 @@ body.mnav-open .menu-tog:nth-of-type(3) {
 body.dnav .main-nav li li:last-child {
 	padding-bottom: .75rem;/* undo padding-bottom: 0 for desktop dropdowns */
 }
-body.dnav .main-nav ul ul {
+body.dnav .main-nav .sub-menu {
 	top: 100%;
 	left: -16em;/* doesn't have to be exactly same as width, just 100% was sometimes too small */
 	right: -16em;
@@ -445,7 +445,7 @@ body.dnav .main-nav ul.menu > li {
 body.dnav #menu-toggle {
 	display: none;
 }
-body.dnav .main-nav ul ul {
+body.dnav .main-nav .sub-menu {
 	position: absolute;
 	z-index: 99;/* need anymore cause of parent z-index? */
 	display: none;

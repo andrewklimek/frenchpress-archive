@@ -220,17 +220,9 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Top', 'frenchpress' ),
-		'id'            => 'top',
-		'description'   => 'Best for secondary menus/nav bars',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
-		'before_title'  => '<h3 class="widgettitle">',
-		'after_title'   => "</h3>\n",
-	) );
-	register_sidebar( array(
-		'name'          => esc_html__( 'Header 1', 'frenchpress' ),
+		'name'          => esc_html__( 'Header 1 (very top)', 'frenchpress' ),
 		'id'            => 'header-1',
+		'description'   => 'Best for secondary menus/nav bars',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
@@ -239,16 +231,25 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header 2', 'frenchpress' ),
 		'id'            => 'header-2',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
+		'before_widget' => '',
+		'after_widget'  => "\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Header 3', 'frenchpress' ),
+		'name'          => esc_html__( 'Header 3 (main)', 'frenchpress' ),
 		'id'            => 'header-3',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
+		'description'   => 'Will be in line with the site branding, typical place to put the main menu',
+		'before_widget' => '',
+		'after_widget'  => "\n",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Header 4', 'frenchpress' ),
+		'id'            => 'header-4',
+		'before_widget' => '',
+		'after_widget'  => "\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
@@ -296,6 +297,11 @@ function frenchpress_widgets_init() {
 }
 add_action( 'widgets_init', 'frenchpress_widgets_init' );
 
+
+/**
+ * Adds markup for the mobile-menu-style drawer
+ */
+require TEMPLATE_DIR . '/inc/drawer.php';
 
 /**
  * [frenchpress] builder-style shortcode

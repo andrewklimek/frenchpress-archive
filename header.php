@@ -8,9 +8,9 @@
  *
  * @package FrenchPress
  */
-
+// If this is ever used for the general public or WPML, switch back to language_attributes() or get_bloginfo('language')
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html lang="en">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,14 +25,6 @@ wp_head();
 <header id="header" class="site-header fffi">
 	<?php do_action( 'frenchpress_header_top' ); ?>
 	<?php
-	if ( is_active_sidebar( 'top' ) ) : ?>
-		<div id="top-widget" class="widget-area" role="complementary">
-			<div class="tray">
-				<?php dynamic_sidebar( 'top' ); ?>
-			</div>
-		</div>
-	<?php
-	endif;
 	if ( is_active_sidebar( 'header-1' ) ) : ?>
 		<div id="header-1" class="widget-area" role="complementary">
 			<div class="tray">
@@ -48,7 +40,8 @@ wp_head();
 			</div>
 		</div>
 	<?php
-	else : ?>
+	endif;
+    ?>
 <div id="site-header-main">
 	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-initial" ); ?>">
 		<div class="site-branding fffi">
@@ -90,58 +83,24 @@ wp_head();
 				<?php
 				endif;// End header image check.
 		endif; // $skip_the_rest
-		?>
-		</div>
-		<?php
-		/**
-		* Filter 'pre_wp_nav_menu' can be used to conditionally hide menu.
-		*
-		* e.g. hide if not logged in:
-		* add_filter( 'pre_wp_nav_menu', function(){ if( !is_user_logged_in() ) return false; } );
-		*
-		* e.g. hide specific menu if not logged in:
-		* function hide_specific_menu_location_if_logged_out( $output, $args ){
-		* 	if ( !is_user_logged_in() && $args->theme_location === 'primary' )
-		* 	return false;
-		* }
-		* add_filter( 'pre_wp_nav_menu', 'hide_specific_menu_location_if_logged_out', 10, 2 );
-		**/
-		$menu_args = array( 
-		    'theme_location'    => 'primary',
-		    'container'         => false,
-		  //  'container_id'      => 'main-nav',
-		  //  'container_class'   => 'main-nav fffi',
-		    'menu_id'           => 'primary-menu',
-		    'menu_class'        => apply_filters( 'frenchpress_class_menu_primary', 'menu fff fff-right fff-middle' ),
-		    'fallback_cb'       => false,
-		    'echo'              => false
-		);
+
+		echo '</div>';//.site-branding
 		
-		if ( false !== ( $menu = wp_nav_menu( $menu_args ) ) ) :
-		?>
-		<span id="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
-			<svg id="menu-toggle-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-				<path id="menu-toggle-close" d="M13.4 12l9.3-9.3c0.4-0.4 0.4-1 0-1.4 -0.4-0.4-1-0.4-1.4 0L12 10.6 2.7 1.3c-0.4-0.4-1-0.4-1.4 0 -0.4 0.4-0.4 1 0 1.4L10.6 12l-9.3 9.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0L12 13.4l9.3 9.3c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4L13.4 12z"/>
-				<path id="menu-toggle-open"  d="M23 20H1c-0.6 0-1 0.4-1 1s0.4 1 1 1h22c0.6 0 1-0.4 1-1S23.6 20 23 20zM23 11H1c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1h22c0.6 0 1-0.4 1-1C24 11.4 23.6 11 23 11zM1 4h22c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1H1C0.4 2 0 2.4 0 3 0 3.6 0.4 4 1 4z"/>
-			</svg>
-			<span id="menu-toggle-label">Menu</span>
-		</span>
-		<nav class="main-nav fffi">
-		    <?php echo $menu; ?>
-		</nav>
-		<div id='obfuscator'></div>
-		<?php
-		endif;// End Nav check
+		if ( is_active_sidebar( 'header-3' ) ) : ?>
+    		<div id="header-3" class="fffi">
+    			<?php dynamic_sidebar( 'header-3' ); ?>
+    		</div>
+    	<?php
+    	endif;//is_active_sidebar( 'header-3' )
 		
 	echo '</div>';//.tray
 echo '</div>';//.site-header-main
 
-endif;//is_active_sidebar( 'header-2' )
 
-if ( is_active_sidebar( 'header-3' ) ) : ?>
-	<div id="header-3" class="widget-area" role="complementary">
+if ( is_active_sidebar( 'header-4' ) ) : ?>
+	<div id="header-4" class="widget-area" role="complementary">
 		<div class="tray">
-			<?php dynamic_sidebar( 'header-3' ); ?>
+			<?php dynamic_sidebar( 'header-4' ); ?>
 		</div>
 	</div>
 <?php

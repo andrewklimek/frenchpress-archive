@@ -23,6 +23,7 @@ Text Domain: frenchpress
 	margin: 0;
 	padding: 0;
 	border: 0;
+	background: center/cover no-repeat;/* Seems lame to clutter up every item in the inspector, and yet I end up having to hand-code this on almost every bg image */
 }
 a {
 	color: inherit;
@@ -58,9 +59,6 @@ img, figure, svg {
 	max-width: 100%;
 	height: auto;
 	/*box-sizing: content-box;*//* is this smart? prob not seems to break when img has padding on sides */
-}
-img:only-child {/* removes line-height from div wrappers */
-	/*    display: block;*/
 }
 embed,
 iframe,
@@ -110,10 +108,10 @@ textarea {
 	padding: .5ex;
 	background: #fff;
 }
-/*[type="search"] {/*
-	/*-webkit-appearance: textfield;*/ /* Correct the odd appearance in Chrome and Safari */
+[type=search] {
+	/*-webkit-appearance: textfield;*//* Correct the odd appearance in Chrome and Safari */
 	/*outline-offset: -2px;*//* Correct the outline style in Safari */
-/*}*/
+}
 textarea {
 	width: 100%;/* maybe not */
 	display: block;/* maybe not */
@@ -135,7 +133,7 @@ svg {
 }
 /**
 * Correct the inability to style clickable types in iOS and Safari.
-* 1. Prevents this from destroying native `audio` and `video` controls in Android 4.
+* 1. Prevents this from destroying native <audio> and <video> controls in Android 4.
 */
 button,
 html input[type=button],/* 1 */
@@ -270,10 +268,10 @@ h3, .h3 {
 /*h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 	margin-top: 0;/* better to keep padding so sections won't collapse?
 	padding-top: 0;
-}
+}*/
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
 	margin-bottom: 1.5rem;
-}*/
+}
 /*.widgettitle {
 	margin-top: 0;/* until we decide on the above
 }*/

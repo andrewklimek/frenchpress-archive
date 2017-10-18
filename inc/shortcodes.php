@@ -10,6 +10,7 @@ el (element, default "div")
 class
 id
 style
+tray
 bg (background image or color)
 grid (flexbox conatainer)
 cell (flexbox item)
@@ -88,7 +89,7 @@ function frenchpress_custom_shortcode_parsing( $c ) {
 // }
 
 function frenchpress_shortcode( $a, $c = '', $tag ) {
-	
+    
 	if ( !empty( $a['el'] ) ) {
 		$el = $a['el'];
 	} else {
@@ -132,6 +133,11 @@ function frenchpress_shortcode( $a, $c = '', $tag ) {
 	
 	// process other shortcodes
     // $c = do_shortcode($c);// not anymore cause we're in a custom early shortcode processing
+    
+    // shortcut for wrapping content in a "tray" div (param tray=1)
+    if ( ! empty( $a['tray'] ) ) {
+        $c = "<div class='tray'>{$c}</div>";
+    }
 	
 	// string it all together
 	return "<{$el}{$id}{$class}{$style}>{$c}</{$el}>";

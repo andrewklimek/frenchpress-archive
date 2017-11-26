@@ -41,16 +41,19 @@ function frenchpress_set_main_menu( $args ) {
         }
     }
     
-    // So, if this is menu matches the slug specified as the main menu, add the markup for the drawer
+    // So, if this menu matches the slug specified as the main menu, add the markup for the drawer
     if ( $menu_slug === $args['menu']->slug ) {
     
-        $args['container_class'] .= " main-nav";
-        $args['menu_id'] = "primary-menu";
-        $args['menu_class'] .= " " . apply_filters( 'frenchpress_class_menu_primary', 'fff fff-right fff-middle' );
-        $args['item_spacing'] = "discard";
+        $args['container_class'] .= ' main-nav';
+        $args['menu_id'] = 'primary-menu';
+        $args['menu_class'] .= ' fff fff-middle fff-' . apply_filters( 'frenchpress_main_menu_align', 'right' );
+        $args['items_wrap'] .= '<span id="menu-close" role="button" aria-controls="primary-menu">×</span>';
+        $args['item_spacing'] = 'discard';
+        
+        add_filter( "wp_nav_menu_{$menu_slug}_items", "frenchpress_maybe_enqueue_submenu_js" );
         
         // also add this filter to insert the button and mask
-        add_filter( 'wp_nav_menu', 'frenchpress_add_button_to_main_menu', 10, 2 );
+        // add_filter( 'wp_nav_menu', 'frenchpress_add_button_to_main_menu', 10, 2 );
     }
     
     return $args;
@@ -58,6 +61,21 @@ function frenchpress_set_main_menu( $args ) {
 add_filter( 'wp_nav_menu_args', 'frenchpress_set_main_menu' );
 
 
+function frenchpress_maybe_enqueue_submenu_js( $items ) {
+	
+	if ( false !== strpos($items, "menu-item-has-children" ) ) {
+		
+		wp_dequeue_script( 'frenchpress' );
+		wp_enqueue_script( 'frenchpress-submenu' );
+		
+	}
+	return $items;
+	
+}
+
+
+
+// disabled for now... I think this should always be in the header branding section no matter hwere the actual menu is.
 function frenchpress_add_button_to_main_menu( $nav_menu, $args ) {
     
     remove_filter( 'wp_nav_menu', 'frenchpress_add_button_to_main_menu', 10, 2 );
@@ -74,9 +92,9 @@ function frenchpress_add_button_to_main_menu( $nav_menu, $args ) {
     return '
         <div id="obfuscator"></div>
         ' . $nav_menu . '
-        <span id="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
+        <div id="menu-toggle" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
             <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
 			<span id="menu-toggle-label">Menu</span>
-		</span>
+		</div>
 		';
 }

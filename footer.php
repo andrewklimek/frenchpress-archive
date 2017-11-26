@@ -23,40 +23,54 @@ echo '<footer id="footer" class="site-footer fffi">';
 
 do_action('frenchpress_footer_top');
 
-if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
-	<div class="footer-tray fff fff-magic">
-	<?php
-	if ( is_active_sidebar( 'footer-1' ) ) : ?>
-		<div id="footer-1" class="widget-area fffi" role="complementary">			
-			<?php dynamic_sidebar( 'footer-1' ); ?>
+if ( is_active_sidebar( 'footer-top' ) ) : ?>
+	<div id="footer-top" class="widget-area" role="complementary">
+		<div class="tray footer-top-tray">
+			<?php dynamic_sidebar( 'footer-top' ); ?>
 		</div>
-	<?php
-	endif;
-	if ( is_active_sidebar( 'footer-2' ) ) : ?>
-		<div id="footer-2" class="widget-area fffi" role="complementary">
-			<?php dynamic_sidebar( 'footer-2' ); ?>
-		</div>
-	<?php
-	endif;
-	if ( is_active_sidebar( 'footer-3' ) ) : ?>
-		<div id="footer-3" class="widget-area fffi" role="complementary">
-			<?php dynamic_sidebar( 'footer-3' ); ?>
-		</div>
-	<?php
-	endif;
-	if ( is_active_sidebar( 'footer-4' ) ) : ?>
-		<div id="footer-4" class="widget-area fffi" role="complementary">
-			<?php dynamic_sidebar( 'footer-4' ); ?>
-		</div>
-	<?php
-	endif;
-	?>
 	</div>
 <?php
 endif;
+
+if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) :
+	
+	$number_of_widget_areas = 0;
+	
+	ob_start();
+	
+	if ( is_active_sidebar( 'footer-1' ) ) {
+		++$number_of_widget_areas;
+		echo '<div id="footer-1" class="widget-area fffi" role="complementary">';		
+		dynamic_sidebar( 'footer-1' );
+		echo '</div>';	
+	}
+	if ( is_active_sidebar( 'footer-2' ) ) {
+		++$number_of_widget_areas;
+		echo '<div id="footer-2" class="widget-area fffi" role="complementary">';		
+		dynamic_sidebar( 'footer-2' );
+		echo '</div>';	
+	}
+	if ( is_active_sidebar( 'footer-3' ) ) {
+		++$number_of_widget_areas;
+		echo '<div id="footer-3" class="widget-area fffi" role="complementary">';		
+		dynamic_sidebar( 'footer-3' );
+		echo '</div>';	
+	}
+	if ( is_active_sidebar( 'footer-4' ) ) {
+		++$number_of_widget_areas;
+		echo '<div id="footer-4" class="widget-area fffi" role="complementary">';		
+		dynamic_sidebar( 'footer-4' );
+		echo '</div>';	
+	}
+	$widgets = ob_get_clean();
+
+	echo "<div class='tray footer-tray fff fff-x{$number_of_widget_areas}'>{$widgets}</div>";
+
+endif;
+
 if ( is_active_sidebar( 'ending-credits' ) ) : ?>
 	<div id="ending-credits" class="site-info">
-		<div class="credits-tray">
+		<div class="tray credits-tray">
 			<?php dynamic_sidebar( 'ending-credits' ); ?>
 		</div>
 	</div>
@@ -66,10 +80,8 @@ do_action('frenchpress_footer_bottom');
 ?>
 </footer>
 <div id="wp_footer">
+    <div id="mask"></div>
 	<?php
-	// if ( false !== $menu ) {// from header, is the main menu active?
-	// 	print "<div id='obfuscator'></div>";
-	// }
 	wp_footer();
 	?>
 </div>

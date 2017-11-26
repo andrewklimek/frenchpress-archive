@@ -62,6 +62,8 @@ CELL-ONLY
 ***/
 
 add_filter( 'the_content', 'frenchpress_custom_shortcode_parsing', 9 );// Run this early to avoid wpautop
+add_filter( 'widget_text', 'frenchpress_custom_shortcode_parsing', 9 );// also process text and HTML widgets
+	
 function frenchpress_custom_shortcode_parsing( $c ) {
 
     // $p = "/\[(section|grid|cell)(?!\w)([^\]]*)\] ( (?: (?: [^\[]*? | \[(?!\/\\1\]) ) | (?R) )* ) \[\/\\1\]/x";// recursive feature
@@ -71,22 +73,13 @@ function frenchpress_custom_shortcode_parsing( $c ) {
     // recursive
     while ( false !== strpos($c, '[/grid') || false !== strpos($c, '[/cell') || false !== strpos($c, '[/section') ) {
     
-    $c = preg_replace_callback( $p, function($m){
-            return frenchpress_shortcode( shortcode_parse_atts( $m[2] ), $m[3], $m[1] );
-        }, $c );
+	    $c = preg_replace_callback( $p, function($m){
+	            return frenchpress_shortcode( shortcode_parse_atts( $m[2] ), $m[3], $m[1] );
+	        }, $c );
     
     }
     return $c;
 }
-    
-// add_shortcode( 'section', 'frenchpress_shortcode' );
-// add_shortcode( 'grid', 'frenchpress_shortcode' );
-// add_shortcode( 'cell', 'frenchpress_shortcode' );
-// for ( $i='a'; $i != 'k'; $i++ ) {
-// 	add_shortcode( 'section_' . $i, 'frenchpress_shortcode' );
-// 	add_shortcode( 'grid_' . $i, 'frenchpress_shortcode' );
-// 	add_shortcode( 'cell_' . $i, 'frenchpress_shortcode' );
-// }
 
 function frenchpress_shortcode( $a, $c = '', $tag ) {
     

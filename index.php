@@ -17,6 +17,14 @@ get_header();
 <main id="primary" class="site-main fffi fffi-99">
 <?php
 if ( have_posts() ) :
+	
+	if ( is_home() && ! is_front_page() && ! apply_filters( 'frenchpress_title_in_header', false ) ) :
+		?>
+		<header class="page-header">
+			<h1 class="title<?php if ( ! apply_filters( 'frenchpress_blog_title', 'show it' ) ) echo ' screen-reader-text'; ?>"><?php single_post_title(); ?></h1>
+		</header>
+	<?php
+	endif;
 
 	/* Start the Loop */
 	while ( have_posts() ) : the_post();

@@ -20,54 +20,38 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
-
+<section id="comments" class="comments-area">
 	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+	
+	if ( have_comments() ) :
+		
+		?>
+		<h2 class="comments-title h3">
 			<?php
-				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'frenchpress' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
-				);
+			$comments_number = get_comments_number();
+			if ( '1' === $comments_number ) {
+				_e( 'One Comment', 'frenchpress' );
+			} else {
+				printf( __( '%1$s Comments', 'frenchpress' ), $comments_number );
+			}
 			?>
 		</h2>
-
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'frenchpress' ); ?></h2>
-			<div class="nav-links">
-
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'frenchpress' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'frenchpress' ) ); ?></div>
-
-			</div>
-		</nav>
-		<?php endif; // Check for comment navigation. ?>
-
 		<ol class="comment-list">
 			<?php
 				wp_list_comments( array(
+					'callback'   => 'frenchpress_comment',// this is in inc/template-tags.php
 					'style'      => 'ol',
 					'short_ping' => true,
 				) );
 			?>
 		</ol>
-
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-below" class="navigation comment-navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'frenchpress' ); ?></h2>
-			<div class="nav-links">
-
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'frenchpress' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'frenchpress' ) ); ?></div>
-
-			</div>
-		</nav>
-		<?php
-		endif; // Check for comment navigation.
+		<?php 
+		
+		the_comments_pagination( // array(
+					// 'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous', 'twentyseventeen' ) . '</span>',
+					// 'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
+				//)
+			);
 
 	endif; // Check for have_comments().
 
@@ -82,4 +66,4 @@ if ( post_password_required() ) {
 	comment_form();
 	?>
 
-</div><!-- #comments -->
+</section>

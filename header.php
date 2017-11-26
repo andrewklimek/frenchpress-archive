@@ -71,7 +71,7 @@ wp_head();
 			// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
 			$hide = display_header_text() ? '' : ' screen-reader-text';
 			
-			if ( is_front_page() || is_home() ) : ?>
+			if ( is_front_page() ) : ?>
 				<h1 class="site-title<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php else : ?>
 				<span class="site-title h2<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
@@ -79,7 +79,7 @@ wp_head();
 			endif;
 				$description = get_bloginfo( 'description', 'display' );
 				if ( $description || is_customize_preview() ) : ?>
-					<p class="site-description<?php echo $hide; ?>"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+					<p class="site-description<?php echo $hide; ?>"><?php echo $description; ?></p>
 				<?php
 				endif;// End header image check.
 		endif; // $skip_the_rest
@@ -92,19 +92,47 @@ wp_head();
     		</div>
     	<?php
     	endif;//is_active_sidebar( 'header-3' )
-		
+		?>
+		<span id="menu-open" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
+            <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
+			<span id="menu-open-label">Menu</span>
+		</span>
+		<?php
 	echo '</div>';//.tray
 echo '</div>';//.site-header-main
 
-
+// will I want to filter the tray classes same as frenchpress_class_header_main?
 if ( is_active_sidebar( 'header-4' ) ) : ?>
 	<div id="header-4" class="widget-area" role="complementary">
-		<div class="tray">
+		<div class="tray fff fff-middle fff-spacebetween fff-nowrap fff-initial">
 			<?php dynamic_sidebar( 'header-4' ); ?>
 		</div>
 	</div>
 <?php
 endif;
+
+/**
+ * Structurally lame, but sometimes we need to print the <h1> in the header for stylistic reasons, 
+ * to have a full-width background that also spans above the sidebar
+ * use add_filter( 'frenchpress_title_in_header', '__return_true' ); to activate
+ */
+if ( !is_front_page() && apply_filters( 'frenchpress_title_in_header', false ) ) {
+	
+	// basically an optimized version of using trim(wp_title('', false))
+	// $title = false;
+	// if ( is_single() || is_home() || is_page() ) $title = single_post_title( '', false );// default
+	if ( ! $title = single_post_title( '', false ) ) {// returns nothing if get_queried_object()->post_title is not set
+		if ( is_search() ) $title = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
+		elseif ( is_archive() ) $title = get_the_archive_title();
+		elseif ( is_404() ) $title = __( 'Page not found' );
+	}
+	if ( $title ) {
+		echo '<div id="header-title"><div class="tray header-title-tray"><h1 class="title">' . $title . '</h1></div></div>';
+	} else {
+		add_filter( 'frenchpress_title_in_header', '__return_false', 99 );// weird, couldn't get the title.  Put it back to normal
+	}
+	
+}
 
 do_action( 'frenchpress_header_bottom' );
 

@@ -16,24 +16,31 @@ if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error
  * Enqueue scripts and styles.
  */
 function frenchpress_scripts() {
-	
+		
 	if ( SCRIPT_DEBUG ) {
 
-		$suffix = "";
+// 		$suffix = "";
 
 		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATE_DIR . '/style.css' ) );
+		
+		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATE_DIR . '/js/main.js' ), true );
+		
+		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATE_DIR . '/js/submenu.js' ), true );
 
 	} else {
 
-		$suffix = ".min";
+// 		$suffix = ".min";
 
-		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U . '/style' . $suffix . '.css', null, null );
+		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U . '/style.min.css', null, null );
+		
+		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.min.js', array(), null, true );
+		
+		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.min.js', array(), null, true );
+
 
 	}
 	
 	// wp_enqueue_style( 'frenchpress-print',  TEMPLATE_DIR_U.'/print.css', array(), null, 'print' );// put back in style.css for now
-
-	wp_enqueue_script( 'frenchpress-nav', TEMPLATE_DIR_U.'/js/nav.min.js', array(), null, true );
 
 	// wp_enqueue_script( 'frenchpress-skip-link-focus-fix', TEMPLATE_DIR_U . '/js/skip-link-focus-fix'.$suffix.'.js', array(), null, true );
 
@@ -79,16 +86,15 @@ function frenchpress_mobile_test() {
 	print "
 	<script>
 	function checkForDesktop(){
+	    var cl = document.body.classList;
 		if ( window.innerWidth > {$breakpoint} ) {
-			if ( document.body.classList.contains('mnav') ) {
-				document.body.classList.remove('mnav');
-				document.body.classList.remove('mnav-open');
-				document.body.classList.add('dnav');
-			}
-		} else if ( document.body.classList.contains('dnav') ) {
-				document.body.classList.remove('dnav');
-				document.body.classList.add('mnav');
-			}
+			cl.remove('mnav');
+			cl.remove('mnav-open');
+			cl.add('dnav');
+		} else {
+			cl.remove('dnav');
+			cl.add('mnav');
+		}
 	}
 	checkForDesktop();
 	window.addEventListener( 'resize', checkForDesktop );
@@ -206,7 +212,7 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar 1', 'frenchpress' ),
 		'id'            => 'sidebar-1',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="widget sidebar-widget %2$s">',
 		'after_widget'  => "</section>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -214,7 +220,7 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar 2', 'frenchpress' ),
 		'id'            => 'sidebar-2',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="widget sidebar-widget %2$s">',
 		'after_widget'  => "</section>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -254,9 +260,18 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
+		'name'          => esc_html__( 'Top of Footer', 'frenchpress' ),
+		'id'            => 'footer-top',
+		'description'   => 'For some banner between content and footer',
+		'before_widget' => '',
+		'after_widget'  => "",
+		'before_title'  => '<h3 class="widgettitle">',
+		'after_title'   => "</h3>\n",
+	) );
+	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 1', 'frenchpress' ),
 		'id'            => 'footer-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -264,7 +279,7 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 2', 'frenchpress' ),
 		'id'            => 'footer-2',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -272,7 +287,7 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 3', 'frenchpress' ),
 		'id'            => 'footer-3',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -280,7 +295,7 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 4', 'frenchpress' ),
 		'id'            => 'footer-4',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -289,8 +304,8 @@ function frenchpress_widgets_init() {
 		'name'          => esc_html__( 'Ending Credits', 'frenchpress' ),
 		'id'            => 'ending-credits',
 		'description'   => 'Full width, very bottom. Typcial place for copyright, theme info, etc.',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</aside>\n",
+		'before_widget' => '',
+		'after_widget'  => "",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );

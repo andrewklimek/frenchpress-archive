@@ -19,7 +19,7 @@ while ( have_posts() ) : the_post();
 
 	get_template_part( 'template-parts/content', get_post_format() );
 	
-	if ( apply_filters( 'frenchpress_post_navigation', true ) ) :
+	if ( apply_filters( 'frenchpress_post_navigation', false ) ) :
     	// filter the navigation args, for example to go to next post in same category:
     	// add_filter( 'frenchpress_post_navigation_args', function() { return array( 'in_same_term' => true ); } );
     	the_post_navigation( apply_filters( 'frenchpress_post_navigation_args', array() ) );

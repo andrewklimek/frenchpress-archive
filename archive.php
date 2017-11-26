@@ -12,6 +12,8 @@ get_header();
 <main id="primary" class="site-main fffi fffi-99">
 <?php
 if ( have_posts() ) :
+	
+	if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) :
 	?>
 	<header class="page-header">
 		<?php
@@ -23,6 +25,8 @@ if ( have_posts() ) :
 		?>
 	</header>
 	<?php
+	endif;
+	
 	/* Start the Loop */
 	while ( have_posts() ) : the_post();
 

@@ -11,9 +11,15 @@ get_header();
 ?>
 <main id="primary" class="site-main fffi fffi-99">
 		<article class="error-404 not-found">
+			<?php
+			if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) :
+			?>
 			<header class="page-header">
 				<h1 class="title"><?php esc_html_e( '404', 'frenchpress' ); ?></h1>
 			</header>
+			<?php
+			endif;
+			?>
 			<div class="page-content">
 				<p><?php
 					

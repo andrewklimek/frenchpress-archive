@@ -9,7 +9,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
-	if ( !is_front_page() && apply_filters( 'frenchpress_page_titles', true ) ) :
+	if ( !is_front_page() && apply_filters( 'frenchpress_page_titles', true )  && ! apply_filters( 'frenchpress_title_in_header', false ) ) :
 	?>
 	<header class="page-header">
 		<?php the_title( '<h1 class="title">', '</h1>' ); ?>

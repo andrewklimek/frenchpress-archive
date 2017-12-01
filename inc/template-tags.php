@@ -37,7 +37,7 @@ function frenchpress_posts_nav( $before='', $after='.' ) {
 	</nav>
 	*/
 	
-    $out = '<nav class="posts-nav"><h2 class="screen-reader-text">Posts navigation</h2><div class="nav-links fff fff-spacebetween">';
+    $out = '<nav class="posts-nav"><h2 class="screen-reader-text">Posts navigation</h2><div class="nav-links fff fff-spacebetween fff-initial">';
  
     if ( !$paged ) $paged = 1;
         
@@ -144,7 +144,7 @@ function frenchpress_comment( $comment, $args, $depth ) {
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( !empty( $args['has_children'] ) ? 'parent' : '', $comment ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-			<header class="comment-meta fff fff-spacebetween">
+			<header class="comment-meta fff fff-initial fff-spacebetween">
 				<div class="comment-author vcard fffi">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<cite class="fn"><?php echo get_comment_author_link( $comment ) ?></cite>

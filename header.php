@@ -22,7 +22,7 @@
 wp_head();
 ?>
 </head>
-<body <?php body_class( "fff fff-column" ); ?>>
+<body <?php body_class( "fff fff-column fff-none" ); ?>>
 <?php do_action( 'frenchpress_body_top' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 <header id="header" class="site-header fffi">
@@ -46,7 +46,7 @@ wp_head();
 	endif;
     ?>
 <div id="site-header-main">
-	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-pad" ); ?>">
+	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-initial fff-pad" ); ?>">
 		<div class="site-branding fffi">
 		<?php
 		/**
@@ -107,7 +107,7 @@ echo '</div>';//.site-header-main
 // will I want to filter the tray classes same as frenchpress_class_header_main?
 if ( is_active_sidebar( 'header-4' ) ) : ?>
 	<div id="header-4" class="widget-area" role="complementary">
-		<div class="tray fff fff-middle fff-spacebetween fff-pad">
+		<div class="tray fff fff-middle fff-spacebetween fff-initial fff-pad">
 			<?php dynamic_sidebar( 'header-4' ); ?>
 		</div>
 	</div>

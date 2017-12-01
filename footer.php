@@ -64,19 +64,20 @@ if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_ac
 	}
 	$widgets = ob_get_clean();
 
-	echo "<div class='tray footer-tray fff fff-x{$number_of_widget_areas}'>{$widgets}</div>";
+	echo "<div class='tray footer-tray fff fff-pad fff-x{$number_of_widget_areas}'>{$widgets}</div>";
 
 endif;
 
-if ( is_active_sidebar( 'ending-credits' ) ) : ?>
-	<div id="ending-credits" class="site-info">
-		<div class="tray credits-tray">
-			<?php dynamic_sidebar( 'ending-credits' ); ?>
+do_action('frenchpress_footer_bottom');
+
+if ( is_active_sidebar( 'footer-bottom' ) ) : ?>
+	<div id="footer-bottom">
+		<div class="tray footer-bottom-tray fff fff-middle fff-spacebetween fff-initial fff-pad">
+			<?php dynamic_sidebar( 'footer-bottom' ); ?>
 		</div>
 	</div>
 <?php
 endif;
-do_action('frenchpress_footer_bottom');
 ?>
 </footer>
 <div id="wp_footer">

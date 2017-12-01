@@ -7,6 +7,60 @@
  * @package FrenchPress
  */
 
+
+/**
+ * Custom posts nav function because I'm insane
+ */
+function frenchpress_posts_nav( $before='', $after='.' ) {
+	global $paged, $wp_query;
+ 
+    $max_page = $wp_query->max_num_pages;
+    
+    if ( $max_page < 2 ) return;
+    
+  /*  
+    <nav class="navigation posts-navigation">
+		<h2 class="screen-reader-text">Posts navigation</h2>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="https://proveyau.andrewklimek.com/blog/page/2/">Older posts</a></div>
+			<div class="nav-next"><a href="https://proveyau.andrewklimek.com/blog/">Newer posts</a></div>
+		</div>
+	</nav>
+	<nav class="navigation pagination">
+		<h2 class="screen-reader-text">Posts navigation</h2>
+		<div class="nav-links">
+			<a class="prev page-numbers" href="https://proveyau.andrewklimek.com/blog/">Previous</a>
+			<a class="page-numbers" href="https://proveyau.andrewklimek.com/blog/"><span class="screen-reader-text">Page </span>1</a>
+			<span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>2</span>
+			<a class="next page-numbers" href="https://proveyau.andrewklimek.com/blog/page/2/">Next</a>
+		</div>
+	</nav>
+	*/
+	
+    $out = '<nav class="posts-nav"><h2 class="screen-reader-text">Posts navigation</h2><div class="nav-links fff fff-spacebetween fff-initial">';
+ 
+    if ( !$paged ) $paged = 1;
+        
+	$pagenum_link = get_pagenum_link(809);
+	
+	if ( $paged > 1 )
+        $out .= '<a class="prev" href="' . str_replace( '809', $paged - 1, $pagenum_link ) . '">Newer<span class="screen-reader-text"> Posts</span></a>';
+	else
+		$out .= '<a class="prev" style="opacity:.1"><span class="screen-reader-text">No </span>Newer<span class="screen-reader-text"> Posts</span></a>';
+	
+	$out .= ' <span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>' . $before . $paged . $after . '</span> ';
+	
+	if ( $paged < $max_page )
+        $out .= '<a class="next" href="' . str_replace( '809', $paged + 1, $pagenum_link ) . '">Older<span class="screen-reader-text"> Posts</span></a>';
+    else
+        $out .= '<a class="next" style="opacity:.1"><span class="screen-reader-text">No </span>Older<span class="screen-reader-text"> Posts</span></a>';
+	
+	$out .= '</div></nav>';
+	
+	return $out;
+}
+	
+	
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */

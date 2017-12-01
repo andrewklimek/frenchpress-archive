@@ -7,7 +7,8 @@
  * @package FrenchPress
  */
 
-define( 'TEMPLATE_DIR', get_template_directory() );
+/* this is define by core for now as TEMPLATEPATH hopefully the dont remove it, see https://core.trac.wordpress.org/ticket/18298 */
+// define( 'TEMPLATE_DIR', get_template_directory() );
 define( 'TEMPLATE_DIR_U', get_template_directory_uri() );
 
 if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error_log("***$l***\n".var_export($v,true));}}}
@@ -19,24 +20,20 @@ function frenchpress_scripts() {
 		
 	if ( SCRIPT_DEBUG ) {
 
-// 		$suffix = "";
-
-		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATE_DIR . '/style.css' ) );
+		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATEPATH . '/style.css' ) );
 		
-		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATE_DIR . '/js/main.js' ), true );
+		if ( TEMPLATEPATH !== STYLESHEETPATH )
+			wp_enqueue_style( 'theme', get_stylesheet_uri(), null, filemtime( STYLESHEETPATH . '/style.css' ) );
 		
-		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATE_DIR . '/js/submenu.js' ), true );
-
+		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATEPATH . '/js/main.js' ), true );
+		
+		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATEPATH . '/js/submenu.js' ), true );
+	
 	} else {
 
-// 		$suffix = ".min";
-
-		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U . '/style.min.css', null, null );
+		add_action( 'wp_print_styles', 'frenchpress_inline_css' );
 		
-		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.min.js', array(), null, true );
-		
-		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.min.js', array(), null, true );
-
+		add_action( 'wp_print_footer_scripts', function(){ echo "<script>" . file_get_contents( TEMPLATE_DIR_U.'/js/submenu.min.js' ) . "</script>"; });
 
 	}
 	
@@ -44,15 +41,26 @@ function frenchpress_scripts() {
 
 	// wp_enqueue_script( 'frenchpress-skip-link-focus-fix', TEMPLATE_DIR_U . '/js/skip-link-focus-fix'.$suffix.'.js', array(), null, true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
+	
 }
 add_action( 'wp_enqueue_scripts', 'frenchpress_scripts' );
 
 add_filter('script_loader_tag', function($tag, $handle) {
 	return ( 0 !== strpos( $handle, 'frenchpress' ) ) ? $tag : str_replace( ' src', ' defer src', $tag );
 }, 10, 2);
+
+
+function frenchpress_inline_css() {
+	$css = file_get_contents( TEMPLATEPATH . '/style.css' );
+	if ( TEMPLATEPATH !== STYLESHEETPATH ) $css .= file_get_contents( STYLESHEETPATH . '/style.css' );
+	$css = str_replace(
+		["\r","\n","\t",'   ','  ',': ','; ',', ',' {','{ ',' }','} ',';}'],
+		[  '',  '',  '',   '', ' ', ':', ';', ',', '{', '{', '}', '}', '}'],
+		preg_replace('|/\*[\s\S]*?\*/|','',$css)
+	);
+	echo "<style>{$css}</style>";
+}
 
 
 function frenchpress_full_width_template( $is_fullwidth ) {
@@ -83,26 +91,18 @@ add_action( 'login_enqueue_scripts', function() {
 function frenchpress_mobile_test() {
 	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
 	if ( ! $breakpoint ) return;
-	print "
-	<script>
+	echo "<script>
 	function checkForDesktop(){
-	    var cl = document.body.classList;
-		if ( window.innerWidth > {$breakpoint} ) {
-			cl.remove('mnav');
-			cl.remove('mnav-open');
-			cl.add('dnav');
-		} else {
-			cl.remove('dnav');
-			cl.add('mnav');
-		}
+		var cl=document.documentElement.classList;
+		if(window.innerWidth>{$breakpoint}){cl.remove('mnav');cl.remove('mnav-open');cl.add('dnav');}else{cl.remove('dnav');cl.add('mnav');}
 	}
 	checkForDesktop();
-	window.addEventListener( 'resize', checkForDesktop );
-	</script>
-	";
+	window.addEventListener('resize',checkForDesktop);
+</script>
+";
 }
 // if ( ! apply_filters( 'frenchpress_disable_mobile', false ) ) {
-add_action( 'frenchpress_body_top', 'frenchpress_mobile_test', 0 );
+add_action( 'wp_print_scripts', 'frenchpress_mobile_test' );
 // }
 
 if ( ! function_exists( 'frenchpress_setup' ) ) :
@@ -120,7 +120,7 @@ function frenchpress_setup() {
 	 * If you're building a theme based on FrenchPress, use a find and replace
 	 * to change 'frenchpress' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'frenchpress', TEMPLATE_DIR . '/languages' );
+	load_theme_textdomain( 'frenchpress', TEMPLATEPATH . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -229,7 +229,7 @@ function frenchpress_widgets_init() {
 		'name'          => esc_html__( 'Header 1 (very top)', 'frenchpress' ),
 		'id'            => 'header-1',
 		'description'   => 'Best for secondary menus/nav bars',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="widget header-widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
@@ -237,8 +237,8 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header 2', 'frenchpress' ),
 		'id'            => 'header-2',
-		'before_widget' => '',
-		'after_widget'  => "\n",
+		'before_widget' => '<div id="%1$s" class="widget header-widget fffi %2$s">',
+		'after_widget'  => "</div>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
@@ -254,8 +254,8 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header 4', 'frenchpress' ),
 		'id'            => 'header-4',
-		'before_widget' => '',
-		'after_widget'  => "\n",
+		'before_widget' => '<div id="%1$s" class="widget header-widget fffi %2$s">',
+		'after_widget'  => "</div>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
@@ -301,11 +301,11 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Ending Credits', 'frenchpress' ),
-		'id'            => 'ending-credits',
-		'description'   => 'Full width, very bottom. Typcial place for copyright, theme info, etc.',
-		'before_widget' => '',
-		'after_widget'  => "",
+		'name'          => esc_html__( 'Bottom of Footer', 'frenchpress' ),
+		'id'            => 'footer-bottom',
+		'description'   => 'Full width, very bottom. Typicial place for copyright, theme info, etc.',
+		'before_widget' => '<aside id="%1$s" class="widget footer-widget fffi %2$s">',
+		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
@@ -316,56 +316,56 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
 /**
  * Adds markup for the mobile-menu-style drawer
  */
-require TEMPLATE_DIR . '/inc/drawer.php';
+require TEMPLATEPATH . '/inc/drawer.php';
 
 /**
  * [frenchpress] builder-style shortcode
  */
-require TEMPLATE_DIR . '/inc/shortcodes.php';
+require TEMPLATEPATH . '/inc/shortcodes.php';
 
 /**
  * Remove core bull
  */
 if ( ! function_exists( 'remove_type_from_archive_title' ) ) {
-	require TEMPLATE_DIR . '/inc/disembellish.php';
+	require TEMPLATEPATH . '/inc/disembellish.php';
 }
 
 /**
  * Implement the Custom Header feature.
  */
-require TEMPLATE_DIR . '/inc/custom-header.php';
+require TEMPLATEPATH . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require TEMPLATE_DIR . '/inc/template-tags.php';
+require TEMPLATEPATH . '/inc/template-tags.php';
 
 /**
  * HTML% Cleanup and various other goodies
  */
-require TEMPLATE_DIR . '/inc/extras.php';
+require TEMPLATEPATH . '/inc/extras.php';
 
 /**
  * Customizer additions.
  */
-require TEMPLATE_DIR . '/inc/customizer.php';
+require TEMPLATEPATH . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-	require TEMPLATE_DIR . '/inc/jetpack.php';
+	require TEMPLATEPATH . '/inc/jetpack.php';
 }
 
 /**
  * Custom walker with no <li>.
  */
-// require TEMPLATE_DIR . '/inc/walker_no_list.php';
+// require TEMPLATEPATH . '/inc/walker_no_list.php';
 
 
 /**
  * WooCommerce Support
  */
 if ( class_exists( 'WooCommerce' ) ) {
-	require TEMPLATE_DIR . '/woocommerce/woocommerce.php';
+	require TEMPLATEPATH . '/woocommerce/woocommerce.php';
 }

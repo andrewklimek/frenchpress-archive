@@ -21,6 +21,15 @@ You should have received a copy of the GNU General Public License along with
 Disembellish. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
+
+/**
+ * Replace "Powered by Wordpress" H1 on login page
+ */
+add_filter('login_headerurl', function(){ return home_url(); });
+add_filter('login_headertitle', function(){ return get_bloginfo( 'name', 'display' ); });
+
+
+
 /**
  * System emails sent from admin email & blog name rather than wordpress@ and WordPress
  */

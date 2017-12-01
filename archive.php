@@ -40,7 +40,7 @@ if ( have_posts() ) :
 
 	endwhile;
 
-	the_posts_navigation();
+	echo frenchpress_posts_nav();
 
 else :
 

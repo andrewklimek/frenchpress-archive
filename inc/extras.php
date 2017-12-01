@@ -34,8 +34,8 @@ add_filter( 'widget_text', 'do_shortcode' );
 add_filter( 'style_loader_tag', function( $tag ) { return str_replace( array( " type='text/css' media='all' /", "type='text/css' "), "", $tag ); } );
 add_filter( 'script_loader_tag', function( $tag ) { return str_replace( "type='text/javascript' ", "", $tag ); } );
 
-// remove role=navigation from nav elements and add tray class which is just for this theme.
-add_filter( 'navigation_markup_template', function($template){ return str_replace( 'class="navigation %1$s" role="navigation"', 'class="navigation %1$s tray"', $template ); });
+// remove role=navigation from nav elements
+add_filter( 'navigation_markup_template', function($template){ return str_replace( 'class="navigation %1$s" role="navigation"', 'class="navigation %1$s"', $template ); });
 
 // remove excess markup from comment form
 add_filter( 'comment_form_fields', function($fields){ 

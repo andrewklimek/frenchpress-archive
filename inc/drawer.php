@@ -46,7 +46,7 @@ function frenchpress_set_main_menu( $args ) {
     
         $args['container_class'] .= ' main-nav';
         $args['menu_id'] = 'primary-menu';
-        $args['menu_class'] .= ' fff fff-middle fff-' . apply_filters( 'frenchpress_main_menu_align', 'right' );
+        $args['menu_class'] .= ' fff fff-middle fff-pad fff-' . apply_filters( 'frenchpress_main_menu_align', 'right' );
         $args['items_wrap'] .= '<span id="menu-close" role="button" aria-controls="primary-menu">×</span>';
         $args['item_spacing'] = 'discard';
         

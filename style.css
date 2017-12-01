@@ -1,11 +1,11 @@
 /*
-Theme Name:  FrenchPress
-Plugin URI:  https://github.com/andrewklimek/frenchpress/
+Theme Name:	 FrenchPress
+Plugin URI:	 https://github.com/andrewklimek/frenchpress/
 Description: a very light framework-style WordPress theme featuring flexbox CSS
-Author:      Andrew J Klimek
-Author URI:  https://github.com/andrewklimek
-Version:     1.0
-License:     GPLv2
+Author:		 Andrew J Klimek
+Author URI:	 https://github.com/andrewklimek
+Version:	 1.0
+License:	 GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
 Text Domain: frenchpress
@@ -38,7 +38,7 @@ h2 a,
 nav a,
 aside a,
 #comments a {
-    text-decoration: none;
+	text-decoration: none;
 }
 details, /* IE, Edge */
 summary, /* IE, Edge */
@@ -97,13 +97,13 @@ keygen {
 	font: inherit;
 	/*	margin: 0;*/
 }
-input[type=text],
-input[type=search],
-input[type=tel],
-input[type=url],
-input[type=email],
-input[type=password],
-input[type=number],
+[type=text],
+[type=search],
+[type=tel],
+[type=url],
+[type=email],
+[type=password],
+[type=number],
 textarea {
 	border: 1px solid #aaa;
 /*	border-radius: 0;*//*are they ever rounded by default?*/
@@ -139,10 +139,8 @@ svg {
 */
 button,
 html input[type=button],/* 1 */
-input[type=reset],
-button[type=reset],
-input[type=submit],
-button[type=submit] {
+[type=reset],
+[type=submit] {
 	-webkit-appearance: button;
 	cursor: pointer;
 }
@@ -181,20 +179,6 @@ html {
 @media (max-width:600px) { html { font-size: 90%; } }
 /*@media (min-width:1500px) { html { font-size: 120%; } }*/
 
-/* hopefully this is the answer for side padding. might want a better way of removing padding from fullwidth */
-main:not(.main-full-width),
-.footer-widget {
-	padding: 0 1.6rem;
-}
-main.main-full-width .tray {
-	padding: 1.6rem;/* maybe add padding to top and bottom of full width page sections? */
-}
-/* need to find a way to handle padding that should appear on mobile */
-#content-tray.tray article .tray {
-	padding-left: 1.6rem;
-	padding-right: 1.6rem;
-}
-
 p,
 ol,
 ul,
@@ -207,13 +191,17 @@ blockquote,
 blockquote footer,
 figcaption,
 figure,
-.comment {
+.comment,
+.margin,
+.margin > li {
 	margin: 1.6rem 0;
 }
 blockquote {
 	padding: 0 1.6em;
 }
-li > ul, li > ol {
+li > ul,
+li > ol,
+.margin-0 {
 	margin: 0;
 }
 ul, ol, dd {
@@ -254,18 +242,18 @@ h3, .h3 {
 	line-height: 1.36;
 }
 @media (max-width:600px) {
-    h1, .h1 {
-    	font-size: 1.73rem;
-    	line-height: 1.29;
-    }
-    h2, .h2 {
-    	font-size: 1.44rem;
-    	line-height: 1.35;
-    }
-    h3, .h3 {
-    	font-size: 1.2rem;
-    	line-height: 1.42;
-    }
+	h1, .h1 {
+		font-size: 1.73rem;
+		line-height: 1.29;
+	}
+	h2, .h2 {
+		font-size: 1.44rem;
+		line-height: 1.35;
+	}
+	h3, .h3 {
+		font-size: 1.2rem;
+		line-height: 1.42;
+	}
 }
 /*h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
 	margin-top: 0;/* better to keep padding so sections won't collapse?
@@ -292,22 +280,37 @@ body {
 	html, body { height: 100%; }
 	* { /*-ms-flex: 0 1 auto;*/ }/* flex default is wrong in IE10 */
 }
+/* hopefully this is the answer for side padding. might want a better way of removing padding from fullwidth */
+main:not(.main-full-width),
+.tray {
+	padding: 0 1.6rem;
+}
+.main-full-width .tray {
+	padding: 1.6rem;/* maybe add padding to top and bottom of full width page sections? */
+}
+/* need to find a way to handle padding that should appear on mobile */
+#content-tray.tray article .tray {
+	padding-left: 1.6rem;
+	padding-right: 1.6rem;
+}
 .tray {
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
-#primary {
-	width: 30rem;
-	max-width: 100%;/* still needed? */
+/* this is only for bigger screens to auto size main content against sidebars
+ * without this, we should be bale to disable all flex stuff and have phones render fine with everything just stacked */
+@media (min-width:48em) {
+	#primary {
+		width: 30rem;
+	/* 	max-width: 100%; *//* still needed? */
+	}
 }
 
 /*--------------------------------------------------------------
 *  Navigation
 --------------------------------------------------------------*/
-nav {
-/*	text-align: center;*/
-}
+
 nav ul,
 aside ul,
 .comment-list, .children {/* ul.menu*/
@@ -317,28 +320,30 @@ aside ul,
 	/*line-height: 1.6rem;*/
 }
 .children {
-    padding-left: 1.2rem;
-    border-left: .3rem solid rgba(165, 165, 165, 0.2);
+	padding-left: 1.2rem;
+	border-left: .3rem solid rgba(165, 165, 165, 0.2);
 }
 
 .site-header .menu-item {/* li.menu-item */
 	padding: .8rem;
 	position: relative;/* Allows better submenu absolute positioning like: nav ul ul {top: 100%;} li.menu-item-has-children:nth-last-child(-n+3) ul {right: 1.6rem;} */
 /*	display: inline-block;*/
+	transition: inherit;
 }
-body.mnav .menu-item {
-    padding: 0;
-    margin: .8rem;
+.mnav .menu-item {
+	padding: 0;
+	margin: .8rem;
 }
 /* for toggle arrows, so they can be centered to the parent, not the whole ul in the li */
 .menu-item > a {
 	display: block;
 	position: relative;
 }
-a:not([href]) {
-	cursor: default;/* keep normal mouse pointer on parent menu items that are custom links with no link */
-	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
-}
+/* a:not([href]) { */
+/* 	pointer-events: none; */
+/* 	cursor: default; *//* keep normal mouse pointer on parent menu items that are custom links with no link */
+/* 	-webkit-tap-highlight-color: transparent; *//* background color on active links in mobile browsers */
+/* } */
 
 /* Main Nav */
 
@@ -352,12 +357,12 @@ a:not([href]) {
 	visibility: hidden;
 	transition: background-color .4s;
 }
-body.mnav-open #mask {
+.mnav-open #mask {
 	background-color: rgba(0,0,0,.5);
 	visibility: visible;
 }
 
-body.mnav .main-nav {
+.mnav .main-nav {
 	z-index: 999999;
 	/*	height: calc(100% + 60px);*/
 	height: 100%;
@@ -375,7 +380,7 @@ body.mnav .main-nav {
 	-webkit-overflow-scrolling: touch;
 	will-change: transform;
 }
-body.mnav-open .main-nav {
+.mnav-open .main-nav {
 	max-width: 90%;
 	-webkit-transform: translateX(-306px);
 	-ms-transform: translateX(-306px);
@@ -383,7 +388,7 @@ body.mnav-open .main-nav {
 	box-shadow: 0 0 16px rgba(0,0,0,0.1);
 	overflow: auto;
 }
-body.mnav .main-nav .menu,
+.mnav .main-nav .menu,
 .main-nav li {
 	display: block;
 }
@@ -395,34 +400,33 @@ body.mnav .main-nav .menu,
 }
 #menu-close {
 	position: fixed;
-    top: 0;
-    right: 0;
-    font: 100 24px/.7 sans-serif;
+	top: 0;
+	right: 0;
+	font: 100 24px/.7 sans-serif;
 }
 .menu-tog {
-    background: currentColor;
-    width: 16px;
-    height: 2px;
-    border-radius: 1px;
-    margin: 4px;
+	background: currentColor;
+	width: 16px;
+	height: 2px;
+	border-radius: 1px;
+	margin: 4px;
 }
-body.dnav #menu-open,
-body.dnav #menu-close,
-#menu-open-label {
+.dnav #menu-open,
+.dnav #menu-close {
 	display: none;
 }
 
 /* Allow drawer menu to scroll, but not on bigger screens cause fixed headers shift when you hide desktop scrollbars */
 @media (max-height:770px) {
-	body.mnav-open {
+	.mnav-open {
 		overflow: hidden;
 	}
 }
 
-body.dnav .main-nav li li:last-child {
+.dnav .main-nav li li:last-child {
 	padding-bottom: .8rem;/* undo padding-bottom: 0 for desktop dropdowns */
 }
-body.dnav .main-nav .sub-menu {
+.dnav .main-nav .sub-menu {
 	top: 100%;
 	left: 0;
 /*	left: -16em;*//* doesn't have to be exactly same as width, just 100% was sometimes too small */
@@ -435,18 +439,14 @@ body.dnav .main-nav .sub-menu {
 	z-index: 99;/* need anymore cause of parent z-index? */
 	visibility: hidden;
 	opacity: 0;
-	transition: 0.2s;
+	transition: opacity 250ms;
 }
-body.dnav .main-nav ul.menu > li {
-	position: relative;
-	padding: .8rem;
-}
-body.dnav .main-nav ul li:hover > ul,
-body.dnav .main-nav ul li.focus > ul {
+.dnav .main-nav ul li:hover > ul,
+.dnav .main-nav ul li.focus > ul {
 	visibility: visible;
 	opacity: 1;
 }
-body.dnav .main-nav .sub-menu ul {
+.dnav .main-nav .sub-menu ul {
 	top: 0;
 	left: 99%;
 /*	width: 100%;*/
@@ -461,29 +461,35 @@ body.dnav .main-nav .sub-menu ul {
 /*}*/
 
 /***** SEARCH FORM ******/
-.search-submit[type=submit] {
-    min-width: 0;
-    padding: 3px 3px 3px 10px;
-    margin: 0;
-    border: 0;
-    line-height: 0;
+.search-submit {
+	min-width: 0;
+	padding: 3px 3px 3px 10px;
+	margin: 0;
+	border: 0;
+	line-height: 0;
 }
-.search-field[type=search] {
-    border: 0;
-    padding: 0;
-    background: none;
-    width: 100%;
-    outline: 0;
-    display: block;
+.search-field {
+	border: 0;
+	padding: 0;
+	background: none;
+	width: 100%;
+	outline: 0;
+	display: block;
 }
 .search-form {
-    border-bottom: 1px solid currentColor;
+	border-bottom: 1px solid currentColor;
 }
 
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
 
+body:not(.home) .hentry {
+	padding: 0 0 8rem;
+}
+.posts-nav {
+    margin: -6rem 0 4.4rem;
+}
 blockquote footer cite {
 	display: block;
 }
@@ -493,14 +499,14 @@ blockquote footer {
 th:only-of-type {
 	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
 }
-/* This is to remove frustrating space below logo.  Might be a problem with header widgets too */
+/* This is to remove frustrating space below logo.	Might be a problem with header widgets too */
 .site-branding {
 	line-height: 0;
 }
 .site-title,
 .site-description {
 	line-height: 1;/* See if still needed when H1s are squared away */
-	    padding: 0;
+		 padding: 0;
 }
 /* the comment form styling isn’t needed for now as I’m making all textareas 100% width blocks
 .comment-form-comment label {
@@ -548,9 +554,6 @@ th:only-of-type {
 .bypostauthor {/* Required */
 	display: block;
 }
-article {
-    /*margin-bottom: 3.2rem;*/ /* This was creating a gap between bg colors of footer and a section at the end of the content */
-}
 .byline,
 .updated:not(.published) {
 	display: none;
@@ -565,10 +568,10 @@ article {
 /* 	display: none; */
 }
 .widgettitle {
-    padding: 0;
+	padding: 0;
 }
 .rss-widget-icon {
-    display: none;/* dunno who would ever want this, but is hiding it allowed? */
+	display: none;/* dunno who would ever want this, but is hiding it allowed? */
 }
 /*.comment-content a,*/
 /*a {
@@ -653,7 +656,7 @@ overflow-wrap: break-word;
 	.gallery-columns-9 .gallery-item{width: 11.111%;}
 }
 /*--------------------------------------------------------------
-*  CSS Framework-type stuff. 
+*  CSS Framework-type stuff.
 *  Avoids massive child theme stylesheets, esp given the flexbox prefixes
 --------------------------------------------------------------*/
 hr.double {/* this is the only place the base spacing size is manually doubled */
@@ -674,10 +677,10 @@ hr.spacer {
 	text-align: left;
 }
 
-/* FLEX GRID IMPLEMENTATION */
+/* FLEX GRID IMPLEMENTATION "fff" for "frenchpress flexbox framework" */
 /* display: block on flex item comes first so that flex-items can also be flex containers and the display:block will be overruled */
 .fffi {
-	display: block;/* inline items don't work in IE10?? */
+	display: block;/* Inline elements are not treated as flex items in IE 10. IE 11 fixed this with regular inline elements, but not ::before / ::after pseudo-elements */
 	max-width: 100%;/* had issues with #content and main... is it universal? */
 }
 .fff,
@@ -765,8 +768,8 @@ hr.spacer {
 .fff-even > .fffi,
 .fff > .fffi-even.fffi {
 	-webkit-flex: 1;
-	-ms-flex: 1 1 0%;
-	flex: 1;/* shorthand 1 needs to be spelled out 1 1 0% for IE10 */
+	-ms-flex: 1 1 0%;/* shorthand 1 needs to be spelled out 1 1 0% for IE10 as well as have a unit in flex-basis 0 */
+	flex: 1;
 }
 [class*='fffi-x'].fffi, [class*='fff-x'] > .fffi,/* is it really worth doing this crazy selector just to not repeat all the nones in the percentage based stuff below?? */
 .fff-none > .fffi,
@@ -791,7 +794,7 @@ hr.spacer {
 .fff > .fffi-noshrink.fffi {
 	-webkit-flex: 1 0 auto;
 	-ms-flex: 1 0 auto;
-	flex: 1 0 auto;/* See http://bit.ly/1Mn35US */
+	flex: 1 0 auto;/* See https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored */
 }
 .fff-magic > .fffi,
 .fff > .fffi-magic.fffi {
@@ -830,38 +833,39 @@ hr.spacer {
 	.fffi-x4.fffi, .fff-x4 > .fffi{width:25%;}
 }
 
-.fff-pad > .fffi {
-	padding: 1rem;/* .8 */
+.fff-pad > .fffi,
+.tray.fff-pad {
+	padding: 0.8rem;/* margin would be ideal for the inner divs if they have images or a bg color but then %-based widths don't work (since margin isn't part of width). padding is also better for borders inbetween */
 }
 .fff-pad:not(.tray) {/* this breaks trays on full width pages cause the margin auto is ruined */
-	margin: -1rem;/* -.8 */
-}
-main.main-full-width .tray.fff-pad {
-    padding: .5rem;/* .8 */
+	margin: -0.8rem;
 }
 .pad-0 {
-    padding: 0;
+	padding: 0;
 }
 .pad {
 	padding: 1.6rem;
 }
+.pad-l,
 .pad-x {
 	padding-left: 1.6rem;
+}
+.pad-r,
+.pad-x {
 	padding-right: 1.6rem;
 }
 .pad-y {
 	padding-top: 1.6rem;
 	padding-bottom: 1.6rem;
 }
-.pad-l {
-	padding-left: 1.6rem;
+/* Moved to top where all relevant elements are assigned margins
+.margin-0 {
+	margin: 0;
 }
-.pad-r {
-	padding-right: 1.6rem;
-}
-.margin, ul.margin > li {
+.margin, .margin > li {
 	margin: 1.6rem 0;
 }
+*/
 
 @media screen and (max-width: 600px) {
 	#content .breakout {

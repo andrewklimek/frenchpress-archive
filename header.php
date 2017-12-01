@@ -2,24 +2,27 @@
 /**
  * The header for our theme.
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
+ * This is the template that displays all of the <head> section and everything up until <div id="content-tray">
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package FrenchPress
+ * 
+ * If this is ever used for the general public or WPML, 
+ * html lang= should use language_attributes() or bloginfo('language') and maybe meta charset= bloginfo('charset')
  */
-// If this is ever used for the general public or WPML, switch back to language_attributes() or get_bloginfo('language')
+ 
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <?php
 wp_head();
 ?>
 </head>
-<body <?php body_class( "fff fff-column fff-none dnav" ); ?>>
+<body <?php body_class( "fff fff-column fff-none" ); ?>>
 <?php do_action( 'frenchpress_body_top' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
 <header id="header" class="site-header fffi">
@@ -43,7 +46,7 @@ wp_head();
 	endif;
     ?>
 <div id="site-header-main">
-	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-initial" ); ?>">
+	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-initial fff-pad" ); ?>">
 		<div class="site-branding fffi">
 		<?php
 		/**
@@ -93,10 +96,10 @@ wp_head();
     	<?php
     	endif;//is_active_sidebar( 'header-3' )
 		?>
-		<span id="menu-open" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
+		<div id="menu-open" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
             <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
-			<span id="menu-open-label">Menu</span>
-		</span>
+			<span id="menu-open-label" class="screen-reader-text">Menu</span>
+		</div>
 		<?php
 	echo '</div>';//.tray
 echo '</div>';//.site-header-main
@@ -104,7 +107,7 @@ echo '</div>';//.site-header-main
 // will I want to filter the tray classes same as frenchpress_class_header_main?
 if ( is_active_sidebar( 'header-4' ) ) : ?>
 	<div id="header-4" class="widget-area" role="complementary">
-		<div class="tray fff fff-middle fff-spacebetween fff-nowrap fff-initial">
+		<div class="tray fff fff-middle fff-spacebetween fff-initial fff-pad">
 			<?php dynamic_sidebar( 'header-4' ); ?>
 		</div>
 	</div>

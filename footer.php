@@ -72,7 +72,7 @@ do_action('frenchpress_footer_bottom');
 
 if ( is_active_sidebar( 'footer-bottom' ) ) : ?>
 	<div id="footer-bottom">
-		<div class="tray footer-bottom-tray fff fff-middle fff-spacebetween fff-initial fff-pad">
+		<div class="tray footer-bottom-tray fff fff-middle fff-spacebetween fff-pad">
 			<?php dynamic_sidebar( 'footer-bottom' ); ?>
 		</div>
 	</div>

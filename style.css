@@ -56,7 +56,7 @@ pre {
 pre, code, kbd, samp, var {
 	font-family: monospace;
 }
-img, figure, svg {
+img, figure {
 	max-width: 100%;
 	height: auto;
 	/*box-sizing: content-box;*//* is this smart? prob not seems to break when img has padding on sides */
@@ -275,15 +275,21 @@ body {
 	/*	height: 100%;*/
 	/*overflow-x: hidden;*/
 }
-/* hack because 100vh definitely doesn't work in IE11 */
+/* stuff specific to IE 10 & 11*/
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	html, body { height: 100%; }
-	* { /*-ms-flex: 0 1 auto;*/ }/* flex default is wrong in IE10 */
+	html, body { height: 100%; }/* 100vh definitely doesn't work in IE11 */
+	/* svg { height: initial; } *//* height auto doesn’t work, IE defaults to 150px, but this doesnt seem to help */
+	/* * { -ms-flex: 0 1 auto; }*//* flex default is wrong in IE10 */
 }
 /* hopefully this is the answer for side padding. might want a better way of removing padding from fullwidth */
-main:not(.main-full-width),
+main,
 .tray {
 	padding: 0 1.6rem;
+}
+.main-full-width,
+.content-tray,
+.pad-0 {
+	padding: 0;
 }
 .main-full-width .tray {
 	padding: 1.6rem;/* maybe add padding to top and bottom of full width page sections? */
@@ -300,7 +306,7 @@ main:not(.main-full-width),
 }
 /* this is only for bigger screens to auto size main content against sidebars
  * without this, we should be bale to disable all flex stuff and have phones render fine with everything just stacked */
-@media (min-width:48em) {
+@media (min-width:30em) {
 	#primary {
 		width: 30rem;
 	/* 	max-width: 100%; *//* still needed? */
@@ -330,9 +336,9 @@ aside ul,
 /*	display: inline-block;*/
 	transition: inherit;
 }
-.mnav .menu-item {
+.mnav .main-nav .menu-item {
 	padding: 0;
-	margin: .8rem;
+	margin: .8rem 0 .8rem .8rem;
 }
 /* for toggle arrows, so they can be centered to the parent, not the whole ul in the li */
 .menu-item > a {
@@ -397,9 +403,10 @@ aside ul,
 	display: inline-block;
 	padding: .8rem;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 #menu-close {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
 	font: 100 24px/.7 sans-serif;
@@ -685,121 +692,115 @@ hr.spacer {
 }
 .fff,
 .card  {
-	display: -webkit-flex;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-flex-wrap: wrap;
 	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
+	    flex-wrap: wrap;
 }
 .fff-column,
 .card  {
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 }
 .fff-column > .fffi {
 	max-width: 100%;/* main wasn't shrinking in safari */
 }
 .fff-column,/* if I remove this, have to add nowrap to body */
 .fff-nowrap {
-	-webkit-flex-wrap: nowrap;
 	-ms-flex-wrap: nowrap;
-	flex-wrap: nowrap;
+	    flex-wrap: nowrap;
 }
 .fff-middle,
 .card  {
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .fff-top {
-	-webkit-align-items: flex-start;
-	-ms-flex-align: start;
-	align-items: flex-start;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
 }
 .fff-bottom {
-	-webkit-align-items: flex-end;
-	-ms-flex-align: end;
-	align-items: flex-end;
+	-webkit-box-align: end;
+	    -ms-flex-align: end;
+	        align-items: flex-end;
 }
 .fff-left {
-	-webkit-justify-content: flex-start;
-	-ms-flex-pack: start;
-	justify-content: flex-start;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
 }
 .fff-center {
-	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 }
 .fff-right {
-	-webkit-justify-content: flex-end;
-	-ms-flex-pack: end;
-	justify-content: flex-end;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
 }
 .fff-spacebetween, .card {
-	-webkit-justify-content: space-between;
-	-ms-flex-pack: space-between;
-	justify-content: space-between;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 }
 .fff-spacearound {
-	-webkit-justify-content: space-around;
-	-ms-flex-pack: space-around;
-	justify-content: space-around;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
 }
 .fffi-top {
-	-webkit-align-self: flex-start;
 	-ms-flex-item-align: start;
-	align-self: flex-start;
+	    align-self: flex-start;
 }
 .fffi-middle {
-	-webkit-align-self: center;
 	-ms-flex-item-align: center;
-	-ms-grid-row-align: center;
-	align-self: center;
+	    align-self: center;
 }
 .fffi-bottom {
-	-webkit-align-self: flex-end;
 	-ms-flex-item-align: end;
-	align-self: flex-end;
+	    align-self: flex-end;
 }
 .fffi,
 .fff-initial > .fffi,
 .fff > .fffi-initial.fffi {
-	-webkit-flex: initial;
-	-ms-flex: 0 1 auto;
-	flex: initial;/* shorthand initial needs to be spelled out 0 1 auto for IE10 */
+	-webkit-box-flex: initial;
+	    -ms-flex: 0 1 auto;
+	        flex: initial;/* shorthand initial needs to be spelled out 0 1 auto for IE10 */
 }
 /* [class*='fffi-x'].fffi, [class*='fff-x'] > .fffi, *//* prob don’t need this madness if “initial” is default */
 .fff-none > .fffi,
 .fff > .fffi-none.fffi {
-	-webkit-flex: none;
-	-ms-flex: none;
-	flex: none;/* 0 0 auto */
+	-webkit-box-flex: 0;
+	    -ms-flex: none;
+	        flex: none;/* 0 0 auto */
 }
 /* I had thought this (below) was the best default b/c IE fails to auto size nested flex containers 
 	and flex-basis 0% is a work around (https://github.com/philipwalton/flexbugs/issues/71), 
 	but I just seem to only use none/initial or auto/magic */
 .fff-even > .fffi,
 .fff > .fffi-even.fffi {
-	-webkit-flex: 1;
-	-ms-flex: 1 1 0%;/* shorthand 1 needs to be spelled out 1 1 0% for IE10 as well as have a unit in flex-basis 0 */
-	flex: 1;
+	-webkit-box-flex: 1;
+		-ms-flex: 1 1 0%;
+			flex: 1;/* shorthand 1 needs to be spelled out 1 1 0% for IE10 & can’t have unitless flex-basis */
 }
 .fff-auto > .fffi,
 .fff > .fffi-auto.fffi,
 .fff-magic > .fffi,
 .fff > .fffi-magic.fffi {
-	-webkit-flex: auto;
-	-ms-flex: 1 1 auto;
-	flex: auto;/* shorthand auto needs to be spelled out 1 1 auto for IE10 */
+	-webkit-box-flex: 1;
+		-ms-flex: 1 1 auto;
+			flex: auto;/* shorthand auto needs to be spelled out 1 1 auto for IE10 */
 }
 .fff-noshrink > .fffi,
 .fff > .fffi-noshrink.fffi {
-	-webkit-flex: 1 0 auto;
-	-ms-flex: 1 0 auto;
-	flex: 1 0 auto;/* See https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored */
+	-webkit-box-flex: 1;
+		-ms-flex: 1 0 auto;
+			flex: 1 0 auto;/* See https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored */
 }
 .fff-magic > .fffi,
 .fffi-magic {
@@ -811,19 +812,19 @@ hr.spacer {
 	display: none;
 }*/
 /* growth ratios */
-.fffi-0.fffi{-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;}
-.fffi-1.fffi{-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;}
-.fffi-2.fffi{-webkit-flex-grow:2;-ms-flex-positive:2;flex-grow:2;}
-.fffi-3.fffi{-webkit-flex-grow:3;-ms-flex-positive:3;flex-grow:3;}
-.fffi-4.fffi{-webkit-flex-grow:4;-ms-flex-positive:4;flex-grow:4;}
-.fffi-5.fffi{-webkit-flex-grow:5;-ms-flex-positive:5;flex-grow:5;}
-.fffi-6.fffi{-webkit-flex-grow:6;-ms-flex-positive:6;flex-grow:6;}
-.fffi-7.fffi{-webkit-flex-grow:7;-ms-flex-positive:7;flex-grow:7;}
-.fffi-8.fffi{-webkit-flex-grow:8;-ms-flex-positive:8;flex-grow:8;}
-.fffi-9.fffi{-webkit-flex-grow:9;-ms-flex-positive:9;flex-grow:9;}
-/*.fffi-10.fffi{-webkit-flex-grow:10;-ms-flex-positive:10;flex-grow:10;}*/
-/*.fffi-11.fffi{-webkit-flex-grow:11;-ms-flex-positive:11;flex-grow:11;}*//* up to 11 emulates the typical 12-column grid, but I doubt anythign will ever be 1/12 */
-.fffi-99.fffi{-webkit-flex-grow:99;-ms-flex-positive:99;flex-grow:99;}/* use 99 to make one cell eat up virtually all the extra space (while still allowing other cells to grow once they're on their own line (on a smaller screen)) */
+.fffi-0.fffi{-webkit-box-flex:0;-ms-flex-positive:0;flex-grow:0;}
+.fffi-1.fffi{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;}
+.fffi-2.fffi{-webkit-box-flex:2;-ms-flex-positive:2;flex-grow:2;}
+.fffi-3.fffi{-webkit-box-flex:3;-ms-flex-positive:3;flex-grow:3;}
+.fffi-4.fffi{-webkit-box-flex:4;-ms-flex-positive:4;flex-grow:4;}
+.fffi-5.fffi{-webkit-box-flex:5;-ms-flex-positive:5;flex-grow:5;}
+.fffi-6.fffi{-webkit-box-flex:6;-ms-flex-positive:6;flex-grow:6;}
+.fffi-7.fffi{-webkit-box-flex:7;-ms-flex-positive:7;flex-grow:7;}
+.fffi-8.fffi{-webkit-box-flex:8;-ms-flex-positive:8;flex-grow:8;}
+.fffi-9.fffi{-webkit-box-flex:9;-ms-flex-positive:9;flex-grow:9;}
+/*.fffi-10.fffi{-webkit-box-flex:10;-ms-flex-positive:10;flex-grow:10;}*/
+/*.fffi-11.fffi{-webkit-box-flex:11;-ms-flex-positive:11;flex-grow:11;}*//* up to 11 emulates the typical 12-column grid, but I doubt anythign will ever be 1/12 */
+.fffi-99.fffi{-webkit-box-flex:99;-ms-flex-positive:99;flex-grow:99;}/* use 99 to make one cell eat up virtually all the extra space (while still allowing other cells to grow once they're on their own line (on a smaller screen)) */
 /* percentage based */
 /* Due to IE 10 & 11 we need to use flex:none + width:50% instead of flex:0 0 50%; */
 /* using the "none" block above, tho perhaps it's goofy to avoid some characters this way */
@@ -842,9 +843,11 @@ hr.spacer {
 .fff-pad:not(.tray) {/* this breaks trays on full width pages cause the margin auto is ruined */
 	margin: -0.8rem;
 }
+/* Moved to .main-full-width cause why not save some space
 .pad-0 {
 	padding: 0;
 }
+*/
 .pad {
 	padding: 1.6rem;
 }

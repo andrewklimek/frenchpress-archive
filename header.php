@@ -38,7 +38,7 @@ wp_head();
 	endif;
 	if ( is_active_sidebar( 'header-2' ) ) : ?>
 		<div id="header-2" class="widget-area" role="complementary">
-			<div class="tray">
+			<div class="tray fff">
 				<?php dynamic_sidebar( 'header-2' ); ?>
 			</div>
 		</div>
@@ -47,55 +47,50 @@ wp_head();
     ?>
 <div id="site-header-main">
 	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-pad" ); ?>">
-		<div class="site-branding fffi">
 		<?php
-		/**
-		* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block
-		* e.g.:
-		*	add_filter( 'frenchpress_site_branding', function( $skip_the_rest ) {
-		*		print "<a href=". esc_url( home_url( '/' ) ) ." rel='home'>" . file_get_contents( __DIR__ .'/logo.svg' ) . "</a>";
-		*		return true;// skips the rest of the site branging section
-		*	} );
-		*/
-		$skip_the_rest = apply_filters( 'frenchpress_site_branding', false );
-		
-		if ( ! $skip_the_rest ) :
-		
-			if ( function_exists( 'the_custom_logo' ) ) {
-				the_custom_logo();
-			}
-			if ( get_header_image() ) : ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
-				</a>
-				<?php
-			endif;
-			
-			// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
-			$hide = display_header_text() ? '' : ' screen-reader-text';
-			
-			if ( is_front_page() ) : ?>
-				<h1 class="site-title<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<span class="site-title h2<?php echo $hide; ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span>
-			<?php
-			endif;
-				$description = get_bloginfo( 'description', 'display' );
-				if ( $description || is_customize_preview() ) : ?>
-					<p class="site-description<?php echo $hide; ?>"><?php echo $description; ?></p>
-				<?php
-				endif;// End header image check.
-		endif; // $skip_the_rest
+	
+	// start building .site-branding.  Keep track of if anything is displayed so I can remove padding if not
 
-		echo '</div>';//.site-branding
-		
-		if ( is_active_sidebar( 'header-3' ) ) : ?>
-    		<div id="header-3" class="fffi">
-    			<?php dynamic_sidebar( 'header-3' ); ?>
-    		</div>
-    	<?php
-    	endif;//is_active_sidebar( 'header-3' )
-		?>
+	/**
+	* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block
+	* e.g.:
+	*	add_filter( 'frenchpress_site_branding', function( $skip_the_rest ) {
+	*		return "<a href=". esc_url( home_url( '/' ) ) ." rel='home'>" . file_get_contents( __DIR__ .'/logo.svg' ) . "</a>";
+	*	} );
+	*/
+	$site_branding_html = $logo = apply_filters( 'frenchpress_site_branding', '' );
+	
+	if ( ! $logo ) {
+	
+		$site_branding_html = $logo = get_custom_logo();
+	}
+	
+	// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
+	$hide = display_header_text() ? '' : ' screen-reader-text';
+	
+	$home_link = '<a href="'. esc_url( home_url( '/' ) ) .'" rel="home">'. get_bloginfo( 'name' ) .'</a>';
+	
+	$site_branding_html .= is_front_page() ? "<h1 class='site-title{$hide}'>{$home_link}</h1>" : "<span class='site-title h2{$hide}'>{$home_link}</span>";
+	
+	$description = get_bloginfo( 'description', 'display' );
+	
+	if ( $description || is_customize_preview() ) {
+		$site_branding_html .= "<p class='site-description{$hide}'>{$description}</p>";
+	}
+	
+	$pad = $logo || !$hide ? '' : ' pad-0';
+	
+	echo "<div class='site-branding fffi{$pad}'>{$site_branding_html}</div>";
+	
+	
+	
+	if ( is_active_sidebar( 'header-3' ) ) : ?>
+		<div id="header-3" class="fffi">
+			<?php dynamic_sidebar( 'header-3' ); ?>
+		</div>
+	<?php
+	endif;//is_active_sidebar( 'header-3' )
+    	?>
 		<div id="menu-open" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
             <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
 			<span id="menu-open-label" class="screen-reader-text">Menu</span>
@@ -142,4 +137,4 @@ do_action( 'frenchpress_header_bottom' );
 ?>
 </header>
 <div id="content" class="<?php echo apply_filters( 'frenchpress_class_content', "site-content fffi fffi-noshrink" ); ?>">
-	<div id="content-tray" class="<?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width " : "tray "; echo apply_filters( 'frenchpress_class_content_tray', "fff fff-spacearound fff-magic" ); ?>">
+	<div class="content-tray <?php echo ( apply_filters( 'frenchpress_full_width', false ) ) ? "tray--full-width " : "tray "; echo apply_filters( 'frenchpress_class_content_tray', "fff fff-spacearound fff-magic" ); ?>">

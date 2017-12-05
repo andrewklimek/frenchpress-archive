@@ -26,7 +26,7 @@
 	}
 	
 	// Sets or removes .focus class on an element
-	function toggleFocus() {
+	function toggleFocus(e) {
 		var self = this;
 
 		// Move up through the ancestors of the current link until we hit .nav-menu.
@@ -34,7 +34,7 @@
 
 			// On li elements toggle the class .focus.
 			if ( 'LI' == self.tagName ) {
-				self.classList.toggle( 'focus' );
+				e.type == "blur" ? self.classList.remove( 'focus' ) : self.classList.add( 'focus' );
 			}
 			self = self.parentElement;
 		}

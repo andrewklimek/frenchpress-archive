@@ -33,7 +33,7 @@ function frenchpress_scripts() {
 
 		add_action( 'wp_print_styles', 'frenchpress_inline_css' );
 		
-		add_action( 'wp_print_footer_scripts', function(){ echo "<script>" . file_get_contents( TEMPLATE_DIR_U.'/js/submenu.min.js' ) . "</script>"; });
+		add_action( 'wp_print_footer_scripts', function(){ echo "<script>" . file_get_contents( TEMPLATE_DIR_U.'/js/main.min.js' ) . "</script>"; });
 
 	}
 	

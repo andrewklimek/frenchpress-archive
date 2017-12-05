@@ -56,15 +56,13 @@ pre {
 /*pre, code, kbd, samp, var {*/
 /*	font-family: monospace;*/
 /*}*/
-img, figure {
-	max-width: 100%;
-	height: auto;
-	/*box-sizing: content-box;*//* is this smart? prob not seems to break when img has padding on sides */
-}
-embed,
+img,
+figure
+embed,/* height auto may not apply to embed, iframe & object */
 iframe,
 object {
 	max-width: 100%;
+	height: auto;
 }
 /*blockquote,*/
 /*q {*/
@@ -288,11 +286,12 @@ main,
 .tray {
 	padding: 0 1.6rem;
 }
+/* moved these to join ".pad-0" at the bottom to save a few characters
 .main-full-width,
-.content-tray,
-.pad-0 {
+.content-tray {
 	padding: 0;
 }
+*/
 .main-full-width .tray {
 	padding: 1.6rem;/* maybe add padding to top and bottom of full width page sections? */
 }
@@ -848,11 +847,12 @@ hr.spacer {
 .fff-pad:not(.tray) {/* this breaks trays on full width pages cause the margin auto is ruined */
 	margin: -0.8rem;
 }
-/* Moved to .main-full-width cause why not save some space
-.pad-0 {
+
+.pad-0,
+.main-full-width,
+.content-tray {
 	padding: 0;
 }
-*/
 .pad {
 	padding: 1.6rem;
 }
@@ -880,7 +880,7 @@ hr.spacer {
 @media screen and (max-width: 600px) {
 	#content .breakout {
 		margin: 0 -1.6rem;
-		max-width: 115%;/* in case no calc support */
+		/*max-width: 115%;*//* in case no calc support */
 		max-width: calc( 100% + 1.6rem + 1.6rem );
 	}
 }

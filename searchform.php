@@ -1,4 +1,9 @@
 <form role="search" method="get" class="search-form fff fff-bottom" action="<?php echo esc_url( home_url( '/' ) ) ?>">
+    <style>
+    .search-submit{min-width: 0;padding: 3px 3px 3px 10px;margin: 0;border: 0;line-height: 0}
+    .search-field{border: 0;padding: 0;background: none;width: 100%;outline: 0;display: block}
+    .search-form{border-bottom: 1px solid currentColor}
+    </style>
     <label class="fffi">
         <span class="screen-reader-text">' . _x( 'Search for:', 'label' ) . '</span>
         <input type="search" class="search-field" value="<?php echo get_search_query() ?>" name="s">

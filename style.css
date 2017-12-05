@@ -50,12 +50,12 @@ template, /* IE10 - Edge12 */
 	display: none;
 }
 pre {
-	max-width: 100%;
+	/*max-width: 100%;*/
 	overflow: auto;
 }
-pre, code, kbd, samp, var {
-	font-family: monospace;
-}
+/*pre, code, kbd, samp, var {*/
+/*	font-family: monospace;*/
+/*}*/
 img, figure {
 	max-width: 100%;
 	height: auto;
@@ -66,10 +66,10 @@ iframe,
 object {
 	max-width: 100%;
 }
-blockquote,
-q {
-	quotes: "\201C""\201D""\2018""\2019";
-}
+/*blockquote,*/
+/*q {*/
+/*	quotes: "\201C""\201D""\2018""\2019";*/
+/*}*/
 address,
 cite {
 	font-style: inherit;
@@ -119,8 +119,10 @@ textarea {
 	display: block;/* maybe not */
 	overflow: auto;/* Remove scrollbar in IE */
 }
+/*
 ins {
 	border-bottom: 1px dotted #0c0;
+    text-decoration: none;
 }
 del {
 	text-decoration: line-through;
@@ -129,6 +131,7 @@ del {
 mark {
 	background-color: #ff9;
 }
+*/
 svg {
 	fill: currentColor;
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
@@ -169,11 +172,10 @@ html input[type=button],/* 1 */
 # Main Sizing & Spacing
 --------------------------------------------------------------*/
 html {
-	font-size: 100%;
+	/*font-size: 100%;*/
 	line-height: 1.6;
 	word-wrap: break-word;
-	-ms-text-size-adjust: 100%; /* Prevent font size adjustments after orientation changes in IE and iOS. From sanitize.css haven't tested */
-	-webkit-text-size-adjust: 100%;
+	-webkit-text-size-adjust: none;/* Prevent font size adjustments after orientation changes in IE and iOS */
 	/*	text-rendering: geometricPrecision;*/
 }
 @media (max-width:600px) { html { font-size: 90%; } }
@@ -467,7 +469,7 @@ aside ul,
 /*	}*/
 /*}*/
 
-/***** SEARCH FORM ******/
+/***** SEARCH FORM *****
 .search-submit {
 	min-width: 0;
 	padding: 3px 3px 3px 10px;
@@ -486,7 +488,7 @@ aside ul,
 .search-form {
 	border-bottom: 1px solid currentColor;
 }
-
+*/
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
@@ -497,24 +499,25 @@ body:not(.home) .hentry {
 .posts-nav {
     margin: -6rem 0 4.4rem;
 }
-blockquote footer cite {
-	display: block;
-}
-blockquote footer {
-	text-align: right;
-}
-th:only-of-type {
-	text-align: left;/* Maybe being too helpful with this, and should I center th also? seems browser default*/
-}
+/*blockquote footer cite {*/
+	/*display: block;*/
+/*}*/
+/*blockquote footer {*/
+	/*text-align: right;*/
+/*}*/
+/*th:only-of-type {*/
+	/*text-align: left;*//* Maybe being too helpful with this, and should I center th also? seems browser default
+/*}*/
 /* This is to remove frustrating space below logo.	Might be a problem with header widgets too */
-.site-branding {
-	line-height: 0;
-}
-.site-title,
-.site-description {
-	line-height: 1;/* See if still needed when H1s are squared away */
-		 padding: 0;
-}
+/*.site-branding {*/
+	/*line-height: 0;*/
+/*}*/
+/*.site-title,*/
+/*.site-description {*/
+	/*line-height: 1;*//* See if still needed when H1s are squared away 
+		 /*padding: 0;*/
+/*}*/
+
 /* the comment form styling isn’t needed for now as I’m making all textareas 100% width blocks
 .comment-form-comment label {
 	display: block;
@@ -555,12 +558,14 @@ th:only-of-type {
 /*--------------------------------------------------------------
 *  WordPress Specific stuff — Some of this required
 --------------------------------------------------------------*/
-.sticky {/* Required */
+/* These 2 were required at one point i dunno why and if it still matters
+.sticky {
 	display: block;
 }
-.bypostauthor {/* Required */
+.bypostauthor {
 	display: block;
 }
+*/
 .byline,
 .updated:not(.published) {
 	display: none;
@@ -570,10 +575,10 @@ th:only-of-type {
 .group-blog .byline {
  	display: inline;
 }
-.blog .format-aside .title,
-.archive .format-aside .title {
+/*.blog .format-aside .title,*/
+/*.archive .format-aside .title {*/
 /* 	display: none; */
-}
+/*}*/
 .widgettitle {
 	padding: 0;
 }

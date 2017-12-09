@@ -93,9 +93,9 @@ function frenchpress_entry_meta() {
 	if ( apply_filters( 'frenchpress_entry_meta_link_author', is_multi_author() ) ) {
 		$byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $byline . '</a>';
 	}
-	$byline = __( 'by %s', 'frenchpress' ) . "<span class='author vcard'>{$byline}</span>";
+	$byline = __( 'by ', 'frenchpress' ) . "<span class='author vcard'>{$byline}</span>";
 
-	echo "<div class='entry-meta-header'><span class='posted-on'>{$time}</span><span class='byline'> {$byline}</span></div>";
+	echo "<p class='entry-meta-header'><span class='posted-on'>{$time}</span><span class='byline'> {$byline}</span></p>";
 }
 endif;
 
@@ -119,7 +119,7 @@ function frenchpress_entry_footer() {
 
 		if ( $tags_list = get_the_tag_list( '', $separate_meta ) ) {
 			
-			echo '<p class="tags-links">' . __( 'Tagged ', 'frenchpress' ) . $tags_list . '</p>';
+			echo '<p class="tag-links">' . __( 'Tagged ', 'frenchpress' ) . $tags_list . '</p>';
 		
 		}
 	}

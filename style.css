@@ -29,12 +29,15 @@ Text Domain: frenchpress
 a {
 	color: inherit;
 	background: none;/* Remove gray background on active links in IE10 */
+	text-decoration: none;
 	-webkit-text-decoration-skip: ink;
 	text-decoration-skip: ink;
-	/*-webkit-tap-highlight-color: transparent;*//* background color on active links in mobile browsers */
+	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
 }
-
-h1 a,
+p > a {
+	text-decoration: underline;
+}
+/*h1 a,
 h2 a,
 h3 a,
 h4 a,
@@ -43,7 +46,7 @@ nav a,
 aside a,
 #comments a {
 	text-decoration: none;
-}
+}*/
 
 iframe,
 details, /* IE, Edge */
@@ -82,16 +85,9 @@ object {
 /*	quotes: "\201C""\201D""\2018""\2019";*/
 /*}*/
 
-address,
-cite {
+/*cite,*/
+address {
 	font-style: inherit;
-}
-
-abbr[title],
-dfn[title] {
-	border-bottom: 1px dotted currentColor;
-	cursor: help;
-	text-decoration: none;/* FF applies proprietary text-decoration-style */
 }
 
 table {
@@ -138,7 +134,13 @@ textarea {
 	overflow: auto;/* Remove scrollbar in IE */
 }
 
-/*
+/* This stuff is good, but I personally don't see using these elements on my sites, and the browser will have default styling anyway...
+abbr[title],
+dfn[title] {
+	border-bottom: 1px dotted currentColor;
+	cursor: help;
+	text-decoration: none;
+}
 ins {
 	border-bottom: 1px dotted #0c0;
     text-decoration: none;
@@ -243,6 +245,10 @@ ul,
 ol,
 dd {
 	padding-left: 1.6rem;
+}
+
+li {
+    margin: .8rem 0;
 }
 
 blockquote {
@@ -368,6 +374,18 @@ main,
 	}
 }
 
+/* general template whitespace. Might not be wanted on home page */
+.comment-list,
+#secondary,
+#primary,
+.hentry {
+	margin-bottom: 8rem;
+}
+.page-header,
+.entry-content {
+	margin-bottom: 3.2rem;
+}
+
 /*--------------------------------------------------------------
 *  Navigation
 --------------------------------------------------------------*/
@@ -388,7 +406,8 @@ aside ul,
 	border-left: .3rem solid rgba(165, 165, 165, 0.2);
 }
 
-.site-header .menu-item {/* li.menu-item */
+.site-header .menu-item {
+	margin: 0;/* might need to be on nav li */
 	padding: .8rem;
 	position: relative;/* Allows better submenu absolute positioning like: nav ul ul {top: 100%;} li.menu-item-has-children:nth-last-child(-n+3) ul {right: 1.6rem;} */
 /*	display: inline-block;*/
@@ -638,14 +657,15 @@ body.single main {
 /* 	display: none; */
 /*}*/
 
+/* dunno who would ever want this, but is hiding it allowed?
 .rss-widget-icon {
-	display: none;/* dunno who would ever want this, but is hiding it allowed? */
-}
+	display: none;
+}*/
 
 /*.comment-content a,*/
 /*a {
-word-wrap: break-word;
-overflow-wrap: break-word;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 }*/
 
 

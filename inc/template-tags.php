@@ -7,6 +7,10 @@
  * @package FrenchPress
  */
 
+/**
+ * current year shorcode for copyright lines
+ */
+add_shortcode( 'current_year', function(){ return date('Y'); } ); 
 
 /**
  * Custom posts nav function because I'm insane
@@ -74,7 +78,7 @@ function frenchpress_entry_meta() {
 		return;
 	}
 	
-	$date = get_the_date( DATE_W3C );// PHP onstant same as 'c' format
+	$date = get_the_date( DATE_W3C );// PHP constant same as 'c' format
 	$modified_date = get_the_modified_date( DATE_W3C );
 	
 	$time = $date === $modified_date ? '<time class="entry-date published updated" datetime="' . $date . '">' . get_the_date() . '</time>'
@@ -91,7 +95,7 @@ function frenchpress_entry_meta() {
 	}
 	$byline = __( 'by %s', 'frenchpress' ) . "<span class='author vcard'>{$byline}</span>";
 
-	echo "<p class='entry-meta-header'><span class='posted-on'>{$time}</span><span class='byline'> {$byline}</span></p>";
+	echo "<div class='entry-meta-header'><span class='posted-on'>{$time}</span><span class='byline'> {$byline}</span></div>";
 }
 endif;
 

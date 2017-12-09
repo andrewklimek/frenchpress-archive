@@ -21,19 +21,23 @@ function frenchpress_scripts() {
 	if ( SCRIPT_DEBUG ) {
 
 		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATEPATH . '/style.css' ) );
-		
+
 		if ( TEMPLATEPATH !== STYLESHEETPATH )
 			wp_enqueue_style( 'theme', get_stylesheet_uri(), null, filemtime( STYLESHEETPATH . '/style.css' ) );
-		
+
 		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATEPATH . '/js/main.js' ), true );
-		
+
 		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATEPATH . '/js/submenu.js' ), true );
-	
+
 	} else {
 
 		add_action( 'wp_print_styles', 'frenchpress_inline_css' );
 		
-		add_action( 'wp_print_footer_scripts', function(){ echo "<script>" . file_get_contents( TEMPLATE_DIR_U.'/js/main.min.js' ) . "</script>"; });
+		// add_action( 'wp_print_footer_scripts', 'frenchpress_inline_js' );// any reason to do this if we can just defer the script?
+		
+		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.min.js', null, null, true );
+		
+		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.min.js', null, null, true );
 
 	}
 	
@@ -50,6 +54,9 @@ add_filter('script_loader_tag', function($tag, $handle) {
 	return ( 0 !== strpos( $handle, 'frenchpress' ) ) ? $tag : str_replace( ' src', ' defer src', $tag );
 }, 10, 2);
 
+function frenchpress_inline_js(){
+	echo "<script>" . file_get_contents( TEMPLATE_DIR_U.'/js/main.min.js' ) . "</script>";
+}
 
 function frenchpress_inline_css() {
 	$css = file_get_contents( TEMPLATEPATH . '/style.css' );
@@ -138,12 +145,7 @@ function frenchpress_setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'frenchpress' ),
-	) );
+	// add_theme_support( 'post-thumbnails' );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -174,10 +176,10 @@ function frenchpress_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'frenchpress_custom_background_args', array(
+	add_theme_support( 'custom-background', array(
 		'default-color' => 'FFFDF8',
 		'default-image' => '',
-	) ) );
+	) );
 	
 	// Custom Logo
 	add_theme_support( 'custom-logo', array( 'flex-width'	=> true ) );
@@ -303,7 +305,7 @@ function frenchpress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Bottom of Footer', 'frenchpress' ),
 		'id'            => 'footer-bottom',
-		'description'   => 'Full width, very bottom. Typicial place for copyright, theme info, etc.',
+		'description'   => 'Typical place for copyright, theme info, etc. Shortcode [current_year] is available for copyrights.',
 		'before_widget' => '<aside id="%1$s" class="widget footer-widget fffi %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class="widgettitle">',

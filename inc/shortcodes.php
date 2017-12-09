@@ -127,9 +127,10 @@ function frenchpress_shortcode( $a, $c = '', $tag ) {
 	// process other shortcodes
     // $c = do_shortcode($c);// not anymore cause we're in a custom early shortcode processing
     
-    // shortcut for wrapping content in a "tray" div (param tray=1)
+    // shortcut for wrapping content in a "tray" div (param tray=1, tray='pad' or tray='pad-2')
     if ( ! empty( $a['tray'] ) ) {
-        $c = "<div class='tray'>{$c}</div>";
+		$tray_class = $a['tray'] === '1' ? 'tray' : 'tray ' . $a['tray'];
+        $c = "<div class='{$tray_class}'>{$c}</div>";
     }
 	
 	// string it all together

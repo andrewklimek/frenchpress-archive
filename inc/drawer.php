@@ -1,7 +1,16 @@
 <?php
 function frenchpress_set_main_menu( $args ) {
+	
+    /**
+	* The preliminary object & empty checks are cause depending how the menu was called this data may not be present.
+	* AFAIK it will be present for the menu widget, and that's what I plan to use, so it's ok for now.
+	* For normal wp_nav_menu calls, $args['menu'] might == the slug, but it could be the ID or name too.
+	* See https://developer.wordpress.org/reference/functions/wp_nav_menu/
+	*/
+	if ( ! is_object( $args['menu'] ) || empty( $args['menu']->slug ) ) return $args;
+		
     
-    // First check if the slug is specified like: add_filter( 'frenchpress_main_menu_slug', 'main-menu' );
+    // check if the slug is specified like: add_filter( 'frenchpress_main_menu_slug', 'main-menu' );
     $menu_slug = apply_filters( 'frenchpress_main_menu_slug', false );
     
     if ( ! $menu_slug ) {
@@ -40,10 +49,10 @@ function frenchpress_set_main_menu( $args ) {
             set_transient( 'frenchpress_main_menu_slug', $menu_slug, DAY_IN_SECONDS );
         }
     }
-    
-    // So, if this menu matches the slug specified as the main menu, add the markup for the drawer
+     
+    // So, if this menu matches the slug specified as the main menu, add the markup for the drawer.
     if ( $menu_slug === $args['menu']->slug ) {
-    
+		    
         $args['container_class'] .= ' main-nav';
         $args['menu_id'] = 'primary-menu';
         $args['menu_class'] .= ' fff fff-middle fff-pad fff-' . apply_filters( 'frenchpress_main_menu_align', 'right' );
@@ -69,7 +78,8 @@ function frenchpress_maybe_enqueue_submenu_js( $items ) {
 		wp_enqueue_script( 'frenchpress-submenu' );
 		
 	}
-	return $items;
+	
+	return apply_filters( 'frenchpress_main_menu_items', $items );
 	
 }
 

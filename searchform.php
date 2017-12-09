@@ -1,8 +1,8 @@
 <form role="search" method="get" class="search-form fff fff-bottom" action="<?php echo esc_url( home_url( '/' ) ) ?>">
     <style>
-    .search-submit{min-width: 0;padding: 3px 3px 3px 10px;margin: 0;border: 0;line-height: 0}
-    .search-field{border: 0;padding: 0;background: none;width: 100%;outline: 0;display: block}
-    .search-form{border-bottom: 1px solid currentColor}
+    .search-submit{min-width:0;padding:3px 3px 3px 10px;margin:0;border:0;line-height:0;color:currentColor;background:none}
+    .search-field{border:0;padding:0;background:none;width:100%;outline:0;display:block}
+    .search-form{border-bottom:1px solid currentColor}
     </style>
     <label class="fffi fffi-auto">
         <span class="screen-reader-text">' . _x( 'Search for:', 'label' ) . '</span>

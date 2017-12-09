@@ -48,10 +48,9 @@ aside a,
 	text-decoration: none;
 }*/
 
-iframe,
-details, /* IE, Edge */
-summary, /* IE, Edge */
-main { /* IE 10 */
+details,/* IE, Edge */
+summary,/* IE, Edge */
+main {/* IE 10 */
 	display: block;
 }
 
@@ -77,7 +76,8 @@ img,
 /*embed,*/
 iframe,
 object {
-  max-width: 100%;
+	display: block;
+	max-width: 100%;
 }
 
 /*blockquote,*/
@@ -342,12 +342,10 @@ main,
 	padding: 0 1.6rem;
 }
 
-/* moved these to join ".pad-0" at the bottom to save a few characters
 .main-full-width,
 .content-tray {
 	padding: 0;
 }
-*/
 
 /*.main-full-width .tray {*/
 	/*padding: 1.6rem;*//* this was to add padding to top and bottom of full width page sections, but i'm thinking it's better to use .pad and .pad-2  below */
@@ -374,22 +372,6 @@ main,
 	}
 }
 
-/* general template whitespace. Might not be wanted on home page */
-.comment-list,
-#secondary,
-#primary,
-.hentry {
-	margin-bottom: 8rem;
-}
-.page-header,
-.entry-content {
-	margin-bottom: 3.2rem;
-}
-
-/*--------------------------------------------------------------
-*  Navigation
---------------------------------------------------------------*/
-
 nav ul,
 aside ul,
 .comment-list,
@@ -405,6 +387,25 @@ aside ul,
 	padding-left: 1.3rem;
 	border-left: .3rem solid rgba(165, 165, 165, 0.2);
 }
+
+/* general template whitespace. Might not be wanted on home page */
+#content,
+.content-tray {
+	padding-top: 3.2rem;
+}
+.comment-list,
+#secondary,
+#primary,
+.hentry,
+.page-header,
+.entry-content {
+	margin-bottom: 4rem;
+	padding-bottom: 4rem;
+}
+
+/*--------------------------------------------------------------
+*  Navigation
+--------------------------------------------------------------*/
 
 .site-header .menu-item {
 	margin: 0;/* might need to be on nav li */
@@ -985,9 +986,7 @@ hr.spacer {
 	margin: -0.8rem;
 }
 
-.pad-0,
-.main-full-width,
-.content-tray {
+.pad-0 {
 	padding: 0;
 }
 

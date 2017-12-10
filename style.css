@@ -388,19 +388,21 @@ aside ul,
 	border-left: .3rem solid rgba(165, 165, 165, 0.2);
 }
 
-/* general template whitespace. Might not be wanted on home page */
-#content,
+/* general template whitespace */
+/* stuff commented out was from working on boxed sort of layouts. stopping till I need it. */
+/*#content,
 .content-tray {
 	padding-top: 3.2rem;
-}
+}*/
+#header,
 .comment-list,
 #secondary,
 #primary,
 .hentry,
 .page-header,
 .entry-content {
-	margin-bottom: 4rem;
-	padding-bottom: 4rem;
+	margin-bottom: 6.4rem;
+/*	padding-bottom: 4rem;*/
 }
 
 /*--------------------------------------------------------------

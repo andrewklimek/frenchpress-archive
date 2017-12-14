@@ -365,9 +365,9 @@ main,
 
 /* this is only for bigger screens to auto size main content against sidebars
  * without this, we should be bale to disable all flex stuff and have phones render fine with everything just stacked */
-@media (min-width:30em) {
+@media (min-width:500px) {
 	#primary {
-		width: 30rem;
+		width: 500px;
 	/* 	max-width: 100%; *//* still needed? */
 	}
 }

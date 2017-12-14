@@ -229,7 +229,8 @@ html {
 /*iframe,*//* no margin in blink */
 /*object,*/
 /*.comment,*/
-p/* top & bottom margin in blink */{
+p,/* top & bottom margin in blink */
+.p {
 /*  margin: 1.6rem 0;*/
   margin: 1.6rem 0;
 }

@@ -85,7 +85,7 @@ object {
 /*	quotes: "\201C""\201D""\2018""\2019";*/
 /*}*/
 
-/*cite,*/
+cite,
 address {
 	font-style: inherit;
 }

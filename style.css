@@ -454,6 +454,11 @@ aside ul,
 	visibility: visible;
 }
 
+/* I’ve seen a popular plugin “popup maker” set the admin bar too high to beat
+div#wpadminbar {
+    z-index: 99999;
+}
+*/
 .mnav .main-nav {
 	z-index: 999999;
 	/*	height: calc(100% + 60px);*/
@@ -793,8 +798,8 @@ hr.spacer {
 	max-width: 100%;/* had issues with #content and main... is it universal? */
 }
 
-.fff,
-.card  {
+.feat,
+.fff {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -802,8 +807,8 @@ hr.spacer {
 	    flex-wrap: wrap;
 }
 
-.fff-column,
-.card  {
+.feat,
+.fff-column {
 	-webkit-box-orient: vertical;
 /*	-webkit-box-direction: normal;*//* couldnt need this... it was being inherited by everything */
 	    -ms-flex-direction: column;
@@ -820,8 +825,8 @@ hr.spacer {
 	    flex-wrap: nowrap;
 }
 
-.fff-middle,
-.card  {
+.feat,
+.fff-middle {
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
@@ -857,7 +862,8 @@ hr.spacer {
 	        justify-content: flex-end;
 }
 
-.fff-spacebetween, .card {
+.feat,
+.fff-spacebetween {
 	-webkit-box-pack: justify;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;

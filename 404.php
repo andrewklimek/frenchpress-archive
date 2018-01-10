@@ -15,7 +15,7 @@ get_header();
 		
 		if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) {
 		
-			echo '<header class="page-header"><h1 class="title">404</h1></header>';
+			echo '<header class="page-header text-center"><h1 class="title">404</h1></header>';
 		
 		}
 		

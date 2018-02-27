@@ -22,7 +22,7 @@
 			
 			// Filter for displaying featured image. 2nd arg is bool for "is_singular"
 			if ( has_post_thumbnail() && apply_filters( 'frenchpress_featured_image', 'show it', true ) ) {
-				echo '<figure class="featured-image">' . get_the_post_thumbnail() . '</figure>';
+				echo '<figure class="featured-image">' . get_the_post_thumbnail( null, 'medium' ) . '</figure>';
 				// the_post_thumbnail();
 			}
 			
@@ -36,7 +36,7 @@
 			
 			// Filter for displaying featured image. 2nd arg is bool for "is_singular"
 			if ( has_post_thumbnail() && apply_filters( 'frenchpress_featured_image', 'show it', false ) ) {
-				echo '<figure class="featured-image">' . get_the_post_thumbnail() . '</figure>';
+				echo '<figure class="featured-image">' . get_the_post_thumbnail( null, 'medium' ) . '</figure>';
 				// the_post_thumbnail();
 			}
 			

@@ -68,14 +68,18 @@ wp_head();
 	// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
 	$hide = display_header_text() ? '' : ' screen-reader-text';
 	
-	$home_link = '<a href="'. esc_url( home_url( '/' ) ) .'" rel="home">'. get_bloginfo( 'name' ) .'</a>';
+	if ( ! $hide || is_customize_preview() ) {// For now I am not even going to bother with hidden elements, homepages probably want custom and/or visible h1
 	
-	$site_branding_html .= is_front_page() ? "<h1 class='site-title{$hide}'>{$home_link}</h1>" : "<span class='site-title h2{$hide}'>{$home_link}</span>";
+		$home_link = '<a href="'. esc_url( home_url( '/' ) ) .'" rel="home">'. get_bloginfo( 'name' ) .'</a>';
 	
-	$description = get_bloginfo( 'description', 'display' );
+		$site_branding_html .= is_front_page() ? "<h1 class='site-title{$hide}'>{$home_link}</h1>" : "<span class='site-title h2{$hide}'>{$home_link}</span>";
 	
-	if ( $description || is_customize_preview() ) {
-		$site_branding_html .= "<p class='site-description{$hide}'>{$description}</p>";
+		$description = get_bloginfo( 'description', 'display' );
+	
+		if ( $description || is_customize_preview() ) {
+			$site_branding_html .= "<p class='site-description{$hide}'>{$description}</p>";
+		}
+		
 	}
 	
 	$pad = $logo || !$hide ? '' : ' pad-0';

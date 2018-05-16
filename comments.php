@@ -51,12 +51,16 @@ echo '<section id="comments" class="comments-area">';
 	endif; // Check for have_comments().
 
 
-	// If comments are closed and there are comments, let's leave a little note, shall we?
+	// If comments are closed but there are comments, say comments are closed
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 
 		echo '<p class="no-comments">' . __( 'Comments are closed.', 'frenchpress' ) . '</p>';
 	}
 
+    /**
+     * You can remove the "website" field from the comment form like so:
+     * add_filter( 'comment_form_default_fields', function($fields){ unset($fields['url']); return $fields; } );
+     */
 	comment_form();
 	
 	echo '</section>';

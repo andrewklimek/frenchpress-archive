@@ -23,7 +23,7 @@ Text Domain: frenchpress
 	margin: 0;
 	padding: 0;
 	border: 0;
-	background: center/cover no-repeat;/* Seems lame to clutter up every item in the inspector, and yet I end up having to hand-code this on almost every bg image */
+	/*background: center/cover no-repeat;*//* Seems lame to clutter up every item in the inspector, and yet I end up having to hand-code this on almost every bg image */
 }
 
 a {
@@ -97,6 +97,7 @@ table {
 
 td, th {
 	padding: .5ex 1ex;
+	text-align: left;
 }
 
 button,
@@ -492,19 +493,20 @@ div#wpadminbar {
 	display: block;
 }
 
-#menu-open,
-#menu-close {
+/*#menu-close,*/
+#menu-open {
 	display: inline-block;
-	padding: .8rem;
+/*	padding: .8rem;*/
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
 }
 
 #menu-close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	font: 100 24px/.7 sans-serif;
+/*	position: absolute;*/
+/*	top: 0;*/
+/*	right: 0;*/
+/*	font: 100 24px/.7 sans-serif;*/
+	display: none;
 }
 
 .menu-tog {
@@ -528,9 +530,13 @@ div#wpadminbar {
 
 }
 
-.dnav .main-nav li li:last-child {
-	padding-bottom: .8rem;/* undo padding-bottom: 0 for desktop dropdowns */
-}
+/*.dnav .main-nav li li:last-child {*/
+	/*padding-bottom: .8rem;*//* undo padding-bottom: 0 for desktop dropdowns */
+/*}*/
+
+/*.main-nav li li:last-child {*/
+/*	padding-top: 0;*/
+/*}*/
 
 .dnav .main-nav .sub-menu {
 	top: 100%;

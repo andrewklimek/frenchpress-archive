@@ -34,7 +34,7 @@ a {
 	text-decoration-skip: ink;
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
 }
-p > a {
+p a {
 	text-decoration: underline;
 }
 /*h1 a,

@@ -86,5 +86,3 @@ endif;
 	wp_footer();
 	?>
 </div>
-</body>
-</html>

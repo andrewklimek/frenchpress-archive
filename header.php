@@ -22,7 +22,7 @@ wp_head();
 ?>
 <body <?php body_class( "fff fff-column fff-none" ); ?>>
 <?php do_action( 'frenchpress_body_top' ); ?>
-<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'frenchpress' ); ?></a>
+<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'frenchpress' ); ?></a>
 <header id="header" class="site-header fffi">
 	<?php do_action( 'frenchpress_header_top' ); ?>
 	<?php

@@ -35,7 +35,7 @@ a {
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
 	transition: 250ms;
 }
-p > a {
+p a {
 	text-decoration: underline;
 }
 /*h1 a,

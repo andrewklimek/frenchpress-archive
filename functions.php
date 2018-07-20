@@ -28,6 +28,7 @@ function frenchpress_scripts() {
 		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATEPATH . '/js/main.js' ), true );
 
 		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATEPATH . '/js/submenu.js' ), true );
+		wp_register_script( 'frenchpress-subside', TEMPLATE_DIR_U.'/js/sub-side.js', array(), filemtime( TEMPLATEPATH . '/js/sub-side.js' ), true );
 
 	} else {
 
@@ -38,6 +39,8 @@ function frenchpress_scripts() {
 		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.min.js', null, null, true );
 		
 		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.min.js', null, null, true );
+
+		wp_register_script( 'frenchpress-subside', TEMPLATE_DIR_U.'/js/sub-side.min.js', null, null, true );
 
 	}
 	
@@ -98,14 +101,12 @@ add_action( 'login_enqueue_scripts', function() {
 function frenchpress_mobile_test() {
 	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
 	if ( ! $breakpoint ) return;
-	echo "<script>
-	function checkForDesktop(){
-		var cl=document.documentElement.classList;
-		if(window.innerWidth>{$breakpoint}){cl.remove('mnav');cl.remove('mnav-open');cl.add('dnav');}else{cl.remove('dnav');cl.add('mnav');}
-	}
-	checkForDesktop();
-	window.addEventListener('resize',checkForDesktop);
-</script>
+	echo "<script>(function(){
+    var c=document.documentElement.classList;
+	function f(){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.remove('dopen');c.add('dnav');}else{c.remove('dnav');c.add('mnav');}}
+	f();
+	window.addEventListener('resize',f);
+    })();</script>
 ";
 }
 // if ( ! apply_filters( 'frenchpress_disable_mobile', false ) ) {
@@ -248,8 +249,8 @@ function frenchpress_widgets_init() {
 		'name'          => __( 'Header 3 (main)', 'frenchpress' ),
 		'id'            => 'header-3',
 		'description'   => 'Will be in line with the site branding, typical place to put the main menu',
-		'before_widget' => '',
-		'after_widget'  => "\n",
+		'before_widget' => '<div id="%1$s" class="widget header-widget fffi %2$s">',
+		'after_widget'  => "</div>\n",
 		'before_title'  => '<h3 class="widgettitle">',
 		'after_title'   => "</h3>\n",
 	) );
@@ -343,7 +344,7 @@ require TEMPLATEPATH . '/inc/custom-header.php';
 require TEMPLATEPATH . '/inc/template-tags.php';
 
 /**
- * HTML% Cleanup and various other goodies
+ * HTML5 Cleanup and various other goodies
  */
 require TEMPLATEPATH . '/inc/extras.php';
 

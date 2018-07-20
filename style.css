@@ -4,7 +4,7 @@ Plugin URI:	 https://github.com/andrewklimek/frenchpress/
 Description: a very light framework-style WordPress theme featuring flexbox CSS
 Author:		 Andrew J Klimek
 Author URI:	 https://github.com/andrewklimek
-Version:	 1.0
+Version:	 1.1.0
 License:	 GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
@@ -33,6 +33,7 @@ a {
 	-webkit-text-decoration-skip: ink;
 	text-decoration-skip: ink;
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
+	transition: 250ms;
 }
 p > a {
 	text-decoration: underline;
@@ -68,17 +69,22 @@ pre {
 /*	font-family: monospace;*/
 /*}*/
 
+video,
 img {
   height: auto;
+  max-width: 100%;
 }
-
-img,
+/*img,*/
 /*embed,*/
 iframe,
 object {
 	display: block;
 	max-width: 100%;
 }
+/*if most img should be block, add this*/
+/*.custom-logo {
+    display: inline-block;
+}*/
 
 /*blockquote,*/
 /*q {*/
@@ -414,9 +420,9 @@ aside ul,
 
 .site-header .menu-item {
 	margin: 0;/* might need to be on nav li */
-	padding: .8rem;
+	/*padding: .8rem;*//* Moved to .menu-item > a for sliding submenus ... is it neede tho on horizontal navs? */
 	position: relative;/* Allows better submenu absolute positioning like: nav ul ul {top: 100%;} li.menu-item-has-children:nth-last-child(-n+3) ul {right: 1.6rem;} */
-/*	display: inline-block;*/
+	display: inline-block;
 	transition: inherit;
 }
 
@@ -429,15 +435,9 @@ aside ul,
 .menu-item > a {
 	display: block;
 	position: relative;
+	flex-grow: 1;
+	padding: .8rem 1.6rem;
 }
-
-/* a:not([href]) { */
-/* 	pointer-events: none; */
-/* 	cursor: default; *//* keep normal mouse pointer on parent menu items that are custom links with no link */
-/* 	-webkit-tap-highlight-color: transparent; *//* background color on active links in mobile browsers */
-/* } */
-
-/* Main Nav */
 
 #mask {
 	position: fixed;
@@ -450,28 +450,20 @@ aside ul,
 	transition: background-color .4s;
 }
 
-.mnav-open #mask {
-	background-color: rgba(0,0,0,.5);
-	visibility: visible;
-}
-
-/* I’ve seen a popular plugin “popup maker” set the admin bar too high to beat
-div#wpadminbar {
-    z-index: 99999;
-}
-*/
-.mnav .main-nav {
+.mnav .drawer,
+.desk-drawer {
 	z-index: 999999;
 	/*	height: calc(100% + 60px);*/
 	height: 100%;
 	position: fixed;
-	top: 0;
-	right: 0;
-	width: 306px;
-	margin: 0 -306px 0 0;
-	padding: .8em;
-	transition: transform .4s ease-out;
-	display: block;
+/* 	bottom: 0; */
+    top: 0;
+	left: 0;
+	width: 222px;
+	margin: 0 0 0 -222px;
+/*	padding: .8em;*/
+	transition: transform .4s;
+/*	display: block;*/
 	background: #fff;
 	color: #333;
 	text-align: left;
@@ -479,66 +471,67 @@ div#wpadminbar {
 	will-change: transform;
 }
 
-.mnav-open .main-nav {
+.dopen .drawer {
 	max-width: 90%;
-	-webkit-transform: translateX(-306px);
-	-ms-transform: translateX(-306px);
-	transform: translateX(-306px);
-	box-shadow: 0 0 16px rgba(0,0,0,0.1);
+	-webkit-transform: translateX(222px);
+	-ms-transform: translateX(222px);
+	transform: translateX(222px);
+	box-shadow: 0 0 4px rgba(0,0,0,0.1);
 	overflow: auto;
 }
 
-.mnav .main-nav .menu,
-.main-nav li {
+/* not sure which of these are needed */
+.mnav .drawer .menu,
+.desk-drawer .menu,
+.main-nav .menu-item,
+.site-header li {
 	display: block;
 }
 
-/*#menu-close,*/
+#menu-close,
 #menu-open {
 	display: inline-block;
-/*	padding: .8rem;*/
+	padding: 14px 0;
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
 }
 
 #menu-close {
-/*	position: absolute;*/
-/*	top: 0;*/
-/*	right: 0;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
 /*	font: 100 24px/.7 sans-serif;*/
-	display: none;
+/*    padding: .8rem 1.6rem;*/
+ 	display: none;
 }
 
-.menu-tog {
+p.menubun {
 	background: currentColor;
-	width: 16px;
-	height: 2px;
-	border-radius: 1px;
+	width: 18px;
+	height: 1px;
 	margin: 4px;
 }
 
-.dnav #menu-open,
-.dnav #menu-close {
-	display: none;
-}
-
 /* Allow drawer menu to scroll, but not on bigger screens cause fixed headers shift when you hide desktop scrollbars */
-@media (max-height:770px) {
-	.mnav-open {
+/*@media (max-height:770px) {*/
+	.mnav.dopen {
 		overflow: hidden;
 	}
 
+/*}*/
+
+/* only mobile screens */
+.mnav.dopen #mask {
+	background-color: rgba(0,0,0,.5);
+	visibility: visible;
+}
+.mnav #menu-close {
+    display: none;
 }
 
-/*.dnav .main-nav li li:last-child {*/
-	/*padding-bottom: .8rem;*//* undo padding-bottom: 0 for desktop dropdowns */
-/*}*/
+/* ANY HORIZONTAL HEADER MENU */
 
-/*.main-nav li li:last-child {*/
-/*	padding-top: 0;*/
-/*}*/
-
-.dnav .main-nav .sub-menu {
+.dnav .header-widget .sub-menu {
 	top: 100%;
 	left: 0;
 /*	left: -16em;*//* doesn't have to be exactly same as width, just 100% was sometimes too small */
@@ -554,17 +547,185 @@ div#wpadminbar {
 	transition: opacity 250ms;
 }
 
-.dnav .main-nav ul li:hover > ul,
-.dnav .main-nav ul li.focus > ul {
+.dnav .header-widget .menu-item:hover > ul,
+.dnav .header-widget .menu-item.focus > ul {
 	visibility: visible;
 	opacity: 1;
 }
 
-.dnav .main-nav .sub-menu ul {
+.dnav .header-widget .sub-menu ul {
 	top: 0;
 	left: 99%;
 /*	width: 100%;*/
 }
+
+
+
+/* ONLY HORIZONTAL MAIN NAV */
+
+/* .hnav.dnav #menu-close, */
+.hnav.dnav #menu-open,
+.hnav.dnav .menutog,
+.hnav.dnav .menuback,
+.hnav.dnav .drawer-widget {
+	display: none;
+}
+
+
+/* DESK DRAWER ONLY  */
+
+.dopen #mask {
+/*	display: none;*/
+}
+.dnav.dopen #header,
+.dnav.dopen #content,
+.dnav.dopen #footer {
+	margin-left: 222px;
+}
+#header,
+#content,
+#footer {
+    transition: .4s;
+}
+.dnav.dopen .drawer {
+/*	box-shadow: none;*/
+}
+/* probably will always want to center the logo with side nav? */
+.snav .site-branding {
+    text-align: center;
+    margin-right: 24px;/* accounts for menu open button */
+}
+
+
+/* ONLY SUMBMENU */
+
+/* mobile submenu tree/dropdown styling */
+/* disabled in favor of slide style below */
+/*.menutog {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.6rem;
+	padding: .8rem;
+    cursor: pointer;
+}
+.menu-item.focus > .menutog {
+    transform: rotate(180deg);
+}
+.menutog::after {
+    content: '';
+    border: .6ex solid transparent;
+    border-top-color: currentColor;
+    vertical-align: middle;
+    display: inline-block;
+}
+.mnav .drawer .sub-menu,
+.desk-drawer .sub-menu {
+     max-height: 0;
+     overflow: hidden;
+     transition: max-height cubic-bezier(1,0,0,1) 99ms;
+}
+.mnav .focus > .sub-menu,
+.desk-drawer .focus > .sub-menu {
+    max-height: 50em;
+}*/
+
+/* Sliding Submenus */
+/* sliding nav sets height attribute via JS. This is to override if resizing browser to desktop size */
+.hnav.dnav .main-nav {
+    height: auto!important;
+}
+.menutog {
+	padding: .8rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+}
+.menuback::before,
+.menutog::after {
+	content: '';
+	border-right: 1px solid currentColor;
+	border-top: 1px solid currentColor;
+    vertical-align: middle;
+    display: inline-block;
+	width: 6px;
+	height: 6px;
+    cursor: pointer;
+	transform: rotate(45deg);
+}
+.menuback::before {
+    transform: rotate(225deg);
+    margin: 0 3px 0 2px;
+}
+.mnav .drawer .sub-menu,
+.desk-drawer .sub-menu {
+    position: absolute;
+    top: 0;
+	left: 0;
+    margin-left: 100%;
+    width: 100%;
+}
+.main-nav ul {
+    transition: .3s;
+    visibility: hidden;
+	opacity: 0;
+}
+.mnav .main-nav ul.focus,
+.desk-drawer .main-nav ul.focus {
+    transform: translate(-100%);
+}
+.main-nav .menu,
+.main-nav .focus > ul {
+    visibility:visible;
+	opacity:1;
+}
+
+.mnav .main-nav,
+.desk-drawer .main-nav {
+    overflow: hidden;
+	position: relative;
+	transition: height .3s;
+}
+.mnav .drawer .menu-item,
+.desk-drawer .menu-item {
+	position: static;
+	display: -ms-flexbox;
+	display: flex;
+/*    justify-content: stretch;*/
+/*    align-items: stretch;*/
+}
+.menuback {
+    cursor: pointer;
+    padding: .8rem;
+    display: block;
+}
+
+/*.current-menu-item:not(.seperate-tog),*/
+/*.current-menu-item.seperate-tog > a,*/
+.menuback:hover,
+.menu-item:not(.seperate-tog):hover,
+.seperate-tog > a:hover,
+.seperate-tog > .menutog:hover {
+/*    background: rgba(255, 255, 255, 0.1);*/
+/*	-webkit-font-smoothing: antialiased;*/
+}
+
+/* a:not([href]) { */
+/* 	pointer-events: none; */
+/* 	cursor: default; *//* keep normal mouse pointer on parent menu items that are custom links with no link */
+/* 	-webkit-tap-highlight-color: transparent; *//* background color on active links in mobile browsers */
+/* } */
+
+
+
+/*.hnav .main-nav li li:last-child {*/
+	/*padding-bottom: .8rem;*//* undo padding-bottom: 0 for desktop dropdowns */
+/*}*/
+
+/*.main-nav li li:last-child {*/
+/*	padding-top: 0;*/
+/*}*/
+
 
 /* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
 /*@media (min-width:600px){*/
@@ -573,6 +734,7 @@ div#wpadminbar {
 /*		left: initial;*/
 /*	}*/
 /*}*/
+
 
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme

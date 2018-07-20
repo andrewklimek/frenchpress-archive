@@ -1,37 +1,38 @@
 // an idea for fixing sub-menus on the far right.
 //if ( document.body.clientWidth - document.querySelector('#menu-item-142 ul').getBoundingClientRect().right <= 0 ) { document.querySelector('#menu-item-142 ul').style.right=0; }
 
-( function() {
-	var menu = document.getElementById( 'primary-menu' ),
+(function() {
+	
+	var menu = document.getElementById( 'main-menu' ),
 	button = document.getElementById( 'menu-open' ),
 	mask = document.getElementById( 'mask' ),
+	htmlClass = document.documentElement.classList,
 	x = 'aria-expanded',
-	o = 'mnav-open';
+	o = 'dopen';
 	
 	if ( ! ( menu && button && mask ) ) return;
 
-	function closeMenu() {
- 		// if ( document.body.classList.contains( 'mnav-open' ) ) {
-		document.body.classList.remove( o );
-		button.removeAttribute( x );
-		menu.removeAttribute( x );
-		document.removeEventListener('keyup', drawerEscKey );
-		// } else {
-	}
-	function openMenu() {
-		document.body.classList.add( o );
-		button.setAttribute( x, 'true' );
-		menu.setAttribute( x, 'true' );
-		document.addEventListener('keyup', drawerEscKey );
+	function toggleDrawer() {
+ 		if ( htmlClass.contains( o ) ) {
+			htmlClass.remove( o );
+			button.removeAttribute( x );
+			menu.removeAttribute( x );
+			document.removeEventListener('keyup', drawerEscKey );
+		} else {
+			htmlClass.add( o );
+			button.setAttribute( x, 'true' );
+			menu.setAttribute( x, 'true' );
+			document.addEventListener('keyup', drawerEscKey );
+		}
 	}
 	
-	button.onclick = openMenu;
-	document.getElementById( 'menu-close' ).onclick = closeMenu;
-	mask.onclick = closeMenu;
+	button.onclick = toggleDrawer;
+	// document.getElementById( 'menu-close' ).onclick = toggleDrawer;
+	mask.onclick = toggleDrawer;
 	
 	function drawerEscKey(e){
 		if( e.keyCode === 27 )
-			closeMenu();
+			toggleDrawer();
 	}
 	
 	/**

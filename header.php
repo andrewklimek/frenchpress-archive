@@ -11,17 +11,14 @@
  * If this is ever used for the general public or WPML, 
  * html lang= should use language_attributes() or bloginfo('language') and maybe meta charset= bloginfo('charset')
  */
- 
 ?><!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="<?php echo apply_filters( 'frenchpress_class_html', "hnav" ); ?>">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <?php
 wp_head();
 ?>
-</head>
 <body <?php body_class( "fff fff-column fff-none" ); ?>>
 <?php do_action( 'frenchpress_body_top' ); ?>
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'frenchpress' ); ?></a>
@@ -47,6 +44,9 @@ wp_head();
     ?>
 <div id="site-header-main">
 	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-pad" ); ?>">
+		<div id="menu-open" role="button" aria-controls="main-menu" aria-expanded="false" class="fffi">
+			<span id="menu-open-label" class="screen-reader-text">Menu</span>
+			<p class=menubun><p class=menubun><p class=menubun></div>
 		<?php
 	
 	// start building .site-branding.  Keep track of if anything is displayed so I can remove padding if not
@@ -84,7 +84,7 @@ wp_head();
 	
 	$pad = $logo || !$hide ? '' : ' pad-0';
 	
-	echo "<div class='site-branding fffi{$pad}'>{$site_branding_html}</div>";
+	echo "<div class='site-branding fffi{$pad} fffi-9'>{$site_branding_html}</div>";
 	
 	
 	
@@ -94,12 +94,7 @@ wp_head();
 		</div>
 	<?php
 	endif;//is_active_sidebar( 'header-3' )
-    	?>
-		<div id="menu-open" role="button" aria-controls="primary-menu" aria-expanded="false" class="fffi">
-            <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
-			<span id="menu-open-label" class="screen-reader-text">Menu</span>
-		</div>
-		<?php
+
 	echo '</div>';//.tray
 echo '</div>';//.site-header-main
 

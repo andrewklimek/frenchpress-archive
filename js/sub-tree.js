@@ -1,15 +1,13 @@
 /**
- * Handles toggling for submenus with a slide effect
+ * Handles toggling for submenus
  */
-(function() {
+( function() {
 	
-	var menu = document.getElementById( 'main-menu' ),
-	nav = menu.parentElement,
+	var menu = document.getElementById( 'primary-menu' ),
 	button = document.getElementById( 'menu-open' ),
 	mask = document.getElementById( 'mask' ),
-	htmlClass = document.documentElement.classList,
 	x = 'aria-expanded',
-	o = 'dopen';
+	o = 'mnav-open';
 	
 	if ( ! ( menu && button && mask ) ) return;
 
@@ -17,8 +15,8 @@
 	* Begin Submenu Stuff
 	*/
 	var i=0,
-	links = nav.getElementsByTagName( 'a' ),
-	parents = nav.querySelectorAll( '.menu-item-has-children' );
+	links = menu.getElementsByTagName( 'a' ),
+	parentLink = menu.querySelectorAll( '.menu-item-has-children > a' );
 
 	// Each time a menu link is focused or blurred, toggle focus.
 	for ( ; i < links.length; ++i ) {
@@ -29,9 +27,6 @@
 	
 	// Sets or removes .focus class on an element
 	function toggleFocus(e) {
-		
-		if ( htmlClass.contains('mnav') ) return;
-		
 		var self = this;
 
 		// Move up through the ancestors of the current link until we hit .nav-menu.
@@ -46,36 +41,11 @@
 	}
 	
 	// This is all that’s needed for the mobile drawer nav
-	function slide(e){
-		if ( htmlClass.contains('dnav') ) return;
-		e.preventDefault();
-		if ( ! nav.style.height ) nav.style.height = menu.offsetHeight+"px";
-		this.parentElement.classList.toggle('focus');
-		this.parentElement.parentElement.classList.toggle('focus');
-		nav.style.height = Math.max( menu.offsetHeight, this.parentElement.lastChild.scrollHeight ) + "px";
-	};
-	for ( i=0; i < parents.length; ++i ) {
-		var tog = document.createElement('span'),
-		back = document.createElement('span');
-		back.className = "menuback";
-		back.textContent = "back";
-		back.onclick = function(){
-			var p=this.parentElement.parentElement;
-			p.classList.toggle('focus');
-			p=p.parentElement;
-			p.classList.toggle('focus');
-			nav.style.height = Math.max( menu.offsetHeight, p.offsetHeight ) + "px";
-		};
-		parents[i].lastChild.insertAdjacentElement('afterbegin',back);
-		tog.className = "menutog";
-		tog.onclick = slide;
-		// parents[i].firstChild.insertAdjacentElement('afterend',tog);
-		parents[i].insertBefore(tog, parents[i].lastChild);
-		if ( parents[i].firstChild.getAttribute('href')=="#" ){
-			parents[i].firstChild.onclick = slide;
-		} else {
-			parents[i].className += ' seperate-tog';
-		}
+	for ( i=0; i < parentLink.length; ++i ) {
+		var btn = document.createElement('span');
+		btn.className = "menutog";
+		btn.addEventListener('click', function(){this.parentElement.classList.toggle('focus');});
+		parentLink[i].parentElement.insertBefore(btn, parentLink[i].nextSibling);
 	}
 	
 	// block that handles submenu toggling on touch devices
@@ -105,22 +75,22 @@
 		},
 		tapAway = function(e){
 			// console.log('tapaway ran');
-			if ( ! e || ! nav.contains(e.target) ) {
-				for ( var i=0; i < parents.length; ++i ) {
-					parents[i].classList.remove( 'focus' );
+			if ( ! e || ! menu.contains(e.target) ) {
+				for ( var i=0; i < parentLink.length; ++i ) {
+					parentLink[i].parentNode.classList.remove( 'focus' );
 				}
 				document.removeEventListener('click', tapAway );
 			}
 		},
 		tabletSubmenus = function() {
 			var i = 0;
-			if ( htmlClass.contains('dnav') ) {
-				for ( ; i < parents.length; ++i ) {
-					parents[i].addEventListener( 'touchstart', touchStartFn );
+			if ( document.body.classList.contains('dnav') ) {
+				for ( ; i < parentLink.length; ++i ) {
+					parentLink[i].addEventListener( 'touchstart', touchStartFn );
 				}
 			} else {
-				for ( ; i < parents.length; ++i ) {
-					parents[i].removeEventListener( 'touchstart', touchStartFn );
+				for ( ; i < parentLink.length; ++i ) {
+					parentLink[i].removeEventListener( 'touchstart', touchStartFn );
 				}
 			}
 		};
@@ -133,29 +103,28 @@
 	* End Submenu Stuff
 	*/
 	
-	function toggleDrawer() {
- 		if ( htmlClass.contains( o ) ) {
-			htmlClass.remove( o );
-			button.removeAttribute( x );
-			nav.removeAttribute( x );
-			document.removeEventListener('keyup', drawerEscKey );
-		} else {
-	// }
-	// function openMenu() {
-			htmlClass.add( o );
-			button.setAttribute( x, 'true' );
-			nav.setAttribute( x, 'true' );
-			document.addEventListener('keyup', drawerEscKey );
-		}
+	function closeMenu() {
+ 		// if ( document.body.classList.contains( 'mnav-open' ) ) {
+		document.body.classList.remove( o );
+		button.removeAttribute( x );
+		menu.removeAttribute( x );
+		document.removeEventListener('keyup', drawerEscKey );
+		// } else {
+	}
+	function openMenu() {
+		document.body.classList.add( o );
+		button.setAttribute( x, 'true' );
+		menu.setAttribute( x, 'true' );
+		document.addEventListener('keyup', drawerEscKey );
 	}
 	
-	button.onclick = toggleDrawer;
-	// document.getElementById( 'menu-close' ).onclick = toggleDrawer;
-	mask.onclick = toggleDrawer;
+	button.onclick = openMenu;
+	document.getElementById( 'menu-close' ).onclick = closeMenu;
+	mask.onclick = closeMenu;
 	
 	function drawerEscKey(e){
-		if( e.keyCode == 27 )
-			toggleDrawer();
+		if( e.keyCode === 27 )
+			closeMenu();
 	}
 	
 	/**

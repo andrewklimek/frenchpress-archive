@@ -5,6 +5,7 @@
 	
 	var menu = document.getElementById( 'main-menu' ),
 	nav = menu.parentElement,
+	// current = menu.querySelector('.current-menu-item'),// dunno if it's worth it to make a click on the current menu item simple close the drawer and not reload. see onload action below.
 	button = document.getElementById( 'menu-open' ),
 	mask = document.getElementById( 'mask' ),
 	htmlClass = document.documentElement.classList,
@@ -152,6 +153,7 @@
 	button.onclick = toggleDrawer;
 	// document.getElementById( 'menu-close' ).onclick = toggleDrawer;
 	mask.onclick = toggleDrawer;
+	current.onclick = function(e){ htmlClass.contains('mnav') && e.preventDefault(), toggleDrawer(); };
 	
 	function drawerEscKey(e){
 		if( e.keyCode == 27 )

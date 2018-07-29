@@ -62,7 +62,9 @@ CELL-ONLY
 ***/
 
 add_filter( 'the_content', 'frenchpress_custom_shortcode_parsing', 9 );// Run this early to avoid wpautop
-add_filter( 'widget_text_content', 'frenchpress_custom_shortcode_parsing', 9 );// also process text and HTML widgets
+// add_filter( 'widget_custom_html_content', 'frenchpress_custom_shortcode_parsing', 9 );// Only new HTML widgets
+// add_filter( 'widget_text_content', 'frenchpress_custom_shortcode_parsing', 9 );// Only text widget
+add_filter( 'widget_text', 'frenchpress_custom_shortcode_parsing', 9 );// both, at least for now
 	
 function frenchpress_custom_shortcode_parsing( $c ) {
 

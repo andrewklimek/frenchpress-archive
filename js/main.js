@@ -35,6 +35,12 @@
 			toggleDrawer();
 	}
 	
+	/** Close Drawer with swipe
+	var touch, drawer = document.querySelector('.drawer');
+	drawer.ontouchstart = mask.ontouchstart = function(e){touch=e.changedTouches[0].pageX;};
+	drawer.ontouchend = mask.ontouchend = function(e){touch-=e.changedTouches[0].pageX; touch > 60 && toggleDrawer();};
+	*/
+	
 	/**
 	 * finds all links on the page which start with # and sets up smooth scrolling for them
 	 * use an href of just "#" for "sroll to top" functionality

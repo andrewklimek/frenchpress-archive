@@ -25,10 +25,12 @@ function frenchpress_scripts() {
 		if ( TEMPLATEPATH !== STYLESHEETPATH )
 			wp_enqueue_style( 'theme', get_stylesheet_uri(), null, filemtime( STYLESHEETPATH . '/style.css' ) );
 
+		if ( apply_filters( 'frenchpress_drawer', true ) )
+		{
 		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATEPATH . '/js/main.js' ), true );
-
 		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATEPATH . '/js/submenu.js' ), true );
 		wp_register_script( 'frenchpress-subside', TEMPLATE_DIR_U.'/js/sub-side.js', array(), filemtime( TEMPLATEPATH . '/js/sub-side.js' ), true );
+		}
 
 	} else {
 
@@ -36,11 +38,12 @@ function frenchpress_scripts() {
 		
 		// add_action( 'wp_print_footer_scripts', 'frenchpress_inline_js' );// any reason to do this if we can just defer the script?
 		
+		if ( apply_filters( 'frenchpress_drawer', true ) )
+		{
 		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.min.js', null, null, true );
-		
 		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.min.js', null, null, true );
-
 		wp_register_script( 'frenchpress-subside', TEMPLATE_DIR_U.'/js/sub-side.min.js', null, null, true );
+		}
 
 	}
 	
@@ -319,7 +322,9 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
 /**
  * Adds markup for the mobile-menu-style drawer
  */
-require TEMPLATEPATH . '/inc/drawer.php';
+ if ( apply_filters( 'frenchpress_drawer', true ) ) {
+	require TEMPLATEPATH . '/inc/drawer.php';
+ }
 
 /**
  * [frenchpress] builder-style shortcode

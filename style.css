@@ -78,7 +78,7 @@ img {
 /*embed,*/
 iframe,
 object {
-	display: block;
+	/* display: block; why make them blocks? ppl arent sure how to center say a spotify embed */
 	max-width: 100%;
 }
 /*if most img should be block, add this*/

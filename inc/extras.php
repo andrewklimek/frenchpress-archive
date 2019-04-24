@@ -8,18 +8,19 @@
  */
 
 /**
+ * This doesnt seem smart... makes it hard to remove more text when you want to.
  * Customize the [...] at the end of excerpts
  * but... when using the_excerpt(), manual excerpts don’t get the "more" text but auto-generated excerpts do... it’s weird.  
  * So I am passing a blank string (or maybe ...) to the 'excerpt_more' filter and instead adding the more link via 'wp_trim_excerpt'
  */
-add_filter( 'excerpt_more', function(){ return '&hellip;'; } );
+// add_filter( 'excerpt_more', function(){ return '&hellip;'; } );
 function frenchpress_excerpt_more( $excerpt ) {
     return $excerpt . sprintf( ' <a class="read-more" href="%1$s">%2$s</a>',
         get_permalink( get_the_ID() ),
         __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'frenchpress' )
     );
 }
-add_filter( 'wp_trim_excerpt', 'frenchpress_excerpt_more' );
+// add_filter( 'wp_trim_excerpt', 'frenchpress_excerpt_more' );
 
 
 // Enable the use of shortcodes in text widgets.

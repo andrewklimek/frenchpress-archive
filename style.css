@@ -180,27 +180,37 @@ html [type=button],/* 1 */
 	cursor: pointer;
 }
 
-::-moz-placeholder {
+/* This one would work with new browsers and FF > 50, but thw webkit one still seems needed for now and FF > 50 seems to do this sort of styling anyhow
+::placeholder {
+	color: inherit;
+	opacity: .5;
+}
+*/
+
+::-webkit-input-placeholder {/* Edge, Chrome < 57, Safari < 10.1 */
 	color: inherit;
 	opacity: .5;
 }
 
-::-webkit-input-placeholder {
-	color: inherit;
-	opacity: .5;
-}
-
+/* might be better not to clear the field, ppl can forget what the field was for if no labels...
 :focus::-webkit-input-placeholder {
-	color: transparent;
-}
-
-:focus::-moz-placeholder {
 	color: transparent;
 }
 
 :focus:-ms-input-placeholder {
 	color: transparent;
 }
+*/
+
+/* FF 19 - 50 not many using this now either
+::-moz-placeholder {
+	color: inherit;
+	opacity: .5;
+}
+:focus::-moz-placeholder {
+	color: transparent;
+}
+*/
 
 /* FF <= 18 (jan 2013) probably breaks the flex layout anyhow
 :focus:-moz-placeholder {
@@ -410,7 +420,7 @@ aside ul,
 .hentry,
 .page-header,
 .entry-content {
-	margin-bottom: 6.4rem;
+	margin-bottom: 3.2rem;
 /*	padding-bottom: 4rem;*/
 }
 
@@ -757,7 +767,7 @@ body.single main {
 
 /* This is to remove frustrating space below logo.	Might be a problem with header widgets too */
 .site-branding {
-	line-height: 0;
+	/* line-height: 0; */
 }
 
 /*.site-title,*/

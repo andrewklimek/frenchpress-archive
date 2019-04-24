@@ -73,7 +73,7 @@ wp_head();
 	
 		$home_link = '<a href="'. esc_url( home_url( '/' ) ) .'" rel="home">'. get_bloginfo( 'name' ) .'</a>';
 	
-		$site_branding_html .= is_front_page() ? "<h1 class='site-title{$hide}'>{$home_link}</h1>" : "<span class='site-title h2{$hide}'>{$home_link}</span>";
+		$site_branding_html .= is_front_page() ? "<h1 class='site-title{$hide}'>{$home_link}</h1>" : "<div class='site-title h2{$hide}'>{$home_link}</div>";
 	
 		$description = get_bloginfo( 'description', 'display' );
 	

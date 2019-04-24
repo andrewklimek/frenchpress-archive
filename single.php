@@ -13,7 +13,7 @@ $layout = apply_filters( 'frenchpress_post_layout', $layout );
 
 get_header();
 ?>
-<main id="primary" class="site-main fffi fffi-99<?php if ( $layout === 'full-width' ) echo ' main-full-width' ?>">
+<main id=primary class="site-main fffi fffi-99<?php if ( $layout === 'full-width' ) echo ' main-full-width' ?>">
 <?php
 while ( have_posts() ) : the_post();
 

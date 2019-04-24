@@ -11,18 +11,18 @@
 	<?php
 	if ( !is_front_page() && apply_filters( 'frenchpress_page_titles', true )  && ! apply_filters( 'frenchpress_title_in_header', false ) ) :
 	?>
-	<header class="page-header">
-		<?php the_title( '<h1 class="title">', '</h1>' ); ?>
+	<header class=page-header>
+		<?php the_title( '<h1 class=title>', '</h1>' ); ?>
 	</header>
 	<?php
 	endif;
 	?>
-	<div class="page-content">
+	<div class=page-content>
 		<?php
 			the_content();
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'frenchpress' ),
+				'before' => '<div class=page-links>' . esc_html__( 'Pages:', 'frenchpress' ),
 				'after'  => '</div>',
 			) );
 		?>

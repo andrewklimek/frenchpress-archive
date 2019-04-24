@@ -68,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		do_action( 'woocommerce_after_single_product_summary' );
 	?>
 
-	<meta itemprop="url" content="<?php the_permalink(); ?>" />
+	<meta itemprop=url content="<?php the_permalink(); ?>" />
 
 </article>
 

@@ -9,18 +9,18 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main fffi fffi-99">
+<main id=primary class="site-main fffi fffi-99">
 <?php
 if ( have_posts() ) :
 	
 	if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) :
 	?>
-	<header class="page-header">
+	<header class=page-header>
 		<?php
 		$skip_the_rest = apply_filters( 'frenchpress_archive_header', false );
 		if ( ! $skip_the_rest ) :
-			the_archive_title( '<h1 class="title">', '</h1>' );
-			the_archive_description( '<div class="taxonomy-description">', '</div>' );
+			the_archive_title( '<h1 class=title>', '</h1>' );
+			the_archive_description( '<div class=taxonomy-description>', '</div>' );
 		endif;
 		?>
 	</header>

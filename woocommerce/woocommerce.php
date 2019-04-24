@@ -31,7 +31,7 @@ add_action( 'woocommerce_sidebar', 'frenchpress_sidebar_widgets', 10 );
 function frenchpress_sidebar_widgets() {
 	if ( is_single() && is_active_sidebar( 'single-product' ) ) {
 	?>
-	<aside id='secondary' class='widget-area' role='complementary'>
+	<aside id=secondary class=widget-area role=complementary>
 		<?php dynamic_sidebar( "single-product" ); ?>
 	</aside>
 	<?php
@@ -40,7 +40,7 @@ function frenchpress_sidebar_widgets() {
 
 // content wrappers
 function woocommerce_output_content_wrapper() {
-	print '<main id="primary" class="site-main fffi fffi-99">';
+	print '<main id=primary class="site-main fffi fffi-99">';
 }
 function woocommerce_output_content_wrapper_end() {
 	print '</main>';
@@ -53,7 +53,7 @@ function frenchpress_woo_widgets_init() {
 		'id'            => 'single-product',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => "</aside>\n",
-		'before_title'  => '<h3 class="widgettitle">',
+		'before_title'  => '<h3 class=widgettitle>',
 		'after_title'   => "</h3>\n",
 	) );
 }

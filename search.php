@@ -9,12 +9,12 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main fffi fffi-99">
+<main id=primary class="site-main fffi fffi-99">
 	<?php
 	if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) :
 	?>
-	<header class="page-header">
-		<h1 class="title"><?php printf( __( 'Search Results for: %s', 'frenchpress' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+	<header class=page-header>
+		<h1 class=title><?php printf( __( 'Search Results for: %s', 'frenchpress' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 	</header>
 	<?php
 	endif;

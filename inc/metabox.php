@@ -37,8 +37,8 @@ function frenchpress_meta_box_callback( $post, $metabox ) {
 		$type_default = $wpdb->get_var( "SELECT meta_value FROM {$wpdb->prefix}posts JOIN {$wpdb->prefix}postmeta ON ID=post_id WHERE post_type='{$type}' AND meta_key='frenchpress_schema_article' ORDER BY ID DESC LIMIT 1" );
 		$value = $type_default ? $type_default : 'BlogPosting';
 	}
-	echo '<label for="frenchpress_new_field">Itemtype: </label>';
-	echo '<input type="text" id="frenchpress_new_field" name="frenchpress_new_field" value="' . esc_attr( $value ) . '" size="25" />';
+	echo '<label for=frenchpress_new_field>Itemtype: </label>';
+	echo '<input type=text id=frenchpress_new_field name=frenchpress_new_field value="' . esc_attr( $value ) . '" size=25 />';
 }
 
 /**
@@ -98,7 +98,7 @@ function frenchpress_save_meta_box_data( $post_id ) {
 add_action( 'save_post', 'frenchpress_save_meta_box_data' );
 
 /* function frenchpress_build_schema ($post_object) {
-	$schema = '<script type="application/ld+json">
+	$schema = '<script type=application/ld+json>
 	{
 	"@context" : "http://schema.org",
 	"@type" : "' . urlencode( get_metadata( 'post', get_the_ID(), 'frenchpress_schema_article', true )) . '",
@@ -112,7 +112,7 @@ add_action( 'save_post', 'frenchpress_save_meta_box_data' );
 	}
 </script>'; */
 function frenchpress_print_schema (){
-	$schema = '<script type="application/ld+json">
+	$schema = '<script type=application/ld+json>
 	{
 		"@context" : "http://schema.org",
 		"@type" : "'. urlencode( get_metadata( 'post', get_the_ID(), 'frenchpress_schema_article', true )) .'",

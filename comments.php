@@ -19,7 +19,7 @@ if ( post_password_required() ) {
 	return;
 }
 
-echo '<section id="comments" class="comments-area">';
+echo '<section id=comments class=comments-area>';
 	
 	if ( have_comments() ) :
 		
@@ -32,7 +32,7 @@ echo '<section id="comments" class="comments-area">';
 				printf( __( '%1$s Comments', 'frenchpress' ), $comments_number );
 			}
 		echo '</h2>
-			<ol class="comment-list">';
+			<ol class=comment-list>';
 		
 				wp_list_comments( array(
 					'callback'   => 'frenchpress_comment',// this is in inc/template-tags.php
@@ -43,8 +43,8 @@ echo '<section id="comments" class="comments-area">';
 		echo '</ol>';
 		
 		the_comments_pagination( // array(
-					// 'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous', 'twentyseventeen' ) . '</span>',
-					// 'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
+					// 'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class=screen-reader-text>' . __( 'Previous', 'twentyseventeen' ) . '</span>',
+					// 'next_text' => '<span class=screen-reader-text>' . __( 'Next', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
 				//)
 			);
 
@@ -54,7 +54,7 @@ echo '<section id="comments" class="comments-area">';
 	// If comments are closed but there are comments, say comments are closed
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 
-		echo '<p class="no-comments">' . __( 'Comments are closed.', 'frenchpress' ) . '</p>';
+		echo '<p class=no-comments>' . __( 'Comments are closed.', 'frenchpress' ) . '</p>';
 	}
 
     /**

@@ -15,9 +15,9 @@
  */
 // add_filter( 'excerpt_more', function(){ return '&hellip;'; } );
 function frenchpress_excerpt_more( $excerpt ) {
-    return $excerpt . sprintf( ' <a class="read-more" href="%1$s">%2$s</a>',
+    return $excerpt . sprintf( ' <a class=read-more href="%1$s">%2$s</a>',
         get_permalink( get_the_ID() ),
-        __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'frenchpress' )
+        __( 'Continue reading <span class=meta-nav>&rarr;</span>', 'frenchpress' )
     );
 }
 // add_filter( 'wp_trim_excerpt', 'frenchpress_excerpt_more' );
@@ -80,7 +80,7 @@ add_filter( 'body_class', 'frenchpress_body_classes' );
  */
 function frenchpress_pingback_header() {
 	if ( is_singular() && pings_open() ) {
-		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
+		echo '<link rel=pingback href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
 add_action( 'wp_head', 'frenchpress_pingback_header' );
@@ -98,7 +98,7 @@ add_action( 'wp_head', 'frenchpress_pingback_header' );
 function wrap_archive_title_prefix( $title ){
 	$p = explode( ': ', $title, 2 );
 	if ( !empty( $p[1] ) ) {
-		$title = "<span class='archive-title-prefix'>". $p[0] .": </span>". $p[1];
+		$title = "<span class=archive-title-prefix>". $p[0] .": </span>". $p[1];
 	}
 	return $title;
 }
@@ -117,7 +117,7 @@ function frenchpress_nofollow_widgets($text) {
 		}
 		// $search = array( ' rel="nofollow"', " rel='nofollow'", ' rel=nofollow', 'a href' );
 		// $replace = array( '', '', '', 'a rel="nofollow" href' );
-		$text = str_replace( 'a href', 'a rel="nofollow" href', $text);
+		$text = str_replace( 'a href', 'a rel=nofollow href', $text);
 	}
 	return $text;
 }

@@ -24,40 +24,40 @@ function frenchpress_posts_nav( $before='', $after='.' ) {
     
   /*  
     <nav class="navigation posts-navigation">
-		<h2 class="screen-reader-text">Posts navigation</h2>
-		<div class="nav-links">
-			<div class="nav-previous"><a href="https://proveyau.andrewklimek.com/blog/page/2/">Older posts</a></div>
-			<div class="nav-next"><a href="https://proveyau.andrewklimek.com/blog/">Newer posts</a></div>
+		<h2 class=screen-reader-text>Posts navigation</h2>
+		<div class=nav-links>
+			<div class=nav-previous><a href=/blog/page/2/>Older posts</a></div>
+			<div class=nav-next><a href=/blog/>Newer posts</a></div>
 		</div>
 	</nav>
 	<nav class="navigation pagination">
-		<h2 class="screen-reader-text">Posts navigation</h2>
-		<div class="nav-links">
-			<a class="prev page-numbers" href="https://proveyau.andrewklimek.com/blog/">Previous</a>
-			<a class="page-numbers" href="https://proveyau.andrewklimek.com/blog/"><span class="screen-reader-text">Page </span>1</a>
-			<span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>2</span>
-			<a class="next page-numbers" href="https://proveyau.andrewklimek.com/blog/page/2/">Next</a>
+		<h2 class=screen-reader-text>Posts navigation</h2>
+		<div class=nav-links>
+			<a class="prev page-numbers" href=/blog/>Previous</a>
+			<a class=page-numbers href=/blog/><span class=screen-reader-text>Page </span>1</a>
+			<span aria-current=page class="page-numbers current"><span class=screen-reader-text>Page </span>2</span>
+			<a class="next page-numbers" href=/blog/page/2/>Next</a>
 		</div>
 	</nav>
 	*/
 	
-    $out = '<nav class="posts-nav"><h2 class="screen-reader-text">Posts navigation</h2><div class="nav-links fff fff-spacebetween">';
+    $out = '<nav class=posts-nav><h2 class=screen-reader-text>Posts navigation</h2><div class="nav-links fff fff-spacebetween">';
  
     if ( !$paged ) $paged = 1;
         
 	$pagenum_link = get_pagenum_link(809);
 	
 	if ( $paged > 1 )
-        $out .= '<a class="prev" href="' . str_replace( '809', $paged - 1, $pagenum_link ) . '">Newer<span class="screen-reader-text"> Posts</span></a>';
+        $out .= '<a class=prev href="' . str_replace( '809', $paged - 1, $pagenum_link ) . '">Newer<span class=screen-reader-text> Posts</span></a>';
 	else
-		$out .= '<a class="prev" style="opacity:.1"><span class="screen-reader-text">No </span>Newer<span class="screen-reader-text"> Posts</span></a>';
+		$out .= '<a class=prev style="opacity:.1"><span class=screen-reader-text>No </span>Newer<span class=screen-reader-text> Posts</span></a>';
 	
-	$out .= ' <span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>' . $before . $paged . $after . '</span> ';
+	$out .= ' <span aria-current=page class="page-numbers current"><span class=screen-reader-text>Page </span>' . $before . $paged . $after . '</span> ';
 	
 	if ( $paged < $max_page )
-        $out .= '<a class="next" href="' . str_replace( '809', $paged + 1, $pagenum_link ) . '">Older<span class="screen-reader-text"> Posts</span></a>';
+        $out .= '<a class=next href="' . str_replace( '809', $paged + 1, $pagenum_link ) . '">Older<span class=screen-reader-text> Posts</span></a>';
     else
-        $out .= '<a class="next" style="opacity:.1"><span class="screen-reader-text">No </span>Older<span class="screen-reader-text"> Posts</span></a>';
+        $out .= '<a class=next style="opacity:.1"><span class=screen-reader-text>No </span>Older<span class=screen-reader-text> Posts</span></a>';
 	
 	$out .= '</div></nav>';
 	
@@ -82,10 +82,10 @@ function frenchpress_entry_meta() {
 	$modified_date = get_the_modified_date( DATE_W3C );
 	
 	$time = $date === $modified_date ? '<time class="entry-date published updated" datetime="' . $date . '">' . get_the_date() . '</time>'
-		: '<time class="entry-date published" datetime="' . $date . '">' . get_the_date() . '</time><time class="updated" datetime="' . $modified_date . '">' . get_the_modified_date() . '</time>';
+		: '<time class="entry-date published" datetime="' . $date . '">' . get_the_date() . '</time><time class=updated datetime="' . $modified_date . '">' . get_the_modified_date() . '</time>';
 
 	if ( apply_filters( 'frenchpress_entry_meta_link_time', false ) ) {
-		$time = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time . '</a>';
+		$time = '<a href="' . esc_url( get_permalink() ) . '" rel=bookmark>' . $time . '</a>';
 	}
 	
 	$byline = get_the_author();
@@ -95,7 +95,7 @@ function frenchpress_entry_meta() {
 	}
 	$byline = __( 'by ', 'frenchpress' ) . "<span class='author vcard'>{$byline}</span>";
 
-	echo "<p class='entry-meta-header'><span class='posted-on'>{$time}</span><span class='byline'> {$byline}</span></p>";
+	echo "<p class=entry-meta-header><span class=posted-on>{$time}</span><span class=byline> {$byline}</span></p>";
 }
 endif;
 
@@ -105,7 +105,7 @@ endif;
 if ( ! function_exists( 'frenchpress_entry_footer' ) ) :
 function frenchpress_entry_footer() {
 	
-	// echo "<p class='entry-meta-footer'>";
+	// echo "<p class=entry-meta-footer>";
 	
 	if ( 'post' === get_post_type() ) {// only show category and tag on posts
 		
@@ -113,13 +113,13 @@ function frenchpress_entry_footer() {
 		
 		if ( frenchpress_categorized_blog() && $categories_list = get_the_category_list( $separate_meta ) ) {
 			
-			echo '<p class="cat-links">' . __( 'Filed under ', 'frenchpress' ) . $categories_list . '</p>';
+			echo '<p class=cat-links>' . __( 'Filed under ', 'frenchpress' ) . $categories_list . '</p>';
 		
 		}
 
 		if ( $tags_list = get_the_tag_list( '', $separate_meta ) ) {
 			
-			echo '<p class="tag-links">' . __( 'Tagged ', 'frenchpress' ) . $tags_list . '</p>';
+			echo '<p class=tag-links>' . __( 'Tagged ', 'frenchpress' ) . $tags_list . '</p>';
 		
 		}
 	}
@@ -129,9 +129,9 @@ function frenchpress_entry_footer() {
 		sprintf(
 			// translators: %s: Name of current post
 			esc_html__( 'Edit %s', 'frenchpress' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			the_title( '<span class=screen-reader-text>"', '"</span>', false )
 		),
-		'<span class="edit-link">',
+		'<span class=edit-link>',
 		'</span>'
 	);
 	***/
@@ -147,14 +147,14 @@ endif;
 function frenchpress_comment( $comment, $args, $depth ) {
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( !empty( $args['has_children'] ) ? 'parent' : '', $comment ); ?>>
-		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+		<article id="div-comment-<?php comment_ID(); ?>" class=comment-body>
 			<header class="comment-meta fff fff-spacebetween">
 				<div class="comment-author vcard fffi">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-					<cite class="fn"><?php echo get_comment_author_link( $comment ) ?></cite>
+					<cite class=fn><?php echo get_comment_author_link( $comment ) ?></cite>
 				</div>
 				<div class="comment-metadata fffi">
-					<a class="comment-permalink" href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
+					<a class=comment-permalink href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>"><?php
 							echo mysql2date( get_option('date_format') .' '. get_option('time_format'), $comment->comment_date );// could use $comment->comment_date_gmt
 							/* translators: 1: comment date, 2: comment time */
@@ -174,10 +174,10 @@ function frenchpress_comment( $comment, $args, $depth ) {
 				</div>
 				<?php 
 				if ( '0' == $comment->comment_approved )
-					echo '<p class="comment-awaiting-moderation">Your comment is awaiting moderation.</p>';
+					echo '<p class=comment-awaiting-moderation>Your comment is awaiting moderation.</p>';
 				?>
 			</header>
-			<div class="comment-content">
+			<div class=comment-content>
 				<?php comment_text(); ?>
 			</div>
 		</article>

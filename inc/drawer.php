@@ -128,7 +128,7 @@ function frenchpress_add_main_nav_args( $args ) {
     $args['container_class'] = trim( $args['container_class'] . ' main-nav' );
     $args['menu_id'] = 'main-menu';
     $args['menu_class'] .= ' fff fff-middle fff-' . apply_filters( 'frenchpress_main_menu_align', 'right' );// removed fff-pad for now
-   // $args['items_wrap'] .= '<span id="menu-close" role="button" aria-controls="main-menu">×</span>';
+   // $args['items_wrap'] .= '<span id=menu-close role=button aria-controls=main-menu>×</span>';
     $args['item_spacing'] = 'discard';
 
     add_filter( "wp_nav_menu_{$args['menu']->slug}_items", "frenchpress_maybe_enqueue_submenu_js" );
@@ -194,20 +194,20 @@ function frenchpress_add_drawer_markup_to_main_menu( $nav_menu, $args ) {
     // I think this should always be in the header branding section no matter hwere the actual menu is.
 
   /*   return '
-        <div id="obfuscator"></div>
+        <div id=obfuscator></div>
         ' . $nav_menu . '
-        <div id="menu-toggle" role="button" aria-controls="main-menu" aria-expanded="false" class="fffi">
-            <div class="menu-tog"></div><div class="menu-tog"></div><div class="menu-tog"></div>
-			<span id="menu-toggle-label">Menu</span>
+        <div id=menu-toggle role=button aria-controls=main-menu aria-expanded=false class=fffi>
+            <div class=menu-tog></div><div class=menu-tog></div><div class=menu-tog></div>
+			<span id=menu-toggle-label>Menu</span>
 		</div>
 		'; */
      
     /****
      *  old SVG buttons:
      * 
-     * <svg id="menu-toggle-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-	 *	 <path id="menu-toggle-close" d="M13.4 12l9.3-9.3c0.4-0.4 0.4-1 0-1.4 -0.4-0.4-1-0.4-1.4 0L12 10.6 2.7 1.3c-0.4-0.4-1-0.4-1.4 0 -0.4 0.4-0.4 1 0 1.4L10.6 12l-9.3 9.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0L12 13.4l9.3 9.3c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4L13.4 12z"/>
-	 *	 <path id="menu-toggle-open"  d="M23 20H1c-0.6 0-1 0.4-1 1s0.4 1 1 1h22c0.6 0 1-0.4 1-1S23.6 20 23 20zM23 11H1c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1h22c0.6 0 1-0.4 1-1C24 11.4 23.6 11 23 11zM1 4h22c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1H1C0.4 2 0 2.4 0 3 0 3.6 0.4 4 1 4z"/>
+     * <svg id=menu-toggle-svg xmlns=http://www.w3.org/2000/svg width=24 height=24 viewBox="0 0 24 24">
+	 *	 <path id=menu-toggle-close d="M13.4 12l9.3-9.3c0.4-0.4 0.4-1 0-1.4 -0.4-0.4-1-0.4-1.4 0L12 10.6 2.7 1.3c-0.4-0.4-1-0.4-1.4 0 -0.4 0.4-0.4 1 0 1.4L10.6 12l-9.3 9.3c-0.4 0.4-0.4 1 0 1.4 0.4 0.4 1 0.4 1.4 0L12 13.4l9.3 9.3c0.4 0.4 1 0.4 1.4 0 0.4-0.4 0.4-1 0-1.4L13.4 12z"/>
+	 *	 <path id=menu-toggle-open  d="M23 20H1c-0.6 0-1 0.4-1 1s0.4 1 1 1h22c0.6 0 1-0.4 1-1S23.6 20 23 20zM23 11H1c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1h22c0.6 0 1-0.4 1-1C24 11.4 23.6 11 23 11zM1 4h22c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1H1C0.4 2 0 2.4 0 3 0 3.6 0.4 4 1 4z"/>
 	 * </svg>
 	 ***/
 }
@@ -218,7 +218,7 @@ function frenchpress_drawer_widgets_init() {
 		'id'            => 'drawer',
 		'before_widget' => '<aside id="%1$s" class="widget drawer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
-		'before_title'  => '<h3 class="widgettitle">',
+		'before_title'  => '<h3 class=widgettitle>',
 		'after_title'   => "</h3>\n",
 	) );
 }

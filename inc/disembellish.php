@@ -3,9 +3,9 @@
 Plugin Name: Disembellish
 Plugin URI:  https://github.com/andrewklimek/disembellish
 Description: Disable various core embellishments you may not want (emoji, capital P, archive type in page title)
-Version:     1.4.0
+Version:     1.4.1
 Author:      Andrew J Klimek
-Author URI:  https://readycat.net
+Author URI:  https://andrewklimek.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,10 +25,10 @@ Disembellish. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
 /**
  * Remove <meta name="generator" content="WordPress {version}">
- * for xhtml only (default) because maybe it;s used for rss, comments, etc
  */
-add_filter('get_the_generator_xhtml', '__return_empty_string');
-
+// add_filter('get_the_generator_xhtml', '__return_empty_string');
+// use the above filter if this messes up rss or other types.
+remove_action( 'wp_head', 'wp_generator' );
 
 /**
  * Remove big un-used css from front end added by WP 5 for the block editor

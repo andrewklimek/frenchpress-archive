@@ -3,7 +3,7 @@
 Plugin Name: Disembellish
 Plugin URI:  https://github.com/andrewklimek/disembellish
 Description: Disable various core embellishments you may not want (emoji, capital P, archive type in page title)
-Version:     1.3.1
+Version:     1.4.0
 Author:      Andrew J Klimek
 Author URI:  https://readycat.net
 License:     GPL2
@@ -20,6 +20,23 @@ PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with 
 Disembellish. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
+
+
+
+/**
+ * Remove <meta name="generator" content="WordPress {version}">
+ * for xhtml only (default) because maybe it;s used for rss, comments, etc
+ */
+add_filter('get_the_generator_xhtml', '__return_empty_string');
+
+
+/**
+ * Remove big un-used css from front end added by WP 5 for the block editor
+ */
+function disable_gutenberg_block_css() {
+	wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_enqueue_scripts', 'disable_gutenberg_block_css', 999 );
 
 
 /**
@@ -66,6 +83,8 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+add_filter( 'emoji_svg_url', '__return_null' );
+
 
 /**
  * Disable smilies

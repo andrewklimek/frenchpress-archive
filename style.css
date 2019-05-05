@@ -180,6 +180,15 @@ html [type=button],/* 1 */
 	cursor: pointer;
 }
 
+/* seemed useful once
+:disabled,
+:disabled:hover {
+	color: #888;
+    background: #ccc;
+    border-color: #ccc;
+}
+*/
+
 /* This one would work with new browsers and FF > 50, but thw webkit one still seems needed for now and FF > 50 seems to do this sort of styling anyhow
 ::placeholder {
 	color: inherit;

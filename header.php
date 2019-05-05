@@ -44,11 +44,7 @@ wp_head();
     ?>
 <div id=site-header-main>
 	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-pad" ); ?>">
-		<?php  if ( apply_filters( 'frenchpress_drawer', true ) ) : ?>
-		<div id=menu-open role=button aria-controls=main-menu aria-expanded=false class=fffi>
-			<span id=menu-open-label class=screen-reader-text>Menu</span>
-			<p class=menubun><p class=menubun><p class=menubun></div>
-		<?php endif;
+	<?php
 	
 	// start building .site-branding.  Keep track of if anything is displayed so I can remove padding if not
 
@@ -95,6 +91,15 @@ wp_head();
 		</div>
 	<?php
 	endif;//is_active_sidebar( 'header-3' )
+	
+	/**
+	* Menu Drawer Button
+	*/
+	if ( apply_filters( 'frenchpress_drawer', true ) ) : ?>
+		<div id=menu-open role=button aria-controls=main-menu aria-expanded=false class=fffi>
+			<span id=menu-open-label class=screen-reader-text>Menu</span>
+			<p class=menubun><p class=menubun><p class=menubun></div>
+	<?php endif;
 
 	echo '</div>';//.tray
 echo '</div>';//.site-header-main

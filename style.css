@@ -30,8 +30,9 @@ a {
 	color: inherit;
 	background: none;/* Remove gray background on active links in IE10 */
 	text-decoration: none;
-	-webkit-text-decoration-skip: ink;
-	text-decoration-skip: ink;
+	/* these didn't work in FF and seem to be phasing out of Blink in favor of text-decoration-skip-ink which seems to be working by default... unimportant anyhow */
+	/* -webkit-text-decoration-skip: ink; */
+	/* text-decoration-skip: ink; */
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
 	transition: 250ms;
 }
@@ -267,6 +268,10 @@ li ol,
 	margin: 0;
 }
 */
+
+nav {
+	display: inline-block;/* doesn't it seem like you'd want navs to respond to text-align?  like an all centered header or footer? */
+}
 
 ul,
 ol,

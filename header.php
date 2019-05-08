@@ -104,10 +104,14 @@ wp_head();
 	echo '</div>';//.tray
 echo '</div>';//.site-header-main
 
-// will I want to filter the tray classes same as frenchpress_class_header_main?
-if ( is_active_sidebar( 'header-4' ) ) : ?>
+// I'm using this sort of odd method to there a way to count number of widgets and remove flex classes if just one
+// Might not work if there's some dynamic widget display rules... though it may only need apply_filters( 'sidebars_widgets', $sidebars_widgets ) to work.
+// can do without the extra is_active function
+// if ( is_active_sidebar( 'header-4' ) ) :
+global $sidebars_widgets;
+if ( !empty( $sidebars_widgets['header-4'] ) ) : ?>
 	<div id=header-4 class=widget-area role=complementary>
-		<div class="tray fff fff-middle fff-spacebetween fff-pad">
+		<div class="tray<?php if( isset( $sidebars_widgets['header-4'][1] ) ) echo 'fff fff-middle fff-spacebetween fff-pad'; ?>">
 			<?php dynamic_sidebar( 'header-4' ); ?>
 		</div>
 	</div>

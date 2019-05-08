@@ -1,11 +1,4 @@
 <?php
-/**
- * FrenchPress functions and definitions.
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package FrenchPress
- */
 
 /* this is define by core for now as TEMPLATEPATH hopefully the dont remove it, see https://core.trac.wordpress.org/ticket/18298 */
 // define( 'TEMPLATE_DIR', get_template_directory() );

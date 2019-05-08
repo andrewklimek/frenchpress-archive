@@ -1,13 +1,5 @@
 <?php
 /**
- * Custom template tags for this theme.
- *
- * Eventually, some of the functionality here could be replaced by core features.
- *
- * @package FrenchPress
- */
-
-/**
  * current year shorcode for copyright lines
  */
 add_shortcode( 'current_year', function(){ return date('Y'); } ); 

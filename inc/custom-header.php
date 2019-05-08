@@ -12,7 +12,6 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package FrenchPress
  */
 
 /**

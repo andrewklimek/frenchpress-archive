@@ -1,9 +1,4 @@
 <?php
-/**
- * FrenchPress Theme Customizer.
- *
- * @package FrenchPress
- */
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.

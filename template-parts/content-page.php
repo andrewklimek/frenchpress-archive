@@ -1,11 +1,8 @@
 <?php
 /**
- * Template part for displaying page content in page.php.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package FrenchPress
+ * Called from template files via get_template_part( 'template-parts/content', 'page' )
  */
+ 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php

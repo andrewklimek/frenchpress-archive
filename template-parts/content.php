@@ -1,11 +1,10 @@
 <?php
 /**
- * Template part for displaying posts.
+ * Called from template files via get_template_part( 'template-parts/content' )
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package FrenchPress
+ * Also used as fallback when a more specific template does not exist for the 2nd argument of get_template_part()
  */
+ 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php

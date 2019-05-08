@@ -1,16 +1,11 @@
 <?php
 /**
- * The header for our theme.
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content-tray">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package FrenchPress
+ * Called via get_header()
  * 
  * If this is ever used for the general public or WPML, 
  * html lang= should use language_attributes() or bloginfo('language') and maybe meta charset= bloginfo('charset')
  */
+ 
 ?><!DOCTYPE html>
 <html lang=en class="<?php echo apply_filters( 'frenchpress_class_html', "hnav" ); ?>">
 <meta charset=UTF-8>

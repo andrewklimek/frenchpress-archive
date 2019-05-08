@@ -1,11 +1,4 @@
 <?php
-/**
- * The template for displaying all single posts.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package FrenchPress
- */
 
 $layout = apply_filters( 'frenchpress_full_width', false ) ? "full-width" : "sidebars";// defaults
 // hook for default page layout until I make an option page. Use 'sidebars, 'full-width', or 'no-sidebars'

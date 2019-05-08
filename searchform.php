@@ -1,4 +1,9 @@
-<form role=search method=get class="search-form fff fff-bottom" action="<?php echo esc_url( home_url( '/' ) ) ?>">
+<?php
+/**
+ * Called via get_search_form()
+ */
+ ?>
+ <form role=search method=get class="search-form fff fff-bottom" action="<?php echo esc_url( home_url( '/' ) ) ?>">
     <style>
     .search-submit{min-width:0;padding:3px 3px 3px 10px;margin:0;border:0;line-height:0;color:currentColor;background:none}
     .search-field{border:0;padding:0;background:none;width:100%;outline:0;display:block}

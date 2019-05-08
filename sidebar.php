@@ -1,12 +1,7 @@
 <?php
 /**
- * The sidebar containing the main widget area.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package FrenchPress
+ * Called via get_sidebar()
  */
-
 if ( apply_filters( 'frenchpress_sidebar', true ) ) {
 
 	if ( is_active_sidebar( 'sidebar-1' ) ) : ?>

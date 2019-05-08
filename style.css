@@ -50,16 +50,19 @@ aside a,
 	text-decoration: none;
 }*/
 
-details,/* IE, Edge */
-summary,/* IE, Edge */
-main {/* IE 10 */
+/* These 2 display definitions are for IE10 and/or don't see myself using them..
+Except <main> but that's given a display via ffi class.
+Would be safest to add back if for public use.
+details,/* IE, Edge
+summary,/* IE, Edge
+main {/* IE 10
 	display: block;
 }
-
-template, /* IE10 - Edge12 */
-[hidden] { /* IE10 */
+template, /* IE10 - Edge12
+[hidden] { /* IE10
 	display: none;
 }
+*/
 
 pre {
 	/*max-width: 100%;*/
@@ -131,10 +134,10 @@ textarea {
 	background: #fff;
 }
 
-[type=search] {
+/* [type=search] { */
 	/*-webkit-appearance: textfield;*//* Correct the odd appearance in Chrome and Safari */
 	/*outline-offset: -2px;*//* Correct the outline style in Safari */
-}
+/* } */
 
 textarea {
 	width: 100%;/* maybe not */
@@ -258,7 +261,6 @@ html {
 /*.comment,*/
 p,/* top & bottom margin in blink */
 .p {
-/*  margin: 1.6rem 0;*/
   margin: 1.6rem 0;
 }
 /* don't need this while only <p> gets margin

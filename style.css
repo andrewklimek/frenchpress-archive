@@ -589,6 +589,14 @@ p.menubun {
 /*	width: 100%;*/
 }
 
+/* need a way to denote horizontal menu when not using drawer on mobile size! */
+html:not(.dopen) .site-header .menu {
+    margin: 0 -1.6rem;
+}
+html.mnav:not(.dopen) .site-header .menu-item > a {
+    padding: .8rem;
+}
+
 
 
 /* ONLY HORIZONTAL MAIN NAV */

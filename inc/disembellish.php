@@ -2,7 +2,7 @@
 /**
  * Disable various core embellishments you may not want (emoji, capital P, archive type in page title)
  *
- * Also a plugin, so versioning: 1.4.2
+ * Also a plugin, so versioning: 1.4.3
  */
 
 
@@ -36,7 +36,7 @@ add_action( 'wp_enqueue_scripts', 'disable_gutenberg_block_css', 999 );
  * Replace "Powered by Wordpress" H1 on login page
  */
 add_filter('login_headerurl', function(){ return home_url(); });
-add_filter('login_headertitle', function(){ return get_bloginfo( 'name', 'display' ); });
+add_filter('login_headertext', function(){ return get_bloginfo( 'name', 'display' ); });
 
 
 

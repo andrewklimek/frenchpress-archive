@@ -64,19 +64,25 @@ endif;
 
 do_action('frenchpress_footer_bottom');
 
-if ( is_active_sidebar( 'footer-bottom' ) ) : ?>
+// I'm using this sort of odd method to there a way to count number of widgets and remove flex classes if just one
+// Might not work if there's some dynamic widget display rules... though it may only need apply_filters( 'sidebars_widgets', $sidebars_widgets ) to work.
+// can do without the extra is_active function
+// if ( is_active_sidebar( 'footer-bottom' ) ) :
+global $sidebars_widgets;
+if ( !empty( $sidebars_widgets['footer-bottom'] ) ) : ?>
 	<div id=footer-bottom>
-		<div class="tray footer-bottom-tray fff fff-middle fff-spacebetween fff-pad">
+		<div class="tray footer-bottom-tray<?php if( isset( $sidebars_widgets['header-4'][1] ) ) echo 'fff fff-middle fff-spacebetween'; ?> fff-pad">
 			<?php dynamic_sidebar( 'footer-bottom' ); ?>
 		</div>
 	</div>
 <?php
 endif;
+
 ?>
 </footer>
 <div id=wp_footer>
-    <div id=mask></div>
 	<?php
 	wp_footer();
 	?>
+    <div id=mask></div>
 </div>

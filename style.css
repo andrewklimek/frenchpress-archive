@@ -176,7 +176,7 @@ mark {
 */
 
 /* svg { */
-	/* fill: currentColor;/* not sure how often this will come up really, and it overrides "fill" attribute color definitions */ */
+	/* fill: currentColor;*//* not sure how often this will come up really, and it overrides "fill" attribute color definitions */
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 /* } */
 

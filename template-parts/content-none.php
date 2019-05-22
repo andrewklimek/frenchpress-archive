@@ -4,24 +4,19 @@
  */
 
 ?>
-<section class="no-results not-found">
+<section class=no-results>
 	<div class=page-content>
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-			?>
-			<p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'frenchpress' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
-		<?php
+			echo "<p>Ready to publish your first post? <a href='" . esc_url( admin_url( 'post-new.php' ) ) . "'>Get started here</a>.";
+
 		elseif ( is_search() ) :
-			?>
-			<p>Sorry, but nothing matched your search terms. Please try again with some different keywords.
-			<?php
-				get_search_form();
+			echo "<p>Sorry, but nothing matched your search terms. Please try again with some different keywords.";
+			get_search_form();
 
 		else :
-			?>
-			<p>It seems we can’t find what you’re looking for. Perhaps searching can help.
-			<?php
-				get_search_form();
+			echo "<p>It seems we can’t find what you’re looking for. Perhaps searching can help.";
+			get_search_form();
 
 		endif;
 		?>

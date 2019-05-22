@@ -148,8 +148,6 @@ function frenchpress_comment( $comment, $args, $depth ) {
 					<a class=comment-permalink href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>"><?php
 							echo mysql2date( get_option('date_format') .' '. get_option('time_format'), $comment->comment_date );// could use $comment->comment_date_gmt
-							/* translators: 1: comment date, 2: comment time */
-							// printf( __( '%1$s at %2$s' ), get_comment_date( '', $comment), get_comment_time() );
 						?></time>
 					</a>
 					<?php

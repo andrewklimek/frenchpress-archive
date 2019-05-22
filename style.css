@@ -87,6 +87,7 @@ video,
 img {
   height: auto;
   max-width: 100%;
+  /*border-style: none;*//* Remove the border on images inside links in IE10 */
 }
 /*img,*/
 /*embed,*/
@@ -146,8 +147,12 @@ textarea {
 }
 
 /* [type=search] { */
-	/*-webkit-appearance: textfield;*//* Correct the odd appearance in Chrome and Safari */
-	/*outline-offset: -2px;*//* Correct the outline style in Safari */
+	/*-webkit-appearance: textfield;*//* Correct odd appearance in Chrome & Safari */
+	/*outline-offset: -2px;*//* Correct outline style in Safari */
+/* } */
+
+/* [type=search]::-webkit-search-decoration { */
+  /*-webkit-appearance: none;*//* Remove inner padding in Chrome & Safari on mac */
 /* } */
 
 textarea {
@@ -183,16 +188,11 @@ mark {
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 /* } */
 
-/**
-* Correct the inability to style clickable types in iOS and Safari.
-* 1. Prevents this from destroying native <audio> and <video> controls in Android 4.
-*/
 button,
-html [type=button],/* 1 */
+[type=button],
 [type=reset],
 [type=submit] {
-	-webkit-appearance: button;
-	cursor: pointer;
+  -webkit-appearance: button;/* Correct inability to style clickable types in iOS & Safari */
 }
 
 /* seemed useful once
@@ -926,7 +926,7 @@ body.single main {
 	max-width: 100%;
 }
 
-.wp-caption img[class*="wp-image-"] {
+.wp-caption img/*[class*="wp-image-"] why is this needed? */ {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;

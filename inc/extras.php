@@ -4,6 +4,12 @@
  */
 
 /**
+ * Various tweaks to add HTML5 semantics or remove markup that HTML5 does not need and would throw warnings in validators
+ *
+ * Probably a waste of PHP processing if pages aren't cached
+ */
+
+/**
  * This doesnt seem smart... makes it hard to remove more text when you want to.
  * Customize the [...] at the end of excerpts
  * but... when using the_excerpt(), manual excerpts don’t get the "more" text but auto-generated excerpts do... it’s weird.  
@@ -51,7 +57,21 @@ add_filter( 'widget_nav_menu_args', 'frenchpress_widget_nav_menu_args' );
 
 
 /**
- * Adds custom classes to the array of body classes.
+ * Post classes
+ *
+ * @param array $classes Classes for the body element.
+ * @return array
+ */
+function frenchpress_post_classes( $classes ) {
+	// Remove hAtom class.. not exactly worth it if not caching
+	$classes = array_diff( $classes, ['hentry'] );
+
+	return $classes;
+}
+add_filter( 'post_class', 'frenchpress_post_classes' );
+
+/**
+ * Body vlasses
  *
  * @param array $classes Classes for the body element.
  * @return array
@@ -60,11 +80,6 @@ function frenchpress_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
-	}
-
-	// Adds a class of hfeed to non-singular pages.
-	if ( ! is_singular() ) {
-		$classes[] = 'hfeed';
 	}
 
 	return $classes;

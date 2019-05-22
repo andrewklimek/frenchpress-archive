@@ -440,7 +440,7 @@ aside ul,
 .sidebar-widget,
 #secondary,
 #primary,
-.hentry,
+article,/* was .hentry,*/
 .page-header,
 .entry-content {
 	margin-bottom: 48px;

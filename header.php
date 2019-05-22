@@ -10,7 +10,6 @@
 <html lang=en class="<?php echo apply_filters( 'frenchpress_class_html', "hnav" ); ?>">
 <meta charset=UTF-8>
 <meta name=viewport content="width=device-width, initial-scale=1">
-<link rel=profile href=http://gmpg.org/xfn/11>
 <?php
 wp_head();
 ?>

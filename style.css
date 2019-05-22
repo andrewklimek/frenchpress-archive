@@ -986,26 +986,6 @@ body.single main {
 *  CSS Framework-type stuff.
 *  Avoids massive child theme stylesheets, esp given the flexbox prefixes
 --------------------------------------------------------------*/
-hr.double {/* this is the only place the base spacing size is manually doubled */
-	margin-top: 48px;
-	margin-bottom: 48px;
-}
-
-hr.spacer {
-	background: none;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.text-right {
-	text-align: right;
-}
-
-.text-left {
-	text-align: left;
-}
 
 /* FLEX GRID IMPLEMENTATION "fff" for "frenchpress flexbox framework" */
 /* display: block on flex item comes first so that flex-items can also be flex containers and the display:block will be overruled */
@@ -1244,19 +1224,41 @@ but I just seem to only use none/initial or auto/magic */
 .margin {
 	margin: 24px;
 }
+/* better off in child theme if ever used?
+hr.double {
+	margin-top: 48px;
+	margin-bottom: 48px;
+}
+
+hr.spacer {
+	background: none;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+*/
+/* better off in child theme if ever used
+.round {
+	border-radius: 50%;
+}
 
 @media screen and (max-width: 600px) {
 	#content .breakout {
 		margin: 0 -24px;
-		/*max-width: 115%;*//* in case no calc support */
 		max-width: calc( 100% + 24px + 24px );
 	}
 
 }
-
-.round {
-	border-radius: 50%;
-}
+*/
 
 /* PRINT
 @media print{

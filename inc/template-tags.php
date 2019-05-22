@@ -115,17 +115,6 @@ function frenchpress_entry_footer() {
 		
 		}
 	}
-
-	/*** Does anyone use the edit links?  They’re weird
-	edit_post_link(
-		sprintf(
-			'Edit %s',
-			the_title( '<span class=screen-reader-text>"', '"</span>', false )
-		),
-		'<span class=edit-link>',
-		'</span>'
-	);
-	***/
 	
 	// echo "</p>";
 }

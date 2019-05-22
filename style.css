@@ -17,6 +17,8 @@ h1,h2,h3,h4{line-height:2.4ex;margin:4.8ex 0 2.4ex}
 h1:first-child,h2:first-child,h3:first-child,h4:first-child,p:first-child{margin-top:0}
 h1:last-child,h2:last-child,h3:last-child,h4:last-child,p:last-child{margin-bottom:0}
 
+Also padding on blockquotes might need clearing, or just change custom padding to margin!
+
 */
 
 
@@ -28,8 +30,8 @@ h1:last-child,h2:last-child,h3:last-child,h4:last-child,p:last-child{margin-bott
 /*::after,*/
 * {
 	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+	/* margin: 0; */
+	/* padding: 0; */
 	border: 0;
 	/*background: center/cover no-repeat;*//* Seems lame to clutter up every item in the inspector, and yet I end up having to hand-code this on almost every bg image */
 }
@@ -121,11 +123,12 @@ td, th {
 button,
 input,
 select,
+/*optgroup,*/
 /*keygen,*/
 textarea {
 	color: inherit;
 	font: inherit;
-	/*	margin: 0;*/
+/*	margin: 0;*//* for FF & Safari... but is it really a big deal? */
 }
 
 [type=text],
@@ -139,7 +142,7 @@ textarea {
 	border: 1px solid #aaa;
 /*	border-radius: 0;*//*are they ever rounded by default?*/
 	padding: .5ex;
-	background: #fff;
+	/* background: #fff; */
 }
 
 /* [type=search] { */
@@ -256,24 +259,27 @@ html {
 
 /*@media (min-width:1500px) { html { font-size: 120%; } }*/
 
-/*pre,*//* top & bottom margin in blink */
 /*blockquote,*//* top & bottom margin in blink */
-/*ol,*//* top & bottom margin in blink */
-/*ul,*//* top & bottom margin in blink */
-/*dl,*//* top & bottom margin in blink */
 /*dt,*//* no margin in blink */
-figure,/* all margins in blink */
 /*figcaption,*//* no margin in blink */
-/*table,*//* no margin in blink */
-/*form,*//* no margin in blink but fieldset has padding all around */
 /*blockquote footer,*/
 /*iframe,*//* no margin in blink */
 /*object,*/
 /*.comment,*/
+/** Might need margins but rare / usually custom styling will be needed */
+/*table,*//* no margin in blink */
+/*form,*//* no margin in blink but fieldset has padding all around */
+/*dl,*//* top & bottom margin in blink */
+/** Would need margin if headers have no bottom margin */
+/*pre,*//* top & bottom margin in blink */
+ol,/* top & bottom margin in blink */
+ul,/* top & bottom margin in blink */
+/** Would need margins no matter what */
+figure,/* all margins in blink */
 p,/* top & bottom margin in blink */
 .p {
-  margin: 24px 0;
-  line-height: 26px;/* works oddly well */
+  margin: 0 0 24px;
+  line-height: 24px;/* works oddly well */
   line-height: calc(2ex + 9px);
 }
 /* don't need this while only <p> gets margin
@@ -284,23 +290,25 @@ li ol,
 }
 */
 
-nav {
-	display: inline-block;/* doesn't it seem like you'd want navs to respond to text-align?  like an all centered header or footer? */
-}
-
+/* browsers default to to 40px, why not use it?
 ul,
 ol,
 dd {
-	padding-left: 24px;
+	padding-left: 2em;
 }
+*/
 
+/* I felt like this actually looks sloppy. Linehight should be enough for parsing lines? All depends I guess
 li {
     margin: 12px 0;
 }
+*/
 
+/* not always wanted. and quotes almost always need custom styling. body of quote might have diff bg color from footer so then you need no padding around both
 blockquote {
 	padding: .8em 1.6em;
 }
+*/
 
 hr {
 	background: currentColor;
@@ -313,9 +321,11 @@ hr {
 h2,
 h3,
 h4 {
+	margin: 3ex 0 1ex;
+	/* margin: calc(6ex - 45px) 0 0; */
 /*	font-weight: inherit;*/
 /*	line-height: 2.4ex;*//* disable for now since setting 1.2 at html element */
-	padding-top: 24px;/* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
+/*	padding-top: 24px;*//* no bottom margin so you can write top margin rules like h2 > h3: margin-top 0; and have the lines close (there's no h3 < h2 selector) */
 	/* margin: 4.8ex 0 2.4ex; */
 }
 
@@ -354,6 +364,7 @@ h3,
 --------------------------------------------------------------*/
 
 body {
+	margin: 0;
 	min-height: 100vh;
 	/*	height: 100%;*/
 	/*overflow-x: hidden;*/
@@ -439,6 +450,11 @@ aside ul,
 /*--------------------------------------------------------------
 *  Navigation
 --------------------------------------------------------------*/
+
+/* I think the main nav should probably respond to typical "text-align" CSS, unless I go with an option in the theme for left, right, center and modify the fff-right class that way */
+.main-nav {
+	display: inline-block;
+}
 
 .site-header .menu-item {
 	margin: 0;/* might need to be on nav li */

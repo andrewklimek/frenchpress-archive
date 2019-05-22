@@ -24,11 +24,11 @@ get_header();
 		
 			if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
 
-				echo __( 'Unfortunately, you clicked a broken link.  Please try searching below.', 'frenchpress' );
+				echo 'Unfortunately, you clicked a broken link.  Please try searching below.';
 
 			} else {
 			
-				echo esc_html( "“{$_SERVER['REQUEST_URI']}”" ) . __( ' does not exist on this site. Please double-check the spelling or search below.', 'frenchpress' );
+				echo esc_html( "“{$_SERVER['REQUEST_URI']}”" ) . ' does not exist on this site. Please double-check the spelling or search below.';
 			
 			}
 		
@@ -42,7 +42,7 @@ get_header();
 
 			if ( $query->have_posts() ) {
 
-				echo '<h3>' . __( 'Perhaps you were looking for one of these:', 'frenchpress' ) . '</h3>';
+				echo '<h3>Perhaps you were looking for one of these:</h3>';
 			
 				while ( $query->have_posts() ) {
 					

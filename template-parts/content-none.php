@@ -13,13 +13,13 @@
 		<?php
 		elseif ( is_search() ) :
 			?>
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'frenchpress' ); ?></p>
+			<p>Sorry, but nothing matched your search terms. Please try again with some different keywords.
 			<?php
 				get_search_form();
 
 		else :
 			?>
-			<p><?php esc_html_e( 'It seems we can’t find what you’re looking for. Perhaps searching can help.', 'frenchpress' ); ?></p>
+			<p>It seems we can’t find what you’re looking for. Perhaps searching can help.
 			<?php
 				get_search_form();
 

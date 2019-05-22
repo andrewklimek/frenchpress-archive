@@ -15,9 +15,9 @@ echo '<section id=comments class=comments-area>';
 			
 			$comments_number = get_comments_number();
 			if ( '1' === $comments_number ) {
-				_e( 'One Comment', 'frenchpress' );
+				echo 'One Comment';
 			} else {
-				printf( __( '%1$s Comments', 'frenchpress' ), $comments_number );
+				printf( '%1$s Comments', $comments_number );
 			}
 		echo '</h2>
 			<ol class=comment-list>';
@@ -42,7 +42,7 @@ echo '<section id=comments class=comments-area>';
 	// If comments are closed but there are comments, say comments are closed
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 
-		echo '<p class=no-comments>' . __( 'Comments are closed.', 'frenchpress' ) . '</p>';
+		echo '<p class=no-comments>Comments are closed.</p>';
 	}
 
     /**

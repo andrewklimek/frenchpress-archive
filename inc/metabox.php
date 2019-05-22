@@ -7,7 +7,7 @@ function frenchpress_add_meta_box( $post_type ) {
 	if ( !in_array ( $post_type, array('attachment','revision','nav_menu_item') ) ){
 		add_meta_box(
 			'frenchpress_schema_article',
-			__( 'Schema.org', 'frenchpress' ),
+			'Schema.org',
 			'frenchpress_meta_box_callback',
 			null, 'advanced', 'default',
 			array('type' => $post_type)

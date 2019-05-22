@@ -19,7 +19,7 @@
 function frenchpress_excerpt_more( $excerpt ) {
     return $excerpt . sprintf( ' <a class=read-more href="%1$s">%2$s</a>',
         get_permalink( get_the_ID() ),
-        __( 'Continue reading <span class=meta-nav>&rarr;</span>', 'frenchpress' )
+        'Continue reading <span class=meta-nav>&rarr;</span>'
     );
 }
 // add_filter( 'wp_trim_excerpt', 'frenchpress_excerpt_more' );

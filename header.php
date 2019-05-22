@@ -15,7 +15,7 @@ wp_head();
 ?>
 <body <?php body_class( "fff fff-column fff-none" ); ?>>
 <?php do_action( 'frenchpress_body_top' ); ?>
-<a class="skip-link screen-reader-text" href=#content><?php _e( 'Skip to content', 'frenchpress' ); ?></a>
+<a class="skip-link screen-reader-text" href=#content>Skip to content</a>
 <header id=header class="site-header fffi">
 	<?php do_action( 'frenchpress_header_top' ); ?>
 	<?php
@@ -123,9 +123,9 @@ if ( !is_front_page() && apply_filters( 'frenchpress_title_in_header', false ) )
 	// $title = false;
 	// if ( is_single() || is_home() || is_page() ) $title = single_post_title( '', false );// default
 	if ( ! $title = single_post_title( '', false ) ) {// returns nothing if get_queried_object()->post_title is not set
-		if ( is_search() ) $title = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
+		if ( is_search() ) $title = sprintf( 'Search Results for &#8220;%s&#8221;', get_search_query() );
 		elseif ( is_archive() ) $title = get_the_archive_title();
-		elseif ( is_404() ) $title = __( 'Page not found' );
+		elseif ( is_404() ) $title = 'Page not found';
 	}
 	if ( $title ) {
 		echo '<div id=header-title><div class="tray header-title-tray"><h1 class=title>' . $title . '</h1></div></div>';

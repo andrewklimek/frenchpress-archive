@@ -214,7 +214,7 @@ function frenchpress_add_drawer_markup_to_main_menu( $nav_menu, $args ) {
 
 function frenchpress_drawer_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Drawer', 'frenchpress' ),
+		'name'          => 'Drawer',
 		'id'            => 'drawer',
 		'before_widget' => '<aside id="%1$s" class="widget drawer-widget %2$s">',
 		'after_widget'  => "</aside>\n",

@@ -209,7 +209,7 @@ add_action( 'after_setup_theme', 'frenchpress_content_width', 0 );
  */
 function frenchpress_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar 1', 'frenchpress' ),
+		'name'          => 'Sidebar 1',
 		'id'            => 'sidebar-1',
 		'before_widget' => '<section id="%1$s" class="widget sidebar-widget %2$s">',
 		'after_widget'  => "</section>\n",
@@ -217,7 +217,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Sidebar 2', 'frenchpress' ),
+		'name'          => 'Sidebar 2',
 		'id'            => 'sidebar-2',
 		'before_widget' => '<section id="%1$s" class="widget sidebar-widget %2$s">',
 		'after_widget'  => "</section>\n",
@@ -225,7 +225,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Header 1 (very top)', 'frenchpress' ),
+		'name'          => 'Header 1 (very top)',
 		'id'            => 'header-1',
 		'description'   => 'Best for secondary menus/nav bars',
 		'before_widget' => '<aside id="%1$s" class="widget header-widget %2$s">',
@@ -234,7 +234,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Header 2', 'frenchpress' ),
+		'name'          => 'Header 2',
 		'id'            => 'header-2',
 		'before_widget' => '<div id="%1$s" class="widget header-widget fffi %2$s">',
 		'after_widget'  => "</div>\n",
@@ -242,7 +242,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Header 3 (main)', 'frenchpress' ),
+		'name'          => 'Header 3 (main)',
 		'id'            => 'header-3',
 		'description'   => 'Will be in line with the site branding, typical place to put the main menu',
 		'before_widget' => '<div id="%1$s" class="widget header-widget fffi %2$s">',
@@ -251,7 +251,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Header 4', 'frenchpress' ),
+		'name'          => 'Header 4',
 		'id'            => 'header-4',
 		'before_widget' => '<div id="%1$s" class="widget header-widget fffi %2$s">',
 		'after_widget'  => "</div>\n",
@@ -259,7 +259,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Top of Footer', 'frenchpress' ),
+		'name'          => 'Top of Footer',
 		'id'            => 'footer-top',
 		'description'   => 'For some banner between content and footer',
 		'before_widget' => '',
@@ -268,7 +268,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 1', 'frenchpress' ),
+		'name'          => 'Footer 1',
 		'id'            => 'footer-1',
 		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
@@ -276,7 +276,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 2', 'frenchpress' ),
+		'name'          => 'Footer 2',
 		'id'            => 'footer-2',
 		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
@@ -284,7 +284,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 3', 'frenchpress' ),
+		'name'          => 'Footer 3',
 		'id'            => 'footer-3',
 		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
@@ -292,7 +292,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Footer 4', 'frenchpress' ),
+		'name'          => 'Footer 4',
 		'id'            => 'footer-4',
 		'before_widget' => '<aside id="%1$s" class="widget footer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
@@ -300,7 +300,7 @@ function frenchpress_widgets_init() {
 		'after_title'   => "</h3>\n",
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Bottom of Footer', 'frenchpress' ),
+		'name'          => 'Bottom of Footer',
 		'id'            => 'footer-bottom',
 		'description'   => 'Typical place for copyright, theme info, etc. Shortcode [current_year] is available for copyrights.',
 		'before_widget' => '<aside id="%1$s" class="widget footer-widget fffi %2$s">',

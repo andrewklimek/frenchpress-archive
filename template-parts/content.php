@@ -49,10 +49,10 @@
 	<?php else : ?>
 	<div class=entry-content>
 		<?php
-			the_content( __( 'Continue reading <span class=meta-nav>&rarr;</span>', 'frenchpress' ) );
+			the_content( 'Continue reading <span class=meta-nav>&rarr;</span>' );
 
 			wp_link_pages( array(
-				'before' => '<div class=page-links>' . esc_html__( 'Pages:', 'frenchpress' ),
+				'before' => '<div class=page-links>Pages:',
 				'after'  => '</div>',
 			) );
 		?>

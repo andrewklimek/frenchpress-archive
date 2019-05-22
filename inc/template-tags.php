@@ -85,7 +85,7 @@ function frenchpress_entry_meta() {
 	if ( apply_filters( 'frenchpress_entry_meta_link_author', is_multi_author() ) ) {
 		$byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $byline . '</a>';
 	}
-	$byline = __( 'by ', 'frenchpress' ) . "<span class='author vcard'>{$byline}</span>";
+	$byline = "by <span class='author vcard'>{$byline}</span>";
 
 	echo "<p class=entry-meta-header><span class=posted-on>{$time}</span><span class=byline> {$byline}</span></p>";
 }
@@ -101,17 +101,17 @@ function frenchpress_entry_footer() {
 	
 	if ( 'post' === get_post_type() ) {// only show category and tag on posts
 		
-		$separate_meta = __( ', ', 'frenchpress' );// translators: used between list items, there is a space after the comma
+		$separate_meta = ", ";
 		
 		if ( frenchpress_categorized_blog() && $categories_list = get_the_category_list( $separate_meta ) ) {
 			
-			echo '<p class=cat-links>' . __( 'Filed under ', 'frenchpress' ) . $categories_list . '</p>';
+			echo '<p class=cat-links>Filed under ' . $categories_list;
 		
 		}
 
 		if ( $tags_list = get_the_tag_list( '', $separate_meta ) ) {
 			
-			echo '<p class=tag-links>' . __( 'Tagged ', 'frenchpress' ) . $tags_list . '</p>';
+			echo '<p class=tag-links>Tagged ' . $tags_list;
 		
 		}
 	}
@@ -119,8 +119,7 @@ function frenchpress_entry_footer() {
 	/*** Does anyone use the edit links?  They’re weird
 	edit_post_link(
 		sprintf(
-			// translators: %s: Name of current post
-			esc_html__( 'Edit %s', 'frenchpress' ),
+			'Edit %s',
 			the_title( '<span class=screen-reader-text>"', '"</span>', false )
 		),
 		'<span class=edit-link>',

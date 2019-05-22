@@ -159,7 +159,6 @@ function frenchpress_setup() {
 	/*
 	 * Enable support for Post Formats.
 	 * See https://developer.wordpress.org/themes/functionality/post-formats/
-	 */
 	add_theme_support( 'post-formats', array(
 		'chat',
 		'aside',
@@ -171,6 +170,7 @@ function frenchpress_setup() {
 		'link',
 		'status'
 	) );
+	 */
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', array(

@@ -83,11 +83,7 @@ endif;
 <div id=wp_footer>
 	<?php
 	wp_footer();
-	
-	// show edit link if admin bar has been hidden via the 'show_admin_bar' filter
-	if ( is_singular() && ! apply_filters( 'show_admin_bar', true ) ) {
-		edit_post_link( 'edit', '<span class=edit-link style="position:fixed;bottom:0;right:0;background:rgba(0,0,0,.5);color:#fff;padding:1ex;font:14px/1 sans-serif">', '</span>' );
-	}
+	frenchpress_mini_admin_bar();
 	?>
     <div id=mask></div>
 </div>

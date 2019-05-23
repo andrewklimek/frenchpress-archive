@@ -190,6 +190,7 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;/* Correct inability to style clickable types in iOS & Safari */
+  cursor: pointer;
 }
 
 /* seemed useful once

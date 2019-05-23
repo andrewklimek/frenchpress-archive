@@ -30,10 +30,10 @@ Also padding on blockquotes might need clearing, or just change custom padding t
 /*::after,*/
 * {
 	box-sizing: border-box;
-	/* margin: 0; */
+	margin: 0;
 	/* padding: 0; */
 	border: 0;
-	/*background: center/cover no-repeat;*//* Seems lame to clutter up every item in the inspector, and yet I end up having to hand-code this on almost every bg image */
+	/* background: center/cover no-repeat;*//* Seems lame to clutter up every item in the inspector, and yet I end up having to hand-code this on almost every bg image */
 }
 
 a {
@@ -106,11 +106,6 @@ object {
 /*	quotes: "\201C""\201D""\2018""\2019";*/
 /*}*/
 
-cite,
-address {
-	font-style: inherit;
-}
-
 table {
 	border-collapse: collapse;
 /*	border-spacing: 0;*//* only comes into play when border-collapse = seperate */
@@ -121,6 +116,8 @@ td, th {
 	text-align: left;
 }
 
+cite,
+address,/* cite & address used to be on their own line with just font-style inherit */
 button,
 input,
 select,
@@ -272,13 +269,13 @@ html {
 /*dl,*//* top & bottom margin in blink */
 /** Would need margin if headers have no bottom margin */
 /*pre,*//* top & bottom margin in blink */
-ol,/* top & bottom margin in blink */
-ul,/* top & bottom margin in blink */
+/*ol,*//* top & bottom margin in blink */
+/*ul,*//* top & bottom margin in blink */
 /** Would need margins no matter what */
-figure,/* all margins in blink */
+/*figure,*//* all margins in blink */
 p,/* top & bottom margin in blink */
 .p {
-  margin: 0 0 24px;
+  margin: 24px 0;
   line-height: 24px;/* works oddly well */
   line-height: calc(2ex + 9px);
 }
@@ -330,19 +327,19 @@ h4 {
 }
 
 /* h1:first-child, *//* I suspect h1 will almost always need custom margins */
-/*h2:first-child,
+h2:first-child,
 h3:first-child,
 h4:first-child,
 p:first-child {
 	margin-top: 0;
-}*/
+}
 /* h1:last-child, *//* I suspect h1 will almost always need custom margins */
-/*h2:last-child,
+h2:last-child,
 h3:last-child,
 h4:last-child,
 p:last-child {
 	margin-bottom: 0;
-}*/
+}
 
 h1,
 .h1 {

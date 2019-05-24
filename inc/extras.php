@@ -123,12 +123,17 @@ add_filter( 'get_the_archive_title', 'wrap_archive_title_prefix' );
 function frenchpress_nofollow_widgets($text) {
 	if ( ! is_front_page() ) {
 		
-		if ( false !== stripos( $text, ' rel=' ) ) {
-			$text = preg_replace( '/ rel=["\']\w+?["\']/', '', $text );
+		if ( false === stripos( $text, ' rel=' ) )
+		{
+			$text = str_replace( 'a href', 'a rel=nofollow href', $text);
 		}
-		// $search = array( ' rel="nofollow"', " rel='nofollow'", ' rel=nofollow', 'a href' );
-		// $replace = array( '', '', '', 'a rel="nofollow" href' );
-		$text = str_replace( 'a href', 'a rel=nofollow href', $text);
+		elseif ( false === stripos( $text, 'nofollow' ) )
+		{
+			$text = preg_replace(
+			array('/ rel="([ \w]+?)"/', '/ rel=\\\'([ \w]+?)\\\' /', '/ rel=(\w+?)([ >])/' ),
+			array(' rel="${1} nofollow"', ' rel=\'${1} nofollow\' ', ' rel="${1} nofollow"${2}' ),
+			$text );
+		}
 	}
 	return $text;
 }

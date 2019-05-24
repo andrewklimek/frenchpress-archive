@@ -1231,19 +1231,19 @@ hr.double {
 hr.spacer {
 	background: none;
 }
+*/
 
-.center {
+.c {
 	text-align: center;
 }
 
-.right {
+.r {
 	text-align: right;
 }
 
-.left {
+.l {
 	text-align: left;
 }
-*/
 /* better off in child theme if ever used
 .round {
 	border-radius: 50%;

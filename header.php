@@ -92,7 +92,7 @@ wp_head();
 	if ( apply_filters( 'frenchpress_drawer', true ) ) : ?>
 		<div id=menu-open role=button aria-controls=main-menu aria-expanded=false class=fffi>
 			<span id=menu-open-label class=screen-reader-text>Menu</span>
-			<p class=menubun><p class=menubun><p class=menubun></div>
+			<div class=menubun></div><div class=menubun></div><div class=menubun></div></div>
 	<?php endif;
 
 	echo '</div>';//.tray

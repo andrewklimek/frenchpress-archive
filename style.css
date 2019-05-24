@@ -244,7 +244,7 @@ button,
 --------------------------------------------------------------*/
 html {
 	/*font-size: 100%;*/
-	line-height: 1.2;/* Notes on line-height:
+	line-height: 1.3;/* Notes on line-height:
 	putting a calc on p element, should be the only one needing taller lines. 
 	26px works surprisingly well. 
 	calc(2ex + 12px) works well but needs to be on * selector to use each element's size and then it was inheriting like crazy */
@@ -296,11 +296,9 @@ dd {
 }
 */
 
-/* I felt like this actually looks sloppy. Linehight should be enough for parsing lines? All depends I guess
 li {
     margin: 12px 0;
 }
-*/
 
 /* not always wanted. and quotes almost always need custom styling. body of quote might have diff bg color from footer so then you need no padding around both
 blockquote {

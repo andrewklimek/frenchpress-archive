@@ -71,7 +71,7 @@ do_action('frenchpress_footer_bottom');
 global $sidebars_widgets;
 if ( !empty( $sidebars_widgets['footer-bottom'] ) ) : ?>
 	<div id=footer-bottom>
-		<div class="tray footer-bottom-tray<?php if( isset( $sidebars_widgets['header-4'][1] ) ) echo 'fff fff-middle fff-spacebetween'; ?> fff-pad">
+		<div class="tray footer-bottom-tray<?php if( isset( $sidebars_widgets['header-4'][1] ) ) echo ' fff fff-middle fff-spacebetween'; ?> fff-pad">
 			<?php dynamic_sidebar( 'footer-bottom' ); ?>
 		</div>
 	</div>

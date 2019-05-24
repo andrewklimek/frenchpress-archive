@@ -105,7 +105,7 @@ echo '</div>';//.site-header-main
 global $sidebars_widgets;
 if ( !empty( $sidebars_widgets['header-4'] ) ) : ?>
 	<div id=header-4 class=widget-area role=complementary>
-		<div class="tray<?php if( isset( $sidebars_widgets['header-4'][1] ) ) echo 'fff fff-middle fff-spacebetween fff-pad'; ?>">
+		<div class="tray<?php if( isset( $sidebars_widgets['header-4'][1] ) ) echo ' fff fff-middle fff-spacebetween fff-pad'; ?>">
 			<?php dynamic_sidebar( 'header-4' ); ?>
 		</div>
 	</div>

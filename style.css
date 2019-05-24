@@ -785,7 +785,7 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
 --------------------------------------------------------------*/
 
 body.single main {
-	line-height: 1.8;/* 3.5ex */
+	/*line-height: 1.8;*//* 3.5ex */
 }
 
 /*blockquote footer cite {*/
@@ -801,7 +801,7 @@ body.single main {
 /*}*/
 
 /* This is to remove frustrating space below logo.	Might be a problem with header widgets too */
-.site-branding {
+#logo {
 	line-height: 0;
 }
 

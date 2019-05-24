@@ -45,23 +45,29 @@ wp_head();
 	/**
 	* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block
 	* e.g.:
-	*	add_filter( 'frenchpress_site_branding', function( $skip_the_rest ) {
-	*		return "<a href=". esc_url( home_url( '/' ) ) ." rel=home>" . file_get_contents( __DIR__ .'/logo.svg' ) . "</a>";
-	*	} );
+	* add_filter( 'frenchpress_site_branding', function(){return file_get_contents( __DIR__ .'/logo.svg' );} );
+	*
+	* This could be moved to 'get_custom_logo' filter as of v4.5... 
+	* it would run a little extra code checking for a custom logo first, and would let those take precedence
 	*/
-	$site_branding_html = $logo = apply_filters( 'frenchpress_site_branding', '' );
+	$logo = apply_filters( 'frenchpress_site_branding', '' );
 	
-	if ( ! $logo ) {
-	
-		$site_branding_html = $logo = get_custom_logo();
+	if ( $logo && false === strpos( $logo, "</a>" ) ) {
+		// add home link if a link was not supplied at the filter.
+		// get_custom_logo() adds class=custom-logo-link but I won't for now.
+		$logo = "<a href='" . home_url() . "' rel=home>{$logo}</a>";
 	}
+	elseif ( ! $logo ) {
+		$logo = get_custom_logo();
+	}
+	$site_branding_html = "<div id=logo>{$logo}</div>";
 	
 	// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
 	$hide = display_header_text() ? '' : ' screen-reader-text';
 	
 	if ( ! $hide || is_customize_preview() ) {// For now I am not even going to bother with hidden elements, homepages probably want custom and/or visible h1
 	
-		$home_link = '<a href="'. esc_url( home_url( '/' ) ) .'" rel=home>'. get_bloginfo( 'name' ) .'</a>';
+		$home_link = '<a href="'. home_url() .'" rel=home>'. get_bloginfo( 'name' ) .'</a>';
 	
 		$site_branding_html .= is_front_page() ? "<h1 class='site-title{$hide}'>{$home_link}</h1>" : "<div class='site-title h2{$hide}'>{$home_link}</div>";
 	

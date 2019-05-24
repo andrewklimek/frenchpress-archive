@@ -538,7 +538,7 @@ article,/* was .hentry,*/
  	display: none;
 }
 
-p.menubun {
+.menubun {
 	background: currentColor;
 	width: 18px;
 	height: 1px;
@@ -578,6 +578,7 @@ p.menubun {
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 250ms;
+	padding: 12px 0;/* makes consistent spacing at top and bottom of submenus */
 }
 
 .dnav .header-widget .menu-item:hover > ul,
@@ -727,6 +728,7 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
     overflow: hidden;
 	position: relative;
 	transition: height .3s;
+	padding: 12px 0;/* makes consistent spacing at top and bottom of nav drawer */
 }
 .mnav .drawer .menu-item,
 .desk-drawer .menu-item {
@@ -800,7 +802,7 @@ body.single main {
 
 /* This is to remove frustrating space below logo.	Might be a problem with header widgets too */
 .site-branding {
-	/* line-height: 0; */
+	line-height: 0;
 }
 
 /*.site-title,*/
@@ -834,6 +836,10 @@ body.single main {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
+	/* border: 0; */
+	/* padding: 0; */
+	/* margin: -1px; */
+	/* clip-path: inset(50%); */
 }
 
 .screen-reader-text:focus {
@@ -1220,7 +1226,7 @@ but I just seem to only use none/initial or auto/magic */
 .margin {
 	margin: 24px;
 }
-/* better off in child theme if ever used?
+
 hr.double {
 	margin-top: 48px;
 	margin-bottom: 48px;
@@ -1229,7 +1235,6 @@ hr.double {
 hr.spacer {
 	background: none;
 }
-*/
 
 .c {
 	text-align: center;

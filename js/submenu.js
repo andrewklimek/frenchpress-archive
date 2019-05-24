@@ -153,7 +153,7 @@
 	button.onclick = toggleDrawer;
 	// document.getElementById( 'menu-close' ).onclick = toggleDrawer;
 	mask.onclick = toggleDrawer;
-	current.onclick = function(e){ htmlClass.contains('mnav') && e.preventDefault(), toggleDrawer(); };
+	// current.onclick = function(e){ htmlClass.contains('mnav') && e.preventDefault(), toggleDrawer(); };
 	
 	function drawerEscKey(e){
 		if( e.keyCode == 27 )

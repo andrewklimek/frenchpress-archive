@@ -97,13 +97,9 @@ add_action( 'login_enqueue_scripts', function() {
 function frenchpress_mobile_test() {
 	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
 	if ( ! $breakpoint ) return;
-	echo "<script>(function(){
-    var c=document.documentElement.classList;
-	function f(){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.remove('dopen');c.add('dnav');}else{c.remove('dnav');c.add('mnav');}}
-	f();
-	window.addEventListener('resize',f);
-    })();</script>
-";
+	echo "<script>(function(){var c=document.documentElement.classList;";
+	echo "function f(){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.remove('dopen');c.add('dnav');}else{c.remove('dnav');c.add('mnav');}}";
+	echo "f();window.addEventListener('resize',f);})();</script>";
 }
 // if ( ! apply_filters( 'frenchpress_disable_mobile', false ) ) {
 add_action( 'wp_print_scripts', 'frenchpress_mobile_test' );

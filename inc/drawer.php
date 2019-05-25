@@ -37,18 +37,18 @@ function frenchpress_print_desk_drawer(){
 
 }
 
+/**
+* The f() function here is a different version than the standard one in functions.php
+* It’s for opening the drawer by default on side-nav-only sites.
+* If 'i' is undefined, this is the Initial run, so set the drawer open on desktop sizes.
+* During resize, 'i' will have the event object and so it won't re-open the drawer if user had closed it.
+*/
 function frenchpress_mobile_test_desk_drawer() {
 	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
 	if ( ! $breakpoint ) return;
-	// If 'i' is undefined, this is the first ("initial") run, so set the drawer open on desktop sizes.
-	// During resize, 'i' will have the event object and so it won't re-open the drawer if user had closed it.
-	echo "<script>(function(){
-    var c=document.documentElement.classList;
-	function f(i){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.add('dnav');i||c.add('dopen')}else{c.remove('dnav');c.add('mnav')}}
-	f();
-	window.addEventListener('resize',f);
-    })();</script>
-";
+	echo "<script>(function(){var c=document.documentElement.classList;";
+	echo "function f(i){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.add('dnav');i||c.add('dopen')}else{c.remove('dnav');c.add('mnav')}}";
+	echo "f();window.addEventListener('resize',f);})();</script>";
 }
 
 function frenchpress_start_drawer_open() {
@@ -212,10 +212,18 @@ function frenchpress_add_drawer_markup_to_main_menu( $nav_menu, $args ) {
 	 ***/
 }
 
+/**
+* DRAWER WIDGET REGISTRATION
+* If any widgets are placed in this Drawer area,
+* they will appear in the drawer, below the navigation.
+* The drawer is of course usually only active on mobile.
+* Usage example: contact info which is in the header on desktop but hidden on mobile
+*/
 function frenchpress_drawer_widgets_init() {
 	register_sidebar( array(
 		'name'          => 'Drawer',
 		'id'            => 'drawer',
+		'description'   => 'Widgets will appear in the drawer (typically only used on mobile) below the navigation.',
 		'before_widget' => '<aside id="%1$s" class="widget drawer-widget %2$s">',
 		'after_widget'  => "</aside>\n",
 		'before_title'  => '<h3 class=widgettitle>',

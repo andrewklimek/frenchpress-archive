@@ -473,6 +473,8 @@ article,/* was .hentry,*/
 	padding: 12px 24px;
 }
 
+/* DRAWER */
+
 #mask {
 	position: fixed;
 	background-color: transparent;
@@ -513,12 +515,17 @@ article,/* was .hentry,*/
 	overflow: auto;
 }
 
+.site-header .menu {
+    margin: 0 -24px;/* align flush with sides of header. must be overriden for side nav byt following rule */
+}
+
 /* not sure which of these are needed */
-.mnav .drawer .menu,
+/* .site-header li, */
+.mnav .drawer .menu,/* this one overrides the negative margin on horizontal header navs in preceding rule */
 .desk-drawer .menu,
-.main-nav .menu-item,
-.site-header li {
+.main-nav .menu-item {
 	display: block;
+	margin: 0;
 }
 
 #menu-close,
@@ -593,11 +600,8 @@ article,/* was .hentry,*/
 /*	width: 100%;*/
 }
 
-/* need a way to denote horizontal menu when not using drawer on mobile size! */
-html:not(.dopen) .site-header .menu {
-    margin: 0 -24px;
-}
-html.mnav:not(.dopen) .site-header .menu-item > a {
+/* only for menus that stay horizontal on mobile, reduce padding */
+.hnav.mnav .site-header .menu-item > a {
     padding: 12px;
 }
 
@@ -605,38 +609,32 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
 
 /* ONLY HORIZONTAL MAIN NAV */
 
-/* .hnav.dnav #menu-close, */
-.hnav.dnav #menu-open,
-.hnav.dnav .menutog,
-.hnav.dnav .menuback,
-.hnav.dnav .drawer-widget {
+/* .xnav.dnav #menu-close, */
+.xnav.dnav #menu-open,
+.xnav.dnav .menutog,
+.xnav.dnav .menuback,
+.xnav.dnav .drawer-widget {
 	display: none;
 }
 
 
 /* DESK DRAWER ONLY  */
 
-.dopen #mask {
-/*	display: none;*/
-}
-.dnav.dopen #header,
+/* .dnav.dopen #header, *//* I think you wouldnt have much in the header but a centered logo and that shouldnt need to shift */
 .dnav.dopen #content,
 .dnav.dopen #footer {
 	margin-left: 222px;
 }
 /* would be nice to have this only when needed.. makes the whole page animate margin changes */
-#header,
-#content,
-#footer {
+.snav #header,
+.snav #content,
+.snav #footer {
     transition: margin .4s;
-}
-.dnav.dopen .drawer {
-/*	box-shadow: none;*/
 }
 /* probably will always want to center the logo with side nav? */
 .snav .site-branding {
     text-align: center;
-    margin-right: 24px;/* accounts for menu open button */
+    margin-left: 26px;/* accounts for menu open button */
 }
 
 
@@ -673,9 +671,9 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
     max-height: 50em;
 }*/
 
-/* Sliding Submenus */
+/* SLIDING SUBMENU */
 /* sliding nav sets height attribute via JS. This is to override if resizing browser to desktop size */
-.hnav.dnav .main-nav {
+.xnav.dnav .main-nav {
     height: auto!important;
 }
 .menutog {
@@ -708,8 +706,11 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
     margin-left: 100%;
     width: 100%;
 }
-.main-nav ul {
-    transition: .3s;
+.mnav .main-nav ul {
+    transition: opacity .3s, transform .3s;
+}
+.main-nav ul ul {
+    /* transition: .3s; */
     visibility: hidden;
 	opacity: 0;
 }
@@ -717,7 +718,7 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
 .desk-drawer .main-nav ul.focus {
     transform: translate(-100%);
 }
-.main-nav .menu,
+/* .main-nav .menu, */
 .main-nav .focus > ul {
     visibility:visible;
 	opacity:1;
@@ -754,6 +755,8 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
 /*	-webkit-font-smoothing: antialiased;*/
 }
 
+/* END SLIDING SUBMENU */
+
 /* a:not([href]) { */
 /* 	pointer-events: none; */
 /* 	cursor: default; *//* keep normal mouse pointer on parent menu items that are custom links with no link */
@@ -762,7 +765,7 @@ html.mnav:not(.dopen) .site-header .menu-item > a {
 
 
 
-/*.hnav .main-nav li li:last-child {*/
+/*.xnav .main-nav li li:last-child {*/
 	/*padding-bottom: 12px;*//* undo padding-bottom: 0 for desktop dropdowns */
 /*}*/
 

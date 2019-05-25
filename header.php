@@ -7,7 +7,7 @@
  */
  
 ?><!DOCTYPE html>
-<html lang=en class="<?php echo apply_filters( 'frenchpress_class_html', "hnav" ); ?>">
+<html lang=en class="<?php echo apply_filters( 'frenchpress_class_html', "xnav" ); ?>">
 <meta charset=UTF-8>
 <meta name=viewport content="width=device-width, initial-scale=1">
 <?php

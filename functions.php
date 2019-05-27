@@ -86,13 +86,18 @@ function frenchpress_inline_css() {
 	// append child styles, if child theme active
 	if ( TEMPLATEPATH !== STYLESHEETPATH ) $css .= file_get_contents( STYLESHEETPATH . '/style.css' );
 	
+	$css = frenchpress_minify_css( $css );
+
+	echo "<style>{$css}</style>";
+}
+
+function frenchpress_minify_css( $css ) {
 	// remove comments (preg_replace) and spaces (str_replace)
-	$css = str_replace(
+	return str_replace(
 		["\r","\n","\t",'   ','  ',': ','; ',', ',' {','{ ',' }','} ',';}'],
 		[  '',  '',  '',   '', ' ', ':', ';', ',', '{', '{', '}', '}', '}'],
 		preg_replace('|\/\*[\s\S]*?\*\/|','',$css)
 	);
-	echo "<style>{$css}</style>";
 }
 
 
@@ -131,6 +136,45 @@ function frenchpress_mobile_test() {
 // if ( ! apply_filters( 'frenchpress_disable_mobile', false ) ) {
 add_action( 'wp_print_scripts', 'frenchpress_mobile_test' );
 // }
+
+
+/**
+* Add CSS to [gallery] shortcodes, and the bloat out of style.css
+* There are actually core filters for using and modifying inline default CSS
+*/
+function add_gallery_styling( $style_and_div ) {
+	$css = frenchpress_minify_css( "<style>
+.gallery-caption {
+	display: block;
+	line-height: 1.3;/* set to zero on parent to avoid spaces when no captions */
+}
+.gallery-item {
+	margin: 0;
+	line-height: 0;/* avoid space between images when no captions */
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+.gallery-columns-1 .gallery-item {width: 100%;}
+.gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
+@media (min-width:800px){
+	.gallery-columns-3 .gallery-item{width: 33.333%;}
+	.gallery-columns-4 .gallery-item, .gallery-item{width: 25%;}
+}
+@media (min-width:1200px){
+	.gallery-columns-5 .gallery-item{width: 20%;}
+	.gallery-columns-6 .gallery-item, .gallery-item{width: 16.667%;}
+}
+@media (min-width:1600px){
+	.gallery-columns-7 .gallery-item{width: 14.286%;}
+	.gallery-columns-8 .gallery-item{width: 12.5%;}
+	.gallery-columns-9 .gallery-item{width: 11.111%;}
+}
+</style>" );
+	return  $css . $style_and_div;
+}
+add_filter( 'gallery_style', 'add_gallery_styling' );
+
 
 if ( ! function_exists( 'frenchpress_setup' ) ) :
 /**

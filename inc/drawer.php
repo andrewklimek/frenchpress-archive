@@ -31,7 +31,9 @@ add_action( 'wp_enqueue_scripts', 'frenchpress_process_drawer', 1 );
 function frenchpress_process_drawer(){
 	global $frenchpress_drawer;
 
-	$frenchpress_drawer = array( 'layout' => '', 'sidebar' => '' );
+	if ( empty( $frenchpress_drawer ) ) {
+		$frenchpress_drawer = array( 'layout' => '', 'sidebar' => '' );
+	}
 	
 	global $sidebars_widgets;
 	if ( $sidebars_widgets['drawer'] ) {
@@ -49,7 +51,7 @@ function frenchpress_process_drawer(){
 		$frenchpress_drawer['sidebar'] = ob_get_clean();
 		remove_filter( 'wp_nav_menu_args', 'frenchpress_set_main_menu_in_drawer', 1 );
 		// poo($frenchpress_drawer['sidebar']);
-		
+
 		// until I make a side-non-sub
 		// $frenchpress_drawer['layout'] = 'sub-side';
 	}
@@ -85,12 +87,12 @@ function frenchpress_set_main_menu_in_drawer($args){
 	}
 	elseif ( $main_menu['submenus'] )
 	{
-		// poo('transient set');
+		global $frenchpress_drawer;
 		$frenchpress_drawer['layout'] = 'sub-side';
 	}
 
 	$args = frenchpress_add_main_nav_args( $args );
-	
+
 	return $args;
 }
 
@@ -224,6 +226,8 @@ function frenchpress_add_main_nav_args( $args ) {
 
 
 function frenchpress_maybe_enqueue_submenu_js( $items ) {
+	
+	global $frenchpress_drawer;
 	
 	remove_filter( "wp_nav_menu_items", "frenchpress_maybe_enqueue_submenu_js" );
 

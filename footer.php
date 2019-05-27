@@ -81,9 +81,9 @@ endif;
 ?>
 </footer>
 <div id=wp_footer>
+    <div id=mask></div>
 	<?php
 	wp_footer();
 	frenchpress_mini_admin_bar();
 	?>
-    <div id=mask></div>
 </div>

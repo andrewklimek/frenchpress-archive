@@ -4,11 +4,14 @@
  * 
  * If this is ever used for the general public or WPML, 
  * html lang= should use language_attributes() or bloginfo('language') and maybe meta charset= bloginfo('charset')
+ *
+ * I was using this filter... no longer needed?
+<html lang=en class="<?php echo apply_filters( 'frenchpress_class_html', "xnav" ); ?>">
  */
  
-?><!DOCTYPE html>
-<html lang=en class="<?php echo apply_filters( 'frenchpress_class_html', "xnav" ); ?>">
-<meta charset=UTF-8>
+?><!doctype html>
+<html lang=en>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width, initial-scale=1">
 <?php
 wp_head();

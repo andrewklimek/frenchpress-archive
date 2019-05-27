@@ -35,6 +35,7 @@
 			toggleDrawer();
 	}
 	
+		
 	/** Close Drawer with swipe
 	var touch, drawer = document.querySelector('.drawer');
 	drawer.ontouchstart = mask.ontouchstart = function(e){touch=e.changedTouches[0].pageX;};

@@ -448,7 +448,7 @@ article,/* was .hentry,*/
 --------------------------------------------------------------*/
 
 /* I think the main nav should probably respond to typical "text-align" CSS, unless I go with an option in the theme for left, right, center and modify the fff-right class that way */
-.main-nav {
+.dnav .main-nav {
 	display: inline-block;
 }
 
@@ -468,108 +468,17 @@ article,/* was .hentry,*/
 /* for toggle arrows, so they can be centered to the parent, not the whole ul in the li */
 .menu-item > a {
 	display: block;
-	position: relative;
+	/* position: relative; *//* may only have served the toggle tree nav */
 	flex-grow: 1;
 	padding: 12px 24px;
 }
 
-/* DRAWER */
-
-#mask {
-	position: fixed;
-	background-color: transparent;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	visibility: hidden;
-	transition: background-color .4s;
-}
-
-.mnav .drawer,
-.desk-drawer {
-	z-index: 99999;
-	/*	height: calc(100% + 60px);*/
-	height: 100%;
-	position: fixed;
-/* 	bottom: 0; */
-    top: 0;
-	left: 0;
-	width: 222px;
-	margin: 0 0 0 -222px;
-/*	padding: .8em;*/
-	transition: transform .4s;
-/*	display: block;*/
-	background: #fff;
-	color: #333;
-	text-align: left;
-	-webkit-overflow-scrolling: touch;
-	will-change: transform;
-}
-
-.dopen .drawer {
-	max-width: 90%;
-	-webkit-transform: translateX(222px);
-	transform: translateX(222px);
-	box-shadow: 0 0 4px rgba(0,0,0,0.1);
-	overflow: auto;
-}
-
 .site-header .menu {
-    margin: 0 -24px;/* align flush with sides of header. must be overriden for side nav byt following rule */
+    margin: 0 -24px;/* align flush with sides of header. must be overriden for side nav */
 }
 
-/* not sure which of these are needed */
-/* .site-header li, */
-.mnav .drawer .menu,/* this one overrides the negative margin on horizontal header navs in preceding rule */
-.desk-drawer .menu,
-.main-nav .menu-item {
-	display: block;
-	margin: 0;
-}
-
-#menu-close,
-#menu-open {
-	display: inline-block;
-	padding: 14px 0;
-	cursor: pointer;
-	-webkit-tap-highlight-color: transparent;
-}
-
-#menu-close {
-/*    position: absolute;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*	font: 100 24px/.7 sans-serif;*/
-/*    padding: 12px 24px;*/
- 	display: none;
-}
-
-.menubun {
-	background: currentColor;
-	width: 18px;
-	height: 1px;
-	margin: 4px;
-}
-
-/* Allow drawer menu to scroll, but not on bigger screens cause fixed headers shift when you hide desktop scrollbars */
-/*@media (max-height:770px) {*/
-	.mnav.dopen {
-		overflow: hidden;
-	}
-
-/*}*/
-
-/* only mobile screens */
-.mnav.dopen #mask {
-	background-color: rgba(0,0,0,.5);
-	visibility: visible;
-}
-.mnav #menu-close {
-    display: none;
-}
-
-/* ANY HORIZONTAL HEADER MENU */
+/* SUBMENU */
+/* HORIZONTAL HEADER SUBMENU */
 
 .dnav .header-widget .sub-menu {
 	top: 100%;
@@ -600,162 +509,25 @@ article,/* was .hentry,*/
 /*	width: 100%;*/
 }
 
-/* only for menus that stay horizontal on mobile, reduce padding */
-.hnav.mnav .site-header .menu-item > a {
+/* END HORIZONTAL HEADER SUBMENU */
+
+/* NOTE: There is a 2nd SUBMENU part at end of DRAWER section */
+/* END SUBMENU */
+
+/* NO DRAWER */
+
+/* only for menus that stay horizontal on mobile, reduce padding
+* inlined in functions.php at include drawer conditional... for now
+.mnav .site-header .menu-item > a {
     padding: 12px;
-}
-
-
-
-/* ONLY HORIZONTAL MAIN NAV */
-
-/* .xnav.dnav #menu-close, */
-.xnav.dnav #menu-open,
-.xnav.dnav .menutog,
-.xnav.dnav .menuback,
-.xnav.dnav .drawer-widget {
-	display: none;
-}
-
-
-/* DESK DRAWER ONLY  */
-
-/* .dnav.dopen #header, *//* I think you wouldnt have much in the header but a centered logo and that shouldnt need to shift */
-.dnav.dopen #content,
-.dnav.dopen #footer {
-	margin-left: 222px;
-}
-/* would be nice to have this only when needed.. makes the whole page animate margin changes */
-.snav #header,
-.snav #content,
-.snav #footer {
-    transition: margin .4s;
-}
-/* probably will always want to center the logo with side nav? */
-.snav .site-branding {
-    text-align: center;
-    margin-left: 26px;/* accounts for menu open button */
-}
-
-
-/* ONLY SUMBMENU */
-
-/* mobile submenu tree/dropdown styling */
-/* disabled in favor of slide style below */
-/*.menutog {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 24px;
-	padding: 12px;
-    cursor: pointer;
-}
-.menu-item.focus > .menutog {
-    transform: rotate(180deg);
-}
-.menutog::after {
-    content: '';
-    border: .6ex solid transparent;
-    border-top-color: currentColor;
-    vertical-align: middle;
-    display: inline-block;
-}
-.mnav .drawer .sub-menu,
-.desk-drawer .sub-menu {
-     max-height: 0;
-     overflow: hidden;
-     transition: max-height cubic-bezier(1,0,0,1) 99ms;
-}
-.mnav .focus > .sub-menu,
-.desk-drawer .focus > .sub-menu {
-    max-height: 50em;
 }*/
+/* END NO DRAWER */
 
-/* SLIDING SUBMENU */
-/* sliding nav sets height attribute via JS. This is to override if resizing browser to desktop size */
-.xnav.dnav .main-nav {
-    height: auto!important;
-}
-.menutog {
-	padding: 12px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
 
-}
-.menuback::before,
-.menutog::after {
-	content: '';
-	border-right: 1px solid currentColor;
-	border-top: 1px solid currentColor;
-    vertical-align: middle;
-    display: inline-block;
-	width: 6px;
-	height: 6px;
-    cursor: pointer;
-	transform: rotate(45deg);
-}
-.menuback::before {
-    transform: rotate(225deg);
-    margin: 0 3px 0 2px;
-}
-.mnav .drawer .sub-menu,
-.desk-drawer .sub-menu {
-    position: absolute;
-    top: 0;
-	left: 0;
-    margin-left: 100%;
-    width: 100%;
-}
-.mnav .main-nav ul {
-    transition: opacity .3s, transform .3s;
-}
-.main-nav ul ul {
-    /* transition: .3s; */
-    visibility: hidden;
-	opacity: 0;
-}
-.mnav .main-nav ul.focus,
-.desk-drawer .main-nav ul.focus {
-    transform: translate(-100%);
-}
-/* .main-nav .menu, */
-.main-nav .focus > ul {
-    visibility:visible;
-	opacity:1;
-}
 
-.mnav .main-nav,
-.desk-drawer .main-nav {
-    overflow: hidden;
-	position: relative;
-	transition: height .3s;
-	padding: 12px 0;/* makes consistent spacing at top and bottom of nav drawer */
-}
-.mnav .drawer .menu-item,
-.desk-drawer .menu-item {
-	position: static;
-	display: -ms-flexbox;
-	display: flex;
-/*    justify-content: stretch;*/
-/*    align-items: stretch;*/
-}
-.menuback {
-    cursor: pointer;
-    padding: 12px;
-    display: block;
-}
+/* .drawer {display:none} */
 
-/*.current-menu-item:not(.seperate-tog),*/
-/*.current-menu-item.seperate-tog > a,*/
-.menuback:hover,
-.menu-item:not(.seperate-tog):hover,
-.seperate-tog > a:hover,
-.seperate-tog > .menutog:hover {
-/*    background: rgba(255, 255, 255, 0.1);*/
-/*	-webkit-font-smoothing: antialiased;*/
-}
 
-/* END SLIDING SUBMENU */
 
 /* a:not([href]) { */
 /* 	pointer-events: none; */

@@ -11,33 +11,38 @@ if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error
  */
 function frenchpress_scripts() {
 		
-	if ( SCRIPT_DEBUG ) {
-
-		wp_enqueue_style( 'frenchpress', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATEPATH . '/style.css' ) );
-
-		if ( TEMPLATEPATH !== STYLESHEETPATH )
-			wp_enqueue_style( 'theme', get_stylesheet_uri(), null, filemtime( STYLESHEETPATH . '/style.css' ) );
+	if ( SCRIPT_DEBUG )
+	{
+		wp_enqueue_style( 'p', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATEPATH . '/style.css' ) );
 
 		if ( apply_filters( 'frenchpress_drawer', true ) )
 		{
-		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.js', array(), filemtime( TEMPLATEPATH . '/js/main.js' ), true );
-		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.js', array(), filemtime( TEMPLATEPATH . '/js/submenu.js' ), true );
-		wp_register_script( 'frenchpress-subside', TEMPLATE_DIR_U.'/js/sub-side.js', array(), filemtime( TEMPLATEPATH . '/js/sub-side.js' ), true );
+			// wp_enqueue_script( 'f', TEMPLATE_DIR_U.'/js/drawer.js', null, filemtime( TEMPLATEPATH.'/a/drawer.js' ), true );
+			
+			// which submenu will we use if needed?
+			global $frenchpress_drawer;
+			wp_enqueue_script( 'n', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.js", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.js" ), true );
+			wp_enqueue_style( 'n', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.css", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.css" ) );	
 		}
-
-	} else {
-
+		
+		// lastly add child styles, if child theme active
+		if ( TEMPLATEPATH !== STYLESHEETPATH )
+			wp_enqueue_style( 'c', get_stylesheet_uri(), null, filemtime( STYLESHEETPATH . '/style.css' ) );
+	} 
+	else
+	{
 		add_action( 'wp_print_styles', 'frenchpress_inline_css' );
 		
 		// add_action( 'wp_print_footer_scripts', 'frenchpress_inline_js' );// any reason to do this if we can just defer the script?
 		
 		if ( apply_filters( 'frenchpress_drawer', true ) )
 		{
-		wp_enqueue_script( 'frenchpress', TEMPLATE_DIR_U.'/js/main.min.js', null, null, true );
-		wp_register_script( 'frenchpress-submenu', TEMPLATE_DIR_U.'/js/submenu.min.js', null, null, true );
-		wp_register_script( 'frenchpress-subside', TEMPLATE_DIR_U.'/js/sub-side.min.js', null, null, true );
-		}
+			// wp_enqueue_script( 'f', TEMPLATE_DIR_U.'/a/drawer.min.js', null, null, true );
 
+			// which submenu will we use if needed?
+			global $frenchpress_drawer;
+			wp_enqueue_script( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.min.js", null, null, true );
+		}
 	}
 	
 	// wp_enqueue_style( 'frenchpress-print',  TEMPLATE_DIR_U.'/print.css', null, null, 'print' );
@@ -45,7 +50,6 @@ function frenchpress_scripts() {
 	// wp_enqueue_script( 'frenchpress-skip-link-focus-fix', TEMPLATE_DIR_U . '/js/skip-link-focus-fix'.$suffix.'.js', array(), null, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
-	
 }
 add_action( 'wp_enqueue_scripts', 'frenchpress_scripts' );
 
@@ -57,15 +61,38 @@ function frenchpress_inline_js(){
 	echo "<script>" . file_get_contents( TEMPLATE_DIR_U.'/js/main.min.js' ) . "</script>";
 }
 
+/***
+* Inline & minify CSS
+*/
 function frenchpress_inline_css() {
+	// get parent styles
 	$css = file_get_contents( TEMPLATEPATH . '/style.css' );
+	
+	/* Remove specific Blocks from CSS
+	$remove_blocks = [ "DRAWER", "SUBMENU" ];
+	foreach ( $remove_blocks as $block ) {
+		$css = preg_replace("|\/\* {$block} \*\/[\s\S]+?\/\* END {$block} \*\/|", "", $css );
+	}
+	*/
+	
+	// extra CSS for drawers & submenus
+	if ( apply_filters( 'frenchpress_drawer', true ) )
+	{
+		// which submenu will we use if needed?
+		global $frenchpress_drawer;
+		$css .= file_get_contents( TEMPLATEPATH . "/a/{$frenchpress_drawer['layout']}.css" );
+	}
+	
+	// append child styles, if child theme active
 	if ( TEMPLATEPATH !== STYLESHEETPATH ) $css .= file_get_contents( STYLESHEETPATH . '/style.css' );
+	
+	// remove comments (preg_replace) and spaces (str_replace)
 	$css = str_replace(
 		["\r","\n","\t",'   ','  ',': ','; ',', ',' {','{ ',' }','} ',';}'],
 		[  '',  '',  '',   '', ' ', ':', ';', ',', '{', '{', '}', '}', '}'],
 		preg_replace('|\/\*[\s\S]*?\*\/|','',$css)
 	);
-	echo "<style>{$css}</style>";
+	echo "<style id=p-css>{$css}</style>";
 }
 
 
@@ -313,8 +340,12 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
  */
  if ( apply_filters( 'frenchpress_drawer', true ) ) {
 	require TEMPLATEPATH . '/inc/drawer.php';
+ } else {
+	// this won't be the long-term solution I'm sure.
+	// This is just for sites with no drawer and might even be better defined in child theme to the exact pixel width.
+	add_action('wp_print_styles',function(){echo '<style>.mnav .site-header .menu-item > a{padding:12px}</style>';});
  }
-
+ 
 /**
  * [frenchpress] builder-style shortcode
  */

@@ -245,7 +245,7 @@ button,
 --------------------------------------------------------------*/
 html {
 	/*font-size: 100%;*/
-	line-height: 1.3;/* Notes on line-height:
+	line-height: 1.2;/* Notes on line-height:
 	putting a calc on p element, should be the only one needing taller lines. 
 	26px works surprisingly well. 
 	calc(2ex + 12px) works well but needs to be on * selector to use each element's size and then it was inheriting like crazy */
@@ -354,6 +354,20 @@ h2,
 h3,
 .h3 {
 	font-size: 20px;/* 1.25rem @ 16px; provey 20 SS 20 */
+}
+
+/* Generalized markup that was needed in WP galleries and images with captions. Seems good. */
+figure {
+	display: inline-block;
+}
+figure img {
+	display: block;
+}
+figcaption {
+    font-size: 88%;
+    /* line-height: 1; */
+	text-align: center;
+    padding: 12px;
 }
 
 /*--------------------------------------------------------------
@@ -680,13 +694,16 @@ body.single main {
 
 /*--------------------------------------------------------------
 *  WordPress Specific stuff: Captions - Required
---------------------------------------------------------------*/
+*
+*  This is required markup, but it's just plain a good design pattern,
+*  so I added to the relevant elements: figure, figcaption, and img (within figures)
+--------------------------------------------------------------
 .wp-caption {
 	margin-bottom: 24px;
 	max-width: 100%;
 }
 
-.wp-caption img/*[class*="wp-image-"] why is this needed? */ {
+.wp-caption img[class*="wp-image-"] {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -695,12 +712,13 @@ body.single main {
 .wp-caption .wp-caption-text {
 	margin: 12px 0;
 }
-/* wonder why this shouldn't just be on figcaption */
+
 .wp-caption-text {
 	text-align: center;
-	font-size: 80%;
+	font-size: 88%;
     line-height: 1.2;
 }
+*/
 
 /*--------------------------------------------------------------
 ## WordPress Specific stuff: Galleries

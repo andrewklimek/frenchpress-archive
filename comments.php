@@ -1,6 +1,10 @@
 <?php
 /**
  * Called via comments_template()
+ *
+ * Disable avatars via the standard method:
+ * add_filter( 'wp_list_comments_args', function($r){ $r['avatar_size'] = 0; return $r; } );
+ *
  */
 
 if ( post_password_required() ) {
@@ -8,6 +12,16 @@ if ( post_password_required() ) {
 }
 
 echo '<section id=comments class=comments-area>';
+
+/**
+* Putting comment styling here because it will so rarely be used
+*
+* These aren’t needed for now as I’m making all textareas 100% width blocks
+*  .comment-form-comment label {display: block;}
+*  #comment {width: 100%;}
+*
+*/
+echo "<style>.comment-list,.children{list-style:none;padding:0}.children{padding-left:19px;border-left:5px solid rgba(165,165,165,.2)}.comment-meta{margin:0 0 12px}</style>";
 	
 	if ( have_comments() ) :
 		

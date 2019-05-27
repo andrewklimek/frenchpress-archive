@@ -144,7 +144,7 @@ function frenchpress_comment( $comment, $args, $depth ) {
 	?>
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( !empty( $args['has_children'] ) ? 'parent' : '', $comment ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class=comment-body>
-			<header class="comment-meta fff fff-spacebetween">
+			<footer class="comment-meta fff fff-spacebetween">
 				<div class="comment-author vcard fffi">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<cite class=fn><?php echo get_comment_author_link( $comment ) ?></cite>
@@ -170,7 +170,7 @@ function frenchpress_comment( $comment, $args, $depth ) {
 				if ( '0' == $comment->comment_approved )
 					echo '<p class=comment-awaiting-moderation>Your comment is awaiting moderation.</p>';
 				?>
-			</header>
+			</footer>
 			<div class=comment-content>
 				<?php comment_text(); ?>
 			</div>

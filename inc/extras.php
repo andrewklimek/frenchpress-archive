@@ -109,14 +109,6 @@ add_filter( 'comment_form_fields', function($fields){
 	return $fields;
 });
 
-// Changes <div> to <nav> for menu widget
-function frenchpress_widget_nav_menu_args( $nav_menu_args ) {
-	// if ( $args['id'] === 'top' )
-	$nav_menu_args['container'] = 'nav';
-	return $nav_menu_args;
-}
-add_filter( 'widget_nav_menu_args', 'frenchpress_widget_nav_menu_args' );
-
 
 /**
  * Add no-follow links to text widgets except on home page
@@ -143,3 +135,13 @@ add_filter( 'widget_text', 'frenchpress_nofollow_widgets', 99 );
 
 
 endif;// WP_CACHE
+
+// Changes <div> to <nav> for menu widget
+// This one should probably be done cache or no cache... 
+// or else some additional rules would be needed to remove ul padding besides "nav ul"  Besides, what the heck, no indication that it's a nav!
+function frenchpress_widget_nav_menu_args( $nav_menu_args ) {
+	// if ( $args['id'] === 'top' )
+	$nav_menu_args['container'] = 'nav';
+	return $nav_menu_args;
+}
+add_filter( 'widget_nav_menu_args', 'frenchpress_widget_nav_menu_args' );

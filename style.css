@@ -4,7 +4,7 @@ Plugin URI:	 https://github.com/andrewklimek/frenchpress/
 Description: a very light framework-style WordPress theme featuring flexbox CSS
 Author:		 Andrew J Klimek
 Author URI:	 https://github.com/andrewklimek
-Version:	 1.2.0
+Version:	 1.3.0
 License:	 GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
@@ -159,27 +159,6 @@ textarea {
 	overflow: auto;/* Remove scrollbar in IE */
 }
 
-/* This stuff is good, but I personally don't see using these elements on my sites, and the browser will have default styling anyway...
-abbr[title],
-dfn[title] {
-	border-bottom: 1px dotted currentColor;
-	cursor: help;
-	text-decoration: none;
-}
-ins {
-	border-bottom: 1px dotted #0c0;
-    text-decoration: none;
-}
-
-del {
-	text-decoration: line-through;
-	opacity: .8;
-}
-
-mark {
-	background-color: #ff9;
-}
-*/
 
 /* svg { */
 	/* fill: currentColor;*//* not sure how often this will come up really, and it overrides "fill" attribute color definitions */
@@ -234,11 +213,6 @@ button,
 	color: transparent;
 }
 */
-
-/* FF <= 18 (jan 2013) probably breaks the flex layout anyhow
-:focus:-moz-placeholder {
-	color: transparent !important;
-}*/
 
 /*--------------------------------------------------------------
 # Main Sizing & Spacing
@@ -530,37 +504,6 @@ article,/* was .hentry,*/
 /* END NO DRAWER */
 
 
-
-/* .drawer {display:none} */
-
-
-
-/* a:not([href]) { */
-/* 	pointer-events: none; */
-/* 	cursor: default; *//* keep normal mouse pointer on parent menu items that are custom links with no link */
-/* 	-webkit-tap-highlight-color: transparent; *//* background color on active links in mobile browsers */
-/* } */
-
-
-
-/*.xnav .main-nav li li:last-child {*/
-	/*padding-bottom: 12px;*//* undo padding-bottom: 0 for desktop dropdowns */
-/*}*/
-
-/*.main-nav li li:last-child {*/
-/*	padding-top: 0;*/
-/*}*/
-
-
-/* Cheap way of fixing sub-menues on the end. Could be -n+3 or +2 */
-/*@media (min-width:600px){*/
-/*	.main-nav ul.menu > li:nth-last-child(-n+1) > ul.sub-menu {*/
-/*		right: -24px;*/
-/*		left: initial;*/
-/*	}*/
-/*}*/
-
-
 /*--------------------------------------------------------------
 *  Positioning Tweaks that might not belong in the parent theme
 --------------------------------------------------------------*/
@@ -692,68 +635,6 @@ body.single main {
 	margin-left: 0;
 }
 
-/*--------------------------------------------------------------
-*  WordPress Specific stuff: Captions - Required
-*
-*  This is required markup, but it's just plain a good design pattern,
-*  so I added to the relevant elements: figure, figcaption, and img (within figures)
---------------------------------------------------------------
-.wp-caption {
-	margin-bottom: 24px;
-	max-width: 100%;
-}
-
-.wp-caption img[class*="wp-image-"] {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.wp-caption .wp-caption-text {
-	margin: 12px 0;
-}
-
-.wp-caption-text {
-	text-align: center;
-	font-size: 88%;
-    line-height: 1.2;
-}
-*/
-
-/*--------------------------------------------------------------
-## WordPress Specific stuff: Galleries
-
-Moved to filter 'gallery_style' replacing the shortcode's default styling
---------------------------------------------------------------
-.gallery-caption {
-	display: block;
-	line-height: 1.3;/* set to zero on parent to avoid spaces when no captions
-}
-.gallery-item {
-	margin: 0;
-	line-height: 0;/* avoid space between images when no captions
-	display: inline-block;
-	text-align: center;
-	vertical-align: top;
-}
-.gallery-columns-1 .gallery-item {width: 100%;}
-
-.gallery-columns-2 .gallery-item, .gallery-item{width: 50%;}
-
-@media (min-width:800px){
-	.gallery-columns-3 .gallery-item{width: 33.333%;}
-	.gallery-columns-4 .gallery-item, .gallery-item{width: 25%;}
-}
-@media (min-width:1200px){
-	.gallery-columns-5 .gallery-item{width: 20%;}
-	.gallery-columns-6 .gallery-item, .gallery-item{width: 16.667%;}
-}
-@media (min-width:1600px){
-	.gallery-columns-7 .gallery-item{width: 14.286%;}
-	.gallery-columns-8 .gallery-item{width: 12.5%;}
-	.gallery-columns-9 .gallery-item{width: 11.111%;}
-}
-*/
 
 /*--------------------------------------------------------------
 *  CSS Framework-type stuff.
@@ -1029,14 +910,5 @@ hr.spacer {
 		max-width: calc( 100% + 24px + 24px );
 	}
 
-}
-*/
-
-/* PRINT
-@media print{
-#footer,#header,#respond,#wpadminbar,.dont-print,.edit-link,.widget-area,video[loop]{display:none!important}
-#content,#content-tray,#main,#primary{margin:0!important;padding:0!important;width:100%!important;max-width:100%!important}
-*{color:#000!important;background:none!important;box-shadow:none!important;text-shadow:none!important}
-a[href]:after{content:" (" attr(href) ") "}
 }
 */

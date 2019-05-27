@@ -31,7 +31,7 @@ add_action( 'wp_enqueue_scripts', 'frenchpress_process_drawer', 1 );
 function frenchpress_process_drawer(){
 	global $frenchpress_drawer;
 
-	$frenchpress_drawer = array( 'layout' => 'drawer', 'sidebar' => '' );
+	$frenchpress_drawer = array( 'layout' => '', 'sidebar' => '' );
 	
 	global $sidebars_widgets;
 	if ( $sidebars_widgets['drawer'] ) {
@@ -47,18 +47,19 @@ function frenchpress_process_drawer(){
 		ob_start();
 		dynamic_sidebar( 'drawer' );
 		$frenchpress_drawer['sidebar'] = ob_get_clean();
+		remove_filter( 'wp_nav_menu_args', 'frenchpress_set_main_menu_in_drawer', 1 );
 		// poo($frenchpress_drawer['sidebar']);
 		
 		// until I make a side-non-sub
-		$frenchpress_drawer['layout'] = 'sub-side';
+		// $frenchpress_drawer['layout'] = 'sub-side';
 	}
-	else // normal case, not desk drawer
+	if ( ! $frenchpress_drawer['layout'] ) // normal case, not desk drawer
 	{
 		$main_menu = frenchpress_get_main_menu_details();
 		if ( $main_menu['submenus'] )
-		{
 			$frenchpress_drawer['layout'] = 'submenu';
-		}
+		else
+			$frenchpress_drawer['layout'] = 'drawer';
 	}
 }
 
@@ -84,7 +85,7 @@ function frenchpress_set_main_menu_in_drawer($args){
 	}
 	elseif ( $main_menu['submenus'] )
 	{
-		poo('transient set');
+		// poo('transient set');
 		$frenchpress_drawer['layout'] = 'sub-side';
 	}
 
@@ -199,7 +200,7 @@ function frenchpress_set_main_menu( $args ) {
 		// Only real need for this wrapper div is so additional widgets can be added inside it too via the drawer widget area.
 		// These would be widgets for the mobile drawer but hidden in desktop header mode.
 		add_filter( 'wp_nav_menu', 'frenchpress_add_drawer_markup_to_main_menu', 10, 2 );
-		
+
         $args = frenchpress_add_main_nav_args( $args );
     }
 
@@ -252,7 +253,7 @@ function frenchpress_add_drawer_markup_to_main_menu( $nav_menu, $args ) {
     remove_filter( 'wp_nav_menu', 'frenchpress_add_drawer_markup_to_main_menu', 10, 2 );
     
 	global $frenchpress_drawer;
-	
+		
 	// $frenchpress_drawer['sidebar'] contains output of dynamic_sidebar( 'drawer' );
 	
     return "<div class=drawer>{$nav_menu}{$frenchpress_drawer['sidebar']}</div>";

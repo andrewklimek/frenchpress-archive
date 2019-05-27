@@ -92,7 +92,7 @@ function frenchpress_inline_css() {
 		[  '',  '',  '',   '', ' ', ':', ';', ',', '{', '{', '}', '}', '}'],
 		preg_replace('|\/\*[\s\S]*?\*\/|','',$css)
 	);
-	echo "<style id=p-css>{$css}</style>";
+	echo "<style>{$css}</style>";
 }
 
 

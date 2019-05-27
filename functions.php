@@ -379,13 +379,6 @@ require TEMPLATEPATH . '/inc/extras.php';
 require TEMPLATEPATH . '/inc/customizer.php';
 
 /**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require TEMPLATEPATH . '/inc/jetpack.php';
-}
-
-/**
  * Custom walker with no <li>.
  */
 // require TEMPLATEPATH . '/inc/walker_no_list.php';

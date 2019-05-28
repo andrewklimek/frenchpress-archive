@@ -15,7 +15,7 @@ $title_style = "";
 if ( $short_circuit_404 === true )
 {
 	// make the "404" really big
-	$title_style = " style=font-size:18vw;text-align:center";
+	$title_style = " style=font-size:17vw;text-align:center;opacity:.2";
 	
 	// center it vertically by adding classes to the #content div
 	add_filter( 'frenchpress_class_content', function($class){ return $class . " fff fff-middle"; } );

@@ -1,6 +1,28 @@
 <?php
+/**
+* Sometimes you don't want this overly helpful 404 page.
+* You can return some custom HTML on this filter, or return true to have a blank 404 page.
+*
+* "True" is passed by default if you have the "Discourage search engines from indexing this site" 
+* option ticked in WP "Reading" settings ( get_option( 'blog_public' ) == '0' ) 
+* because it is assumed this is a private blog (like a portal) and you don't want the 404 suggestions.
+*/
+$short_circuit_404 = apply_filters( 'frenchpress_short_circuit_404', get_option( 'blog_public' ) == '0' );
+
+$title_style = "";
+
+// Setup styles for a blank 404 page:
+if ( $short_circuit_404 === true )
+{
+	// make the "404" really big
+	$title_style = " style=font-size:18vw;text-align:center";
+	
+	// center it vertically by adding classes to the #content div
+	add_filter( 'frenchpress_class_content', function($class){ return $class . " fff fff-middle"; } );
+}
 
 get_header();
+
 ?>
 <main id=primary class="site-main fffi fffi-99">
 	<article>
@@ -8,15 +30,15 @@ get_header();
 		
 		if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) {
 		
-			echo '<header class=page-header><h1 class=title>404</h1></header>';
+			echo "<header class=page-header><h1 class=title{$title_style}>404</h1></header>";
 		
 		}
 		
 		echo '<div class=page-content>';
-          
-		if ( $custom_404 = apply_filters( 'frenchpress_replace_smart_404', false ) ) :
+        
+		if ( $short_circuit_404 ) :
 
-			echo $custom_404 === true ? '' : $custom_404;
+			echo $short_circuit_404 === true ? '' : $short_circuit_404;
 
 		else :
 			

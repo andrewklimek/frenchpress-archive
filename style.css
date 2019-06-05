@@ -44,7 +44,7 @@ a {
 	/* -webkit-text-decoration-skip: ink; */
 	/* text-decoration-skip: ink; */
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
-	transition: 250ms;
+	transition: .4s;
 }
 p a {
 	text-decoration: underline;

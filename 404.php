@@ -9,14 +9,9 @@
 */
 $short_circuit_404 = apply_filters( 'frenchpress_short_circuit_404', get_option( 'blog_public' ) == '0' );
 
-$title_style = "";
-
 // Setup styles for a blank 404 page:
 if ( $short_circuit_404 === true )
 {
-	// make the "404" really big
-	$title_style = " style=font-size:17vw;text-align:center;opacity:.2";
-	
 	// center it vertically by adding classes to the #content div
 	add_filter( 'frenchpress_class_content', function($class){ return $class . " fff fff-middle"; } );
 }
@@ -25,36 +20,43 @@ get_header();
 
 ?>
 <main id=primary class="site-main fffi fffi-99">
-	<article>
-		<?php
+	<article><?php
+		
+	if ( $short_circuit_404 === true ) :
+		
+		// True was passed on the filter or this is a private blog.
+		// just print a massive 404 and close the article
+		echo "<h1 class=title style=font-size:17vw;text-align:center;opacity:.2>404</h1>";
+		
+	else :
 		
 		if ( ! apply_filters( 'frenchpress_title_in_header', false ) ) {
 		
-			echo "<header class=page-header><h1 class=title{$title_style}>404</h1></header>";
+			echo "<header class=page-header><h1 class=title>Not Found</h1></header>";
 		
 		}
 		
 		echo '<div class=page-content>';
         
-		if ( $short_circuit_404 ) :
+		if ( $short_circuit_404 ) :// already checked if this === true above, so now this must be actual html to print.
 
-			echo $short_circuit_404 === true ? '' : $short_circuit_404;
+			echo $short_circuit_404;
 
 		else :
-			
-			echo '<p>';
 		
+			$phrase = esc_html( trim( $_SERVER['REQUEST_URI'], "/" ) );
+			
 			if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
 
-				echo 'Unfortunately, you clicked a broken link.  Please try searching below.';
+				echo '<p>Unfortunately, you clicked a broken link.';
 
 			} else {
 			
-				echo esc_html( "“{$_SERVER['REQUEST_URI']}”" ) . ' does not exist on this site. Please double-check the spelling or search below.';
+				echo "<p>The page “{$phrase}” does not exist on this site.&nbsp; Please double-check the spelling.";
 			
 			}
 		
-			get_search_form();
+			
 	
 			$request = $GLOBALS['wp_query']->query;
 			// $request = explode( '/', parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
@@ -64,7 +66,9 @@ get_header();
 
 			if ( $query->have_posts() ) {
 
-				echo '<h3>Perhaps you were looking for one of these:</h3>';
+				echo "<h2>Search results for “{$phrase}”:</h2>";
+				
+				get_search_form();
 			
 				while ( $query->have_posts() ) {
 					
@@ -76,14 +80,18 @@ get_header();
 
 				wp_reset_postdata();
 		
+			} else {
+				
+				get_search_form();
 			}
 			
 		endif;
 		
-		?>
-		</div>
-	</article>
-<?php
+		echo "</div>";
+	
+	endif;
+	
+	echo "</article>";
 
 do_action('frenchpress_main_bottom');
 

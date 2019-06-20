@@ -44,7 +44,7 @@ a {
 	/* -webkit-text-decoration-skip: ink; */
 	/* text-decoration-skip: ink; */
 	-webkit-tap-highlight-color: transparent;/* background color on active links in mobile browsers */
-	transition: 250ms;
+	transition: .4s;
 }
 p a {
 	text-decoration: underline;
@@ -138,7 +138,7 @@ textarea {
 [type=password],
 [type=number],
 textarea {
-	border: 1px solid #aaa;
+	border: 1px solid;
 /*	border-radius: 0;*//*are they ever rounded by default?*/
 	padding: .5ex;
 	/* background: #fff; */
@@ -165,13 +165,13 @@ textarea {
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 /* } */
 
+/* Correct inability to style clickable types in iOS & Safari.. I'll wait to see this in action
 button,
 [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;/* Correct inability to style clickable types in iOS & Safari */
-  cursor: pointer;
-}
+  -webkit-appearance: button;
+}*/
 
 /* seemed useful once
 :disabled,

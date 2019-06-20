@@ -99,7 +99,7 @@ function frenchpress_shortcode( $a, $c = '', $tag ) {
 		if ( false === strpos( $a['bg'], '/' ) ) {// no slash so presume a color
 			$style = "background:{$a['bg']};";
 		} else {// has slash: presume image
-			$style = "background-image:url({$a['bg']});";
+			$style = "background:url({$a['bg']}) center/cover fixed;";
 		}
 		if ( !empty( $a['style'] ) ) {
 			$style .= $a['style'];
@@ -136,5 +136,5 @@ function frenchpress_shortcode( $a, $c = '', $tag ) {
     }
 	
 	// string it all together
-	return "<{$el}{$id}{$class}{$style}>{$c}</{$el}>";
+	return "<{$el}{$id}{$class}{$style}>\n{$c}</{$el}>";
 }

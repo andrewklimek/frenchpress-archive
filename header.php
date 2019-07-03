@@ -43,7 +43,9 @@ wp_head();
 	<div class="<?php echo apply_filters( 'frenchpress_class_header_main', "tray fff fff-middle fff-spacebetween fff-nowrap fff-pad" ); ?>">
 	<?php
 	
+	/* BRANDING */
 	// start building .site-branding.  Keep track of if anything is displayed so I can remove padding if not
+	$site_branding_html = "";
 
 	/**
 	* Filter to insert whatever (SVG logos) and optionally skip the rest of this PHP block
@@ -63,7 +65,9 @@ wp_head();
 	elseif ( ! $logo ) {
 		$logo = get_custom_logo();
 	}
-	$site_branding_html = "<div id=logo>{$logo}</div>";
+	if ( $logo ) {
+		$site_branding_html .= "<div id=logo>{$logo}</div>";
+	}
 	
 	// check if the site header & description were hidden in the customizer, add screen-reader-text class for CSS hiding
 	$hide = display_header_text() ? '' : ' screen-reader-text';
@@ -82,10 +86,14 @@ wp_head();
 		
 	}
 	
-	$pad = $logo || !$hide ? '' : ' pad-0';
+	if ( $site_branding_html ) {
+		
+		$pad = $logo || !$hide ? '' : ' pad-0';
 	
-	echo "<div class='site-branding fffi{$pad} fffi-9'>{$site_branding_html}</div>";
+		echo "<div class='site-branding fffi{$pad} fffi-9'>{$site_branding_html}</div>";
+	}
 	
+	/* END OF BRANDING */
 	
 	
 	if ( is_active_sidebar( 'header-3' ) ) : ?>

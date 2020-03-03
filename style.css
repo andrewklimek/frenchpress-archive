@@ -219,9 +219,10 @@ button,
 --------------------------------------------------------------*/
 html {
 	/*font-size: 100%;*/
-	line-height: 1.2;/* Notes on line-height:
+	/*line-height: 1.2;*//* Notes on line-height:
+	i may just leave this along for browsers and style where needed.
 	putting a calc on p element, should be the only one needing taller lines. 
-	26px works surprisingly well. 
+	24px works surprisingly well. 
 	calc(2ex + 12px) works well but needs to be on * selector to use each element's size and then it was inheriting like crazy */
 	word-wrap: break-word;/* should it just be on p a ?*/
 	-webkit-text-size-adjust: none;/* Prevent font size adjustments after orientation changes in IE and iOS */

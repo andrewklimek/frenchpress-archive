@@ -47,12 +47,12 @@ add_filter('wp_mail_from', function($email){
 	if( substr($email,0,10) === 'wordpress@')
 		$email = get_option('admin_email');
 	return $email;
-});
+}, 99);
 add_filter('wp_mail_from_name', function($name){
 	if($name === 'WordPress')
 		$name = str_replace( '&#039;', "'", get_option('blogname') );
 	return $name;
-});
+}, 99);
 
 
 /**

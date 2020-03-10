@@ -387,6 +387,8 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
 /**
  * Adds markup for the mobile-menu-style drawer
  */
+ if ( ! wp_get_nav_menus() ) add_filter( 'frenchpress_drawer', function(){return false;} );
+ 
  if ( apply_filters( 'frenchpress_drawer', true ) ) {
 	require TEMPLATEPATH . '/inc/drawer.php';
  } else {

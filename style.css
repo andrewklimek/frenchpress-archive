@@ -165,13 +165,13 @@ textarea {
 	/*overflow: hidden;*//* sanitize.css says to Hide the overflow in IE using svg:not(:root) */
 /* } */
 
-/* Correct inability to style clickable types in iOS & Safari.. I'll wait to see this in action
+/* Correct inability to style clickable types in iOS & Safari */
 button,
 [type=button],
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
-}*/
+}
 
 /* seemed useful once
 :disabled,

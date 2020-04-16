@@ -21,8 +21,8 @@ function frenchpress_scripts() {
 			
 			// which submenu will we use if needed?
 			global $frenchpress_drawer;
-			wp_enqueue_script( 'n', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.js", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.js" ), true );
-			wp_enqueue_style( 'n', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.css", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.css" ) );	
+			wp_enqueue_script( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.js", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.js" ), true );
+			wp_enqueue_style( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.css", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.css" ) );	
 		}
 		
 		// lastly add child styles, if child theme active
@@ -31,7 +31,10 @@ function frenchpress_scripts() {
 	} 
 	else
 	{
-		add_action( 'wp_print_styles', 'frenchpress_inline_css' );
+		if ( apply_filters( 'frenchpress_inline_css', true ) )
+			add_action( 'wp_print_styles', 'frenchpress_inline_css' );
+		else
+			wp_enqueue_style( 'p', TEMPLATE_DIR_U.'/m.css', null, null );
 		
 		// add_action( 'wp_print_footer_scripts', 'frenchpress_inline_js' );// any reason to do this if we can just defer the script?
 		
@@ -42,6 +45,15 @@ function frenchpress_scripts() {
 			// which submenu will we use if needed?
 			global $frenchpress_drawer;
 			wp_enqueue_script( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.min.js", null, null, true );
+			
+			if ( ! apply_filters( 'frenchpress_inline_css', true ) )
+				wp_enqueue_style( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.css", null, null );
+		}
+		
+		// lastly add child styles, if child theme active
+		if ( ! apply_filters( 'frenchpress_inline_css', true ) ) {
+			if ( TEMPLATEPATH !== STYLESHEETPATH )
+				wp_enqueue_style( 'c', get_stylesheet_uri(), null, null );
 		}
 	}
 	

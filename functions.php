@@ -4,7 +4,11 @@
 // define( 'TEMPLATE_DIR', get_template_directory() );
 define( 'TEMPLATE_DIR_U', get_template_directory_uri() );
 
-if(!function_exists('poo')){function poo($v,$l=''){if(true===WP_DEBUG_LOG){error_log("***$l***\n".var_export($v,true));}}}
+if(!function_exists('poo')){function poo( $var, $note='', $file='_debug.txt', $time='m-d H:i:s' ){
+	// if(true===WP_DEBUG_LOG)
+	if ( $note ) $note = "***{$note}***\n";
+	file_put_contents(WP_CONTENT_DIR ."/". $file, "\n[". date($time) ."] ". $note . var_export($var,true), FILE_APPEND);
+}}
 
 /**
  * Enqueue scripts and styles.

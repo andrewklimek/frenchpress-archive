@@ -130,6 +130,7 @@ textarea {
 /*	margin: 0;*//* for FF & Safari... but is it really a big deal? */
 }
 
+input:not([type]),/* inputs with no type specified are type=text but dont get matched with that selector */
 [type=text],
 [type=search],
 [type=tel],
@@ -137,6 +138,8 @@ textarea {
 [type=email],
 [type=password],
 [type=number],
+[type=date],
+select,
 textarea {
 	border: 1px solid;
 /*	border-radius: 0;*//*are they ever rounded by default?*/

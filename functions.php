@@ -193,80 +193,30 @@ add_filter( 'gallery_style', 'add_gallery_styling' );
 if ( ! function_exists( 'frenchpress_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Note that this function is hooked into the after_setup_theme hook, which runs before the init hook. 
+ * The init hook is too late for some features, such as indicating support for post thumbnails.
  */
 function frenchpress_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on FrenchPress, use a find and replace
-	 * to change 'frenchpress' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'frenchpress', TEMPLATEPATH . '/languages' );
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	// load_theme_textdomain( 'frenchpress', TEMPLATEPATH . '/languages' );
 
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
+	// add_theme_support( 'automatic-feed-links' );// Add default posts and comments RSS feed links to head.
 
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
+	add_theme_support( 'title-tag' );// this theme does not use a hard-coded <title> tag; let WP generate it
+
 	add_theme_support( 'post-thumbnails' );
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support( 'html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-	) );
+	add_theme_support( 'html5', ['search-form','comment-form','comment-list','gallery','caption'] );
 
-	/*
-	 * Enable support for Post Formats.
-	 * See https://developer.wordpress.org/themes/functionality/post-formats/
-	add_theme_support( 'post-formats', array(
-		'chat',
-		'aside',
-		'gallery',
-		'image',
-		'video',
-		'audio',
-		'quote',
-		'link',
-		'status'
-	) );
-	 */
+	// Enable support for Post Formats. https://developer.wordpress.org/themes/functionality/post-formats/
+	// add_theme_support( 'post-formats', ['chat','aside','gallery','image','video','audio','quote','link','status'] );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', array(
-		'default-color' => 'FFFDF8',
-		'default-image' => '',
-	) );
-
-	// Custom Logo
-	add_theme_support( 'custom-logo', array( 'flex-width'	=> true ) );
-
-	/*
-	 * Styles the visual editor
-	 * See https://developer.wordpress.org/reference/functions/add_editor_style/
-	 */
-	add_editor_style();
+	add_theme_support( 'custom-background', ['default-color' => 'FFFDF8', 'default-image' => ''] );
+	
+	add_theme_support( 'custom-logo', ['flex-width' => true ] );
+	
+	add_editor_style();// Styles the visual editor. https://developer.wordpress.org/reference/functions/add_editor_style/
 }
 endif;
 add_action( 'after_setup_theme', 'frenchpress_setup' );

@@ -31,7 +31,7 @@ function frenchpress_settings_page() {
 	<?php
 	
 	$fields = array_fill_keys([
-		'inline_css','no_drawer','page_titles','menu_breakpoint','entry_meta','entry_meta_time','entry_meta_byline'
+		'inline_css','no_drawer','page_titles','menu_breakpoint','entry_meta','entry_meta_time','entry_meta_byline','image_behind_title','comment_form_unstyle', 'comment_form_website_field'
 	],
 	[ 'type' => 'checkbox' ]);// defaults
 
@@ -129,49 +129,59 @@ function frenchpress_full_width( $full_width ) {
 // add_filter( 'frenchpress_title_in_header', '__return_true' );
 // add_action('frenchpress_header_bottom', function(){ echo '<h1>' . wp_title('', false) . '</h1>'; } );
 
-// add_filter( 'comment_form_default_fields', function($fields){ unset($fields['url']); return $fields; } );// remove URL field from comment form
 
 // featured image behind title
-// add_action('wp_footer', 'frenchpress_image_behind_title');
-function frenchpress_image_behind_title(){
+if ( !empty( $GLOBALS['frenchpress']->image_behind_title ) ) {
+	add_filter( 'frenchpress_title_in_header', '__return_true' );
+	add_action('wp_footer', 'frenchpress_image_behind_title');
+	function frenchpress_image_behind_title(){
+			
+		global $wp_query;
+		if ( empty($wp_query->queried_object_id) )// or get_queried_object_id() with no global needed.. returns 0 if no id
+		{
+			return;
+		}
+		$id = $wp_query->queried_object_id;
 		
-	global $wp_query;
-	if ( empty($wp_query->queried_object_id) )// or get_queried_object_id() with no global needed.. returns 0 if no id
-	{
-		return;
+		// $image_url = $image_url ? $image_url[0] : '/wp-content/uploads/2016/08/london-slim-dark-1024x172.jpg';// default pic moved to CSS
+		if ( $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'large' ) ) {
+			echo "<style>@media(min-width:769px){#header-title{background-image:url({$image_url[0]})}}</style>";
+		}
+		
 	}
-	$id = $wp_query->queried_object_id;
-	
-	// $image_url = $image_url ? $image_url[0] : '/wp-content/uploads/2016/08/london-slim-dark-1024x172.jpg';// default pic moved to CSS
-	if ( $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'large' ) ) {
-		echo "<style>@media(min-width:769px){#header-title{background-image:url({$image_url[0]})}}</style>";
-	}
-	
 }
 
-function frenchpress_comment_form_fields( $fields ){
-    
-    $req = false === strpos( $fields['email'], 'required' ) ? '' : '*';
-    
-    unset( $fields['url'] );
-    
-    $fields['author'] = '<div class="fff fff-magic fff-pad">' 
-        . str_replace( 
-        ['p class="', '</p>', 'label', 'size="30"'], 
-        ['span class="fffi ', '</span>', 'label class="screen-reader-text"', "placeholder='Name{$req}' style='width:100%'"], 
-        $fields['author'] 
-        );
-    
-    $fields['email'] = str_replace( 
-        ['p class="', '</p>', 'label', 'size="30"'], 
-        ['span class="fffi ', '</span>', 'label class="screen-reader-text"', "placeholder='Email{$req}' style='width:100%'"], 
-        $fields['email'] 
-        )  
-        . '</div>';
-    
-    $fields['comment'] = str_replace( ['label', 'cols="45"'], ['label class="screen-reader-text"', "placeholder='Comment' style='width:100%'"], $fields['comment'] );
-    
-    return $fields;
-    
+if ( empty( $GLOBALS['frenchpress']->comment_form_unstyle ) )
+{
+	function frenchpress_comment_form_fields( $fields ){
+		
+		if ( empty( $GLOBALS['frenchpress']->comment_form_website_field ) ) unset( $fields['url'] );
+
+		$req = false === strpos( $fields['email'], 'required' ) ? '' : '*';
+		
+		$fields['author'] = '<div class="fff fff-magic fff-pad">' 
+			. str_replace( 
+			['p class="', '</p>', 'label', 'size="30"'], 
+			['span class="fffi ', '</span>', 'label class="screen-reader-text"', "placeholder='Name{$req}' style='width:100%'"], 
+			$fields['author'] 
+			);
+		
+		$fields['email'] = str_replace( 
+			['p class="', '</p>', 'label', 'size="30"'], 
+			['span class="fffi ', '</span>', 'label class="screen-reader-text"', "placeholder='Email{$req}' style='width:100%'"], 
+			$fields['email'] 
+			)  
+			. '</div>';
+		
+		$fields['comment'] = str_replace( ['label', 'cols="45"'], ['label class="screen-reader-text"', "placeholder='Comment' style='width:100%'"], $fields['comment'] );
+		
+		return $fields;
+		
+	}
+	add_filter( 'comment_form_fields', 'frenchpress_comment_form_fields' );
 }
-add_filter( 'comment_form_fields', 'frenchpress_comment_form_fields' );
+elseif ( empty( $GLOBALS['frenchpress']->comment_form_website_field ) )
+{
+	add_filter( 'comment_form_fields', function($fields){ unset($fields['url']); return $fields; } );// remove URL field from comment form
+
+}

@@ -154,8 +154,6 @@ if ( !empty( $GLOBALS['frenchpress']->image_behind_title ) ) {
 if ( empty( $GLOBALS['frenchpress']->comment_form_unstyle ) )
 {
 	function frenchpress_comment_form_fields( $fields ){
-		
-		if ( empty( $GLOBALS['frenchpress']->comment_form_website_field ) ) unset( $fields['url'] );
 
 		$req = false === strpos( $fields['email'], 'required' ) ? '' : '*';
 		
@@ -170,18 +168,31 @@ if ( empty( $GLOBALS['frenchpress']->comment_form_unstyle ) )
 			['p class="', '</p>', 'label', 'size="30"'], 
 			['span class="fffi ', '</span>', 'label class="screen-reader-text"', "placeholder='Email{$req}' style='width:100%'"], 
 			$fields['email'] 
-			)  
-			. '</div>';
-		
+			);
+
+		if ( empty( $GLOBALS['frenchpress']->comment_form_website_field ) ) {
+			$fields['email'] .= '</div>';
+			unset( $fields['url'] );
+			$fields['cookies'] = str_replace( 'name, email, and website', 'name and email', $fields['cookies'] );
+		} else {
+			$fields['url'] = str_replace( 
+				['p class="', '</p>', 'label', 'size="30"'], 
+				['span class="fffi ', '</span>', 'label class="screen-reader-text"', "placeholder='Website' style='width:100%'"], 
+				$fields['url'] 
+				) . '</div>';
+		}		
 		$fields['comment'] = str_replace( ['label', 'cols="45"'], ['label class="screen-reader-text"', "placeholder='Comment' style='width:100%'"], $fields['comment'] );
 		
 		return $fields;
-		
 	}
 	add_filter( 'comment_form_fields', 'frenchpress_comment_form_fields' );
 }
 elseif ( empty( $GLOBALS['frenchpress']->comment_form_website_field ) )
 {
-	add_filter( 'comment_form_fields', function($fields){ unset($fields['url']); return $fields; } );// remove URL field from comment form
+	add_filter( 'comment_form_fields', function($fields){
+		unset($fields['url']);
+		$fields['cookies'] = str_replace( 'name, email, and website', 'name and email', $fields['cookies'] );
+		return $fields;
+	} );// remove URL field from comment form
 
 }

@@ -77,32 +77,37 @@ function frenchpress_posts_nav( $before='', $after='.' ) {
  */
 if ( ! function_exists( 'frenchpress_entry_meta' ) ) :
 function frenchpress_entry_meta() {
-
+	global $frenchpress;
 	// Disable or do a custom meta
 	// eg, to only show meta on 'posts' (not cutom post types): function( $skip ){ return 'post' === get_post_type() ? $skip : true; }
 	// eg, to customize meta for archives only, the first line in the filter could be "if ( !is_archive() ) return $skip_the_rest;"
-	if ( apply_filters( 'frenchpress_entry_meta_header', false ) ) {
-		return;
+	if ( empty( $frenchpress->entry_meta ) ) return;
+
+	if ( !empty( $frenchpress->entry_meta_time ) ) {
+
+		if ( $GLOBALS['post']->post_date !==  $GLOBALS['post']->post_modified ) {
+			$time = '<time class=updated datetime="' . get_the_modified_date( DATE_W3C ) . '">' . get_the_modified_date() . '</time>';
+		} else {
+			$time = '<time class=published datetime="' .  get_the_date( DATE_W3C ) . '">' . get_the_date() . '</time>';// DATE_W3C is a PHP constant same as 'c' format
+		}
+
+		if ( apply_filters( 'frenchpress_entry_meta_link_time', false ) ) {
+			$time = '<a href="' . esc_url( get_permalink() ) . '" rel=bookmark>' . $time . '</a>';
+		}
+		$time = "<span class=posted-on>{$time}</span>";
 	}
 
-	if ( $GLOBALS['post']->post_date !==  $GLOBALS['post']->post_modified ) {
-		$time = '<time class=updated datetime="' . get_the_modified_date( DATE_W3C ) . '">' . get_the_modified_date() . '</time>';
-	} else {
-		$time = '<time class=published datetime="' .  get_the_date( DATE_W3C ) . '">' . get_the_date() . '</time>';// DATE_W3C is a PHP constant same as 'c' format
+	if ( !empty( $frenchpress->entry_meta_byline ) ) {
+
+		$byline = get_the_author();
+
+		if ( apply_filters( 'frenchpress_entry_meta_link_author', is_multi_author() ) ) {
+			$byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $byline . '</a>';
+		}
+		$byline = "<span class=byline> by <span class='author vcard'>{$byline}</span></span>";
 	}
 
-	if ( apply_filters( 'frenchpress_entry_meta_link_time', false ) ) {
-		$time = '<a href="' . esc_url( get_permalink() ) . '" rel=bookmark>' . $time . '</a>';
-	}
-
-	$byline = get_the_author();
-
-	if ( apply_filters( 'frenchpress_entry_meta_link_author', is_multi_author() ) ) {
-		$byline = '<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $byline . '</a>';
-	}
-	$byline = "by <span class='author vcard'>{$byline}</span>";
-
-	echo "<p class=entry-meta-header><span class=posted-on>{$time}</span><span class=byline> {$byline}</span></p>";
+	echo "<p class=entry-meta-header>{$time}{$byline}</p>";
 }
 endif;
 

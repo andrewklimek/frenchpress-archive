@@ -1,4 +1,6 @@
 <?php
+global $frenchpress;
+$frenchpress = (object) get_option('frenchpress');
 
 /* this is define by core for now as TEMPLATEPATH hopefully the dont remove it, see https://core.trac.wordpress.org/ticket/18298 */
 // define( 'TEMPLATE_DIR', get_template_directory() );
@@ -19,7 +21,7 @@ function frenchpress_scripts() {
 	{
 		wp_enqueue_style( 'p', TEMPLATE_DIR_U.'/style.css', null, filemtime( TEMPLATEPATH . '/style.css' ) );
 
-		if ( apply_filters( 'frenchpress_drawer', true ) )
+		if ( empty( $GLOBALS['frenchpress']->no_drawer ) )
 		{
 			// wp_enqueue_script( 'f', TEMPLATE_DIR_U.'/js/drawer.js', null, filemtime( TEMPLATEPATH.'/a/drawer.js' ), true );
 
@@ -35,14 +37,14 @@ function frenchpress_scripts() {
 	}
 	else
 	{
-		if ( apply_filters( 'frenchpress_inline_css', true ) )
-			add_action( 'wp_print_styles', 'frenchpress_inline_css' );
-		else
+		if ( empty( $GLOBALS['frenchpress']->inline_css ) )
 			wp_enqueue_style( 'p', TEMPLATE_DIR_U.'/m.css', null, filemtime( TEMPLATEPATH."/m.css" ) );
+		else
+			add_action( 'wp_print_styles', 'frenchpress_inline_css' );
 
 		// add_action( 'wp_print_footer_scripts', 'frenchpress_inline_js' );// any reason to do this if we can just defer the script?
 
-		if ( apply_filters( 'frenchpress_drawer', true ) )
+		if ( empty( $GLOBALS['frenchpress']->no_drawer ) )
 		{
 			// wp_enqueue_script( 'f', TEMPLATE_DIR_U.'/a/drawer.min.js', null, null, true );
 
@@ -50,12 +52,12 @@ function frenchpress_scripts() {
 			global $frenchpress_drawer;
 			wp_enqueue_script( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.min.js", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.js" ), true );
 
-			if ( ! apply_filters( 'frenchpress_inline_css', true ) )
+			if ( empty( $GLOBALS['frenchpress']->inline_css ) )
 				wp_enqueue_style( 'f', TEMPLATE_DIR_U."/a/{$frenchpress_drawer['layout']}.css", null, filemtime( TEMPLATEPATH."/a/{$frenchpress_drawer['layout']}.css" ) );
 		}
 
 		// lastly add child styles, if child theme active
-		if ( ! apply_filters( 'frenchpress_inline_css', true ) ) {
+		if ( empty( $GLOBALS['frenchpress']->inline_css ) ) {
 			if ( TEMPLATEPATH !== STYLESHEETPATH )
 				wp_enqueue_style( 'c', get_stylesheet_uri(), null, filemtime( STYLESHEETPATH . '/style.css' ) );
 		}
@@ -92,7 +94,7 @@ function frenchpress_inline_css() {
 	*/
 
 	// extra CSS for drawers & submenus
-	if ( apply_filters( 'frenchpress_drawer', true ) )
+	if ( empty( $GLOBALS['frenchpress']->no_drawer ) )
 	{
 		// which submenu will we use if needed?
 		global $frenchpress_drawer;
@@ -143,7 +145,7 @@ add_action( 'login_enqueue_scripts', function() {
 
 
 function frenchpress_mobile_test() {
-	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
+	$breakpoint = isset( $GLOBALS['frenchpress']->menu_breakpoint ) ? $GLOBALS['frenchpress']->menu_breakpoint : 860;
 	if ( ! $breakpoint ) return;
 	echo "<script>(function(){var c=document.documentElement.classList;";
 	echo "function f(){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.remove('dopen');c.add('dnav');}else{c.remove('dnav');c.add('mnav');}}";
@@ -394,15 +396,20 @@ add_action( 'widgets_init', 'frenchpress_widgets_init' );
 /**
  * Adds markup for the mobile-menu-style drawer
  */
- if ( ! wp_get_nav_menus() ) add_filter( 'frenchpress_drawer', function(){return false;} );
+//  if ( ! wp_get_nav_menus() ) add_filter( 'frenchpress_drawer', function(){return false;} );// TODO not using this filter anymore, would have to filter options
 
- if ( apply_filters( 'frenchpress_drawer', true ) ) {
+ if ( empty( $GLOBALS['frenchpress']->no_drawer ) ) {
 	require TEMPLATEPATH . '/inc/drawer.php';
  } else {
 	// this won't be the long-term solution I'm sure.
 	// This is just for sites with no drawer and might even be better defined in child theme to the exact pixel width.
 	add_action('wp_print_styles',function(){echo '<style>.mnav .site-header .menu-item > a{padding:12px}</style>';});
  }
+
+/**
+ * [frenchpress] builder-style shortcode
+ */
+require TEMPLATEPATH . '/inc/settings.php';
 
 /**
  * [frenchpress] builder-style shortcode

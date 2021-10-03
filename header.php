@@ -107,7 +107,7 @@ wp_head();
 	/**
 	* Menu Drawer Button
 	*/
-	if ( apply_filters( 'frenchpress_drawer', true ) ) : ?>
+	if ( empty( $GLOBALS['frenchpress']->no_drawer ) ) : ?>
 		<div id=menu-open role=button aria-controls=main-menu aria-expanded=false class=fffi>
 			<span id=menu-open-label class=screen-reader-text>Menu</span>
 			<div class=menubun></div><div class=menubun></div><div class=menubun></div></div>

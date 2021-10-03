@@ -100,7 +100,7 @@ function frenchpress_set_main_menu_in_drawer($args){
 * During resize, 'i' will have the event object and so it won't re-open the drawer if user had closed it.
 */
 function frenchpress_mobile_test_desk_drawer() {
-	$breakpoint = apply_filters( 'frenchpress_menu_breakpoint', 860 );
+	$breakpoint = isset( $GLOBALS['frenchpress']->menu_breakpoint ) ? $GLOBALS['frenchpress']->menu_breakpoint : 860;
 	if ( ! $breakpoint ) return;
 	echo "<script>(function(){var c=document.documentElement.classList;";
 	echo "function f(i){if(window.innerWidth>{$breakpoint}){c.remove('mnav');c.add('dnav');i||c.add('dopen')}else{c.remove('dnav');c.add('mnav')}}";
